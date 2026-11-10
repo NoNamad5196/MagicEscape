@@ -55,7 +55,7 @@
 - 정답: **Earth → Water → Fire → Light** (길이 4).
 - 단서: 서쪽 벽 액자 4점 '씨앗의 일생'(흙 속 씨앗/비/햇볕의 열기/빛 속의 꽃), 각 액자 모서리에 해당 문양, 아래 로마숫자 판(I~IV). 벽 배치 순서는 섞임(왼→오: III, I, IV, II). 칠판 문구: "생명은 정해진 순서로 깨어난다. 액자의 숫자를 따르라."
 - 판정: 입력 즉시 비교. 오답 → 진행 0으로 리셋, failCount+1, 빨간 점멸+실패음. 재시도 무제한. failCount ≥ 3 → 힌트 "벽에 걸린 액자의 숫자 순서를 따라가 보자."
-- 완료: 4문양 동시 발광 → 제단 뚜껑 열림 → `crystal_sapphire` 픽업 등장, Seal1 소등, 마법서 독서대의 결계 해제(P2 Active).
+- 완료: 문양석 6개 모두 금색 발광 → 제단 뚜껑 열림 → `crystal_sapphire` 픽업 등장, Seal1 소등, 마법서 독서대의 결계 해제(P2 Active).
 
 ### P2 — 마법약 제조 (`PotionPuzzle`)
 - 조합법(마법서): "계시의 물약 — ① 달빛 아래 핀 꽃잎 ② 불꽃 속에서 벗겨낸 비늘 ③ 별처럼 빛나는 가루. 독버섯은 결코 넣지 말 것."
@@ -80,6 +80,8 @@ WASD 이동, 마우스 시점, E 상호작용, 1~8/휠 슬롯 선택, Tab 목표
 ## 6. 산출물 위치
 
 - `CodeDrafts/Core/` 순수 C# 규칙, `CodeDrafts/Runtime/` MonoBehaviour, `Tests/` dotnet 테스트
+- Windows에서 생성할 Unity 프로젝트 위치: 저장소 루트의 `UnityProject/` (UNITY_HANDOFF.md §2). 생성 후에는 `UnityProject/Assets/Scripts`가 스크립트 정본이 될 수 있으므로, 서버에서 코드를 고치기 전 `git pull`로 확인한다.
+- 서버 검증 명령: `~/.dotnet/dotnet test Tests/MagicEscape.Core.Tests`, `~/.dotnet/dotnet build Tests/RuntimeCompileCheck -p:InputBackend=New|Legacy`. `Tests/RuntimeCompileCheck/UnityStubs.cs`는 Unity로 복사 금지.
 - `docs/` GAME_DESIGN, PUZZLE_SPEC, TECH_DESIGN, SCENE_SETUP, VISUAL_REFERENCES, UNITY_HANDOFF, TEST_PLAN, IDEA_LOG, TASKS
 - 위 정본 값을 바꿀 때는 이 파일 → 코드 → 문서 → Notion 순으로 함께 갱신한다.
 

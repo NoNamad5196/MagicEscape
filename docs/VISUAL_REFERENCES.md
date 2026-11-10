@@ -1,0 +1,123 @@
+# MagicEscape — 비주얼 방향 · 에셋 · 레퍼런스
+
+> 조사일: 2026-11-10 · 조사 도구: Perplexity MCP(Unity 버전 확인), Exa 웹 검색(에셋 페이지·라이선스 원문 확인). Perplexity deep 검색은 이 날 시간 초과로 실패해 에셋은 웹 검색으로 원문 페이지를 직접 확인했다.
+> 원칙: **무료 에셋만** 사용, 유료 구매 없음. 핵심 시스템·퍼즐 로직은 직접 구현하고 에셋은 외형에만 쓴다. 라이선스를 원문에서 확인하지 못한 항목은 "확인 필요"로 표시했다.
+
+## 1. 아트 방향
+
+**키워드**: 아늑함 · 신비로움 · 저녁 무렵의 마법 실습실 · 따뜻한 촛불 vs 차가운 달빛 · 빛나는 문양
+
+- **스타일**: 저폴리 스타일라이즈드(KayKit/Quaternius 계열). 리얼리스틱 PBR보다 에셋 간 톤을 맞추기 쉽고 성능 부담이 적다.
+- **명암 구조**: 방 전체는 어둡게(남보라 앰비언트), 퍼즐 오브젝트만 스포트·발광으로 밝혀 시선을 유도한다. "빛나는 것 = 상호작용 대상" 규칙.
+- **색의 의미 고정**(퍼즐 피드백에 그대로 사용 — 코드 기본값과 동일)
+
+| 의미 | 색 | Hex | 사용처 |
+|---|---|---|---|
+| 기본 목재/가구 | 따뜻한 갈색 | `#6B4A2F` / `#3E2A1C` | 바닥·책장·책상 |
+| 촛불/램프 | 호박색 | `#FFB45A` | Point Light |
+| 달빛/앰비언트 | 차가운 청보라 | `#8FA8FF` / `#2A2540` | Directional, Ambient |
+| 진행/정답 입력(물·청) | 시안 | `#4DCCFF` | 문양 점등, 소켓 |
+| 오답/봉인 | 빨강 | `#FF2619` / `#FF3030` | 점멸, 봉인 빛 |
+| 완료/해제 | 금색 | `#FFCC4D` / `#FFD966` | 퍼즐 해결 |
+| 비문/봉인핵 대기 | 연보라 | `#CC99FF` | P3 |
+| 물약 단계 | 청 → 주황 → 초록 | `#8C99FF` `#FF7333` `#4DFF80` | 가마솥 |
+
+- **포스트 프로세싱(URP Volume)**: Bloom(Threshold 0.9, Intensity 1.2) — 발광 문양이 번지게, Vignette 0.25 — 시선 집중, ACES Tonemapping, 약한 따뜻한 Color Filter.
+- **상태별 시각 규칙**
+
+| 상태 | 표현 |
+|---|---|
+| Locked | 발광 없음 또는 결계(반투명 청색 구), 차가운 가마솥(거품 없음) |
+| Active | 은은한 스포트 조명, 가마솥 거품 파티클 |
+| 정답 입력 | 해당 부위 시안 발광 + 맑은 톤 |
+| 오답 | 0.6초 빨간 점멸 / 검은 연기 + 둔탁한 소리 |
+| Solved | 금색 발광 + 반짝이 파티클 + 출구 봉인 빛 1개 소등 |
+
+## 2. 레퍼런스 게임/작품
+
+| 작품 | URL | 참고할 요소 | MagicEscape 적용 |
+|---|---|---|---|
+| The Room 시리즈 (Fireproof Games) | https://www.fireproofgames.com/games/the-room | 장치 하나에 여러 단계가 숨어 있는 구조, 조작 시 기계적 피드백 | 봉인 장치(P3)를 비문→소켓→봉인핵 3단계로 구성 |
+| Escape Simulator (Pine Studio) | https://store.steampowered.com/app/1435790/Escape_Simulator/ | 1인칭 방탈출의 줍기·조사·조합 UX, 짧은 플레이 단위 | E 상호작용 + 핫바 선택 사용 방식 |
+| Hogwarts Legacy (Avalanche) | https://www.hogwartslegacy.com/ | 마법학교 교실의 따뜻한 조명, 책장·촛대·마법 도구 밀도 | 촛불 앰비언트 + 소품 배치 밀도 기준 |
+| Potion Craft: Alchemist Simulator | https://store.steampowered.com/app/1210320/Potion_Craft_Alchemist_Simulator/ | 재료 투입 시 물약 색 변화로 진행 피드백 | 가마솥 단계별 색 변화 |
+| Myst / riven 계열 관찰형 퍼즐 | https://cyan.com/games/myst/ | 환경 단서(그림·문자)를 읽어 순서 추론 | 액자 4점 + 로마숫자로 문양 순서 추론(P1) |
+| KayKit 'Dungeon Pack' 샘플 씬 | https://kaylousberg.itch.io/kaykit-dungeon-pack | 저폴리 판타지 실내 톤·조명 예시 | 전체 아트 톤 기준 |
+
+(레퍼런스는 분위기·UX 참고용이며 어떤 이미지·에셋도 복제하지 않는다.)
+
+## 3. 무료 에셋 후보
+
+| # | 이름 | 출처 URL | 종류 | 라이선스 | Unity 6 / URP | 난이도 | 비고 |
+|---|---|---|---|---|---|---|---|
+| 1 | KayKit Dungeon Pack (Free) | https://kaylousberg.itch.io/kaykit-dungeon-pack | 벽·바닥·문·책장·테이블·촛대 200+ | CC0 1.0 (원문 확인) | FBX(Unity용 FBX 포함), 단일 아틀라스 → URP/Lit로 머티리얼 재지정 | 하 | 방 구조·문의 1순위. EXTRA/SOURCE는 유료 → 사용 안 함 |
+| 2 | KayKit Furniture Bits (Free) | https://kaylousberg.itch.io/furniture-bits | 가구 50+ | CC0 1.0 (원문 확인) | 동일 | 하 | 책상·의자·선반 |
+| 3 | Quaternius Fantasy Props MegaKit (Standard 무료판) | https://quaternius.itch.io/fantasy-props-megakit | 가마솥·물약병·책·촛대·두루마리·랜턴 | CC0 1.0 (원문 확인) | FBX/glTF. 무료판은 URP 프로젝트 미포함 → 머티리얼 수동 지정 | 하 | 가마솥(Cauldron), Potion 1~4, BookStand(마법서 독서대) |
+| 4 | Quaternius Cauldron (Poly Pizza) | https://poly.pizza/m/QaWJOPa6Gt | 가마솥 단일 모델 | CC0 (Public Domain 표기) | FBX/glTF | 하 | 3번 대체 |
+| 5 | KayKit Halloween Bits | https://kaylousberg.itch.io/ (카탈로그) | 버섯·병·호박 등 | CC0 표기(개별 페이지 확인 필요) | FBX | 하 | 독버섯 모델 후보 — 확인 필요 |
+| 6 | Poly Haven 텍스처/HDRI | https://polyhaven.com/ | 나무·돌 PBR 텍스처 | CC0 | URP Lit에 바로 사용 | 중 | 바닥·벽에 사실적 질감이 필요할 때만 |
+| 7 | ambientCG | https://ambientcg.com/ | PBR 텍스처 | CC0 | URP Lit | 중 | 6번 대체 |
+| 8 | Cartoon FX Remaster Free (Jean Moreno) | https://assetstore.unity.com/packages/vfx/particles/cartoon-fx-remaster-free-109565 | 파티클(반짝임·연기·마법) | Standard Unity Asset Store EULA, 무료 | Built-in + URP 지원, Unity 6 호환 명시. URP에서 안 보이면 Depth Texture ON | 하 | 성공 반짝이, 검은 연기, 봉인 해제 |
+| 9 | Unity Starter Assets – FirstPerson | https://assetstore.unity.com/packages/essentials/starter-assets-firstperson-updates-in-new-charactercontroller-pa-196525 | 1인칭 컨트롤러 샘플 | Unity Asset Store EULA, 무료 | 원래 Built-in, URP 업그레이드 가능 | 중 | **우리는 자체 PlayerController 사용**. 비교·참고용만 |
+| 10 | Kenney RPG Audio | https://kenney.nl/assets/rpg-audio | 책 넘김·문 열림/닫힘·발소리·금속 딸깍 51종 | CC0 | OGG → Unity 임포트 | 하 | DoorOpen, 마법서, SocketPlace(metalClick) |
+| 11 | Kenney Impact Sounds | https://kenney.nl/assets/impact-sounds | 충돌·두드림 | CC0 | OGG | 하 | RunePress(돌), RuneWrong |
+| 12 | Kenney Interface Sounds | https://opengameart.org/content/interface-sounds | UI 클릭·확인 100종 | CC0 (원문 확인) | OGG | 하 | UiClick, Pickup, Interact |
+| 13 | Kenney Music Jingles | https://kenney.nl/assets/music-jingles | 짧은 성공 징글 85종 | CC0 (OpenGameArt 'All CC0 – Kenney' 목록) | OGG | 하 | RuneSolved, PotionSolved, Clear |
+| 14 | freesound.org (CC0 필터) | https://freesound.org/search/?f=license:%22Creative+Commons+0%22 | 거품·마법 웅- 소리 | 개별 CC0 확인 필요 | WAV/OGG | 중 | CauldronAccept(bubbling), SealReveal |
+| 15 | OpenGameArt 판타지 BGM | https://opengameart.org/art-search-advanced?field_art_type_tid%5B%5D=12 | 루프 BGM | 곡별 상이(CC0/CC-BY) — 확인 필요 | OGG | 중 | CC-BY면 크레딧 필수 |
+| 16 | Pretendard | https://github.com/orioncactus/pretendard | 한글 UI 폰트 | SIL OFL 1.1 (원문 확인) | TMP Font Asset 생성 | 하 | 본문·UI 1순위 |
+| 17 | Noto Sans KR | https://fonts.google.com/noto/specimen/Noto+Sans+KR | 한글 폰트 | SIL OFL 1.1 | TMP Font Asset | 하 | 16번 대체 |
+| 18 | game-icons.net | https://game-icons.net/ | 아이템·문양 아이콘(SVG/PNG) | CC BY 3.0 (작가별 크레딧 필수) | PNG → Sprite | 하 | 핫바 아이콘, 문양 기호(대지·물·불·바람·빛·그림자) |
+| 19 | Kenney UI Pack (RPG Expansion) | https://kenney.nl/assets/ui-pack-rpg-expansion | 패널·버튼 스프라이트 | CC0 | Sprite(9-slice) | 하 | 일시정지·클리어 패널 |
+
+**1차 추천 조합(전부 무료)**: 1·2(방/가구) + 3(가마솥·물약·책) + 8(VFX) + 10·11·12·13(사운드) + 16(폰트) + 18(아이콘).
+
+## 4. 에셋 없이 만드는 대체안 (그레이박스 = 최종 백업)
+
+외부 에셋을 하나도 못 써도 게임이 완성되도록 한다.
+
+| 오브젝트 | Unity 기본 도형 구성 | 머티리얼 |
+|---|---|---|
+| 방 | Cube 벽·바닥·천장 | URP/Lit 나무색, Smoothness 0.2 |
+| 제단 | Cylinder(1.6,0.5,1.6) + 얇은 Cylinder 뚜껑 | 회색 돌 |
+| 문양석 | 얇은 Cylinder + 위에 Quad(문양 텍스처) | Quad: URP/Lit, Base 흰색, **Emission ON**, 문양 텍스처는 TMP로 글자(土·水·火·風·光·影) 또는 game-icons PNG |
+| 가마솥 | Sphere(0.9) 아래 절반 + Cylinder 테두리, Liquid = 얇은 Cylinder | 검정 금속 / Liquid Emission ON |
+| 재료 | 꽃잎=납작 Capsule(은색), 비늘=Quad(빨강), 가루=작은 병(Capsule), 독버섯=Cylinder+반구(보라) | 색으로 구분 |
+| 수정 | 회전한 Cube 2개 겹침 또는 Capsule 늘림 | 파랑/빨강 Emission 약하게 |
+| 봉인 장치 | Cube 받침대 + Quad 비문판 + 컵 모양 Cylinder 소켓 2 + Sphere 봉인핵 | 돌 + 연보라 Emission |
+| 문 | Cube 문짝 + DoorHinge 빈 오브젝트 | 짙은 나무 |
+| 봉인 빛 | Sphere(0.15) + Point Light | 빨강 Emission |
+| 결계 | Sphere(0.7) | URP/Unlit Transparent 청색 알파 0.25 |
+| 파티클 | Unity 기본 Particle System(Shape Cone, 크기 0.05, 금색/검은색) | Default-Particle |
+
+## 5. 라이선스·크레딧 규칙
+
+- CC0: 표기 의무 없음. 그래도 PPT 마지막 장과 빌드 크레딧(README)에 출처를 적는다.
+- Unity Asset Store EULA(무료 에셋): 게임 빌드에 포함 가능, **에셋 원본 재배포 금지** → GitHub 공개 저장소에 Asset Store 원본 파일을 커밋하지 않는다. (`UnityProject/Assets/JMO Assets/` 등은 `.gitignore`에 추가하고 Windows 로컬에서만 임포트하는 방식을 권장. 저장소가 비공개면 팀 결정)
+- CC BY 3.0(game-icons.net, 일부 BGM): 작가명·출처·라이선스를 크레딧에 반드시 표기.
+- OFL 폰트: 폰트 파일을 단독 판매하지 않으면 자유. 빌드 포함 가능, 라이선스 파일 동봉.
+- 크레딧 표 템플릿(README·PPT 공용):
+
+| 분류 | 에셋 | 작가 | 라이선스 | URL |
+|---|---|---|---|---|
+| 3D | KayKit Dungeon Pack | Kay Lousberg | CC0 | … |
+| VFX | Cartoon FX Remaster Free | Jean Moreno | Unity Asset Store EULA | … |
+| 사운드 | RPG Audio | Kenney | CC0 | … |
+| 폰트 | Pretendard | Kil Hyung-jin | SIL OFL 1.1 | … |
+| 코드·퍼즐 설계 | MagicEscape 시스템 전체 | 본인(+AI 보조) | — | 저장소 |
+
+- **명시 문구(PPT)**: "모델·텍스처·효과음·폰트는 위 무료 에셋을 사용했으며, 상호작용·인벤토리·퍼즐 3종 상태 머신·진행 관리·UI 로직은 직접 설계·구현했다."
+
+## 6. 출처 (조사일 2026-11-10)
+
+- KayKit Dungeon Pack: https://kaylousberg.itch.io/kaykit-dungeon-pack (CC0, 2026-07-16 Dungeon Remastered → Dungeon Pack 개명)
+- KayKit Furniture Bits: https://kaylousberg.itch.io/furniture-bits (CC0)
+- Quaternius Fantasy Props MegaKit: https://quaternius.itch.io/fantasy-props-megakit (CC0)
+- Cartoon FX Remaster Free: https://assetstore.unity.com/packages/vfx/particles/cartoon-fx-remaster-free-109565 (FREE, Standard EULA, URP·Unity 6 호환 명시, R 1.5.1 / 2025-12-18)
+- Cartoon FX URP Depth Texture 안내: Readme Cartoon FX Remaster FREE (패키지 동봉 문서)
+- Starter Assets 소개: https://unity.com/blog/games/say-hello-to-the-new-starter-asset-packages
+- Kenney Interface Sounds(CC0): https://opengameart.org/content/interface-sounds
+- Kenney RPG Audio(CC0): https://kenney.nl/assets/rpg-audio
+- Kenney Impact Sounds: https://kenney.nl/assets/impact-sounds
+- Pretendard(OFL 1.1): https://github.com/orioncactus/pretendard/blob/main/LICENSE
+- Unity 6.3 LTS: https://discussions.unity.com/t/unity-6-3-lts-is-now-available/1697328
