@@ -36,6 +36,14 @@ namespace MagicEscape.Core
         public const string CoreNotReady = "봉인핵이 아직 잠잠하다. 두 수정을 모두 끼워야 한다.";
         public const string SealReleased = "마지막 봉인이 풀렸다! 출구가 열린다.";
 
+        // 목표(Tab 패널)
+        public const string ObjectiveRune = "중앙 제단의 마법 문양을 올바른 순서로 활성화하자.";
+        public const string ObjectivePotion = "마법서의 조합법대로 가마솥에 재료를 넣어 계시의 물약을 만들자.";
+        public const string ObjectiveSealReveal = "출구 봉인 장치의 비문에 계시의 물약을 사용하자.";
+        public const string ObjectiveSealCrystals = "비문이 가리키는 소켓에 두 수정을 끼우자.";
+        public const string ObjectiveSealCore = "중앙 봉인핵을 활성화해 마지막 봉인을 풀자.";
+        public const string ObjectiveEscape = "열린 문으로 탈출하자!";
+
         // 엔딩
         public const string Ending = "봉인을 모두 풀고 교실을 탈출했다. 오늘의 실습은 만점이다!";
     }

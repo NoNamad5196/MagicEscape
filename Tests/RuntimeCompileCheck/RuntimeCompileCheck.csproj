@@ -1,0 +1,26 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <!--
+    서버용 Runtime 컴파일 검사. Unity API 스텁(UnityStubs.cs)으로 CodeDrafts 전체를 C# 9로 컴파일해
+    이름·시그니처·타입 일관성만 확인한다. 실제 Unity 컴파일/동작 검증을 대신하지 않는다.
+    사용: dotnet build -p:InputBackend=New   또는   dotnet build -p:InputBackend=Legacy
+  -->
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <OutputType>Library</OutputType>
+    <LangVersion>9.0</LangVersion>
+    <Nullable>disable</Nullable>
+    <ImplicitUsings>disable</ImplicitUsings>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <!-- CS0649: [SerializeField] 필드는 Unity가 Inspector로 할당하며, Unity 컴파일러도 이 경고를 억제한다 -->
+    <NoWarn>$(NoWarn);CS0649</NoWarn>
+    <InputBackend Condition="'$(InputBackend)' == ''">New</InputBackend>
+    <DefineConstants Condition="'$(InputBackend)' == 'New'">$(DefineConstants);ENABLE_INPUT_SYSTEM</DefineConstants>
+    <DefineConstants Condition="'$(InputBackend)' == 'Legacy'">$(DefineConstants);ENABLE_LEGACY_INPUT_MANAGER</DefineConstants>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Include="../../CodeDrafts/**/*.cs" />
+  </ItemGroup>
+
+</Project>
