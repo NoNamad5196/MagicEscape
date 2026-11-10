@@ -1,0 +1,38 @@
+# Unity (Windows 프로젝트가 이 저장소에 통합될 때 대비)
+/[Ll]ibrary/
+/[Tt]emp/
+/[Oo]bj/
+/[Bb]uild/
+/[Bb]uilds/
+/[Ll]ogs/
+/[Uu]ser[Ss]ettings/
+/[Mm]emoryCaptures/
+/[Rr]ecordings/
+*.pidb.meta
+*.pdb.meta
+*.mdb.meta
+sysinfo.txt
+*.apk
+*.aab
+*.unitypackage
+crashlytics-buildid.txt
+.vs/
+.vscode/
+.idea/
+*.csproj.user
+*.sln.DotSettings.user
+
+# Unity 자동 생성 솔루션 (루트)
+/*.csproj
+/*.sln
+
+# dotnet 테스트 빌드 산출물
+Tests/**/bin/
+Tests/**/obj/
+TestResults/
+
+# OS / 비밀
+.DS_Store
+Thumbs.db
+.env
+*.key
