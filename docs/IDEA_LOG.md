@@ -1,6 +1,6 @@
 # MagicEscape — 아이디어·결정 일지 (Notion 백업)
 
-> Notion 허브: 💡 아이디어 일지 › `MagicEscape — 마법학교 3D 방탈출 게임`. Notion 접근 실패 시 이 파일에 먼저 기록한다.
+> Notion 허브: 💡 아이디어 일지 › `MagicEscape — 마법학교 3D 방탈출 게임` (https://app.notion.com/p/4147cdef782d81da9895f389197b0300). Notion 접근 실패 시 이 파일에 먼저 기록한다.
 
 ## 2026-11-10 — 기획·설계·코드 1차
 

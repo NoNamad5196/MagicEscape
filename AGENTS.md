@@ -5,7 +5,7 @@
 - 이름: MagicEscape — 마법학교 3D 1인칭 방탈출 (대학 '멀티미디어와 가상현실' 기말 작품, 제출물 = 게임 + PPT)
 - 로컬: `/home/box/projects/MagicSchoolEscape` (폴더명 ≠ 저장소명 주의)
 - 원격: `https://github.com/NoNamad5196/MagicEscape.git`, 브랜치 `main`
-- Notion: 💡 아이디어 일지(`collection://4a1725c4-940c-470a-b663-d0e89ff7ef4f`)의 `MagicEscape — 마법학교 3D 방탈출 게임` 항목이 허브
+- Notion: 💡 아이디어 일지(`collection://4a1725c4-940c-470a-b663-d0e89ff7ef4f`)의 `MagicEscape — 마법학교 3D 방탈출 게임` 항목이 허브 — https://app.notion.com/p/4147cdef782d81da9895f389197b0300 (하위 문서 5개: 퍼즐 명세 / 시스템·C# / 씬·Unity 가이드 / 에셋·비주얼 / 개발·테스트 기록)
 
 ## 2. 환경 제약 (절대)
 
