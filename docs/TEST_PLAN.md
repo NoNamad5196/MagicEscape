@@ -102,3 +102,5 @@ Unity 설치 실패로 TC-W01~W44 및 Unity PlayMode 테스트는 전부 미실�
 
 S1 createProject exit 0, S1 builder exit 1(Input System 패키지 CS0117 1종). `error CS` 3줄은 동일 오류 중복 출력, `Exception` 1줄은 파일명 ExceptionHelpers.cs, `Error` 9줄은 환경/컴파일 요약 포함. 게임 Console 이벤트 수는 미측정이며 0 Error 불충족. PlayMode 테스트 소스 1건 작성, 실행 0건, 통과/전체 N/A. 컴파일 실패에서 중단해 runTests 명령은 실행하지 않았다. TC-W01~W44는 실제 수동 검증하지 않아 전부 ⏳ 유지. S1~S9 미완료, S10/S11 범위 밖. 마우스 감도·조작감·UI 클릭·한글 렌더링 수동 확인 필요.
 
+
+S1 자동 검증: URP Asset/Renderer·레이어·교실/복도/북문 구멍·조명 저장. PlayMode 1/1, game Console Error 0. 명령/범위는 windows-unity-report의 네 번째 시도 참조. 수동 TC는 별도 미실행.

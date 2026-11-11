@@ -56,3 +56,5 @@
 - Assets/Scripts 복사 및 CodeDrafts 변경 없음. Runtime asmdef 미추가: 그 필요성을 판단할 S2/테스트 연결 단계에 도달하지 않음.
 - 마우스 감도·조작감·UI 클릭·한글 렌더링 수동 확인 필요. S10/S11 미실행. 재개에는 6000.3.28f1 호환 Input System 버전 확인부터 필요.
 - 명령/오류 전문/단계별 결과: [Windows 보고서 세 번째 시도](validation/windows-unity-report.md).
+
+| S1 | ✅ 자동 검증: URP Asset/Renderer·레이어·교실/복도/북문 구멍·조명 저장; PlayMode 1/1, Console Error 0. 수동 검증 별도 대기 |

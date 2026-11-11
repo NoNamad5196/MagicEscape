@@ -251,3 +251,21 @@ Exiting without the bug reporter. Application will terminate with return code 1
 - TC-W01~W44 수동 결과는 ⏳ 유지. S10/S11 미실행.
 - **CodeDrafts와 달라진 Runtime/Core 스크립트: 없음**(Assets/Scripts 미생성). 추가 소스는 Assets/Editor/ClassroomBuilder.cs와 Assets/Tests/PlayMode/ClassroomTests.cs뿐이며 CodeDrafts 복제 대상이 아니다.
 - **큰 설계 판단: 없음.** 허용된 createProject→URP 경로 선택만 했고 정본 불변. Runtime asmdef 필요성 판단 전 중단.
+
+---
+# 네 번째 시도 — 2026-11-12 (KST)
+
+- 시작 git pull: Already up to date, be76629. 지정 Editor 6000.3.28f1만 사용; 모든 실행 -nographics 없음. 패키지 최소 버전 유지.
+- AGENTS → UNITY_HANDOFF → SCENE_SETUP → PUZZLE_SPEC → TEST_PLAN 읽음. AGENTS/정답/itemId/상태/문구 불변.
+- URP Renderer/ClassroomURP를 Editor API로 생성, Graphics 기본 및 Quality에 지정. Depth Texture/HDR ON. 원시 로그의 초기 Licensing handshake/token Error 3줄은 이후 라이선스 연결 성공·exit 0과 구분한다. Console Error는 컴파일 오류 및 PlayMode LogAssert(예상 Error 허용 없음) 기준; 단순 Error 문자열(LogAssemblyErrors 포함)은 이벤트 수가 아니다.
+- 원시 로그는 UnityProject/Logs/fourth-attempt(커밋 제외)에 보존. NUnit XML은 docs/validation/sN-fourth-tests.xml. 각 단계 명령은 아래와 같으며 N=단계 번호이다.
+
+```powershell
+./Tools/Run-Unity.ps1 -Name sN-fourth-builder -Method MagicEscape.EditorTools.ClassroomBuilder.SN
+./Tools/Run-Unity.ps1 -Name sN-fourth-tests -Tests
+./Tools/Record-Stage.ps1 -Stage N -Description '<작업>' -Message '<기능 커밋>'
+```
+
+| 단계 | 한 일 | 실제 검증 | 수동 확인/남은 문제 |
+|---|---|---|---|
+| S1 | URP Asset/Renderer·레이어·교실/복도/북문 구멍·조명 저장 | builder exit 0; PlayMode 1/1; game Console Error 0 | 수동 감도·조작감·클릭·한글 확인 필요 |
