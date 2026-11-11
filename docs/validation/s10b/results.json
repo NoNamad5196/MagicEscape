@@ -1,0 +1,158 @@
+{
+  "result": "Passed",
+  "total": "13",
+  "passed": "13",
+  "failed": "0",
+  "skipped": "0",
+  "duration": "70.7210518",
+  "start-time": "2026-11-11 17:27:20Z",
+  "end-time": "2026-11-11 17:28:31Z",
+  "command": "powershell -NoProfile -ExecutionPolicy Bypass -File Tools/Run-Unity.ps1 -Name s10b-tests-accepted -Tests",
+  "game_console_error_exception_assert": 0,
+  "previous_full_run": {
+    "name": "s10b-tests",
+    "passed": 13,
+    "total": 13,
+    "failed": 0
+  },
+  "cases": [
+    {
+      "fullname": "ArtTests.S10b_ArtAudioEffectsLayoutAndGameViewCaptures",
+      "result": "Passed",
+      "duration": "11.560957"
+    },
+    {
+      "fullname": "ClassroomTests.S1_RoomAndDoorway",
+      "result": "Passed",
+      "duration": "0.202016"
+    },
+    {
+      "fullname": "CluesTests.S5_ClueReadsAndVisibleOrder",
+      "result": "Passed",
+      "duration": "0.228578"
+    },
+    {
+      "fullname": "FullInputTests.ExitStraightCenter",
+      "result": "Passed",
+      "duration": "10.976196"
+    },
+    {
+      "fullname": "FullInputTests.ExitStraightLeft",
+      "result": "Passed",
+      "duration": "11.166783"
+    },
+    {
+      "fullname": "FullInputTests.ExitStraightRight",
+      "result": "Passed",
+      "duration": "9.766551"
+    },
+    {
+      "fullname": "FullInputTests.S9_KeyboardRaycastAllPuzzlesWalkExit",
+      "result": "Passed",
+      "duration": "12.455408"
+    },
+    {
+      "fullname": "ItemsTests.S4_CatalogHotbarSelection",
+      "result": "Passed",
+      "duration": "0.260131"
+    },
+    {
+      "fullname": "PotionTests.S7_LocksWrongRespawnsAndRewards",
+      "result": "Passed",
+      "duration": "3.440816"
+    },
+    {
+      "fullname": "RuneTests.S6_WrongHintCorrectRewardSeal",
+      "result": "Passed",
+      "duration": "2.447182"
+    },
+    {
+      "fullname": "SealTests.S8_SealRejectionDoorPhysicalTriggerClearRestart",
+      "result": "Passed",
+      "duration": "7.483586"
+    },
+    {
+      "fullname": "SystemsTests.S2_PlayerSystems",
+      "result": "Passed",
+      "duration": "0.240892"
+    },
+    {
+      "fullname": "UITests.S3_PanelsButtonsReadRestart",
+      "result": "Passed",
+      "duration": "0.439755"
+    }
+  ],
+  "screenshots": [
+    {
+      "file": "01-classroom.png",
+      "size": [
+        1280,
+        720
+      ],
+      "bytes": 867907,
+      "sha256": "7d275f9c0d0a357942a088ab2d97c04ff10c9fcc5b80ba1320d0fee63cb4c54f"
+    },
+    {
+      "file": "02-painting-wall.png",
+      "size": [
+        1280,
+        720
+      ],
+      "bytes": 835044,
+      "sha256": "557e319e8b9f5492b569dee4ce7eafb6c146a0107a2f04178a4abe2b1356a72f"
+    },
+    {
+      "file": "03-altar.png",
+      "size": [
+        1280,
+        720
+      ],
+      "bytes": 939190,
+      "sha256": "43938e67844e692be3f27aae0088f902f9d5891812a71633b0ec7b62658b2857"
+    },
+    {
+      "file": "04-cauldron.png",
+      "size": [
+        1280,
+        720
+      ],
+      "bytes": 954755,
+      "sha256": "4b7a61100027adbca789f7796c97577eb0e3ae1ab90c4b59448c5501d6f03710"
+    },
+    {
+      "file": "05-inscription-revealed.png",
+      "size": [
+        1280,
+        720
+      ],
+      "bytes": 755732,
+      "sha256": "0f03d14f83adcc9571d28b056e28422b78ce699cbb0f4a6dbe82c252f1360c60"
+    },
+    {
+      "file": "06-exit.png",
+      "size": [
+        1280,
+        720
+      ],
+      "bytes": 819659,
+      "sha256": "d2410d14e75a17be92f2a55f0e22a812260883648da4a71c1cd5c664c69a6e15"
+    },
+    {
+      "file": "07-student-desks-window.png",
+      "size": [
+        1280,
+        720
+      ],
+      "bytes": 948545,
+      "sha256": "3f00bd5f58a5eb76af520f213a2b30f27da8dd2c5ccd2d00336886d776c7b8a2"
+    }
+  ],
+  "manual_visual_review_required": true,
+  "static_checks": {
+    "changed_cs_mirrors_byte_identical": true,
+    "runtime_core_changed": false,
+    "new_textures_max_1024": true,
+    "screenshots": 7,
+    "new_assets_total_bytes": 5100071
+  }
+}

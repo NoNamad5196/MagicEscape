@@ -74,7 +74,12 @@ public class ArtTests
         }
         Assert.True(GameObject.Find("ArtB_Fit_Cauldron").GetComponentsInChildren<MeshRenderer>().Length>0);
         foreach(var r in GameObject.Find("Room").GetComponentsInChildren<MeshRenderer>()) Assert.NotNull(r.sharedMaterial.mainTexture,r.name);
-        foreach(var r in Object.FindObjectsByType<RuneStone>(FindObjectsSortMode.None)) Assert.NotNull(r.transform.Find("ArtB_RuneIcon_"+r.Rune));
+        foreach(var r in Object.FindObjectsByType<RuneStone>(FindObjectsSortMode.None)) {
+            var icon=r.transform.Find("ArtB_RuneIcon_"+r.Rune);Assert.NotNull(icon);
+            Assert.True(icon.GetComponent<Renderer>().sharedMaterial.IsKeywordEnabled("_EMISSION"),r.Rune+" icon persisted emission");
+        }
+        Assert.True(GameObject.Find("ArtB_AltarCircle").GetComponent<Renderer>().sharedMaterial.IsKeywordEnabled("_EMISSION"));
+        View(new Vector3(-2.7f,0,1.9f),new Vector3(1,1.25f,-3.5f));yield return Capture("07-student-desks-window");
         View(new Vector3(-1.5f, 0, -1), new Vector3(0, 1, .5f));
         foreach (var rune in RunePuzzleLogic.DefaultAnswer) Object.FindObjectsByType<RuneStone>(FindObjectsSortMode.None).First(s => s.Rune == rune).Interact(Scenario.Player);
         yield return new WaitForSeconds(.65f); yield return Capture("03-altar");

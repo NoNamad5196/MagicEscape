@@ -1,0 +1,66 @@
+{
+  "new_payload_bytes": 4692154,
+  "meta_excluded": true,
+  "groups": [
+    {
+      "group": "PolyHaven",
+      "files": [
+        "LICENSE.txt",
+        "stone_wall_02.jpg",
+        "wood_floor.jpg"
+      ],
+      "bytes": 1356625
+    },
+    {
+      "group": "Quaternius",
+      "files": [
+        "Bookcase_2.fbx",
+        "BookGroup_Medium_1.fbx",
+        "BookStand.fbx",
+        "Book_5.fbx",
+        "Book_Stack_1.fbx",
+        "Cauldron.fbx",
+        "Lantern_Wall.fbx",
+        "License_Standard.txt",
+        "Potion_1.fbx",
+        "Potion_2.fbx",
+        "Scroll_1.fbx",
+        "Shelf_Small_Bottles.fbx",
+        "T_Trim_Furniture_BaseColor.png",
+        "T_Trim_Metal_BaseColor.png",
+        "T_Trim_Props_BaseColor.png"
+      ],
+      "bytes": 2745056
+    },
+    {
+      "group": "KayKitDungeon",
+      "files": [
+        "banner_patternA_blue.fbx",
+        "dungeon_texture_1_1.png",
+        "License_1.1.txt",
+        "pillar_decorated.fbx",
+        "table_small.fbx"
+      ],
+      "bytes": 110937
+    },
+    {
+      "group": "Original S10b art",
+      "files": [
+        "Chalkboard.png",
+        "Earth.png",
+        "Fire.png",
+        "Light.png",
+        "MagicCircle.png",
+        "Shadow.png",
+        "Story_1.png",
+        "Story_2.png",
+        "Story_3.png",
+        "Story_4.png",
+        "Water.png",
+        "Wind.png"
+      ],
+      "bytes": 479536
+    }
+  ],
+  "all_new_Assets_files_including_generated_and_meta_bytes": 5100071
+}

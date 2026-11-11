@@ -46,3 +46,6 @@ Thumbs.db
 
 # Local Unity logs may contain licensing/session identifiers
 /docs/validation/*.log
+
+# S10b raw TestRunner XML includes local machine/environment metadata; commit sanitized results.json instead
+/docs/validation/s10b-*.xml

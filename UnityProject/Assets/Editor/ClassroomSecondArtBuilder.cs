@@ -170,6 +170,10 @@ namespace MagicEscape.EditorTools
                 WorldVisual("BoardEdge_"+i,decor,new Vector3(-5.77f,1.5f,-4+i*.65f),new Vector3(.1f,1.15f,.08f),wood);
             }
             foreach(string n in new[]{"Pedestal","DoorFrame_Left","DoorFrame_Right"})Tiled(Find(n),stone,1);
+            foreach(var socket in Object.FindObjectsByType<CrystalSocket>(FindObjectsSortMode.None)) {
+                var material=ArtMaterial("S10b_SocketStone",new Color(.55f,.6f,.7f),.01f);material.mainTexture=stone.mainTexture;EditorUtility.SetDirty(material);
+                socket.transform.Find("SocketCup").GetComponent<Renderer>().sharedMaterial=material;
+            }
             Tiled(Find("DoorPanel"),wood,1);
             var panel=Find("DoorPanel");
             for(int i=0;i<3;i++) {

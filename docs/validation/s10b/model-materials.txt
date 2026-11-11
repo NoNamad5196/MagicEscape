@@ -1,0 +1,15 @@
+Book_5|MI_Trim_Props_Vertex
+Book_Stack_1|MI_Trim_Props_Vertex
+Bookcase_2|MI_Trim_Furniture
+Bookcase_2|MI_Trim_Metal
+BookGroup_Medium_1|MI_Trim_Props_Vertex
+BookStand|MI_Trim_Furniture
+Cauldron|MI_Trim_Metal
+Lantern_Wall|MI_Trim_Metal
+Potion_1|MI_Trim_Props_Vertex
+Potion_2|MI_Trim_Props_Vertex
+Scroll_1|MI_Page_Empty
+Scroll_1|MI_Trim_Props_Vertex
+Shelf_Small_Bottles|MI_Trim_Furniture
+Shelf_Small_Bottles|MI_Trim_Metal
+Shelf_Small_Bottles|MI_Trim_Props_Vertex
