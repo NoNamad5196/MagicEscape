@@ -153,3 +153,17 @@ S9 자동 검증: 합성 키보드/휠·중앙 Raycast E로 세 퍼즐·W 물리
 - 최초 빌더 호출은 잘못된 executeMethod 이름으로 exit 1; 올바른 namespace/메서드로 수정 재호출했다. 게임 코드 결함 아님.
 - 로그의 초기 Hub handshake 오류 뒤 Editor client 연결/entitlement 확인, 빌더/테스트 정상 종료. 라이선스/세션 원본 로그는 gitignore로 제외했다.
 - 외형, 마우스 체감, 실제 UI 클릭은 수동 확인 필요. 이전 중단 기록은 당시 결과이며 본 재검증으로 갱신됨.
+
+### S10 자동 검증 및 한계 — 2026-11-12 KST
+- ClassroomArtBuilder.S10: CC0 시각 모델/아틀라스, 자체 제작 가마솥 메시·소프트 파티클, 조명/Volume, 모든 SfxId 연결. 기존 gameplay 스크립트/콜라이더/레이어/참조를 바꾸지 않음(AudioManager.clips의 명시적 연결 제외). 변경 Editor/테스트 소스는 CodeDrafts에 복사.
+- 최초 s10-tests: 11/13. batchmode의 ScreenCapture.CaptureScreenshot이 파일을 쓰지 않아 캡처 테스트 실패. Screen.SetResolution을 제거하고 실제 Camera.main+HUD를 RenderTexture에 1280×720으로 렌더하여 저장하도록 변경. SceneView 캡처나 사람의 PlayMode 시연이 아니다.
+- 같은 최초 실행에서 기존 S9 보행이 z=4.32에서 5초 제한 실패 1회. 단독 s10-walk-diagnostic은 1/1, 이후 s10-tests-final·s10-tests-release 전체는 각각 13/13. 게임 콜라이더나 테스트 시간/거리 허용값은 완화하지 않았고 보행 frame/실시간/시뮬레이션 시간/문 각도 계측만 추가했다. 최초 보행 실패의 독립 근본 원인은 확정 못 했으므로 재발 관찰 항목으로 남긴다.
+- 캡처 시각 QA로 비문 텍스트 overflow, 가마솥 외형, 사각 파티클을 확인해 자동 크기 맞춤·자체 메시·알파 텍스처로 보정. 텍스트 내용/정답/itemId 불변.
+- 수동 확인 필요: 전체 외형·밝기·폰트 크기/가독성·음색/음량·실제 GameView 표시/마우스/UI 클릭/보행 체감. 선택 Asset Store 원본 미설치 상태는 정상 경로이나 CC0 폴더 전체 제거 후 재실행은 별도 미검증. S11 빌드 미실행.
+
+### S10 최종 씬 검증
+- `s10-final-build`와 `s10-final-repeat-build`: 모두 exit 0. scene-manifest SHA256 동일, collider 불변 audit 통과(전체 YAML의 바이트 동일성을 주장하지 않음).
+- `s10-tests-verified`: 전체 13/13, failed/skipped 0, game Error/Exception/Assert 0. 마지막 캡처 타이밍 변경 후 결과는 validation/s10/report.md 및 results.json에 기록.
+- Runtime/Core 코드는 변경하지 않았고 패키지 버전/manifest도 변경하지 않았다. S11은 미실행.
+- ART-W11: 캡처 시 문양 발광 누락 발견. URP material importer가 검정 직렬화 EmissionColor의 _EMISSION 키워드를 제거했다. S10 Reactive 머티리얼의 미세 비검정 기본 발광/Emissive GI 플래그로 보정(GlowFeedback Runtime 코드는 유지). 저장 후 재임포트한 모든 GlowFeedback 렌더러에 _EMISSION이 남는지 ArtTests에서 검사한다. 최종 명령/결과는 validation/s10/report.md 및 results.json.
+- 최종 `s10-tests-final-accepted`: PlayMode **13/13**, failed/skipped 0, game Error/Exception/Assert **0**. `s10-readable-build`/`s10-readable-repeat-build` 각각 exit 0/구조 동일. Emission 실제 발광 및 비문 clipping 보정 후 재검증 결과. 원본 로그·XML 대신 식별정보를 제외한 validation/s10/results.json과 console-audit.txt를 커밋.

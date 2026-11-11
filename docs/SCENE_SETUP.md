@@ -313,3 +313,9 @@ Classroom (Scene)
 - 프레임 중심 X=±1.575, 두께 0.15m. 북벽 분할 중심 X=±3.825, 폭 4.35m.
 - SealDevice=(-3,0,3.7), Pedestal=(1.8,1,0.5). 비문·소켓·핵 상대 좌표 유지. 상호작용 위치=(-3,0,2.3) 부근. 임시 축소 hull / Player 제외 제거.
 - 문 앞 X=[-1.5,1.5], Z=[3,5] 비움. CorridorFloor 중심=(0,-0.05,6.5), 크기=(3.3,0.1,3). ExitTrigger 중심=(0,1.25,6), 크기=(3,2.5,1).
+
+### S10 재생성
+- `MagicEscape.EditorTools.ClassroomBuilder.S10`은 S9를 먼저 재구성한 뒤 시각 메시·머티리얼·조명·VFX·AudioManager.clips를 설정한다. Unity API만 사용하며 씬/프리팹/에셋 YAML을 수기로 작성하지 않는다.
+- S9 직후와 S10 직후 기존 Collider 직렬화/월드 위치·스케일/레이어 manifest를 비교해 다르면 빌더를 실패시킨다. 출구 3m 통로 및 모든 상호작용 참조는 그대로다.
+- 모델 누락 시 S9 그레이박스 유지, 오디오 누락 시 null-safe. Cartoon FX는 필수 의존성 아님. 최초 세팅에서 선택 패키지를 임포트할 필요가 없다.
+- `Tools/Run-Unity.ps1`에 남은 커밋 메모리 6GB 미만 및 기존 Editor 프로세스 발견 시 실행 거부를 추가했다.

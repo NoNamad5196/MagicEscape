@@ -1,0 +1,1 @@
+S10 reconstructed from S9. Existing Collider serialization/world transforms/layers unchanged. Mesh-only imports, no model scripts/colliders.

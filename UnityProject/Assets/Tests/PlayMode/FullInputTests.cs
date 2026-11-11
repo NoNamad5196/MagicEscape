@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections;
 using System.IO;
 using System.Linq;
@@ -45,12 +45,13 @@ public class FullInputTests
     }
     IEnumerator Walk(Vector3 target)
     {
-        float elapsed=0; var p=Scenario.Player.transform;
+        float elapsed=0,simulated=0; int frames=0; var p=Scenario.Player.transform;
         while(Vector2.Distance(new Vector2(p.position.x,p.position.z),new Vector2(target.x,target.z))>.035f && GameManager.Instance.IsPlaying && elapsed<5)
         {
-            Vector3 d=target-p.position; p.rotation=Quaternion.Euler(0,Mathf.Atan2(d.x,d.z)*Mathf.Rad2Deg,0); InputSystem.QueueStateEvent(keyboard,new KeyboardState(Key.W)); yield return null; elapsed+=Time.unscaledDeltaTime;
+            Vector3 d=target-p.position; p.rotation=Quaternion.Euler(0,Mathf.Atan2(d.x,d.z)*Mathf.Rad2Deg,0); InputSystem.QueueStateEvent(keyboard,new KeyboardState(Key.W)); yield return null; elapsed+=Time.unscaledDeltaTime; simulated+=Time.deltaTime; frames++;
         }
         InputSystem.QueueStateEvent(keyboard,new KeyboardState()); yield return null; yield return null;
+        File.WriteAllText(Path.GetFullPath(Path.Combine(Application.dataPath,"../../docs/validation/s10/walk-audit.txt")),"frames="+frames+" real="+elapsed+" simulated="+simulated+" position="+p.position+" doorEuler="+GameObject.Find("DoorHinge").transform.localEulerAngles);
         if(GameManager.Instance.IsPlaying) Assert.Less(Vector2.Distance(new Vector2(p.position.x,p.position.z),new Vector2(target.x,target.z)),.2f,"Walk blocked at "+p.position+" toward "+target);
     }
     [UnityTest] public IEnumerator S9_KeyboardRaycastAllPuzzlesWalkExit()
@@ -110,6 +111,7 @@ public class FullInputTests
     }
     [UnityTearDown] public IEnumerator Cleanup(){InputSystem.settings.editorInputBehaviorInPlayMode=previousEditor; InputSystem.settings.backgroundBehavior=previousBackground; if(keyboard!=null)InputSystem.RemoveDevice(keyboard); if(mouse!=null)InputSystem.RemoveDevice(mouse); Time.timeScale=1; yield return null;}
 }
+
 
 
 

@@ -2,6 +2,11 @@ param([string]$Name, [string]$Method, [switch]$Tests, [string]$TestFilter)
 $ErrorActionPreference = 'Stop'
 Set-Location (Split-Path $PSScriptRoot -Parent)
 $editor = 'C:\Program Files\Unity\Hub\Editor\6000.3.28f1\Editor\Unity.exe'
+$freeCommitGB = (Get-CimInstance Win32_OperatingSystem).FreeVirtualMemory / 1MB
+Write-Output ('Free commit headroom: {0:N2} GB' -f $freeCommitGB)
+if ($freeCommitGB -lt 6) { throw "Unity launch refused: free commit headroom $freeCommitGB GB is below 6 GB." }
+$runningEditors = @(Get-CimInstance Win32_Process | Where-Object { $_.ExecutablePath -like '*\Editor\Unity.exe' })
+if ($runningEditors.Count -gt 0) { throw ('Unity launch refused: Editor already running (PID ' + ($runningEditors.ProcessId -join ', ') + ').') }
 $project = (Resolve-Path UnityProject).Path
 $log = Join-Path (Get-Location) "docs/validation/$Name.log"
 $arguments = "-batchmode -projectPath `"$project`" -logFile `"$log`""

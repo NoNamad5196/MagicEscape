@@ -1,4 +1,4 @@
-# MagicEscape — 작업 현황
+﻿# MagicEscape — 작업 현황
 
 상태 표기: ✅ 완료 · 🔄 진행 중 · ⏳ 대기 · 🪟 Windows 작업 · ❔ 미검증
 
@@ -30,7 +30,7 @@
 | S7 P2 마법약 | ✅ 자동 검증 7/7; 게임 Console Error 0; 수동 확인 별도 |
 | S8 P3 최종 봉인·문·탈출 | ✅ 자동 검증 8/8; 게임 Console Error 0; 수동 확인 별도 |
 | S9 전체 입력/물리 탈출·Console | ✅ 자동 검증 9/9; 게임 Console Error 0; 수동 확인 별도 |
-| S10 에셋 교체·외형 완성 | 범위 밖, 미실행 |
+| S10 에셋·조명·VFX·사운드 | ✅ 자동 검증/재생성; 외형·음향 수동 확인 필요 (validation/s10) |
 | S11 Windows 빌드·시연·캡처 | 범위 밖, 미실행 |
 | 교수님 VR/일반 PC 허용 확인 | ❔ 기존 대기 유지 |
 
@@ -89,3 +89,10 @@ Runtime asmdef 추가 이유: 별도 PlayMode asmdef는 Assembly-CSharp를 참�
 - 출구 유효 폭 3m/북벽 3.3m 개구부/봉인 장치 (-3,0,3.7) 보존, S9 재생성 완료.
 - exit-tests-verified PlayMode 12/12, Console Error/Exception/Assert 0. OOM 환경 원인과 해결은 TEST_PLAN §3 참조.
 - 이전 중단 상태는 본 결과로 갱신. S10 다음 단계, S11 범위 밖.
+
+### S10 구현 — 2026-11-12 KST
+- 무료 CC0 KayKit 모델/아틀라스와 Kenney 효과음만 사용. 자체 메시/VFX 대체안 포함. 선택 Cartoon FX 사용자 다운로드 목록 및 라이선스는 VISUAL_REFERENCES §7.
+- S10 빌더 재생성 및 기존 콜라이더/레이어/월드 변환 불변 검사. URP Depth Texture/HDR, Bloom/ACES/Vignette, 촛불·창빛, Emission, 그림자 비용 제한.
+- 스크린샷은 docs/validation/s10/의 Game camera+HUD 렌더 4장. 외형과 음향은 **수동 확인 필요**. S11 미착수 유지.
+
+- 최종 자동 검증: s10-tests-final-accepted **13/13**, Console Error/Exception/Assert **0**. 최종 S10 빌더 2회 구조 동일. 상세 결과·한계·명령은 validation/s10/report.md.
