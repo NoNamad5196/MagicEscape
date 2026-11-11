@@ -19,7 +19,7 @@ public class ConsoleAudit
     static int errors;
     [OneTimeSetUp] public void Begin(){errors=0; Application.logMessageReceived+=OnLog;}
     static void OnLog(string text,string stack,LogType type){if(type==LogType.Error||type==LogType.Exception||type==LogType.Assert) errors++;}
-    [OneTimeTearDown] public void End(){Application.logMessageReceived-=OnLog; File.WriteAllText(Path.GetFullPath(Path.Combine(Application.dataPath,"../../docs/validation/s9-console-audit.txt")),"PlayMode Error/Exception/Assert events="+errors+"\nNo expected-error suppression. UTC="+DateTime.UtcNow.ToString("O")); Assert.AreEqual(0,errors);}
+    [OneTimeTearDown] public void End(){Application.logMessageReceived-=OnLog; File.WriteAllText(Path.GetFullPath(Path.Combine(Application.dataPath,"../../docs/validation/s10b/console-audit.txt")),"PlayMode Error/Exception/Assert events="+errors+"\nNo expected-error suppression. UTC="+DateTime.UtcNow.ToString("O")); Assert.AreEqual(0,errors);}
 }
 public class FullInputTests
 {

@@ -14,7 +14,7 @@ using Object = UnityEngine.Object;
 
 public class ArtTests
 {
-    static string Output => Path.GetFullPath(Path.Combine(Application.dataPath, "../../docs/validation/s10"));
+    static string Output => Path.GetFullPath(Path.Combine(Application.dataPath, "../../docs/validation/s10b"));
     static void View(Vector3 position, Vector3 target)
     {
         var player = Scenario.Player.GetComponent<PlayerController>();
@@ -53,7 +53,7 @@ public class ArtTests
         Assert.Greater(new FileInfo(path).Length, 1000);
     }
     [UnityTest]
-    public IEnumerator S10_ArtAudioEffectsAndGameViewCaptures()
+    public IEnumerator S10b_ArtAudioEffectsLayoutAndGameViewCaptures()
     {
         yield return SceneManager.LoadSceneAsync("Classroom"); yield return null;
         Directory.CreateDirectory(Output);
@@ -65,20 +65,46 @@ public class ArtTests
         foreach (var ps in Object.FindObjectsByType<ParticleSystem>(FindObjectsSortMode.None)) Assert.NotNull(ps.GetComponent<ParticleSystemRenderer>().sharedMaterial, ps.name);
         foreach (var glow in Object.FindObjectsByType<GlowFeedback>(FindObjectsSortMode.None)) Assert.True(glow.GetComponent<Renderer>().sharedMaterial.IsKeywordEnabled("_EMISSION"), glow.name + " persisted emission keyword");
         Assert.True(GameObject.Find("Art_Decor").GetComponentsInChildren<Collider>().Length == 0);
-        View(new Vector3(0, 0, -3.8f), new Vector3(0, 1.2f, 1)); yield return Capture("01-classroom");
+        View(new Vector3(0, 0, -4.65f), new Vector3(0, 1.2f, 1)); yield return Capture("01-classroom");
+        View(new Vector3(-1.35f,0,-.1f),new Vector3(-5.8f,1.7f,0));yield return Capture("02-painting-wall");
+        Assert.True(GameObject.Find("Art_SecondPass").GetComponentsInChildren<Collider>().Length==0);
+        foreach(string roman in new[]{"I","II","III","IV"}) {
+            var plate=GameObject.Find("PaintingLabel_"+roman).GetComponent<TMPro.TMP_Text>();plate.ForceMeshUpdate();
+            Assert.AreEqual(roman,plate.text);Assert.Greater(plate.textInfo.characterCount,0);Assert.Greater(plate.textInfo.meshInfo[0].vertexCount,0,"Roman plate has visible glyph mesh");
+        }
+        Assert.True(GameObject.Find("ArtB_Fit_Cauldron").GetComponentsInChildren<MeshRenderer>().Length>0);
+        foreach(var r in GameObject.Find("Room").GetComponentsInChildren<MeshRenderer>()) Assert.NotNull(r.sharedMaterial.mainTexture,r.name);
+        foreach(var r in Object.FindObjectsByType<RuneStone>(FindObjectsSortMode.None)) Assert.NotNull(r.transform.Find("ArtB_RuneIcon_"+r.Rune));
         View(new Vector3(-1.5f, 0, -1), new Vector3(0, 1, .5f));
         foreach (var rune in RunePuzzleLogic.DefaultAnswer) Object.FindObjectsByType<RuneStone>(FindObjectsSortMode.None).First(s => s.Rune == rune).Interact(Scenario.Player);
-        yield return new WaitForSeconds(.65f); yield return Capture("02-rune-success");
+        yield return new WaitForSeconds(.65f); yield return Capture("03-altar");
         yield return new WaitForSeconds(2.2f); Scenario.Collect(ItemIds.CrystalSapphire);
         View(new Vector3(1.4f, 0, 1.4f), new Vector3(3, 1.1f, 2.5f));
         Scenario.Collect(ItemIds.Toadstool); Scenario.Select(ItemIds.Toadstool); Object.FindFirstObjectByType<PotionPuzzle>().Interact(Scenario.Player);
-        yield return new WaitForSeconds(.25f); yield return Capture("03-cauldron-smoke");
+        yield return new WaitForSeconds(.25f); yield return Capture("04-cauldron");
         yield return Scenario.Potion();
         View(new Vector3(-3, 0, 1.5f), new Vector3(-3, 1.4f, 3.7f));
         Scenario.Select(ItemIds.PotionRevelation); Object.FindFirstObjectByType<SealInscription>().Interact(Scenario.Player); UIManager.Instance.CloseRead();
+        var reveal=Object.FindFirstObjectByType<SealInscription>().transform.Find("RevealedText");
+        var sentence=reveal.Find("InscriptionText").GetComponent<TMPro.TMP_Text>();sentence.ForceMeshUpdate();
+        Assert.AreEqual(GameText.InscriptionRevealed,sentence.text);
+        Assert.LessOrEqual(sentence.textBounds.size.x,sentence.rectTransform.rect.width+.01f,"Inscription glyphs fit plaque width");
+        Assert.LessOrEqual(sentence.textBounds.size.y,sentence.rectTransform.rect.height+.01f,"Inscription glyphs fit plaque height");
+        Assert.LessOrEqual(sentence.preferredHeight,sentence.rectTransform.rect.height+.01f,"Inscription fits its box without ellipsis");
+        var sentenceBottom=sentence.transform.position.y-sentence.rectTransform.rect.height/2;
+        foreach(string name in new[]{"Water","Fire"}) {
+            var icon=reveal.Find("ArtB_InscriptionIcon_"+name).GetComponent<Renderer>();
+            Assert.Less(icon.bounds.max.y,sentenceBottom-.05f,"Runes are below the sentence");
+        }
+        var prompt=Resources.FindObjectsOfTypeAll<TMPro.TMP_Text>().First(t=>t.name=="PromptText" && t.gameObject.scene.IsValid());
+        Assert.AreNotEqual(RenderMode.WorldSpace,prompt.GetComponentInParent<Canvas>().renderMode);
+        Assert.LessOrEqual(prompt.rectTransform.anchoredPosition.y,-280);
+        View(new Vector3(-3,0,1.4f),new Vector3(-3,1.65f,3.7f));
+        yield return new WaitForSeconds(2);yield return Capture("05-inscription-revealed");
         foreach (var socket in Object.FindObjectsByType<CrystalSocket>(FindObjectsSortMode.None)) { Scenario.Select(socket.Side == SocketSide.Left ? ItemIds.CrystalSapphire : ItemIds.CrystalRuby); socket.Interact(Scenario.Player); }
         Object.FindFirstObjectByType<SealCore>().Interact(Scenario.Player);
-        yield return new WaitForSeconds(.25f); yield return Capture("04-seal-release");
+        yield return new WaitForSeconds(3.8f);
+        View(new Vector3(0,0,2.5f),new Vector3(0,1.6f,6));yield return Capture("06-exit");
     }
 }
 
