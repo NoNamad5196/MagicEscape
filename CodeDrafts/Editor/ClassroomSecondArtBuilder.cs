@@ -111,10 +111,69 @@ namespace MagicEscape.EditorTools
             for(int i=-1;i<=1;i++) Visual("WindowMullion_"+i,decor,new Vector3(5+i*.68f,1.7f,-4.8f),new Vector3(.055f,1.5f,.08f),wood);
             for(int i=-1;i<=1;i+=2) Visual("WindowRail_"+i,decor,new Vector3(5,1.7f+i*.72f,-4.8f),new Vector3(1.5f,.065f,.08f),wood);
         }
+        static Material IconMaterial(string name,bool glow=false,bool cutout=false)
+        {
+            var m=Surface("Image_"+name,"Assets/Art/S10b/"+name+".png",Color.white);
+            if(glow) { m.SetTexture("_EmissionMap",m.mainTexture); m.SetColor("_EmissionColor",new Color(.5f,.65f,.7f)); m.EnableKeyword("_EMISSION"); }
+            if(cutout) {m.SetFloat("_AlphaClip",1);m.SetFloat("_Cutoff",.1f);m.EnableKeyword("_ALPHATEST_ON");m.renderQueue=2450;}
+            EditorUtility.SetDirty(m);return m;
+        }
+        static GameObject WorldVisual(string name,Transform parent,Vector3 position,Vector3 size,Material mat,PrimitiveType primitive=PrimitiveType.Cube)
+        { var g=Visual(name,null,position,size,mat,primitive);g.transform.SetParent(parent,true);return g; }
+        static void PuzzleArt(Transform decor)
+        {
+            var stone=AssetDatabase.LoadAssetAtPath<Material>("Assets/Settings/Art_S10b_Masonry.mat");
+            var wood=AssetDatabase.LoadAssetAtPath<Material>("Assets/Settings/Art_S10b_Timber.mat");
+            var brass=ArtMaterial("S10b_Brass",new Color(.54f,.33f,.12f));
+            var iron=ArtMaterial("S10b_Iron",new Color(.09f,.12f,.16f));
+            Find("AltarBase").GetComponent<Renderer>().enabled=false;
+            for(int i=0;i<3;i++) {
+                float width=i==1?1.35f:1.65f; float y=i==0?.15f:i==1?.55f:.94f; float h=i==1?.65f:.16f;
+                var g=WorldVisual("AltarStone_"+i,Find("AltarBase").transform,new Vector3(0,y,.5f),new Vector3(width,h,width),stone);Tiled(g,stone,1);
+            }
+            Find("AltarLid").GetComponent<Renderer>().sharedMaterial=stone;
+            var circle=WorldVisual("AltarCircle",Find("AltarBase").transform,new Vector3(0,1.025f,.5f),new Vector3(1.56f,1.56f,1),IconMaterial("MagicCircle",true,true),PrimitiveType.Quad);circle.transform.SetParent(null,true); circle.transform.rotation=Quaternion.Euler(90,0,0);circle.transform.localScale=new Vector3(1.56f,1.56f,1);circle.transform.SetParent(Find("AltarBase").transform,true);
+            foreach(var rune in Object.FindObjectsByType<RuneStone>(FindObjectsSortMode.None)) {
+                var text=Find("RuneLabel_"+rune.Rune).GetComponent<TMP_Text>();text.gameObject.SetActive(false);
+                var icon=WorldVisual("RuneIcon_"+rune.Rune,rune.transform,rune.transform.position+Vector3.up*.065f,new Vector3(.2f,.2f,1),IconMaterial(rune.Rune.ToString(),true),PrimitiveType.Quad); icon.transform.SetParent(null,true);icon.transform.rotation=Quaternion.Euler(90,0,0);icon.transform.localScale=new Vector3(.2f,.2f,1);icon.transform.SetParent(rune.transform,true);
+            }
+            string[] order={"III","I","IV","II"};string[] names={"Fire","Earth","Light","Water"};int[] story={3,1,4,2};
+            for(int i=0;i<4;i++) {
+                var painting=Find("Painting_"+order[i]); painting.GetComponent<Renderer>().enabled=false;float z=painting.transform.position.z;
+                var frame=new GameObject("ArtB_PictureFrame_"+order[i]).transform;frame.position=new Vector3(-5.76f,1.7f,z);frame.rotation=Quaternion.Euler(0,-90,0);frame.SetParent(painting.transform,true);
+                Visual("StoryIllustration",frame,Vector3.zero,new Vector3(1.05f,.82f,1),IconMaterial("Story_"+story[i]),PrimitiveType.Quad);
+                for(int side=-1;side<=1;side+=2) {
+                    Visual("FrameVertical_"+side,frame,new Vector3(side*.575f,0,0),new Vector3(.1f,1.08f,.09f),wood);
+                    Visual("FrameHorizontal_"+side,frame,new Vector3(0,side*.49f,0),new Vector3(1.25f,.1f,.09f),wood);
+                }
+                Visual("CornerRune_"+names[i],frame,new Vector3(-.41f,.3f,-.016f),new Vector3(.19f,.19f,1),IconMaterial(names[i]),PrimitiveType.Quad);
+                Visual("RomanPlaque",frame,new Vector3(0,-.63f,0),new Vector3(.42f,.19f,.07f),brass);
+                var label=Find("PaintingLabel_"+order[i]).GetComponent<TMP_Text>(); label.transform.position=new Vector3(-5.70f,1.07f,z);label.rectTransform.sizeDelta=new Vector2(.38f,.17f); label.text=order[i];label.fontSize=2.2f;label.fontSizeMax=2.2f;label.fontSizeMin=2.2f;label.color=new Color(1,.94f,.72f);
+            }
+            var board=Find("Chalkboard");board.GetComponent<Renderer>().sharedMaterial=IconMaterial("Chalkboard");
+            var bt=Find("ChalkboardLabel").GetComponent<TMP_Text>();bt.text=GameText.Chalkboard;bt.color=new Color(.84f,.92f,.83f);bt.fontStyle=FontStyles.Italic;bt.fontSize=2;bt.fontSizeMax=2;bt.rectTransform.sizeDelta=new Vector2(1.05f,.85f);
+            for(int i=-1;i<=1;i+=2) {
+                WorldVisual("BoardRail_"+i,decor,new Vector3(-5.77f,1.5f+i*.54f,-4),new Vector3(.1f,.09f,1.34f),wood);
+                WorldVisual("BoardEdge_"+i,decor,new Vector3(-5.77f,1.5f,-4+i*.65f),new Vector3(.1f,1.15f,.08f),wood);
+            }
+            foreach(string n in new[]{"Pedestal","DoorFrame_Left","DoorFrame_Right"})Tiled(Find(n),stone,1);
+            Tiled(Find("DoorPanel"),wood,1);
+            var panel=Find("DoorPanel");
+            for(int i=0;i<3;i++) {
+                float y=.35f+i*.95f;
+                WorldVisual("DoorIronStrap_"+i,panel.transform,new Vector3(0,y,4.92f),new Vector3(2.94f,.1f,.045f),iron);
+                for(int x=-1;x<=1;x+=2)WorldVisual("DoorStud_"+i+"_"+x,panel.transform,new Vector3(x*1.3f,y,4.88f),Vector3.one*.055f,brass,PrimitiveType.Sphere);
+            }
+            WorldVisual("DoorLintel",decor,new Vector3(0,2.78f,5),new Vector3(3.3f,.18f,.3f),stone);
+            foreach(string n in new[]{"Ingredient_SalamanderScale","Ingredient_CrystalDust"}) {
+                var pickup=Find(n);pickup.GetComponent<Renderer>().enabled=false;
+                ModelAt("Quaternius",n.Contains("Scale")?"Potion_1":"Potion_2",pickup.transform,pickup.transform.position-Vector3.up*.09f,new Vector3(.17f,.25f,.17f));
+            }
+        }
         public static void S10b()
         {
             S10(); var before=ColliderManifest(); var decor=new GameObject("Art_SecondPass").transform;
-            FinishRoom(decor); SchoolProps(decor);
+            FinishRoom(decor); SchoolProps(decor); PuzzleArt(decor);
             if(!before.SequenceEqual(ColliderManifest())) throw new InvalidOperationException("S10b changed collider/layer/world transforms");
             Directory.CreateDirectory("../docs/validation/s10b");
             File.WriteAllText("../docs/validation/s10b/builder-audit.txt","S10b reconstructed from S10. Collider JSON, world transforms/scales/layers unchanged. Added visuals have no colliders.\n");
