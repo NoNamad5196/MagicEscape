@@ -104,3 +104,6 @@ S1 createProject exit 0, S1 builder exit 1(Input System 패키지 CS0117 1종). 
 
 
 S1 자동 검증: URP Asset/Renderer·레이어·교실/복도/북문 구멍·조명 저장. PlayMode 1/1, game Console Error 0. 명령/범위는 windows-unity-report의 네 번째 시도 참조. 수동 TC는 별도 미실행.
+`n| 2026-11-12 | TEST-W04 | S2 1/2: NoUnexpectedReceived가 정상 Flow 로그까지 실패 처리 | 테스트 API를 모든 로그 무발생 검증으로 사용한 오류 | 해당 호출 제거, Test Framework 기본 unexpected Error/Exception 실패 감시는 유지; 재실행 | S2 수정 커밋 |
+
+S2 자동 검증: Core/Runtime 복사·Runtime asmdef·시스템·Player·이동 벽 충돌/일시정지. PlayMode 2/2, game Console Error 0. 명령/범위는 windows-unity-report의 네 번째 시도 참조. 수동 TC는 별도 미실행.

@@ -1,5 +1,5 @@
 {
   "name": "MagicEscape.PlayMode",
-  "references": [],
+  "references": ["MagicEscape.Core", "MagicEscape.Runtime", "Unity.TextMeshPro", "Unity.ugui", "Unity.InputSystem"],
   "optionalUnityReferences": ["TestAssemblies"]
 }

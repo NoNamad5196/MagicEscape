@@ -1,0 +1,4 @@
+{
+  "name": "MagicEscape.Runtime",
+  "references": ["MagicEscape.Core", "Unity.TextMeshPro", "Unity.ugui", "Unity.InputSystem"]
+}

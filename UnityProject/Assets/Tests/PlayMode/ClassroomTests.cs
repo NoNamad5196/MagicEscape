@@ -18,6 +18,7 @@ public class ClassroomTests
             Assert.That(GameObject.Find(name).GetComponent<BoxCollider>(), Is.Not.Null, name);
         Assert.That(Physics.Raycast(new Vector3(0,1.3f,4), Vector3.forward, 2), Is.False, "Doorway must remain open");
         Assert.That(Physics.Raycast(new Vector3(2,1.3f,4), Vector3.forward, 2), Is.True);
-        LogAssert.NoUnexpectedReceived();
+        // Unity Test Framework automatically fails unexpected Error/Exception logs.
     }
 }
+

@@ -269,3 +269,6 @@ Exiting without the bug reporter. Application will terminate with return code 1
 | 단계 | 한 일 | 실제 검증 | 수동 확인/남은 문제 |
 |---|---|---|---|
 | S1 | URP Asset/Renderer·레이어·교실/복도/북문 구멍·조명 저장 | builder exit 0; PlayMode 1/1; game Console Error 0 | 수동 감도·조작감·클릭·한글 확인 필요 |
+
+S1 커밋: b40bbde (push 완료).
+| S2 | Core/Runtime 복사·Runtime asmdef·시스템·Player·이동 벽 충돌/일시정지 | builder exit 0; PlayMode 2/2; game Console Error 0 | 수동 감도·조작감·클릭·한글 확인 필요 |

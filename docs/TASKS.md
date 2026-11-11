@@ -58,3 +58,6 @@
 - 명령/오류 전문/단계별 결과: [Windows 보고서 세 번째 시도](validation/windows-unity-report.md).
 
 | S1 | ✅ 자동 검증: URP Asset/Renderer·레이어·교실/복도/북문 구멍·조명 저장; PlayMode 1/1, Console Error 0. 수동 검증 별도 대기 |
+`nRuntime asmdef 추가 이유: 별도 PlayMode asmdef는 Assembly-CSharp를 참조할 수 없으므로 MagicEscape.Runtime을 명시 참조한다. Core/TMP/uGUI/InputSystem 참조만 추가. Assets/Scripts 정본, CodeDrafts 동기화. Tests/UnityStubs 복사 없음. S2에서는 미래 퍼즐 참조용 비활성 scaffold만 두고 S6~8에서 구성·활성화한다.
+
+| S2 | ✅ 자동 검증: Core/Runtime 복사·Runtime asmdef·시스템·Player·이동 벽 충돌/일시정지; PlayMode 2/2, Console Error 0. 수동 검증 별도 대기 |

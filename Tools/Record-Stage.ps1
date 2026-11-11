@@ -11,10 +11,11 @@ Add-Content docs/TASKS.md "`n| S$Stage | ✅ 자동 검증: $Description; PlayMo
 # Raw editor logs stay local: licensing sessions/identifiers must not be committed.
 New-Item -ItemType Directory -Force UnityProject/Logs/fourth-attempt | Out-Null
 foreach($kind in @('builder','tests')){Move-Item -LiteralPath "docs/validation/s$Stage-fourth-$kind.log" -Destination "UnityProject/Logs/fourth-attempt/s$Stage-$kind.log" -Force}
-git add UnityProject/Assets UnityProject/ProjectSettings CodeDrafts Tools docs/TASKS.md docs/TEST_PLAN.md docs/validation/windows-unity-report.md "docs/validation/s$Stage-fourth-tests.xml"
+git add UnityProject/Assets UnityProject/ProjectSettings CodeDrafts Tools/Run-Unity.ps1 Tools/Record-Stage.ps1 docs/TASKS.md docs/TEST_PLAN.md docs/validation/windows-unity-report.md "docs/validation/s$Stage-fourth-tests.xml"
 git commit -m $Message
 if($LASTEXITCODE -ne 0){throw 'Commit failed'}
 git push
 if($LASTEXITCODE -ne 0){throw 'Push failed'}
 $hash=git rev-parse --short HEAD
 Add-Content docs/validation/windows-unity-report.md "`nS$Stage 커밋: $hash (push 완료)."
+
