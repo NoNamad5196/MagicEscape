@@ -21,7 +21,7 @@
 
 | 작업 | 상태 |
 |---|---|
-| S1 Unity 6.3 LTS URP 프로젝트 생성(`UnityProject/`) 및 저장소 통합 | 🪟 ⏳ |
+| S1 Unity 6.3 LTS URP 프로젝트 생성(`UnityProject/`) 및 저장소 통합 | 🪟 중단: 6000.3.28f1 설치 exit 1, ELEVATION_CANCELLED (2026-11-11); 프로젝트 미생성 |
 | S2 CodeDrafts → Assets/Scripts 복사, 컴파일 확인 / 플레이어 | 🪟 ❔ |
 | S3~S5 UI·ItemData·단서 | 🪟 ❔ |
 | S6~S8 퍼즐 1·2·3 연결 | 🪟 ❔ |
@@ -29,3 +29,11 @@
 | S10 에셋·조명·사운드·VFX | 🪟 ❔ |
 | S11 Windows 빌드, 시연 리허설, 스크린샷·영상(PPT) | 🪟 ❔ |
 | 교수님 확인: VR 필수 여부 / 일반 PC 3D 허용 여부 | ❔ |
+
+### Windows 설치 중단 — 2026-11-11
+
+- Hub releases 조회로 6000.3.28f1 확인, 다운로드 완료 후 UAC 승격 단계에서 설치 실패(exit 1, Windows 1223 / ELEVATION_CANCELLED).
+- 요청대로 S1 이전에서 중단. S1~S9 완료 아님, Unity 컴파일·PlayMode 테스트·Console Error 수 모두 미검증.
+- UnityProject 및 스크립트 변경 없음. CodeDrafts와 Assets 간 차이 없음(복사 전). Runtime asmdef 판단도 미실행.
+- 원문 로그/명령/단계별 상태: [Windows Unity 작업 보고](validation/windows-unity-report.md).
+- 재개: 관리자 승인 가능한 상태에서 6.3 LTS 설치 완료 후 S1부터. 6000.6 대체 금지 유지.

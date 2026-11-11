@@ -1,0 +1,15 @@
+{"level":"info","time":"2026-11-11T06:51:46.517Z","pid":26492,"moduleName":"Installer: 6000.3.28f1-x86_64","msg":"Starting the state machine of 6000.3.28f1-x86_64."}
+{"level":"info","time":"2026-11-11T06:51:46.517Z","pid":26492,"moduleName":"Installer: 6000.3.28f1-x86_64","msg":"Entered State: install_validation"}
+{"level":"info","time":"2026-11-11T06:51:46.519Z","pid":26492,"moduleName":"UnityInstallerWindows","msg":"spawn child process, elevated: true"}
+{"level":"info","time":"2026-11-11T06:51:46.527Z","pid":26492,"moduleName":"UnityInstallerWindows","msg":"spawning via relay C:\\Program Files\\Unity Hub\\resources\\app.asar.unpacked\\node_modules\\@unity\\hub-win-installer-launcher-win32-x64\\UnityHubHelper.exe [ 'C:\\\\Program Files\\\\Unity Hub\\\\Unity Hub.exe', 'C:\\\\Program Files\\\\Unity Hub\\\\resources\\\\app.asar\\\\.vite\\\\build\\\\installerProcess.js', '--winInstaller', '630e7928-1c5d-4415-93fb-49e0673332f7' ] elevated: true"}
+{"level":"info","time":"2026-11-11T06:51:46.527Z","pid":26492,"moduleName":"UnityInstallerWindows","msg":"Using @unity/hub-elevate module"}
+{"level":"error","time":"2026-11-11T06:53:49.193Z","pid":26492,"moduleName":"UnityInstallerWindows","msg":"Installer child process failed: [Error: 1223 - The user cancelled the operation] { code: 'GenericFailure' } undefined"}
+{"level":"warn","time":"2026-11-11T06:53:49.193Z","pid":26492,"moduleName":"UnityInstallerWindows","msg":"Error while preparing install service: [Error: 1223 - The user cancelled the operation] { code: 'GenericFailure' }"}
+{"level":"info","time":"2026-11-11T06:53:49.193Z","pid":26492,"moduleName":"UnityInstallerWindows","msg":"Installation cancelled by the user during UAC prompt."}
+{"level":"info","time":"2026-11-11T06:53:49.193Z","pid":26492,"moduleName":"Installer: 6000.3.28f1-x86_64","msg":"Installation cancelled by the user during UAC prompt."}
+{"level":"info","time":"2026-11-11T06:53:49.193Z","pid":26492,"moduleName":"Installer: 6000.3.28f1-x86_64","msg":"Validation FAILED."}
+{"level":"error","time":"2026-11-11T06:53:49.193Z","pid":26492,"moduleName":"Installer: 6000.3.28f1-x86_64","msg":"Validation failed. Reason: The Windows elevation prompt was cancelled or timed out."}
+{"level":"error","time":"2026-11-11T06:53:49.193Z","pid":26492,"moduleName":"Installer: 6000.3.28f1-x86_64","msg":"Validation failed. Stack: ELEVATION_CANCELLED: The Windows elevation prompt was cancelled or timed out.\n    at InstallerItem.onValidation (file:///C:/Program%20Files/Unity%20Hub/resources/app.asar/.vite/build/InstallationManager-DC41JW8_.js:574:28)"}
+{"level":"info","time":"2026-11-11T06:53:49.193Z","pid":26492,"moduleName":"Installer: 6000.3.28f1-x86_64","msg":"Exiting from State: Validation. Event: ERROR"}
+{"level":"info","time":"2026-11-11T06:53:49.193Z","pid":26492,"moduleName":"Installer: 6000.3.28f1-x86_64","msg":"Transition to state \"install_failed\" on event \"ERROR\""}
+{"level":"info","time":"2026-11-11T06:53:49.194Z","pid":26492,"moduleName":"Installer: 6000.3.28f1-x86_64","msg":"Entered State: install_validation"}
