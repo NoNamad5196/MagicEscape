@@ -23,7 +23,7 @@ namespace MagicEscape.EditorTools
             {
                 var c=Clue("Painting_"+roman[i],new Vector3(-5.88f,1.7f,-2.4f+i*1.6f),"씨앗의 일생 "+roman[i],body[i]);
                 // Keep label outside the thin west-wall slab with unscaled text dimensions.
-                var text=WorldText("PaintingLabel_"+roman[i],null,roman[i]+"  "+rune[i]+"\n"+scene[i],new Vector3(-5.79f,1.7f,-2.4f+i*1.6f),new Vector2(1.1f,.85f),2.8f); text.transform.rotation=Quaternion.Euler(0,-90,0);
+                var text=WorldText("PaintingLabel_"+roman[i],null,roman[i]+"  "+rune[i]+"\n"+scene[i],new Vector3(-5.79f,1.7f,-2.4f+i*1.6f),new Vector2(1.1f,.85f),2.8f); text.transform.rotation=Quaternion.Euler(0,-90,0); text.transform.SetParent(c.transform,true);
             }
             Clue("Chalkboard",new Vector3(-5.88f,1.5f,-4),"칠판",GameText.Chalkboard);
             var board=WorldText("ChalkboardLabel",null,GameText.Chalkboard,new Vector3(-5.79f,1.5f,-4),new Vector2(1.2f,1),2.4f); board.transform.rotation=Quaternion.Euler(0,-90,0);
@@ -31,3 +31,4 @@ namespace MagicEscape.EditorTools
         }
     }
 }
+

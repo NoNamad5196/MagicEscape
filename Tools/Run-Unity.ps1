@@ -1,4 +1,4 @@
-param([string]$Name, [string]$Method, [switch]$Tests)
+param([string]$Name, [string]$Method, [switch]$Tests, [string]$TestFilter)
 $ErrorActionPreference = 'Stop'
 Set-Location (Split-Path $PSScriptRoot -Parent)
 $editor = 'C:\Program Files\Unity\Hub\Editor\6000.3.28f1\Editor\Unity.exe'
@@ -8,13 +8,15 @@ $arguments = "-batchmode -projectPath `"$project`" -logFile `"$log`""
 if ($Tests) {
     $result = Join-Path (Get-Location) "docs/validation/$Name.xml"
     $arguments += " -runTests -testPlatform PlayMode -testResults `"$result`""
+    if ($TestFilter) { $arguments += " -testFilter `"$TestFilter`"" }
 } else { $arguments += " -quit -executeMethod $Method" }
 $p = Start-Process $editor -ArgumentList $arguments -WindowStyle Hidden -PassThru
 $p.WaitForExit()
 Write-Output "Unity exit=$($p.ExitCode); log=$log"
-Select-String -Path $log -Pattern 'error CS','Exception','Error' | ForEach-Object { $_.Line }
+Select-String -Path $log -Pattern 'error CS','^[A-Za-z.]*Exception:','Error:' | ForEach-Object { $_.Line }
 if ($Tests -and (Test-Path $result)) {
     [xml]$xml = Get-Content $result
     $xml.'test-run' | Select-Object result,total,passed,failed,skipped
 }
 exit $p.ExitCode
+

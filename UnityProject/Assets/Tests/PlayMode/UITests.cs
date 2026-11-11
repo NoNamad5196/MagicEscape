@@ -13,6 +13,7 @@ public class UITests
     {
         yield return SceneManager.LoadSceneAsync("Classroom"); yield return null;
         Assert.AreEqual(GameFlowState.Title,GameManager.Instance.Progression.Flow);
+        Assert.True(Object.FindFirstObjectByType<TMP_Text>(FindObjectsInactive.Include).font.HasCharacters("마법학교 방탈출 계시의 물약",out uint[] _,false,true),"Korean glyph coverage");
         Assert.NotNull(GameObject.Find("TitlePanel"));
         GameObject.Find("Button_Start").GetComponent<Button>().onClick.Invoke(); yield return null;
         Assert.True(GameManager.Instance.IsPlaying); Assert.NotNull(GameObject.Find("HUDPanel"));
@@ -24,6 +25,9 @@ public class UITests
         GameObject.Find("Button_Resume").GetComponent<Button>().onClick.Invoke(); Assert.True(GameManager.Instance.IsPlaying);
         foreach(var text in Object.FindObjectsByType<TMP_Text>(FindObjectsInactive.Include,FindObjectsSortMode.None)) Assert.That(text.font.name,Does.Contain("NotoSansKR"));
         GameManager.Instance.TogglePause(); GameObject.Find("Button_Restart").GetComponent<Button>().onClick.Invoke(); yield return null; yield return null;
-        Assert.AreEqual(GameFlowState.Title,GameManager.Instance.Progression.Flow); Assert.AreEqual(1,Time.timeScale); Assert.AreEqual(0,InventoryManager.Instance.Model.Count);
+        Assert.AreEqual(GameFlowState.Title,GameManager.Instance.Progression.Flow);
+        Assert.True(Object.FindFirstObjectByType<TMP_Text>(FindObjectsInactive.Include).font.HasCharacters("마법학교 방탈출 계시의 물약",out uint[] _,false,true),"Korean glyph coverage"); Assert.AreEqual(1,Time.timeScale); Assert.AreEqual(0,InventoryManager.Instance.Model.Count);
     }
 }
+
+

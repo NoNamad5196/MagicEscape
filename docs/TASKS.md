@@ -21,14 +21,18 @@
 
 | 작업 | 상태 |
 |---|---|
-| S1 Unity 6.3 LTS URP 프로젝트 생성(`UnityProject/`) 및 저장소 통합 | 🪟 중단: 세 번째 시도 createProject exit 0; Input System 1.12.0 CS0117로 builder exit 1 (2026-11-12); S1 미완료 |
-| S2 CodeDrafts → Assets/Scripts 복사, 컴파일 확인 / 플레이어 | 🪟 ❔ |
-| S3~S5 UI·ItemData·단서 | 🪟 ❔ |
-| S6~S8 퍼즐 1·2·3 연결 | 🪟 ❔ |
-| S9 전체 플레이 + Console 0 Error | 🪟 ❔ |
-| S10 에셋·조명·사운드·VFX | 🪟 ❔ |
-| S11 Windows 빌드, 시연 리허설, 스크린샷·영상(PPT) | 🪟 ❔ |
-| 교수님 확인: VR 필수 여부 / 일반 PC 3D 허용 여부 | ❔ |
+| S1 URP 교실·레이어·조명 | ✅ 자동 검증 1/1; 게임 Console Error 0; 수동 확인 별도 |
+| S2 Core/Runtime·시스템·플레이어 | ✅ 자동 검증 2/2; 게임 Console Error 0; 수동 확인 별도 |
+| S3 한글 TMP UI·버튼·핫바 | ✅ 자동 검증 3/3; 게임 Console Error 0; 수동 확인 별도 |
+| S4 ItemData 7종·카탈로그 | ✅ 자동 검증 4/4; 게임 Console Error 0; 수동 확인 별도 |
+| S5 액자·칠판 단서 | ✅ 자동 검증 5/5; 게임 Console Error 0; 수동 확인 별도 |
+| S6 P1 문양 제단 | ✅ 자동 검증 6/6; 게임 Console Error 0; 수동 확인 별도 |
+| S7 P2 마법약 | ✅ 자동 검증 7/7; 게임 Console Error 0; 수동 확인 별도 |
+| S8 P3 최종 봉인·문·탈출 | ✅ 자동 검증 8/8; 게임 Console Error 0; 수동 확인 별도 |
+| S9 전체 입력/물리 탈출·Console | ✅ 자동 검증 9/9; 게임 Console Error 0; 수동 확인 별도 |
+| S10 에셋 교체·외형 완성 | 범위 밖, 미실행 |
+| S11 Windows 빌드·시연·캡처 | 범위 밖, 미실행 |
+| 교수님 VR/일반 PC 허용 확인 | ❔ 기존 대기 유지 |
 
 ### Windows 설치 중단 — 2026-11-11
 
@@ -57,19 +61,22 @@
 - 마우스 감도·조작감·UI 클릭·한글 렌더링 수동 확인 필요. S10/S11 미실행. 재개에는 6000.3.28f1 호환 Input System 버전 확인부터 필요.
 - 명령/오류 전문/단계별 결과: [Windows 보고서 세 번째 시도](validation/windows-unity-report.md).
 
-| S1 | ✅ 자동 검증: URP Asset/Renderer·레이어·교실/복도/북문 구멍·조명 저장; PlayMode 1/1, Console Error 0. 수동 검증 별도 대기 |
-`nRuntime asmdef 추가 이유: 별도 PlayMode asmdef는 Assembly-CSharp를 참조할 수 없으므로 MagicEscape.Runtime을 명시 참조한다. Core/TMP/uGUI/InputSystem 참조만 추가. Assets/Scripts 정본, CodeDrafts 동기화. Tests/UnityStubs 복사 없음. S2에서는 미래 퍼즐 참조용 비활성 scaffold만 두고 S6~8에서 구성·활성화한다.
+Runtime asmdef 추가 이유: 별도 PlayMode asmdef는 Assembly-CSharp를 참조할 수 없으므로 MagicEscape.Runtime을 명시 참조한다. Core/TMP/uGUI/InputSystem 참조만 추가. Assets/Scripts 정본, CodeDrafts 동기화. Tests/UnityStubs 복사 없음. S2에서는 미래 퍼즐 참조용 비활성 scaffold만 두고 S6~8에서 구성·활성화한다.
 
-| S2 | ✅ 자동 검증: Core/Runtime 복사·Runtime asmdef·시스템·Player·이동 벽 충돌/일시정지; PlayMode 2/2, Console Error 0. 수동 검증 별도 대기 |
 
-| S3 | ✅ 자동 검증: uGUI/TMP·OFL Noto Sans KR·6패널·버튼·8슬롯·읽기/목표/일시정지 재시작; PlayMode 3/3, Console Error 0. 수동 검증 별도 대기 |
 
-| S4 | ✅ 자동 검증: ItemData 7종·정본 itemId·카탈로그·색상 아이콘·슬롯/휠 모델 반영; PlayMode 4/4, Console Error 0. 수동 검증 별도 대기 |
 
-| S5 | ✅ 자동 검증: 액자 III/I/IV/II·보이는 문양/장면/숫자·칠판·읽기 패널; PlayMode 5/5, Console Error 0. 수동 검증 별도 대기 |
 
-| S6 | ✅ 자동 검증: P1 문양석6·발광·뚜껑·숨김 보상·오답3회 힌트·P2 해금·Seal1; PlayMode 6/6, Console Error 0. 수동 검증 별도 대기 |
 
-| S7 | ✅ 자동 검증: P2 가마솥·마법서 결계·재료4·오답 재생성/힌트·선택 아이템 소모/보상·Seal2; PlayMode 7/7, Console Error 0. 수동 검증 별도 대기 |
 
-| S8 | ✅ 자동 검증: P3 비문/소켓 거부/소모·봉인핵·문 코루틴·실제 Trigger/Cleared·클리어 재시작; PlayMode 8/8, Console Error 0. 수동 검증 별도 대기 |
+
+### 네 번째 시도 최종 상태 (2026-11-12)
+
+- 지정 6000.3.28f1, URP 17.3.0/Input System 1.20.1/Test Framework 1.6.0 유지. S1~S9 자동 검증 완료, S10/S11 미실행.
+- 별도 PlayMode asmdef가 Assembly-CSharp를 참조할 수 없어 Runtime asmdef를 추가했다(Core/TMP/uGUI/InputSystem만 참조). Assets/Scripts와 CodeDrafts를 동기화했으며 .cs 내용 차이는 없다. Tests/UnityStubs 복사 없음.
+- Editor 빌더는 빈 씬에서 각 단계를 재구성하고 에셋을 재사용한다. 최종 S9 두 번 실행의 171개 오브젝트 구조 manifest 동일(전체 YAML 바이트 동일 보장은 아님).
+- 실제 입력/Raycast/물리 경로가 발견한 콜라이더 문제를 수정했다. 정답/itemId/상태/문구·시각 배치/크기 불변. 상세 hull 조정과 테스트 결함은 TEST_PLAN §3 참조.
+- 마우스 감도·조작감·UI 실제 클릭·한글 렌더링·받침대 뒤쪽 보행 체감은 수동 확인 필요. 일반 플레이어 10~15분 평가/빌드는 미실행.
+- 명령·단계별 커밋·검증 한계: [Windows 최종 보고](validation/windows-unity-report.md#네-번째-시도--2026-11-12-kst).
+
+| S9 | ✅ 자동 검증: 합성 키보드/휠·중앙 Raycast E로 세 퍼즐·W 물리 탈출 Cleared·Console 계측0·멱등 재실행; PlayMode 9/9, Console Error 0. 수동 검증 별도 대기 |

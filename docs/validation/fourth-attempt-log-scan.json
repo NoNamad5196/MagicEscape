@@ -1,0 +1,200 @@
+[
+  {
+    "stage": 1,
+    "kind": "builder",
+    "compilerErrorLines": 0,
+    "rawExceptionSubstringLines": 0,
+    "rawErrorSubstringLines": 5,
+    "managedExceptionHeaders": 0,
+    "debugErrorCalls": 0,
+    "passed": "1",
+    "total": "1"
+  },
+  {
+    "stage": 1,
+    "kind": "tests",
+    "compilerErrorLines": 0,
+    "rawExceptionSubstringLines": 0,
+    "rawErrorSubstringLines": 6,
+    "managedExceptionHeaders": 0,
+    "debugErrorCalls": 0,
+    "passed": "1",
+    "total": "1"
+  },
+  {
+    "stage": 2,
+    "kind": "builder",
+    "compilerErrorLines": 0,
+    "rawExceptionSubstringLines": 0,
+    "rawErrorSubstringLines": 5,
+    "managedExceptionHeaders": 0,
+    "debugErrorCalls": 0,
+    "passed": "2",
+    "total": "2"
+  },
+  {
+    "stage": 2,
+    "kind": "tests",
+    "compilerErrorLines": 0,
+    "rawExceptionSubstringLines": 2,
+    "rawErrorSubstringLines": 6,
+    "managedExceptionHeaders": 0,
+    "debugErrorCalls": 0,
+    "passed": "2",
+    "total": "2"
+  },
+  {
+    "stage": 3,
+    "kind": "builder",
+    "compilerErrorLines": 0,
+    "rawExceptionSubstringLines": 0,
+    "rawErrorSubstringLines": 5,
+    "managedExceptionHeaders": 0,
+    "debugErrorCalls": 0,
+    "passed": "3",
+    "total": "3"
+  },
+  {
+    "stage": 3,
+    "kind": "tests",
+    "compilerErrorLines": 0,
+    "rawExceptionSubstringLines": 7,
+    "rawErrorSubstringLines": 6,
+    "managedExceptionHeaders": 0,
+    "debugErrorCalls": 0,
+    "passed": "3",
+    "total": "3"
+  },
+  {
+    "stage": 4,
+    "kind": "builder",
+    "compilerErrorLines": 0,
+    "rawExceptionSubstringLines": 0,
+    "rawErrorSubstringLines": 5,
+    "managedExceptionHeaders": 0,
+    "debugErrorCalls": 0,
+    "passed": "4",
+    "total": "4"
+  },
+  {
+    "stage": 4,
+    "kind": "tests",
+    "compilerErrorLines": 0,
+    "rawExceptionSubstringLines": 8,
+    "rawErrorSubstringLines": 6,
+    "managedExceptionHeaders": 0,
+    "debugErrorCalls": 0,
+    "passed": "4",
+    "total": "4"
+  },
+  {
+    "stage": 5,
+    "kind": "builder",
+    "compilerErrorLines": 0,
+    "rawExceptionSubstringLines": 0,
+    "rawErrorSubstringLines": 5,
+    "managedExceptionHeaders": 0,
+    "debugErrorCalls": 0,
+    "passed": "5",
+    "total": "5"
+  },
+  {
+    "stage": 5,
+    "kind": "tests",
+    "compilerErrorLines": 0,
+    "rawExceptionSubstringLines": 9,
+    "rawErrorSubstringLines": 6,
+    "managedExceptionHeaders": 0,
+    "debugErrorCalls": 0,
+    "passed": "5",
+    "total": "5"
+  },
+  {
+    "stage": 6,
+    "kind": "builder",
+    "compilerErrorLines": 0,
+    "rawExceptionSubstringLines": 0,
+    "rawErrorSubstringLines": 5,
+    "managedExceptionHeaders": 0,
+    "debugErrorCalls": 0,
+    "passed": "6",
+    "total": "6"
+  },
+  {
+    "stage": 6,
+    "kind": "tests",
+    "compilerErrorLines": 0,
+    "rawExceptionSubstringLines": 27,
+    "rawErrorSubstringLines": 6,
+    "managedExceptionHeaders": 0,
+    "debugErrorCalls": 0,
+    "passed": "6",
+    "total": "6"
+  },
+  {
+    "stage": 7,
+    "kind": "builder",
+    "compilerErrorLines": 0,
+    "rawExceptionSubstringLines": 0,
+    "rawErrorSubstringLines": 5,
+    "managedExceptionHeaders": 0,
+    "debugErrorCalls": 0,
+    "passed": "7",
+    "total": "7"
+  },
+  {
+    "stage": 7,
+    "kind": "tests",
+    "compilerErrorLines": 0,
+    "rawExceptionSubstringLines": 55,
+    "rawErrorSubstringLines": 6,
+    "managedExceptionHeaders": 0,
+    "debugErrorCalls": 0,
+    "passed": "7",
+    "total": "7"
+  },
+  {
+    "stage": 8,
+    "kind": "builder",
+    "compilerErrorLines": 0,
+    "rawExceptionSubstringLines": 0,
+    "rawErrorSubstringLines": 5,
+    "managedExceptionHeaders": 0,
+    "debugErrorCalls": 0,
+    "passed": "8",
+    "total": "8"
+  },
+  {
+    "stage": 8,
+    "kind": "tests",
+    "compilerErrorLines": 0,
+    "rawExceptionSubstringLines": 84,
+    "rawErrorSubstringLines": 6,
+    "managedExceptionHeaders": 0,
+    "debugErrorCalls": 0,
+    "passed": "8",
+    "total": "8"
+  },
+  {
+    "stage": 9,
+    "kind": "builder",
+    "compilerErrorLines": 0,
+    "rawExceptionSubstringLines": 0,
+    "rawErrorSubstringLines": 5,
+    "managedExceptionHeaders": 0,
+    "debugErrorCalls": 0,
+    "passed": "9",
+    "total": "9"
+  },
+  {
+    "stage": 9,
+    "kind": "tests",
+    "compilerErrorLines": 0,
+    "rawExceptionSubstringLines": 85,
+    "rawErrorSubstringLines": 6,
+    "managedExceptionHeaders": 0,
+    "debugErrorCalls": 0,
+    "passed": "9",
+    "total": "9"
+  }
+]

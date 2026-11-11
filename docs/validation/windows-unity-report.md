@@ -290,3 +290,6 @@ S6 커밋: 9f2c71c (push 완료).
 
 S7 커밋: ea3ca54 (push 완료).
 | S8 | P3 비문/소켓 거부/소모·봉인핵·문 코루틴·실제 Trigger/Cleared·클리어 재시작 | builder exit 0; PlayMode 8/8; game Console Error 0 | 수동 감도·조작감·클릭·한글 확인 필요 |
+
+S8 커밋: 0b471db (push 완료).
+| S9 | 합성 키보드/휠·중앙 Raycast E로 세 퍼즐·W 물리 탈출 Cleared·Console 계측0·멱등 재실행 | builder exit 0; PlayMode 9/9; game Console Error 0 | 수동 감도·조작감·클릭·한글 확인 필요 |

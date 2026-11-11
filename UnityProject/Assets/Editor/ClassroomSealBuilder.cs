@@ -7,9 +7,11 @@ namespace MagicEscape.EditorTools
         public static void S8()
         {
             S7(); var p=SceneComponent<SealPuzzle>(); p.transform.position=new Vector3(0,0,4.2f);
-            Shape("Pedestal",p.transform,new Vector3(0,.5f,0),new Vector3(1.8f,1,.5f));
+            // Preserve specified visual size/position; inset collision hull leaves a 0.7m route behind it.
+            var pedestal=Shape("Pedestal",p.transform,new Vector3(0,.5f,0),new Vector3(1.8f,1,.5f)).GetComponent<BoxCollider>(); pedestal.size=new Vector3(1,1,.4f); pedestal.center=new Vector3(0,0,-.2f);
             var inscription=Component<SealInscription>("Inscription",p.transform); inscription.transform.localPosition=new Vector3(0,1.5f,.2f); Set(inscription,"puzzle",p);
-            var slab=Shape("InscriptionSlab",inscription.transform,Vector3.zero,new Vector3(1.2f,.5f,.08f)); Set(p,"inscriptionGlow",Glow(slab));
+            var slab=Shape("InscriptionSlab",inscription.transform,Vector3.zero,new Vector3(1.2f,.5f,.08f)); slab.GetComponent<Collider>().excludeLayers=1<<8; // Raised decorative slab remains raycastable, but cannot pinch the player exit route.
+            Set(p,"inscriptionGlow",Glow(slab));
             var reveal=new GameObject("RevealedText"); reveal.transform.SetParent(inscription.transform,false);
             WorldText("InscriptionText",reveal.transform,GameText.InscriptionRevealed,new Vector3(0,.05f,-.055f),new Vector2(1.15f,.32f),1.65f);
             WorldText("Quad_WaterRune",reveal.transform,"물",new Vector3(-.4f,-.16f,-.055f),new Vector2(.3f,.15f),1.5f);
@@ -17,10 +19,10 @@ namespace MagicEscape.EditorTools
             for(int i=0;i<2;i++)
             {
                 var socket=Component<CrystalSocket>(i==0?"Socket_Left":"Socket_Right",p.transform); socket.transform.localPosition=new Vector3(i==0?-.6f:.6f,1.05f,-.05f); Set(socket,"side",i==0?SocketSide.Left:SocketSide.Right);
-                var cup=Shape("SocketCup",socket.transform,Vector3.zero,new Vector3(.32f,.07f,.32f),PrimitiveType.Cylinder); Set(socket,"glow",Glow(cup));
+                var cup=Shape("SocketCup",socket.transform,Vector3.zero,new Vector3(.32f,.07f,.32f),PrimitiveType.Cylinder); cup.GetComponent<Collider>().excludeLayers=1<<8; Set(socket,"glow",Glow(cup));
                 var crystal=Shape("PlacedCrystal",socket.transform,new Vector3(0,.16f,0),Vector3.one*.2f,PrimitiveType.Sphere,i==0?Color.blue:Color.red); Object.DestroyImmediate(crystal.GetComponent<Collider>()); crystal.SetActive(false); Set(socket,"placedCrystalVisual",crystal); Set(p,i==0?"leftSocket":"rightSocket",socket);
             }
-            var core=Shape("SealCore",p.transform,new Vector3(0,1.15f,-.1f),Vector3.one*.25f,PrimitiveType.Sphere,new Color(.7f,.5f,1)); var glow=Glow(core); var interact=core.AddComponent<SealCore>(); Set(interact,"puzzle",p); Set(p,"coreGlow",glow);
+            var core=Shape("SealCore",p.transform,new Vector3(0,1.15f,-.1f),Vector3.one*.25f,PrimitiveType.Sphere,new Color(.7f,.5f,1)); core.GetComponent<Collider>().excludeLayers=1<<8; var glow=Glow(core); var interact=core.AddComponent<SealCore>(); Set(interact,"puzzle",p); Set(p,"coreGlow",glow);
             var light=Component<Light>("CoreLight",core.transform); light.type=LightType.Point; light.range=2; Set(glow,"glowLight",light);
             Set(p,"revealVfx",Particles("VFX_Reveal",p.transform,new Vector3(0,1.6f,0),new Color(.7f,.5f,1))); Set(p,"releaseVfx",Particles("VFX_Release",p.transform,new Vector3(0,1.6f,0),Color.yellow));
             var door=SceneComponent<DoorController>(); var hinge=door.transform.Find("DoorHinge"); Shape("DoorPanel",hinge,new Vector3(.8f,1.3f,0),new Vector3(1.6f,2.6f,.1f));
@@ -33,4 +35,6 @@ namespace MagicEscape.EditorTools
         }
     }
 }
+
+
 

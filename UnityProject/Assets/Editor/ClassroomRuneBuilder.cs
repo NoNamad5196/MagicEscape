@@ -9,7 +9,7 @@ namespace MagicEscape.EditorTools
         static T SceneComponent<T>() where T:Component => Resources.FindObjectsOfTypeAll<T>().First(x=>x.gameObject.scene.IsValid());
         static GameObject Shape(string name,Transform parent,Vector3 pos,Vector3 scale,PrimitiveType type=PrimitiveType.Cube,Color? color=null)
         {
-            var g=GameObject.CreatePrimitive(type); g.name=name; g.transform.SetParent(parent,false); g.transform.localPosition=pos; g.transform.localScale=scale; g.layer=9;
+            var g=GameObject.CreatePrimitive(type); if(type==PrimitiveType.Cylinder) { Object.DestroyImmediate(g.GetComponent<Collider>()); var box=g.AddComponent<BoxCollider>(); box.size=new Vector3(1,2,1); } g.name=name; g.transform.SetParent(parent,false); g.transform.localPosition=pos; g.transform.localScale=scale; g.layer=9;
             string path="Assets/Settings/Color_"+ColorUtility.ToHtmlStringRGB(color??new Color(.45f,.42f,.36f))+".asset";
             var mat=AssetDatabase.LoadAssetAtPath<Material>(path);
             if(mat==null){ mat=new Material(Shader.Find("Universal Render Pipeline/Lit")); mat.color=color??new Color(.45f,.42f,.36f); mat.EnableKeyword("_EMISSION"); mat.SetColor("_EmissionColor",Color.black); AssetDatabase.CreateAsset(mat,path); }
@@ -40,7 +40,7 @@ namespace MagicEscape.EditorTools
             {
                 float a=i*Mathf.PI/3; var pos=new Vector3(Mathf.Sin(a)*.6f,1.06f,Mathf.Cos(a)*.6f);
                 var g=Shape("RuneStone_"+runes[i],puzzle.transform,pos,new Vector3(.22f,.03f,.22f),PrimitiveType.Cylinder); Glow(g); stones[i]=g.AddComponent<RuneStone>(); Set(stones[i],"rune",runes[i]);
-                var text=WorldText("RuneLabel_"+runes[i],puzzle.transform,RuneStone.KoreanName(runes[i]),pos+Vector3.up*.07f,new Vector2(.3f,.15f),1.5f); text.transform.rotation=Quaternion.Euler(90,0,0);
+                var text=WorldText("RuneLabel_"+runes[i],puzzle.transform,RuneStone.KoreanName(runes[i]),pos+Vector3.up*.07f,new Vector2(.3f,.15f),1.5f); text.transform.rotation=Quaternion.Euler(90,0,0); text.transform.SetParent(g.transform,true);
             }
             Set(puzzle,"runeStones",stones); Set(puzzle,"rewardCrystal",Pickup("Reward_Sapphire",puzzle.transform,new Vector3(0,1.1f,0),4,true)); Set(puzzle,"solvedVfx",Particles("VFX_RuneSolved",puzzle.transform,new Vector3(0,1.3f,0),Color.yellow));
             var door=SceneComponent<DoorController>(); var lights=new GameObject[3];
@@ -49,3 +49,4 @@ namespace MagicEscape.EditorTools
         }
     }
 }
+
