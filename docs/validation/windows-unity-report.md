@@ -272,3 +272,6 @@ Exiting without the bug reporter. Application will terminate with return code 1
 
 S1 커밋: b40bbde (push 완료).
 | S2 | Core/Runtime 복사·Runtime asmdef·시스템·Player·이동 벽 충돌/일시정지 | builder exit 0; PlayMode 2/2; game Console Error 0 | 수동 감도·조작감·클릭·한글 확인 필요 |
+
+S2 커밋: 5f728ee (push 완료).
+| S3 | uGUI/TMP·OFL Noto Sans KR·6패널·버튼·8슬롯·읽기/목표/일시정지 재시작 | builder exit 0; PlayMode 3/3; game Console Error 0 | 수동 감도·조작감·클릭·한글 확인 필요 |
