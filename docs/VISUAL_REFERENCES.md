@@ -134,3 +134,9 @@
 - Quaternius와 다른 §3 후보는 미사용·미다운로드. 유료 구매, XR/VR 패키지 추가, BGM 추가 없음. Sfx는 인터페이스 팩 대체음이므로 문/가마솥 음색·음량은 수동 청취 필요.
 - S10은 S9부터 재생성한다. FBX는 MeshFilter/Renderer만 복사하며 원본 스크립트/콜라이더를 가져오지 않는다. 파일이 없으면 기존 그레이박스 메시를 유지하고 누락 오디오를 null로 건너뛴다. 선택 Asset Store 패키지에 대한 코드 의존성 없음.
 - URP Depth Texture/HDR, Bloom/ACES/약한 Vignette, 촛불·창빛, 문양·봉인·액체 Emission 유지. 그림자는 끈 상태로 비용을 제한했다.
+
+## 8. S10b second art pass (2026-11-12 KST)
+
+- Poly Haven [Stone Wall 02](https://polyhaven.com/a/stone_wall_02), [Wood Floor](https://polyhaven.com/a/wood_floor): CC0, 1K diffuse JPG only. Source https://polyhaven.com/license; downloaded using public files API. Metric cube UVs use 2m/repeat, including narrow wall sections. Ceiling uses dark timber plus mesh-only beams.
+- Downloaded archives stay in ignored Tools/asset-cache; only selected files enter ThirdParty. No Asset Store originals.
+- Previous untracked exit-resume crash/report removed: they contained licensing-handshake/session discussion and local crash details, so were not committed. Existing untracked XML reports left untouched.
