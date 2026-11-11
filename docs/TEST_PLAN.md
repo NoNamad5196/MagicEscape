@@ -111,3 +111,5 @@ S2 자동 검증: Core/Runtime 복사·Runtime asmdef·시스템·Player·이동
 | 2026-11-12 | ENV-W05 | S3 TMP_FontAsset 생성 NullReferenceException | TMP_Settings 미설치: ImportPackage 비동기 완료 전에 Font API를 호출함 | importPackageCompleted 후 종료하는 별도 ImportTMP 실행, S3 재실행 | S3 수정 커밋 |
 
 S3 자동 검증: uGUI/TMP·OFL Noto Sans KR·6패널·버튼·8슬롯·읽기/목표/일시정지 재시작. PlayMode 3/3, game Console Error 0. 명령/범위는 windows-unity-report의 네 번째 시도 참조. 수동 TC는 별도 미실행.
+
+S4 자동 검증: ItemData 7종·정본 itemId·카탈로그·색상 아이콘·슬롯/휠 모델 반영. PlayMode 4/4, game Console Error 0. 명령/범위는 windows-unity-report의 네 번째 시도 참조. 수동 TC는 별도 미실행.

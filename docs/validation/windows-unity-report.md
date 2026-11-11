@@ -275,3 +275,6 @@ S1 커밋: b40bbde (push 완료).
 
 S2 커밋: 5f728ee (push 완료).
 | S3 | uGUI/TMP·OFL Noto Sans KR·6패널·버튼·8슬롯·읽기/목표/일시정지 재시작 | builder exit 0; PlayMode 3/3; game Console Error 0 | 수동 감도·조작감·클릭·한글 확인 필요 |
+
+S3 커밋: 36bc0ba (push 완료).
+| S4 | ItemData 7종·정본 itemId·카탈로그·색상 아이콘·슬롯/휠 모델 반영 | builder exit 0; PlayMode 4/4; game Console Error 0 | 수동 감도·조작감·클릭·한글 확인 필요 |
