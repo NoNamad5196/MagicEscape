@@ -80,6 +80,7 @@ TS-01이 다루는 항목:
 | 날짜 | ID | 현상 | 원인 | 조치 | 커밋 |
 |---|---|---|---|---|---|
 | 2026-11-11 | ENV-W01 | Unity 6000.3.28f1 설치 실패(exit 1) | Windows 승격 취소 또는 시간 초과(1223 / ELEVATION_CANCELLED) | S1 이전 중단. 관리자 승인 후 설치 재개 필요. [오류 전문](validation/windows-unity-report.md) | 본 기록 커밋 |
+| 2026-11-12 | ENV-W02 | S1 createProject 중 Editor 종료(로그 return code 198) | 유효한 Unity Editor 라이선스 없음; Error 9줄(환경) | S1 중단. Hub 라이선스 활성화 후 재개. PlayMode 미실행, 게임 Console 미측정. [오류 전문](validation/windows-unity-report.md), [로그](validation/s1-create.log) | 본 기록 커밋 |
 
 ### 2026-11-11 Windows 실행 범위
 
@@ -87,3 +88,8 @@ Unity 설치 실패로 TC-W01~W44 및 Unity PlayMode 테스트는 전부 미실�
 기존 ⏳ 결과를 유지하며, 게임 테스트 ❌ 또는 Console Error 0으로 간주하지 않는다.
 설치 시도 버전은 6000.3.28f1이며 실제 설치 완료 패치 버전은 없다.
 마우스 감도·시점 감각·UI 클릭감·한글 렌더링은 자동 검증 범위 밖으로 수동 확인 필요(현재 미실행).
+
+
+### 2026-11-12 Windows 재개 실행 범위
+
+6000.3.28f1 설치/Windows Standalone Support 폴더는 확인했으나 S1 프로젝트 생성이 라이선스 오류로 종료됐다. S1~S9 미완료, 빌더/PlayMode 미실행(0개), 게임 Console Error 수 미측정. TC-W01~W44 결과는 ⏳ 유지(환경 실패를 게임 TC 실패로 기록하지 않음). 마우스 감도·조작감·UI 클릭·한글 렌더링은 수동 확인 필요. S10/S11 미실행.

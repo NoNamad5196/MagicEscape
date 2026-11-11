@@ -82,3 +82,88 @@ S10/S11 범위 밖 작업은 하지 않았다.
 - 큰 설계 판단: **없음**. 설계 정본 불변. Runtime asmdef 판단 전 단계에서 중단.
 - 재개 조건: 사람이 Windows 관리자 승인 가능한 상태에서 Unity Hub로 6000.3.28f1(재개 시 최신 6000.3.x 재조회)을 설치 완료한다. 설치·Build Support 확인 뒤 S1부터 시작한다.
 - 기존 6000.6이나 디스크에 발견된 이전 6000.3.26f1로 대체하지 않았다.
+
+---
+
+# 재개 시도 — 2026-11-12 (KST)
+
+## 결과
+
+**S1 프로젝트 생성에서 라이선스 오류로 중단. S1~S9 미완료.**
+설치는 완료됐지만 Unity Editor의 유효한 라이선스가 확인되지 않았다. 지시대로 다른 버전·설계 변경·라이선스 우회 없이 멈췄다.
+
+- 시작 `git pull`: Already up to date. HEAD `184edaa`, main, 시작 작업 트리 깨끗함.
+- 작성자 로컬 설정 확인: NoNamad5196 / 203311115+NoNamad5196@users.noreply.github.com. 변경하지 않음.
+- Git Bash `date`: Thu Nov 12 00:12:01 2026. 처음 일반 `bash -c date`는 WSL에 bash가 없어 실패해 Git Bash 절대 경로로 재실행했다.
+- AGENTS.md → UNITY_HANDOFF.md → SCENE_SETUP.md → PUZZLE_SPEC.md → TEST_PLAN.md 및 이전 보고서/TASKS를 읽었다.
+- 지정 Editor 파일 및 `Editor/Data/PlaybackEngines/windowsstandalonesupport` 존재 확인.
+- 실행 로그 버전: `6000.3.28f1 (8f082d2fe476)`; 6000.6.6f1 미사용.
+- Hub UI 템플릿은 사용하지 않고 허용된 `-createProject` 후 URP 패키지/Asset 설정 대체 경로를 시도했다. 라이선스에서 종료되어 URP 설정에는 도달하지 못했다.
+- 생성된 UnityProject에는 Logs/Temp/UserSettings만 있으며 Assets/Packages/ProjectSettings는 없다. 프로젝트 생성 성공 아님.
+- `UnityProject/.gitignore` 추가: Library/Temp/Logs/UserSettings/Builds 등 생성물 제외. 생성물 삭제 없이 보존, 커밋 제외.
+- CodeDrafts 복사/수정, Unity YAML 수기 작성, XR/외부 에셋 설치 없음.
+
+## 실제 명령 및 판정
+
+저장소 위치에서 실행했다. 프로세스는 Hidden으로 시작했고 오류 판정은 로그를 읽어 수행했다.
+
+```powershell
+git pull
+git status --short
+& 'C:\Program Files\Git\bin\bash.exe' -c date
+git config user.name
+git config user.email
+$editor = 'C:\Program Files\Unity\Hub\Editor\6000.3.28f1\Editor\Unity.exe'
+Test-Path $editor
+Get-ChildItem 'C:\Program Files\Unity\Hub\Editor\6000.3.28f1\Editor\Data\PlaybackEngines'
+$p = Start-Process $editor -ArgumentList '-batchmode -nographics -quit -createProject "C:\Users\nonam\Documents\MagicEscape\UnityProject" -logFile "C:\Users\nonam\Documents\MagicEscape\docs\validation\s1-create.log"' -WindowStyle Hidden -PassThru
+Get-Content docs/validation/s1-create.log -Tail 90
+Select-String -Path docs/validation/s1-create.log -Pattern 'error CS','Exception','Error'
+```
+
+- Unity 로그에 종료 코드 **198** 명시. 프로세스 API에서 ExitCode를 직접 수집한 것은 아님.
+- `error CS`: 0줄, `Exception`: 0줄, `Error` 포함: **9줄**(라이선스 환경 오류).
+- Unity 씬/스크립트 로드 이전 종료이므로 게임 Console Error 수는 **미측정**, 0 Error 통과로 판정하지 않는다.
+- 빌더/PlayMode `-runTests -testPlatform PlayMode`: **미실행, 통과/전체 N/A**(0개 실행). 라이선스 실패 뒤 추가 단계는 시도하지 않았다.
+- 로그: [s1-create.log](s1-create.log). 오류/스택은 생략하지 않고 보존했으며, 네트워크 IP·세션/상관관계/기계 식별자만 비식별화했다. Unity는 이 실패에 관리 코드 스택을 출력하지 않았다.
+
+### 오류 전문 (로그의 Error 포함 9줄 및 관련 설명)
+
+```console
+[Licensing::Client] Error: HandshakeResponse reported an error:
+    ResponseCode: 505
+    ResponseStatus: Unsupported protocol version '1.19.0'.
+[Licensing::Module] Error: Failed to handshake to channel: "LicenseClient-nonam"
+[Licensing::Module] Error: Access token is unavailable; failed to update
+[Licensing::Client] Error: Code 404 while processing request (status: Found 0 entitlement groups and 0 free entitlements matching requested entitlement ids)
+[Licensing::Client] Error: Code 404 while processing request (status: Found 0 entitlement groups and 0 free entitlements matching requested entitlement ids)
+[Licensing::Module] Error: 'com.unity.editor.headless' was not found.
+[Licensing::Client] Error: Code 404 while processing request (status: Found 0 entitlement groups and 0 free entitlements matching requested entitlement ids)
+[Licensing::Module] Error: 'com.unity.editor.headless' was not found.
+[Licensing::Client] Error: Code 404 while processing request (status: Found 0 entitlement groups and 0 free entitlements matching requested entitlement ids)
+No valid Unity Editor license found. Please activate your license.
+Exiting without the bug reporter. Application will terminate with return code 198
+```
+
+초기 Hub Licensing Client handshake 실패 뒤 Editor에 포함된 1.19.0 클라이언트 연결은 성공했다. 최종 실패는 유효한 Editor 라이선스 없음이다. 특정 구독 종류나 계정 상태는 추정하지 않는다.
+
+## 단계별 인계
+
+아래 모든 단계의 기능 커밋 없음. 이번 커밋은 환경 증거/문서/.gitignore만 포함한다.
+
+| 단계 | 한 일 | 실제 검증 / 통과·전체 / Console | 수동 확인 및 남은 문제 |
+|---|---|---|---|
+| S1 | 설치·Support 폴더 확인, 생성 시도, .gitignore 추가 | createProject 로그 exit 198; PlayMode N/A; 환경 Error 9줄, 게임 Console 미측정 | 라이선스 활성화 후 프로젝트 생성·URP·빌더·테스트부터 재개 |
+| S2 | 미착수 | 명령 미실행; PlayMode N/A; Console 미측정 | 스크립트 복사/플레이어. 마우스 감도·조작감 수동 확인 필요 |
+| S3 | 미착수 | 명령 미실행; PlayMode N/A; Console 미측정 | UI/한글 폰트. UI 클릭·한글 렌더링 수동 확인 필요 |
+| S4 | 미착수 | 명령 미실행; PlayMode N/A; Console 미측정 | ItemData 7종 |
+| S5 | 미착수 | 명령 미실행; PlayMode N/A; Console 미측정 | 단서·읽기 패널 |
+| S6 | 미착수 | 명령 미실행; PlayMode N/A; Console 미측정 | P1 정답/오답/보상/봉인 |
+| S7 | 미착수 | 명령 미실행; PlayMode N/A; Console 미측정 | P2 잠금/재생성/보상 |
+| S8 | 미착수 | 명령 미실행; PlayMode N/A; Console 미측정 | P3/출구/실제 Trigger/Cleared |
+| S9 | 미착수 | 명령 미실행; PlayMode N/A; Console 미측정 | 전체 클리어/재시작/Console 0 미검증 |
+
+- TEST_PLAN의 게임 TC는 모두 ⏳ 유지. 환경 결함 ENV-W02를 §3에 기록했다. S10/S11은 범위 밖이며 미실행.
+- **CodeDrafts와 달라진 스크립트: 없음**(Assets/Scripts 미생성).
+- **큰 설계 판단: 없음.** Runtime asmdef 필요성 판단 이전. 정답/itemId/상태/문구 정본은 불변.
+- 재개 조건: 사용자가 Unity Hub에서 해당 계정의 유효한 라이선스를 활성화해 6000.3.28f1 Editor가 실행되는지 확인한 뒤, S1 프로젝트 생성부터 재시도. 비밀번호·토큰을 채팅/문서에 남기지 않는다.

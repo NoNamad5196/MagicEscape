@@ -1,0 +1,102 @@
+VBCSCompilerServerWatchdog: watching VBCSCompiler (PID 36460)
+[Licensing::Module] Trying to connect to existing licensing client channel...
+Built from '6000.3/respin/6000.3.28f1-21f78c3e21d1' branch; Version is '6000.3.28f1 (8f082d2fe476) revision 9373741'; Using compiler version '194234433'; Build Type 'Release'
+[Licensing::IpcConnector] Successfully connected to: "LicenseClient-nonam" at "2026-11-11T15:12:17.1306948Z"
+OS: 'Windows 11  (10.0.22631) Core' Language: 'ko' Physical Memory: 49090 MB
+BatchMode: 1, IsHumanControllingUs: 0, StartBugReporterOnCrash: 0, Is64bit: 1
+System  architecture: x64
+Process architecture: x64
+Date: 2026-11-11T15:12:17Z
+[Licensing::Client] Code 10 while verifying Licensing Client signature (process Id: 42148, path: "C:/Program Files/Unity Hub/UnityLicensingClient_V1/Unity.Licensing.Client.exe")
+[Licensing::Module] LicensingClient has failed validation; ignoring
+[Licensing::Client] Error: HandshakeResponse reported an error:
+	ResponseCode: 505
+	ResponseStatus: Unsupported protocol version '1.19.0'.
+[Licensing::Module] Error: Failed to handshake to channel: "LicenseClient-nonam"
+[Licensing::IpcConnector] LicenseClient-nonam channel disconnected successfully.
+[Licensing::IpcConnector] Channel LicenseClient-nonam-1.19.0 doesn't exist
+[Licensing::Module] Successfully launched the LicensingClient (PId: 7308)
+[Licensing::IpcConnector] Successfully connected to: "LicenseClient-nonam-1.19.0" at "2026-11-11T15:12:18.0635424Z"
+[Licensing::Client] Code 10 while verifying Licensing Client signature (process Id: 7308, path: "C:/Program Files/Unity/Hub/Editor/6000.3.28f1/Editor/Data/Resources/Licensing/Client/Unity.Licensing.Client.exe")
+[Licensing::Module] LicensingClient has failed validation; ignoring
+
+COMMAND LINE ARGUMENTS:
+C:\Program Files\Unity\Hub\Editor\6000.3.28f1\Editor\Unity.exe
+-batchmode
+-nographics
+-quit
+-createProject
+C:\Users\nonam\Documents\MagicEscape\UnityProject
+-logFile
+C:\Users\nonam\Documents\MagicEscape\docs\validation\s1-create.log
+C:/Users/nonam/Documents/MagicEscape/UnityProject
+[UnityMemory] Configuration Parameters - Can be set up in boot.config
+    "memorysetup-temp-allocator-size-nav-mesh-worker=65536"
+    "memorysetup-temp-allocator-size-audio-worker=65536"
+    "memorysetup-temp-allocator-size-gfx=262144"
+    "memorysetup-allocator-temp-initial-block-size-main=262144"
+    "memorysetup-allocator-temp-initial-block-size-worker=262144"
+    "memorysetup-temp-allocator-size-background-worker=32768"
+    "memorysetup-temp-allocator-size-job-worker=262144"
+    "memorysetup-temp-allocator-size-preload-manager=33554432"
+    "memorysetup-remapper-allocator-initial-capacity=32768"
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-bucket-allocator-granularity=16"
+    "memorysetup-bucket-allocator-bucket-count=8"
+    "memorysetup-bucket-allocator-block-size=33554432"
+    "memorysetup-bucket-allocator-block-count=8"
+    "memorysetup-main-allocator-block-size=16777216"
+    "memorysetup-thread-allocator-block-size=16777216"
+    "memorysetup-gfx-main-allocator-block-size=16777216"
+    "memorysetup-gfx-thread-allocator-block-size=16777216"
+    "memorysetup-cache-allocator-block-size=4194304"
+    "memorysetup-typetree-allocator-block-size=2097152"
+    "memorysetup-profiler-bucket-allocator-granularity=16"
+    "memorysetup-profiler-bucket-allocator-bucket-count=8"
+    "memorysetup-profiler-bucket-allocator-block-size=33554432"
+    "memorysetup-profiler-bucket-allocator-block-count=8"
+    "memorysetup-profiler-allocator-block-size=16777216"
+    "memorysetup-profiler-editor-allocator-block-size=1048576"
+    "memorysetup-temp-allocator-size-main=16777216"
+    "memorysetup-job-temp-allocator-block-size=2097152"
+    "memorysetup-job-temp-allocator-block-size-background=1048576"
+    "memorysetup-job-temp-allocator-reduction-small-platforms=262144"
+    "memorysetup-temp-allocator-size-cloud-worker=32768"
+Player connection [19488]  Target information:
+
+Player connection [19488]  * "[IP] [redacted] [Port] 55504 [Flags] 2 [Guid] 104008939 [EditorId] 104008939 [Version] 1048832 [Id] WindowsEditor(7,DESKTOP-4PO1AA3) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" 
+
+Player connection [19488]  * "[IP] [redacted] [Port] 55504 [Flags] 2 [Guid] 104008939 [EditorId] 104008939 [Version] 1048832 [Id] WindowsEditor(7,DESKTOP-4PO1AA3) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" 
+
+Player connection [19488]  * "[IP] [redacted] [Port] 55504 [Flags] 2 [Guid] 104008939 [EditorId] 104008939 [Version] 1048832 [Id] WindowsEditor(7,DESKTOP-4PO1AA3) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" 
+
+Player connection [19488] Host joined multi-casting on [225.0.0.222:54997]...
+Player connection [19488] Host joined alternative multi-casting on [225.0.0.222:34997]...
+Input System module state changed to: Initialized.
+[Physics::Module] Initialized fallback backend.
+[Physics::Module] Id: 0xdecafbad
+[Licensing::Client] Handshaking with LicensingClient:
+  Version:                 1.19.0+4cc3dda
+  Session Id:              [redacted]
+  Correlation Id:          [redacted]
+  External correlation Id: [redacted]
+  Machine Id:              [redacted]
+[Licensing::Module] Successfully connected to LicensingClient on channel: "LicenseClient-nonam-1.19.0" (connect: 0.57s, validation: 0.41s, handshake: 0.11s)
+[Licensing::IpcConnector] Successfully connected to: "LicenseClient-nonam-1.19.0-notifications" at "2026-11-11T15:12:18.5825308Z"
+[Licensing::Module] Connected to LicensingClient (PId: 7308, launch time: 0.07, total connection time: 1.08s)
+[Licensing::Module] Error: Access token is unavailable; failed to update
+[Licensing::Client] Error: Code 404 while processing request (status: Found 0 entitlement groups and 0 free entitlements matching requested entitlement ids)
+[Licensing::Client] Successfully updated license, isAsync: False, time: 0.02
+[Licensing::Client] Error: Code 404 while processing request (status: Found 0 entitlement groups and 0 free entitlements matching requested entitlement ids)
+[Licensing::Module] Error: 'com.unity.editor.headless' was not found.
+[Licensing::Module] Licensing Background thread has ended after 1.48s
+[Package Manager] Connected to IPC stream "Upm-31652" after 0.5 seconds.
+[Licensing::Client] Error: Code 404 while processing request (status: Found 0 entitlement groups and 0 free entitlements matching requested entitlement ids)
+[Licensing::Module] Error: 'com.unity.editor.headless' was not found.
+[Licensing::Client] Error: Code 404 while processing request (status: Found 0 entitlement groups and 0 free entitlements matching requested entitlement ids)
+No valid Unity Editor license found. Please activate your license.
+Exiting without the bug reporter. Application will terminate with return code 198

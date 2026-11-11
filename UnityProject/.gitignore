@@ -1,0 +1,13 @@
+# Unity generated/cache output
+/[Ll]ibrary/
+/[Tt]emp/
+/[Ll]ogs/
+/[Uu]ser[Ss]ettings/
+/[Bb]uilds/
+/[Bb]uild/
+/[Oo]bj/
+/[Mm]emoryCaptures/
+/[Rr]ecordings/
+/.vs/
+/*.csproj
+/*.sln

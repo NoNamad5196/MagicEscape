@@ -21,7 +21,7 @@
 
 | 작업 | 상태 |
 |---|---|
-| S1 Unity 6.3 LTS URP 프로젝트 생성(`UnityProject/`) 및 저장소 통합 | 🪟 중단: 6000.3.28f1 설치 exit 1, ELEVATION_CANCELLED (2026-11-11); 프로젝트 미생성 |
+| S1 Unity 6.3 LTS URP 프로젝트 생성(`UnityProject/`) 및 저장소 통합 | 🪟 중단: 설치 확인 완료, 프로젝트 생성 시 라이선스 없음 / 로그 exit 198 (2026-11-12); S1 미완료 |
 | S2 CodeDrafts → Assets/Scripts 복사, 컴파일 확인 / 플레이어 | 🪟 ❔ |
 | S3~S5 UI·ItemData·단서 | 🪟 ❔ |
 | S6~S8 퍼즐 1·2·3 연결 | 🪟 ❔ |
@@ -37,3 +37,12 @@
 - UnityProject 및 스크립트 변경 없음. CodeDrafts와 Assets 간 차이 없음(복사 전). Runtime asmdef 판단도 미실행.
 - 원문 로그/명령/단계별 상태: [Windows Unity 작업 보고](validation/windows-unity-report.md).
 - 재개: 관리자 승인 가능한 상태에서 6.3 LTS 설치 완료 후 S1부터. 6000.6 대체 금지 유지.
+
+### Windows 재개 중단 — 2026-11-12
+
+- 설치된 6000.3.28f1 및 Windows Standalone Support 폴더 확인. 시작 git pull: Already up to date (184edaa).
+- S1 `-batchmode -nographics -quit -createProject` 실행에서 **유효한 Unity Editor 라이선스 없음**, 로그 종료 코드 198. S1 미완료, S2~S9 미착수.
+- UnityProject에는 생성 캐시 폴더만 남았으며 `.gitignore`를 추가해 커밋에서 제외했다. Assets/Packages/ProjectSettings 및 씬은 미생성. URP 대체 경로 시도만 했고 설정에는 도달하지 못함.
+- PlayMode 미실행(0개), 게임 Console Error 미측정. 생성 로그 Error 9줄은 라이선스 오류이며 게임 테스트 결과로 치환하지 않는다.
+- 스크립트 복사/수정 없음. Runtime asmdef 판단 전. 마우스 감도·조작감·UI 클릭·한글 렌더링 수동 확인 필요.
+- 재개 조건/명령/오류 전문: [Windows Unity 보고서의 2026-11-12 재개 기록](validation/windows-unity-report.md).
