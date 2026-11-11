@@ -284,3 +284,6 @@ S4 커밋: 4ffaa50 (push 완료).
 
 S5 커밋: bda1d18 (push 완료).
 | S6 | P1 문양석6·발광·뚜껑·숨김 보상·오답3회 힌트·P2 해금·Seal1 | builder exit 0; PlayMode 6/6; game Console Error 0 | 수동 감도·조작감·클릭·한글 확인 필요 |
+
+S6 커밋: 9f2c71c (push 완료).
+| S7 | P2 가마솥·마법서 결계·재료4·오답 재생성/힌트·선택 아이템 소모/보상·Seal2 | builder exit 0; PlayMode 7/7; game Console Error 0 | 수동 감도·조작감·클릭·한글 확인 필요 |
