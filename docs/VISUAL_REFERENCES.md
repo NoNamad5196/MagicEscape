@@ -121,3 +121,16 @@
 - Kenney Impact Sounds: https://kenney.nl/assets/impact-sounds
 - Pretendard(OFL 1.1): https://github.com/orioncactus/pretendard/blob/main/LICENSE
 - Unity 6.3 LTS: https://discussions.unity.com/t/unity-6-3-lts-is-now-available/1697328
+
+## 7. S10 실제 사용 및 수동 다운로드 목록 (2026-11-12 KST)
+
+| 사용 | 로컬 파일 | 출처/라이선스 | Git |
+|---|---|---|---|
+| 테이블·선반·의자·양초 | Assets/ThirdParty/KayKitDungeon: table_medium, shelf_small, chair, candle_lit, candle_triple FBX + dungeon_texture.png + LICENSE.txt | [KayKit Dungeon](https://kaylousberg.itch.io/kaykit-dungeon-pack), Kay Lousberg, CC0. 기존 인계 파일의 동봉 라이선스는 Dungeon Remastered 1.0; 현 배포 페이지도 CC0임을 재확인. 유료 EXTRA/SOURCE 미사용 | 필요한 파일/Unity meta만 커밋 |
+| SfxId 15종 연결 | Assets/ThirdParty/KenneyInterface OGG 12종 + License.txt | [Interface Sounds](https://opengameart.org/content/interface-sounds), Kenney, CC0. 동봉 License.txt 확인. 이번 웹 조회는 접근 제한으로 재검증 불가 | 사용하는 OGG/Unity meta만 커밋 |
+| 가마솥 시각 메시·반짝임·검은 연기·봉인 해제 | ClassroomArtBuilder.S10에서 Unity API로 생성/설정 | 프로젝트 자체 제작. 외부 VFX 원본 사용 없음 | 생성 메시/텍스처/머티리얼과 빌더 커밋 |
+
+- **사용자가 받아야 할 목록(선택 사항)**: [Cartoon FX Remaster Free](https://assetstore.unity.com/packages/vfx/particles/cartoon-fx-remaster-free-109565), Jean Moreno, 무료/Standard Unity Asset Store EULA. 로그인/My Assets 흐름이 필요한 후보라 이번에는 건너뜀. 사용자는 Unity 계정으로 추가 후 Package Manager > My Assets > Download/Import. `.gitignore`의 JMO Assets/ThirdParty/CartoonFX 경로에 로컬 보관, 원본 커밋 금지. 없어도 자체 제작 VFX로 동작한다. 현재 페이지에서 FREE/EULA/URP 호환 확인(2026-11-12).
+- Quaternius와 다른 §3 후보는 미사용·미다운로드. 유료 구매, XR/VR 패키지 추가, BGM 추가 없음. Sfx는 인터페이스 팩 대체음이므로 문/가마솥 음색·음량은 수동 청취 필요.
+- S10은 S9부터 재생성한다. FBX는 MeshFilter/Renderer만 복사하며 원본 스크립트/콜라이더를 가져오지 않는다. 파일이 없으면 기존 그레이박스 메시를 유지하고 누락 오디오를 null로 건너뛴다. 선택 Asset Store 패키지에 대한 코드 의존성 없음.
+- URP Depth Texture/HDR, Bloom/ACES/약한 Vignette, 촛불·창빛, 문양·봉인·액체 Emission 유지. 그림자는 끈 상태로 비용을 제한했다.
