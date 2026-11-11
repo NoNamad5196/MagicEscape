@@ -78,3 +78,14 @@ Runtime asmdef 추가 이유: 별도 PlayMode asmdef는 Assembly-CSharp를 참�
 - 실제 입력/Raycast/물리 경로가 발견한 콜라이더 문제를 수정했다. 정답/itemId/상태/문구·시각 배치/크기 불변. 상세 hull 조정과 테스트 결함은 TEST_PLAN §3 참조.
 - 마우스 감도·조작감·UI 실제 클릭·한글 렌더링·받침대 뒤쪽 보행 체감은 수동 확인 필요. 일반 플레이어 10~15분 평가/빌드는 미실행.
 - 명령·단계별 커밋·검증 한계: [Windows 최종 보고](validation/windows-unity-report.md#네-번째-시도--2026-11-12-kst).
+
+
+### 출구 통로 재개 중단 — 2026-11-12 KST
+- 기존 출구 확장/봉인 재배치/직진 3경로 테스트 변경 보존. 임시 InitTestScene 정리 완료.
+- exit-tests-resumed: Unity TestRunner 시작 OOM 및 native crash, exit -536870911, 신규 XML 없음. 이번 확정 통과 0, 게임 Console Error 미측정. 원인 불명 오류 중단 규칙 적용.
+- 1부 미검증·미커밋·미push. S10/S11 미착수. [인계 보고](validation/exit-resume-report.md), [오류 전문](validation/exit-resume-crash.md).
+
+### 출구 통로 재검증 완료 — 2026-11-12 KST
+- 출구 유효 폭 3m/북벽 3.3m 개구부/봉인 장치 (-3,0,3.7) 보존, S9 재생성 완료.
+- exit-tests-verified PlayMode 12/12, Console Error/Exception/Assert 0. OOM 환경 원인과 해결은 TEST_PLAN §3 참조.
+- 이전 중단 상태는 본 결과로 갱신. S10 다음 단계, S11 범위 밖.

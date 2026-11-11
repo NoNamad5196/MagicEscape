@@ -138,3 +138,18 @@ S9 입력 시나리오는 테스트용 키보드/마우스로 ESC/Tab/E/숫자�
 | 2026-11-12 | TEST-W09 | S9 글리프 검사 추가 후 CS0128 | 같은 테스트 범위에 out 변수 missing을 두 번 선언 | out discard로 수정, 빌더/전체 테스트 재실행 | f3331b9 |
 
 S9 자동 검증: 합성 키보드/휠·중앙 Raycast E로 세 퍼즐·W 물리 탈출 Cleared·Console 계측0·멱등 재실행. PlayMode 9/9, game Console Error 0. 명령/범위는 windows-unity-report의 네 번째 시도 참조. 수동 TC는 별도 미실행.
+
+
+### 출구 통로 재개 중단 — 2026-11-12 KST
+- 기존 출구 확장/봉인 재배치/직진 3경로 테스트 변경 보존. 임시 InitTestScene 정리 완료.
+- exit-tests-resumed: Unity TestRunner 시작 OOM 및 native crash, exit -536870911, 신규 XML 없음. 이번 확정 통과 0, 게임 Console Error 미측정. 원인 불명 오류 중단 규칙 적용.
+- 1부 미검증·미커밋·미push. S10/S11 미착수. [인계 보고](validation/exit-resume-report.md), [오류 전문](validation/exit-resume-crash.md).
+
+### 출구 통로 재검증 완료 — 2026-11-12 KST
+- ENV-W10: 지난 OutOfMemoryException은 코드/Unity 결함이 아니라 Windows 커밋 메모리 부족(페이지 파일 꺼짐, 한도 47.9GB, 직전 여유 3.3GB)으로 확인됨(인계 정보). Comet 종료 후 재실행으로 해결. OS/페이지 파일 설정은 변경하지 않았다.
+- 매 실행 전 FreeVirtualMemory/1MB 확인: 빌더 9.38GB, 테스트 9.45GB(6GB 이상). Editor 한 개씩 실행, 종료 후 잔류 Editor 없음 확인.
+- `powershell -NoProfile -ExecutionPolicy Bypass -File Tools/Run-Unity.ps1 -Name exit-build-verified -Method MagicEscape.EditorTools.ClassroomBuilder.S9`: exit 0.
+- `powershell -NoProfile -ExecutionPolicy Bypass -File Tools/Run-Unity.ps1 -Name exit-tests-verified -Tests`: exit 0, PlayMode **12/12**, failed/skipped 0. s9-console-audit.txt: Error/Exception/Assert **0**. W-only 중심/좌/우 3건 포함. E 시나리오로 비문/소켓 2.5m Raycast 확인.
+- 최초 빌더 호출은 잘못된 executeMethod 이름으로 exit 1; 올바른 namespace/메서드로 수정 재호출했다. 게임 코드 결함 아님.
+- 로그의 초기 Hub handshake 오류 뒤 Editor client 연결/entitlement 확인, 빌더/테스트 정상 종료. 라이선스/세션 원본 로그는 gitignore로 제외했다.
+- 외형, 마우스 체감, 실제 UI 클릭은 수동 확인 필요. 이전 중단 기록은 당시 결과이며 본 재검증으로 갱신됨.

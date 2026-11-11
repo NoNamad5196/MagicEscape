@@ -41,10 +41,10 @@ namespace MagicEscape.EditorTools
             Box("Wall_W", room, new Vector3(-6,2.25f,0), new Vector3(.2f,4.5f,10));
             Box("Wall_E", room, new Vector3(6,2.25f,0), new Vector3(.2f,4.5f,10));
             Box("Wall_S", room, new Vector3(0,2.25f,-5), new Vector3(12,4.5f,.2f));
-            Box("Wall_N_Left", room, new Vector3(-3.4f,2.25f,5), new Vector3(5.2f,4.5f,.2f));
-            Box("Wall_N_Right", room, new Vector3(3.4f,2.25f,5), new Vector3(5.2f,4.5f,.2f));
-            Box("Wall_N_Top", room, new Vector3(0,3.55f,5), new Vector3(1.6f,1.9f,.2f));
-            Box("CorridorFloor", room, new Vector3(0,-.05f,7), new Vector3(3,.1f,4));
+            Box("Wall_N_Left", room, new Vector3(-3.825f,2.25f,5), new Vector3(4.35f,4.5f,.2f));
+            Box("Wall_N_Right", room, new Vector3(3.825f,2.25f,5), new Vector3(4.35f,4.5f,.2f));
+            Box("Wall_N_Top", room, new Vector3(0,3.55f,5), new Vector3(3.3f,1.9f,.2f));
+            Box("CorridorFloor", room, new Vector3(0,-.05f,6.5f), new Vector3(3.3f,.1f,3));
             var light = new GameObject("Moonlight").AddComponent<Light>();
             light.type = LightType.Directional; light.color = new Color(.56f,.66f,1); light.intensity = .3f;
             light.transform.rotation = Quaternion.Euler(35,150,0); light.shadows = LightShadows.Soft;

@@ -34,7 +34,7 @@ namespace MagicEscape.EditorTools
             var gm=Component<GameManager>("GameManager"); Set(gm,"player",p); Set(gm,"skipTitle",true);
             Set(gm,"runePuzzle",Future<RunePuzzle>("Altar")); Set(gm,"potionPuzzle",Future<PotionPuzzle>("Cauldron")); Set(gm,"sealPuzzle",Future<SealPuzzle>("SealDevice"));
             var door=Component<DoorController>("ExitDoor"); door.transform.position=new Vector3(0,0,5);
-            var hinge=new GameObject("DoorHinge").transform; hinge.SetParent(door.transform,false); hinge.localPosition=new Vector3(-.8f,0,0); Set(door,"hinge",hinge); Set(gm,"exitDoor",door);
+            var hinge=new GameObject("DoorHinge").transform; hinge.SetParent(door.transform,false); hinge.localPosition=new Vector3(-1.5f,0,0); Set(door,"hinge",hinge); Set(gm,"exitDoor",door);
             Save();
         }
     }

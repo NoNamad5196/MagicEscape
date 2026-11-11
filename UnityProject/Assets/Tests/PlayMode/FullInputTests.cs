@@ -45,10 +45,10 @@ public class FullInputTests
     }
     IEnumerator Walk(Vector3 target)
     {
-        float timeout=Time.realtimeSinceStartup+4; var p=Scenario.Player.transform;
-        while(Vector2.Distance(new Vector2(p.position.x,p.position.z),new Vector2(target.x,target.z))>.035f && GameManager.Instance.IsPlaying && Time.realtimeSinceStartup<timeout)
+        float elapsed=0; var p=Scenario.Player.transform;
+        while(Vector2.Distance(new Vector2(p.position.x,p.position.z),new Vector2(target.x,target.z))>.035f && GameManager.Instance.IsPlaying && elapsed<5)
         {
-            Vector3 d=target-p.position; p.rotation=Quaternion.Euler(0,Mathf.Atan2(d.x,d.z)*Mathf.Rad2Deg,0); InputSystem.QueueStateEvent(keyboard,new KeyboardState(Key.W)); yield return null;
+            Vector3 d=target-p.position; p.rotation=Quaternion.Euler(0,Mathf.Atan2(d.x,d.z)*Mathf.Rad2Deg,0); InputSystem.QueueStateEvent(keyboard,new KeyboardState(Key.W)); yield return null; elapsed+=Time.unscaledDeltaTime;
         }
         InputSystem.QueueStateEvent(keyboard,new KeyboardState()); yield return null; yield return null;
         if(GameManager.Instance.IsPlaying) Assert.Less(Vector2.Distance(new Vector2(p.position.x,p.position.z),new Vector2(target.x,target.z)),.2f,"Walk blocked at "+p.position+" toward "+target);
@@ -74,14 +74,39 @@ public class FullInputTests
         yield return Slot(ItemIds.Moonpetal); InputSystem.QueueDeltaStateEvent(mouse.scroll,new Vector2(0,-120)); yield return null; yield return null; Assert.AreEqual(ItemIds.SalamanderScale,InventoryManager.Instance.SelectedItemId);
         foreach(var id in PotionPuzzleLogic.DefaultRecipe){yield return Slot(id); yield return Use(Object.FindFirstObjectByType<PotionPuzzle>(),new Vector3(3,0,1.2f));}
         yield return new WaitForSeconds(1); Assert.AreEqual(PuzzleState.Solved,GameManager.Instance.Progression.GetState(PuzzleId.Potion));
-        yield return Slot(ItemIds.PotionRevelation); yield return Use(Object.FindFirstObjectByType<SealInscription>(),new Vector3(0,0,2.8f)); Assert.True(UIManager.Instance.IsReading); yield return Tap(Key.E);
+        yield return Slot(ItemIds.PotionRevelation); yield return Use(Object.FindFirstObjectByType<SealInscription>(),new Vector3(-3,0,2.3f)); Assert.True(UIManager.Instance.IsReading); yield return Tap(Key.E);
         var sockets=Object.FindObjectsByType<CrystalSocket>(FindObjectsSortMode.None);
-        yield return Slot(ItemIds.CrystalSapphire); yield return Use(sockets.First(x=>x.Side==SocketSide.Left),new Vector3(-.6f,0,2.8f));
-        yield return Slot(ItemIds.CrystalRuby); yield return Use(sockets.First(x=>x.Side==SocketSide.Right),new Vector3(.6f,0,2.8f));
-        yield return Use(Object.FindFirstObjectByType<SealCore>(),new Vector3(0,0,2.8f)); yield return new WaitForSeconds(3.8f);
+        yield return Slot(ItemIds.CrystalSapphire); yield return Use(sockets.First(x=>x.Side==SocketSide.Left),new Vector3(-3.6f,0,2.3f));
+        yield return Slot(ItemIds.CrystalRuby); yield return Use(sockets.First(x=>x.Side==SocketSide.Right),new Vector3(-2.4f,0,2.3f));
+        yield return Use(Object.FindFirstObjectByType<SealCore>(),new Vector3(-3,0,2.3f)); yield return new WaitForSeconds(3.8f);
         // Interaction travel is teleported to deterministic reachable stations; the final exit approach uses real W input and collisions.
-        Place(new Vector3(1.35f,0,3.3f)); yield return Walk(new Vector3(1.35f,0,4.58f)); yield return Walk(new Vector3(0,0,4.58f)); yield return Walk(new Vector3(0,0,6));
+        Place(new Vector3(0,0,2)); yield return Walk(new Vector3(0,0,6));
         Assert.AreEqual(GameFlowState.Cleared,GameManager.Instance.Progression.Flow); Assert.NotNull(GameObject.Find("ClearPanel"));
+    }
+    [UnityTest] public IEnumerator ExitStraightCenter(){yield return StraightExit(0);}
+    [UnityTest] public IEnumerator ExitStraightLeft(){yield return StraightExit(-.8f);}
+    [UnityTest] public IEnumerator ExitStraightRight(){yield return StraightExit(.8f);}
+    IEnumerator StraightExit(float offset)
+    {
+        yield return SceneManager.LoadSceneAsync("Classroom"); yield return null;
+        previousEditor=InputSystem.settings.editorInputBehaviorInPlayMode; previousBackground=InputSystem.settings.backgroundBehavior;
+        InputSystem.settings.editorInputBehaviorInPlayMode=InputSettings.EditorInputBehaviorInPlayMode.AllDeviceInputAlwaysGoesToGameView; InputSystem.settings.backgroundBehavior=InputSettings.BackgroundBehavior.IgnoreFocus;
+        keyboard=InputSystem.AddDevice<Keyboard>(); mouse=InputSystem.AddDevice<Mouse>(); GameManager.Instance.StartGame();
+        yield return Scenario.Rune(); Scenario.Collect(ItemIds.CrystalSapphire); yield return Scenario.Potion();
+        Scenario.Select(ItemIds.PotionRevelation); Object.FindFirstObjectByType<SealInscription>().Interact(Scenario.Player); UIManager.Instance.CloseRead();
+        foreach(var socket in Object.FindObjectsByType<CrystalSocket>(FindObjectsSortMode.None)) {Scenario.Select(socket.Side==SocketSide.Left?ItemIds.CrystalSapphire:ItemIds.CrystalRuby); socket.Interact(Scenario.Player);}
+        Object.FindFirstObjectByType<SealCore>().Interact(Scenario.Player); yield return new WaitForSeconds(3.8f);
+        Place(new Vector3(offset,0,1)); Scenario.Player.transform.rotation=Quaternion.identity;
+        float elapsed=0,stalled=0; var previous=Scenario.Player.transform.position;
+        while(GameManager.Instance.IsPlaying && elapsed<5)
+        {
+            InputSystem.QueueStateEvent(keyboard,new KeyboardState(Key.W)); yield return null;
+            float dt=Time.unscaledDeltaTime; elapsed+=dt; var now=Scenario.Player.transform.position;
+            float speed=new Vector2(now.x-previous.x,now.z-previous.z).magnitude/Mathf.Max(dt,.0001f);
+            stalled=speed<.05f?stalled+dt:0; Assert.Less(stalled,.5f,"Forward movement stalled at "+now); previous=now;
+        }
+        InputSystem.QueueStateEvent(keyboard,new KeyboardState());
+        Assert.AreEqual(GameFlowState.Cleared,GameManager.Instance.Progression.Flow,"W-only exit timeout, x="+offset);
     }
     [UnityTearDown] public IEnumerator Cleanup(){InputSystem.settings.editorInputBehaviorInPlayMode=previousEditor; InputSystem.settings.backgroundBehavior=previousBackground; if(keyboard!=null)InputSystem.RemoveDevice(keyboard); if(mouse!=null)InputSystem.RemoveDevice(mouse); Time.timeScale=1; yield return null;}
 }

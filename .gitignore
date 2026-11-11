@@ -36,3 +36,13 @@ TestResults/
 Thumbs.db
 .env
 *.key
+
+/Tools/asset-cache/
+# Asset Store originals (local-only, optional)
+/UnityProject/Assets/JMO Assets/
+/UnityProject/Assets/JMO Assets.meta
+/UnityProject/Assets/ThirdParty/CartoonFX/
+/UnityProject/Assets/ThirdParty/CartoonFX.meta
+
+# Local Unity logs may contain licensing/session identifiers
+/docs/validation/*.log
