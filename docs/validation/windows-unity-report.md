@@ -281,3 +281,6 @@ S3 커밋: 36bc0ba (push 완료).
 
 S4 커밋: 4ffaa50 (push 완료).
 | S5 | 액자 III/I/IV/II·보이는 문양/장면/숫자·칠판·읽기 패널 | builder exit 0; PlayMode 5/5; game Console Error 0 | 수동 감도·조작감·클릭·한글 확인 필요 |
+
+S5 커밋: bda1d18 (push 완료).
+| S6 | P1 문양석6·발광·뚜껑·숨김 보상·오답3회 힌트·P2 해금·Seal1 | builder exit 0; PlayMode 6/6; game Console Error 0 | 수동 감도·조작감·클릭·한글 확인 필요 |
