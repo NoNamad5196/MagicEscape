@@ -71,3 +71,5 @@
 | S6 | ✅ 자동 검증: P1 문양석6·발광·뚜껑·숨김 보상·오답3회 힌트·P2 해금·Seal1; PlayMode 6/6, Console Error 0. 수동 검증 별도 대기 |
 
 | S7 | ✅ 자동 검증: P2 가마솥·마법서 결계·재료4·오답 재생성/힌트·선택 아이템 소모/보상·Seal2; PlayMode 7/7, Console Error 0. 수동 검증 별도 대기 |
+
+| S8 | ✅ 자동 검증: P3 비문/소켓 거부/소모·봉인핵·문 코루틴·실제 Trigger/Cleared·클리어 재시작; PlayMode 8/8, Console Error 0. 수동 검증 별도 대기 |

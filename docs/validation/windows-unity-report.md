@@ -287,3 +287,6 @@ S5 커밋: bda1d18 (push 완료).
 
 S6 커밋: 9f2c71c (push 완료).
 | S7 | P2 가마솥·마법서 결계·재료4·오답 재생성/힌트·선택 아이템 소모/보상·Seal2 | builder exit 0; PlayMode 7/7; game Console Error 0 | 수동 감도·조작감·클릭·한글 확인 필요 |
+
+S7 커밋: ea3ca54 (push 완료).
+| S8 | P3 비문/소켓 거부/소모·봉인핵·문 코루틴·실제 Trigger/Cleared·클리어 재시작 | builder exit 0; PlayMode 8/8; game Console Error 0 | 수동 감도·조작감·클릭·한글 확인 필요 |

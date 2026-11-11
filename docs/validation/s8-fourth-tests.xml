@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="8" result="Passed" total="8" passed="8" failed="0" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-11-11 15:48:44Z" end-time="2026-11-11 15:49:00Z" duration="15.8713793">
+  <test-suite type="TestSuite" id="1021" name="UnityProject" fullname="UnityProject" runstate="Runnable" testcasecount="8" result="Passed" start-time="2026-11-11 15:48:44Z" end-time="2026-11-11 15:49:00Z" duration="15.871379" total="8" passed="8" failed="0" inconclusive="0" skipped="0" asserts="0">
+    <properties>
+      <property name="platform" value="PlayMode" />
+    </properties>
+    <test-suite type="Assembly" id="1017" name="MagicEscape.PlayMode.dll" fullname="C:/Users/nonam/Documents/MagicEscape/UnityProject/Library/ScriptAssemblies/MagicEscape.PlayMode.dll" runstate="Runnable" testcasecount="8" result="Passed" start-time="2026-11-11 15:48:44Z" end-time="2026-11-11 15:49:00Z" duration="15.860084" total="8" passed="8" failed="0" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="30348" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="PlayMode" />
+        <property name="EditorOnly" value="False" />
+      </properties>
+      <test-suite type="TestFixture" id="1001" name="ClassroomTests" fullname="ClassroomTests" classname="ClassroomTests" runstate="Runnable" testcasecount="1" result="Passed" start-time="2026-11-11 15:48:44Z" end-time="2026-11-11 15:48:44Z" duration="0.457119" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <test-case id="1002" name="S1_RoomAndDoorway" fullname="ClassroomTests.S1_RoomAndDoorway" methodname="S1_RoomAndDoorway" classname="ClassroomTests" runstate="Runnable" seed="148661931" result="Passed" start-time="2026-11-11 15:48:44Z" end-time="2026-11-11 15:48:44Z" duration="0.442734" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+          <output><![CDATA[[GameManager] Flow → Title
+]]></output>
+        </test-case>
+      </test-suite>
+      <test-suite type="TestFixture" id="1003" name="CluesTests" fullname="CluesTests" classname="CluesTests" runstate="Runnable" testcasecount="1" result="Passed" start-time="2026-11-11 15:48:44Z" end-time="2026-11-11 15:48:45Z" duration="0.871097" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <test-case id="1004" name="S5_ClueReadsAndVisibleOrder" fullname="CluesTests.S5_ClueReadsAndVisibleOrder" methodname="S5_ClueReadsAndVisibleOrder" classname="CluesTests" runstate="Runnable" seed="1269016832" result="Passed" start-time="2026-11-11 15:48:45Z" end-time="2026-11-11 15:48:45Z" duration="0.296542" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+          <output><![CDATA[[GameManager] Flow → Title
+[GameManager] Flow → Playing
+]]></output>
+        </test-case>
+      </test-suite>
+      <test-suite type="TestFixture" id="1005" name="ItemsTests" fullname="ItemsTests" classname="ItemsTests" runstate="Runnable" testcasecount="1" result="Passed" start-time="2026-11-11 15:48:45Z" end-time="2026-11-11 15:48:45Z" duration="0.277454" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <test-case id="1006" name="S4_CatalogHotbarSelection" fullname="ItemsTests.S4_CatalogHotbarSelection" methodname="S4_CatalogHotbarSelection" classname="ItemsTests" runstate="Runnable" seed="1470319429" result="Passed" start-time="2026-11-11 15:48:45Z" end-time="2026-11-11 15:48:45Z" duration="0.233789" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+          <output><![CDATA[[GameManager] Flow → Title
+[GameManager] Flow → Playing
+]]></output>
+        </test-case>
+      </test-suite>
+      <test-suite type="TestFixture" id="1007" name="PotionTests" fullname="PotionTests" classname="PotionTests" runstate="Runnable" testcasecount="1" result="Passed" start-time="2026-11-11 15:48:45Z" end-time="2026-11-11 15:48:49Z" duration="3.531546" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <test-case id="1008" name="S7_LocksWrongRespawnsAndRewards" fullname="PotionTests.S7_LocksWrongRespawnsAndRewards" methodname="S7_LocksWrongRespawnsAndRewards" classname="PotionTests" runstate="Runnable" seed="872229831" result="Passed" start-time="2026-11-11 15:48:45Z" end-time="2026-11-11 15:48:49Z" duration="3.511838" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+          <output><![CDATA[[GameManager] Flow → Title
+[GameManager] Flow → Playing
+[Toast] 월광초 꽃잎 획득
+[PotionPuzzle] ing_moonpetal → NotActive (진행 0, 실패 0)
+[Toast] 가마솥이 차갑다. 제단의 봉인이 먼저인 것 같다.
+[Toast] 마법서가 빛의 결계에 싸여 있다. 제단의 봉인을 먼저 풀어야 할 것 같다.
+[RunePuzzle] Earth → Progress (진행 1, 실패 0)
+[RunePuzzle] Water → Progress (진행 2, 실패 0)
+[RunePuzzle] Fire → Progress (진행 3, 실패 0)
+[RunePuzzle] Light → Solved (진행 4, 실패 0)
+[Toast] 제단의 봉인이 풀렸다! 제단 안에서 푸른 수정이 떠오른다.
+[GameManager] Rune → Solved
+[GameManager] Potion → Active
+[Toast] 푸른 수정 획득
+[PotionPuzzle] crystal_sapphire → NotIngredient (진행 0, 실패 0)
+[Toast] 이건 넣을 수 없다.
+[PotionPuzzle] ing_moonpetal → Accepted (진행 1, 실패 0)
+[Toast] 월광초 꽃잎을(를) 넣었다. (1/3)
+[Toast] 수정 가루 획득
+[PotionPuzzle] ing_crystal_dust → Wrong (진행 0, 실패 1)
+[Toast] 가마솥에서 검은 연기가 피어올랐다! 재료들이 제자리로 돌아갔다.
+[Toast] 독버섯 획득
+[PotionPuzzle] ing_toadstool → Wrong (진행 0, 실패 2)
+[Toast] 가마솥에서 검은 연기가 피어올랐다! 재료들이 제자리로 돌아갔다.
+힌트: 마법서의 순서를 다시 읽어 보자. 독버섯은 함정이다.
+[Toast] 월광초 꽃잎 획득
+[PotionPuzzle] ing_moonpetal → Accepted (진행 1, 실패 2)
+[Toast] 월광초 꽃잎을(를) 넣었다. (1/3)
+[Toast] 불도마뱀 비늘 획득
+[PotionPuzzle] ing_salamander_scale → Accepted (진행 2, 실패 2)
+[Toast] 불도마뱀 비늘을(를) 넣었다. (2/3)
+[Toast] 수정 가루 획득
+[PotionPuzzle] ing_crystal_dust → Solved (진행 3, 실패 2)
+[Toast] 계시의 물약이 완성되었다! 가마솥 바닥에서 붉은 수정도 얻었다.
+[GameManager] Potion → Solved
+[GameManager] Seal → Active
+]]></output>
+        </test-case>
+      </test-suite>
+      <test-suite type="TestFixture" id="1009" name="RuneTests" fullname="RuneTests" classname="RuneTests" runstate="Runnable" testcasecount="1" result="Passed" start-time="2026-11-11 15:48:49Z" end-time="2026-11-11 15:48:51Z" duration="2.480024" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <test-case id="1010" name="S6_WrongHintCorrectRewardSeal" fullname="RuneTests.S6_WrongHintCorrectRewardSeal" methodname="S6_WrongHintCorrectRewardSeal" classname="RuneTests" runstate="Runnable" seed="215117207" result="Passed" start-time="2026-11-11 15:48:49Z" end-time="2026-11-11 15:48:51Z" duration="2.478506" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+          <output><![CDATA[[GameManager] Flow → Title
+[GameManager] Flow → Playing
+[RunePuzzle] Earth → Progress (진행 1, 실패 0)
+[RunePuzzle] Water → Progress (진행 2, 실패 0)
+[Toast] 문양의 빛이 꺼졌다. 순서가 틀린 것 같다.
+[RunePuzzle] Wind → Wrong (진행 0, 실패 1)
+[RunePuzzle] Earth → Progress (진행 1, 실패 1)
+[RunePuzzle] Water → Progress (진행 2, 실패 1)
+[Toast] 문양의 빛이 꺼졌다. 순서가 틀린 것 같다.
+[RunePuzzle] Wind → Wrong (진행 0, 실패 2)
+[RunePuzzle] Earth → Progress (진행 1, 실패 2)
+[RunePuzzle] Water → Progress (진행 2, 실패 2)
+[Toast] 문양의 빛이 꺼졌다. 순서가 틀린 것 같다.
+힌트: 벽에 걸린 액자의 숫자 순서를 따라가 보자.
+[RunePuzzle] Wind → Wrong (진행 0, 실패 3)
+[RunePuzzle] Earth → Progress (진행 1, 실패 3)
+[RunePuzzle] Water → Progress (진행 2, 실패 3)
+[RunePuzzle] Fire → Progress (진행 3, 실패 3)
+[RunePuzzle] Light → Solved (진행 4, 실패 3)
+[Toast] 제단의 봉인이 풀렸다! 제단 안에서 푸른 수정이 떠오른다.
+[GameManager] Rune → Solved
+[GameManager] Potion → Active
+[Toast] 푸른 수정 획득
+]]></output>
+        </test-case>
+      </test-suite>
+      <test-suite type="TestFixture" id="1011" name="SealTests" fullname="SealTests" classname="SealTests" runstate="Runnable" testcasecount="1" result="Passed" start-time="2026-11-11 15:48:51Z" end-time="2026-11-11 15:48:59Z" duration="7.584182" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <test-case id="1012" name="S8_SealRejectionDoorPhysicalTriggerClearRestart" fullname="SealTests.S8_SealRejectionDoorPhysicalTriggerClearRestart" methodname="S8_SealRejectionDoorPhysicalTriggerClearRestart" classname="SealTests" runstate="Runnable" seed="714967538" result="Passed" start-time="2026-11-11 15:48:51Z" end-time="2026-11-11 15:48:59Z" duration="7.583425" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+          <output><![CDATA[[GameManager] Flow → Title
+[GameManager] Flow → Playing
+[Toast] 아직 봉인이 두 개 남아 있다.
+[SealPuzzle] Left ←  : Dormant
+[Toast] 아직 봉인이 두 개 남아 있다.
+[Toast] 아직 봉인이 두 개 남아 있다.
+[RunePuzzle] Earth → Progress (진행 1, 실패 0)
+[RunePuzzle] Water → Progress (진행 2, 실패 0)
+[RunePuzzle] Fire → Progress (진행 3, 실패 0)
+[RunePuzzle] Light → Solved (진행 4, 실패 0)
+[Toast] 제단의 봉인이 풀렸다! 제단 안에서 푸른 수정이 떠오른다.
+[GameManager] Rune → Solved
+[GameManager] Potion → Active
+[Toast] 푸른 수정 획득
+[Toast] 월광초 꽃잎 획득
+[PotionPuzzle] ing_moonpetal → Accepted (진행 1, 실패 0)
+[Toast] 월광초 꽃잎을(를) 넣었다. (1/3)
+[Toast] 불도마뱀 비늘 획득
+[PotionPuzzle] ing_salamander_scale → Accepted (진행 2, 실패 0)
+[Toast] 불도마뱀 비늘을(를) 넣었다. (2/3)
+[Toast] 수정 가루 획득
+[PotionPuzzle] ing_crystal_dust → Solved (진행 3, 실패 0)
+[Toast] 계시의 물약이 완성되었다! 가마솥 바닥에서 붉은 수정도 얻었다.
+[GameManager] Potion → Solved
+[GameManager] Seal → Active
+[Toast] 비문이 흐릿해 읽을 수 없다.
+[SealPuzzle] Left ← crystal_sapphire : NotAvailable
+[Toast] 소켓이 무엇을 원하는지 아직 알 수 없다. 비문을 먼저 읽어야 한다.
+[Toast] 봉인핵이 아직 잠잠하다. 두 수정을 모두 끼워야 한다.
+[SealPuzzle] Left ← crystal_ruby : Rejected
+[Toast] 수정이 튕겨 나왔다. 이 자리가 아닌 것 같다.
+[SealPuzzle] Left ← crystal_ruby : Rejected
+[Toast] 수정이 튕겨 나왔다. 이 자리가 아닌 것 같다.
+힌트: 물은 흐르고 불은 타오른다. 수정의 색을 보자.
+[SealPuzzle] Left ← crystal_sapphire : CrystalPlaced
+[SealPuzzle] Right ← crystal_ruby : CrystalPlaced
+[Toast] 마지막 봉인이 풀렸다! 출구가 열린다.
+[GameManager] Seal → Solved
+[DoorController] 출구 개방 완료
+[GameManager] Flow → Cleared
+[GameManager] Flow → Title
+]]></output>
+        </test-case>
+      </test-suite>
+      <test-suite type="TestFixture" id="1013" name="SystemsTests" fullname="SystemsTests" classname="SystemsTests" runstate="Runnable" testcasecount="1" result="Passed" start-time="2026-11-11 15:48:59Z" end-time="2026-11-11 15:48:59Z" duration="0.222247" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <test-case id="1014" name="S2_PlayerSystems" fullname="SystemsTests.S2_PlayerSystems" methodname="S2_PlayerSystems" classname="SystemsTests" runstate="Runnable" seed="1541876264" result="Passed" start-time="2026-11-11 15:48:59Z" end-time="2026-11-11 15:48:59Z" duration="0.220696" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+          <output><![CDATA[[GameManager] Flow → Title
+[GameManager] Flow → Playing
+[GameManager] Flow → Paused
+[GameManager] Flow → Playing
+]]></output>
+        </test-case>
+      </test-suite>
+      <test-suite type="TestFixture" id="1015" name="UITests" fullname="UITests" classname="UITests" runstate="Runnable" testcasecount="1" result="Passed" start-time="2026-11-11 15:48:59Z" end-time="2026-11-11 15:49:00Z" duration="0.433892" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <test-case id="1016" name="S3_PanelsButtonsReadRestart" fullname="UITests.S3_PanelsButtonsReadRestart" methodname="S3_PanelsButtonsReadRestart" classname="UITests" runstate="Runnable" seed="667677193" result="Passed" start-time="2026-11-11 15:48:59Z" end-time="2026-11-11 15:49:00Z" duration="0.433136" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+          <output><![CDATA[[GameManager] Flow → Title
+[GameManager] Flow → Playing
+[GameManager] Flow → Paused
+[GameManager] Flow → Playing
+[GameManager] Flow → Paused
+[GameManager] Flow → Title
+Saving results to: C:/Users/nonam/AppData/LocalLow/DefaultCompany/UnityProject\TestResults.xml
+]]></output>
+        </test-case>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>
