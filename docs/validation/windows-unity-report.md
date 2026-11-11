@@ -167,3 +167,87 @@ Exiting without the bug reporter. Application will terminate with return code 19
 - **CodeDrafts와 달라진 스크립트: 없음**(Assets/Scripts 미생성).
 - **큰 설계 판단: 없음.** Runtime asmdef 필요성 판단 이전. 정답/itemId/상태/문구 정본은 불변.
 - 재개 조건: 사용자가 Unity Hub에서 해당 계정의 유효한 라이선스를 활성화해 6000.3.28f1 Editor가 실행되는지 확인한 뒤, S1 프로젝트 생성부터 재시도. 비밀번호·토큰을 채팅/문서에 남기지 않는다.
+
+---
+
+# 세 번째 시도 — 2026-11-12 (KST)
+
+## 결과
+
+**createProject exit 0. S1 빌더 실행 전 Input System 패키지 컴파일 오류(exit 1)로 중단. S1~S9 미완료.**
+요청의 중단 규칙을 적용해 패키지 소스 수정/버전 변경 재시도나 이후 단계 실행은 하지 않았다. 라이선스 실패가 아니므로 라이선스 재시도 조건은 해당하지 않는다.
+
+- 시작 HEAD `9af200e`, main, 작업 트리 깨끗함. `git pull`: Already up to date.
+- 작성자 NoNamad5196 / 저장소 로컬 noreply 설정 유지.
+- Git Bash date: Thu Nov 12 00:22:26 2026 (KST). 첫 WSL bash 호출은 /bin/bash가 없어 실패했고 지정 Git Bash로 재확인했다.
+- 문서는 AGENTS → UNITY_HANDOFF → SCENE_SETUP → PUZZLE_SPEC → TEST_PLAN 순서로 읽고, 출력 잘림 부분은 개별 재독했다. AGENTS.md/정답/itemId/문구 정본 변경 없음.
+- 지정 Editor 6000.3.28f1만 사용. `ProjectSettings/ProjectVersion.txt`에도 동일 버전 기록.
+- 모든 Unity 실행에서 **-nographics 미사용**.
+- Hub 템플릿 대신 허용된 `-createProject` 경로 사용. 프로젝트 생성은 성공했으나 URP Asset/씬 설정 실행 전 컴파일에서 중단됐다.
+- 패키지 버전의 출처: 설치 Editor의 `Data/Resources/PackageManager/ProjectTemplates/com.unity.template.3d-cross-platform-17.0.14.tgz` 안 `package/ProjectData~/Packages/manifest.json`. 요청 버전 URP 17.0.1/Input System 1.12.0/uGUI 2.0.0/Test Framework 1.4.2. 실제 lock: URP **17.3.0** 및 Test Framework **1.6.0**(Editor builtin), Input System **1.12.0**(registry), uGUI 2.0.0.
+- 생성 기본 manifest의 multiplayer.center 및 VR/XR 모듈 직접 의존성을 제거했다. 최종 lock에 VR/XR 패키지 없음. 유료 에셋/외부 폰트 미도입.
+- `.gitignore`는 기존 내용 유지 및 Library/Logs/Temp/UserSettings 제외 확인.
+- Editor API 기반 멱등 S1 빌더 소스, 별도 PlayMode asmdef와 S1 테스트 소스, 재실행용 PowerShell 래퍼를 추가했다. **소스는 미검증이며 빌더 메서드 자체는 실행되지 않았다.** .unity/.prefab/.asset/.meta YAML 수기 작성 없음(.meta/ProjectSettings는 Unity 생성).
+- Assets/Scripts 복사, CodeDrafts 수정, Tests/ 복사 없음. UnityStubs.cs 없음. Runtime asmdef 미추가.
+
+## 실제 명령 및 결과
+
+저장소 루트에서 실행:
+
+```powershell
+git status --short
+git pull
+& 'C:\Program Files\Git\bin\bash.exe' -c date
+git config user.name
+git config user.email
+$p = Start-Process 'C:\Program Files\Unity\Hub\Editor\6000.3.28f1\Editor\Unity.exe' -ArgumentList '-batchmode -quit -createProject "C:\Users\nonam\Documents\MagicEscape\UnityProject" -logFile "C:\Users\nonam\Documents\MagicEscape\docs\validation\s1-third-create.log"' -WindowStyle Hidden -PassThru
+$p.WaitForExit()
+$p.ExitCode # 0
+./Tools/Run-Unity.ps1 -Name s1-builder -Method MagicEscape.EditorTools.ClassroomBuilder.S1
+# wrapper: -batchmode -projectPath <UnityProject> -logFile <s1-builder.log> -quit -executeMethod MagicEscape.EditorTools.ClassroomBuilder.S1
+# exit 1
+Select-String -Path docs/validation/s1-builder.log -Pattern 'error CS','Exception','Error'
+```
+
+- createProject: exit 0. Handshake/Access token Error가 있어도 entitlement resolve 및 프로젝트 생성 완료. 라이선스 오류로 종료된 이전 시도와 구별한다.
+- S1 builder: exit 1. `error CS` **3줄(동일 CS0117 1건 중복 출력)**, `Exception` **1줄(컴파일 입력 목록의 ExceptionHelpers.cs 파일명, 런타임 예외 아님)**, `Error` **9줄**. Error 줄에는 라이선스 초기 handshake/token 3줄 및 LogAssemblyErrors/컴파일 요약이 섞여 있다. 원시 문자열 매치 수를 Console 이벤트 수로 치환하지 않는다.
+- **컴파일 오류 1종 존재, Console Error 0 기준 불충족.** 씬 Play 미실행이므로 게임 Console 오류 수 미측정.
+- `-runTests -testPlatform PlayMode`: 컴파일 실패에서 중단해 미실행, 통과/전체 **N/A (0개 실행)**. XML 결과 없음. 새 테스트 파일 1건을 작성했지만 테스트 발견/통과 여부 미검증.
+- 원문 오류/스택은 아래 및 [s1-builder.log](s1-builder.log). 전체 생성 로그는 [s1-third-create.log](s1-third-create.log). 커밋 로그는 네트워크/세션/기계/라이선스 식별자만 비식별화. 로컬 원본은 gitignore된 UnityProject/Logs/third-attempt에 보존했다. 관리 코드 예외 스택은 출력되지 않았다.
+
+### 차단 오류 전문
+
+```console
+Library\PackageCache\com.unity.inputsystem@920b46832575\InputSystem\Editor\InputSystemPluginControl.cs(47,25): error CS0117: 'BuildTarget' does not contain a definition for 'ReservedCFE'
+## Script Compilation Error for: Csc Library/Bee/artifacts/1900b0aE.dag/Unity.InputSystem.dll (+2 others)
+## CmdLine: "C:\Program Files\Unity\Hub\Editor\6000.3.28f1\Editor\Data\NetCoreRuntime\dotnet.exe" exec "C:/Program Files/Unity/Hub/Editor/6000.3.28f1/Editor/Data/DotNetSdkRoslyn/csc.dll" /nostdlib /noconfig /shared "@Library/Bee/artifacts/1900b0aE.dag/Unity.InputSystem.rsp" "@Library/Bee/artifacts/1900b0aE.dag/Unity.InputSystem.rsp2"
+## Output:
+Library\PackageCache\com.unity.inputsystem@920b46832575\InputSystem\Editor\InputSystemPluginControl.cs(47,25): error CS0117: 'BuildTarget' does not contain a definition for 'ReservedCFE'
+
+Library\PackageCache\com.unity.inputsystem@920b46832575\InputSystem\Editor\InputSystemPluginControl.cs(47,25): error CS0117: 'BuildTarget' does not contain a definition for 'ReservedCFE'
+AssetDatabase: script compilation time: 25.746714s
+Scripts have compiler errors.
+Exiting without the bug reporter. Application will terminate with return code 1
+```
+
+로컬 패키지 소스 46~48행에서 `#if UNITY_6000_0_OR_NEWER` 아래 `BuildTarget.ReservedCFE`를 참조함을 확인했다. 직접 패키지 캐시/Editor API/설계 정본을 수정하지 않았다. 재개 시에는 6000.3.28f1 호환 Input System 패키지 버전 확인이 먼저 필요하다. 버전 후보나 수정 효과는 아직 검증하지 않았다.
+
+## S1~S9 인계
+
+아래 기능 단계의 성공 커밋은 모두 없음. 이번 커밋은 실패한 환경 준비/빌더 초안 및 증거 보존용이며, 완료 커밋이 아니다.
+
+| 단계 | 한 일 | 실제 검증 / 통과·전체 / Console | 커밋 | 수동 확인 / 남은 문제 |
+|---|---|---|---|---|
+| S1 | 프로젝트 생성, URP 패키지 추가, 씬 빌더·PlayMode 테스트 초안 | create exit 0; builder exit 1; PlayMode N/A; CS0117 1종, 게임 Console 미측정 | 기능 완료 커밋 없음; 본 증거 커밋 | Input System 호환 오류 해결 후 빌더 실행·씬 저장·테스트 필요 |
+| S2 | 미착수 | 미실행; N/A; Console 미측정 | 없음 | Core/Runtime 복사·시스템·플레이어; 마우스 감도/조작감 수동 확인 필요 |
+| S3 | 미착수 | 미실행; N/A; Console 미측정 | 없음 | UI·OFL 한글 폰트; UI 클릭/한글 렌더링 수동 확인 필요 |
+| S4 | 미착수 | 미실행; N/A; Console 미측정 | 없음 | ItemData 7종 |
+| S5 | 미착수 | 미실행; N/A; Console 미측정 | 없음 | 액자/칠판/읽기 패널 |
+| S6 | 미착수 | 미실행; N/A; Console 미측정 | 없음 | P1·보상·봉인 |
+| S7 | 미착수 | 미실행; N/A; Console 미측정 | 없음 | P2·재료 재생성·보상 |
+| S8 | 미착수 | 미실행; N/A; Console 미측정 | 없음 | P3·문·실제 Trigger/Cleared |
+| S9 | 미착수 | 미실행; N/A; Console 미측정 | 없음 | 전체 탈출/재시작/Console 0 |
+
+- TC-W01~W44 수동 결과는 ⏳ 유지. S10/S11 미실행.
+- **CodeDrafts와 달라진 Runtime/Core 스크립트: 없음**(Assets/Scripts 미생성). 추가 소스는 Assets/Editor/ClassroomBuilder.cs와 Assets/Tests/PlayMode/ClassroomTests.cs뿐이며 CodeDrafts 복제 대상이 아니다.
+- **큰 설계 판단: 없음.** 허용된 createProject→URP 경로 선택만 했고 정본 불변. Runtime asmdef 필요성 판단 전 중단.

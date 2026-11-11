@@ -81,6 +81,8 @@ TS-01이 다루는 항목:
 |---|---|---|---|---|---|
 | 2026-11-11 | ENV-W01 | Unity 6000.3.28f1 설치 실패(exit 1) | Windows 승격 취소 또는 시간 초과(1223 / ELEVATION_CANCELLED) | S1 이전 중단. 관리자 승인 후 설치 재개 필요. [오류 전문](validation/windows-unity-report.md) | 본 기록 커밋 |
 | 2026-11-12 | ENV-W02 | S1 createProject 중 Editor 종료(로그 return code 198) | 유효한 Unity Editor 라이선스 없음; Error 9줄(환경) | S1 중단. Hub 라이선스 활성화 후 재개. PlayMode 미실행, 게임 Console 미측정. [오류 전문](validation/windows-unity-report.md), [로그](validation/s1-create.log) | 본 기록 커밋 |
+| 2026-11-12 | ENV-W03 | 세 번째 시도: 프로젝트 생성 exit 0, S1 빌더 이전 컴파일 exit 1 | Input System 1.12.0 InputSystemPluginControl.cs(47,25) CS0117: BuildTarget.ReservedCFE 없음 | S1 중단, 호환 패키지 확인 필요. PlayMode 0개 실행/게임 Console 미측정. [오류 전문](validation/windows-unity-report.md), [로그](validation/s1-builder.log) | 본 증거 커밋 |
+
 
 ### 2026-11-11 Windows 실행 범위
 
@@ -93,3 +95,9 @@ Unity 설치 실패로 TC-W01~W44 및 Unity PlayMode 테스트는 전부 미실�
 ### 2026-11-12 Windows 재개 실행 범위
 
 6000.3.28f1 설치/Windows Standalone Support 폴더는 확인했으나 S1 프로젝트 생성이 라이선스 오류로 종료됐다. S1~S9 미완료, 빌더/PlayMode 미실행(0개), 게임 Console Error 수 미측정. TC-W01~W44 결과는 ⏳ 유지(환경 실패를 게임 TC 실패로 기록하지 않음). 마우스 감도·조작감·UI 클릭·한글 렌더링은 수동 확인 필요. S10/S11 미실행.
+
+
+### 2026-11-12 세 번째 시도 결과
+
+S1 createProject exit 0, S1 builder exit 1(Input System 패키지 CS0117 1종). `error CS` 3줄은 동일 오류 중복 출력, `Exception` 1줄은 파일명 ExceptionHelpers.cs, `Error` 9줄은 환경/컴파일 요약 포함. 게임 Console 이벤트 수는 미측정이며 0 Error 불충족. PlayMode 테스트 소스 1건 작성, 실행 0건, 통과/전체 N/A. 컴파일 실패에서 중단해 runTests 명령은 실행하지 않았다. TC-W01~W44는 실제 수동 검증하지 않아 전부 ⏳ 유지. S1~S9 미완료, S10/S11 범위 밖. 마우스 감도·조작감·UI 클릭·한글 렌더링 수동 확인 필요.
+

@@ -1,0 +1,5 @@
+{
+  "name": "MagicEscape.PlayMode",
+  "references": [],
+  "optionalUnityReferences": ["TestAssemblies"]
+}

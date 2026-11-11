@@ -21,7 +21,7 @@
 
 | 작업 | 상태 |
 |---|---|
-| S1 Unity 6.3 LTS URP 프로젝트 생성(`UnityProject/`) 및 저장소 통합 | 🪟 중단: 설치 확인 완료, 프로젝트 생성 시 라이선스 없음 / 로그 exit 198 (2026-11-12); S1 미완료 |
+| S1 Unity 6.3 LTS URP 프로젝트 생성(`UnityProject/`) 및 저장소 통합 | 🪟 중단: 세 번째 시도 createProject exit 0; Input System 1.12.0 CS0117로 builder exit 1 (2026-11-12); S1 미완료 |
 | S2 CodeDrafts → Assets/Scripts 복사, 컴파일 확인 / 플레이어 | 🪟 ❔ |
 | S3~S5 UI·ItemData·단서 | 🪟 ❔ |
 | S6~S8 퍼즐 1·2·3 연결 | 🪟 ❔ |
@@ -46,3 +46,13 @@
 - PlayMode 미실행(0개), 게임 Console Error 미측정. 생성 로그 Error 9줄은 라이선스 오류이며 게임 테스트 결과로 치환하지 않는다.
 - 스크립트 복사/수정 없음. Runtime asmdef 판단 전. 마우스 감도·조작감·UI 클릭·한글 렌더링 수동 확인 필요.
 - 재개 조건/명령/오류 전문: [Windows Unity 보고서의 2026-11-12 재개 기록](validation/windows-unity-report.md).
+
+
+### Windows 세 번째 시도 중단 — 2026-11-12
+
+- HEAD 9af200e에서 git pull 완료. 지정 6000.3.28f1, -nographics 없이 프로젝트 생성 exit 0. 이전 라이선스 차단은 이번 생성에서 재현되지 않음.
+- Hub 대신 createProject 후 설치 Editor 템플릿 manifest 버전을 참고해 URP/Input System/uGUI/Test Framework 추가. URP 실제 resolve 17.3.0. Input System 1.12.0의 BuildTarget.ReservedCFE 참조가 CS0117을 발생시켜 S1 빌더 실행 전에 exit 1. 지시대로 중단.
+- S1 멱등 빌더/별도 asmdef PlayMode 테스트 초안 및 Tools/Run-Unity.ps1 보존. 씬/URP Asset 미생성, 빌더 소스 자체 미검증. PlayMode 미실행(0개), 게임 Console 미측정, 컴파일 오류 1종 존재. S1~S9 미완료.
+- Assets/Scripts 복사 및 CodeDrafts 변경 없음. Runtime asmdef 미추가: 그 필요성을 판단할 S2/테스트 연결 단계에 도달하지 않음.
+- 마우스 감도·조작감·UI 클릭·한글 렌더링 수동 확인 필요. S10/S11 미실행. 재개에는 6000.3.28f1 호환 Input System 버전 확인부터 필요.
+- 명령/오류 전문/단계별 결과: [Windows 보고서 세 번째 시도](validation/windows-unity-report.md).
