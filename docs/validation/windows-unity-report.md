@@ -278,3 +278,6 @@ S2 커밋: 5f728ee (push 완료).
 
 S3 커밋: 36bc0ba (push 완료).
 | S4 | ItemData 7종·정본 itemId·카탈로그·색상 아이콘·슬롯/휠 모델 반영 | builder exit 0; PlayMode 4/4; game Console Error 0 | 수동 감도·조작감·클릭·한글 확인 필요 |
+
+S4 커밋: 4ffaa50 (push 완료).
+| S5 | 액자 III/I/IV/II·보이는 문양/장면/숫자·칠판·읽기 패널 | builder exit 0; PlayMode 5/5; game Console Error 0 | 수동 감도·조작감·클릭·한글 확인 필요 |

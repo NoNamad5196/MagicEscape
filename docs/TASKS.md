@@ -65,3 +65,5 @@
 | S3 | ✅ 자동 검증: uGUI/TMP·OFL Noto Sans KR·6패널·버튼·8슬롯·읽기/목표/일시정지 재시작; PlayMode 3/3, Console Error 0. 수동 검증 별도 대기 |
 
 | S4 | ✅ 자동 검증: ItemData 7종·정본 itemId·카탈로그·색상 아이콘·슬롯/휠 모델 반영; PlayMode 4/4, Console Error 0. 수동 검증 별도 대기 |
+
+| S5 | ✅ 자동 검증: 액자 III/I/IV/II·보이는 문양/장면/숫자·칠판·읽기 패널; PlayMode 5/5, Console Error 0. 수동 검증 별도 대기 |

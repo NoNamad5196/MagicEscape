@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="5" result="Passed" total="5" passed="5" failed="0" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-11-11 15:43:27Z" end-time="2026-11-11 15:43:30Z" duration="2.4756732">
+  <test-suite type="TestSuite" id="1015" name="UnityProject" fullname="UnityProject" runstate="Runnable" testcasecount="5" result="Passed" start-time="2026-11-11 15:43:27Z" end-time="2026-11-11 15:43:30Z" duration="2.475673" total="5" passed="5" failed="0" inconclusive="0" skipped="0" asserts="0">
+    <properties>
+      <property name="platform" value="PlayMode" />
+    </properties>
+    <test-suite type="Assembly" id="1011" name="MagicEscape.PlayMode.dll" fullname="C:/Users/nonam/Documents/MagicEscape/UnityProject/Library/ScriptAssemblies/MagicEscape.PlayMode.dll" runstate="Runnable" testcasecount="5" result="Passed" start-time="2026-11-11 15:43:27Z" end-time="2026-11-11 15:43:30Z" duration="2.462424" total="5" passed="5" failed="0" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="50460" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="PlayMode" />
+        <property name="EditorOnly" value="False" />
+      </properties>
+      <test-suite type="TestFixture" id="1001" name="ClassroomTests" fullname="ClassroomTests" classname="ClassroomTests" runstate="Runnable" testcasecount="1" result="Passed" start-time="2026-11-11 15:43:27Z" end-time="2026-11-11 15:43:28Z" duration="0.575929" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <test-case id="1002" name="S1_RoomAndDoorway" fullname="ClassroomTests.S1_RoomAndDoorway" methodname="S1_RoomAndDoorway" classname="ClassroomTests" runstate="Runnable" seed="1845930985" result="Passed" start-time="2026-11-11 15:43:27Z" end-time="2026-11-11 15:43:28Z" duration="0.557406" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+          <output><![CDATA[[GameManager] Flow → Title
+]]></output>
+        </test-case>
+      </test-suite>
+      <test-suite type="TestFixture" id="1003" name="CluesTests" fullname="CluesTests" classname="CluesTests" runstate="Runnable" testcasecount="1" result="Passed" start-time="2026-11-11 15:43:28Z" end-time="2026-11-11 15:43:29Z" duration="0.787362" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <test-case id="1004" name="S5_ClueReadsAndVisibleOrder" fullname="CluesTests.S5_ClueReadsAndVisibleOrder" methodname="S5_ClueReadsAndVisibleOrder" classname="CluesTests" runstate="Runnable" seed="898578842" result="Passed" start-time="2026-11-11 15:43:28Z" end-time="2026-11-11 15:43:29Z" duration="0.282064" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+          <output><![CDATA[[GameManager] Flow → Title
+[GameManager] Flow → Playing
+]]></output>
+        </test-case>
+      </test-suite>
+      <test-suite type="TestFixture" id="1005" name="ItemsTests" fullname="ItemsTests" classname="ItemsTests" runstate="Runnable" testcasecount="1" result="Passed" start-time="2026-11-11 15:43:29Z" end-time="2026-11-11 15:43:29Z" duration="0.294943" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <test-case id="1006" name="S4_CatalogHotbarSelection" fullname="ItemsTests.S4_CatalogHotbarSelection" methodname="S4_CatalogHotbarSelection" classname="ItemsTests" runstate="Runnable" seed="1057824973" result="Passed" start-time="2026-11-11 15:43:29Z" end-time="2026-11-11 15:43:29Z" duration="0.247951" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+          <output><![CDATA[[GameManager] Flow → Title
+[GameManager] Flow → Playing
+]]></output>
+        </test-case>
+      </test-suite>
+      <test-suite type="TestFixture" id="1007" name="SystemsTests" fullname="SystemsTests" classname="SystemsTests" runstate="Runnable" testcasecount="1" result="Passed" start-time="2026-11-11 15:43:29Z" end-time="2026-11-11 15:43:29Z" duration="0.277993" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <test-case id="1008" name="S2_PlayerSystems" fullname="SystemsTests.S2_PlayerSystems" methodname="S2_PlayerSystems" classname="SystemsTests" runstate="Runnable" seed="2134902780" result="Passed" start-time="2026-11-11 15:43:29Z" end-time="2026-11-11 15:43:29Z" duration="0.252941" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+          <output><![CDATA[[GameManager] Flow → Title
+[GameManager] Flow → Playing
+[GameManager] Flow → Paused
+[GameManager] Flow → Playing
+]]></output>
+        </test-case>
+      </test-suite>
+      <test-suite type="TestFixture" id="1009" name="UITests" fullname="UITests" classname="UITests" runstate="Runnable" testcasecount="1" result="Passed" start-time="2026-11-11 15:43:29Z" end-time="2026-11-11 15:43:30Z" duration="0.522492" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <test-case id="1010" name="S3_PanelsButtonsReadRestart" fullname="UITests.S3_PanelsButtonsReadRestart" methodname="S3_PanelsButtonsReadRestart" classname="UITests" runstate="Runnable" seed="48068519" result="Passed" start-time="2026-11-11 15:43:29Z" end-time="2026-11-11 15:43:30Z" duration="0.521584" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+          <output><![CDATA[[GameManager] Flow → Title
+[GameManager] Flow → Playing
+[GameManager] Flow → Paused
+[GameManager] Flow → Playing
+[GameManager] Flow → Paused
+[GameManager] Flow → Title
+Saving results to: C:/Users/nonam/AppData/LocalLow/DefaultCompany/UnityProject\TestResults.xml
+]]></output>
+        </test-case>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>
