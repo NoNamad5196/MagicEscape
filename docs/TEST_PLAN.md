@@ -82,6 +82,7 @@ TS-01이 다루는 항목:
 | 2026-11-11 | ENV-W01 | Unity 6000.3.28f1 설치 실패(exit 1) | Windows 승격 취소 또는 시간 초과(1223 / ELEVATION_CANCELLED) | S1 이전 중단. 관리자 승인 후 설치 재개 필요. [오류 전문](validation/windows-unity-report.md) | 본 기록 커밋 |
 | 2026-11-12 | ENV-W02 | S1 createProject 중 Editor 종료(로그 return code 198) | 유효한 Unity Editor 라이선스 없음; Error 9줄(환경) | S1 중단. Hub 라이선스 활성화 후 재개. PlayMode 미실행, 게임 Console 미측정. [오류 전문](validation/windows-unity-report.md), [로그](validation/s1-create.log) | 본 기록 커밋 |
 | 2026-11-12 | ENV-W03 | 세 번째 시도: 프로젝트 생성 exit 0, S1 빌더 이전 컴파일 exit 1 | Input System 1.12.0 InputSystemPluginControl.cs(47,25) CS0117: BuildTarget.ReservedCFE 없음 | S1 중단, 호환 패키지 확인 필요. PlayMode 0개 실행/게임 Console 미측정. [오류 전문](validation/windows-unity-report.md), [로그](validation/s1-builder.log) | 본 증거 커밋 |
+| 2026-11-12 | ENV-W03 해결 | 위와 동일 | manifest.json에 6000.0 시절 버전(URP 17.0.1, Input System 1.12.0, Test Framework 1.4.2)이 적혀 있었음. 6000.3.28f1 에디터 manifest의 minimumVersion은 URP 17.3.0, Input System 1.20.1, Test Framework 1.6.0 | 세 패키지를 에디터 최소 버전으로 올리고 packages-lock 재생성. batchmode 프로젝트 열기 exit 0, `error CS` 0건. URP 전역 설정 자동 생성 Warning 1건(오류 아님). S1 빌더·PlayMode는 아직 미실행 | 본 수정 커밋 |
 
 
 ### 2026-11-11 Windows 실행 범위
