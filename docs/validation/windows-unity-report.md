@@ -255,41 +255,85 @@ Exiting without the bug reporter. Application will terminate with return code 1
 ---
 # 네 번째 시도 — 2026-11-12 (KST)
 
-- 시작 git pull: Already up to date, be76629. 지정 Editor 6000.3.28f1만 사용; 모든 실행 -nographics 없음. 패키지 최소 버전 유지.
-- AGENTS → UNITY_HANDOFF → SCENE_SETUP → PUZZLE_SPEC → TEST_PLAN 읽음. AGENTS/정답/itemId/상태/문구 불변.
-- URP Renderer/ClassroomURP를 Editor API로 생성, Graphics 기본 및 Quality에 지정. Depth Texture/HDR ON. 원시 로그의 초기 Licensing handshake/token Error 3줄은 이후 라이선스 연결 성공·exit 0과 구분한다. Console Error는 컴파일 오류 및 PlayMode LogAssert(예상 Error 허용 없음) 기준; 단순 Error 문자열(LogAssemblyErrors 포함)은 이벤트 수가 아니다.
-- 원시 로그는 UnityProject/Logs/fourth-attempt(커밋 제외)에 보존. NUnit XML은 docs/validation/sN-fourth-tests.xml. 각 단계 명령은 아래와 같으며 N=단계 번호이다.
+## 최종 결과
+
+**S1~S9 자동 구현/검증 완료. 세 퍼즐을 풀고 실제 물리 ExitTrigger로 Cleared 도달. 최종 PlayMode 9/9, 실패/skip 0, 게임 Console Error/Exception/Assert 0.**
+수동 플레이를 수행했다는 뜻은 아니다. 감도·조작감·실제 UI 클릭·한글 렌더링은 수동 확인 필요. S10/S11은 미실행이다.
+
+- 저장소: C:/Users/nonam/Documents/MagicEscape, main. 시작 git pull은 Already up to date, HEAD be76629. 시작 트리 깨끗함. Git Bash date: Thu Nov 12 00:32:07 2026. 일반 bash는 WSL /bin/bash 미설치로 실패해 지정 Git Bash로 재확인.
+- AGENTS → UNITY_HANDOFF → SCENE_SETUP → PUZZLE_SPEC → TEST_PLAN 순서로 읽고 기존 보고/TASKS/코드를 확인. AGENTS.md 및 정답/itemId/상태/문구 변경 없음.
+- Editor: C:/Program Files/Unity/Hub/Editor/6000.3.28f1/Editor/Unity.exe만 사용. -nographics 없음. URP 17.3.0/Input System 1.20.1/Test Framework 1.6.0 유지. XR/VR·유료 에셋 없음.
+- URP Renderer/ClassroomURP를 Editor API로 생성하고 Graphics 기본 및 현재 Quality에 지정(나머지 Quality는 Graphics 기본 사용). Depth Texture/HDR ON, 카메라 Post Processing ON. S9에 명세의 기본 Volume/조명만 추가; 외형 에셋 교체/빌드는 하지 않음.
+- 모든 씬/Prefab/ItemData/Material/Font/Volume/설정은 Unity API/공식 패키지 import로 생성했다. .unity/.prefab/.asset/.meta YAML 수기 작성 없음. Tests 폴더와 UnityStubs.cs 복사 없음.
+- 로컬 Git 작성자 NoNamad5196 / 203311115+NoNamad5196@users.noreply.github.com 유지. 각 단계 builder → PlayMode → 오류 검사 → 기능 커밋 → push 완료. 강제 push 없음.
+
+## 단계별 결과
+
+아래 통과 수는 단계 당시의 **누적 테스트 수**다(최종 고유 테스트 9개). 모든 행의 builder/테스트 프로세스 exit=0, error CS=0, 예상하지 않은 게임 Error=0. 남은 자동 차단 결함은 없다. 각 행의 수동 항목은 아직 미실행이다.
+
+| 단계 | 한 일 | 실제 검증 | 커밋(push 완료) | 수동 확인 / 남은 문제 |
+|---|---|---|---|---|
+| S1 | URP Asset/Renderer·Graphics/Quality 지정, 레이어·교실/복도/북문 구멍·기본 조명 | S1 빌더 + PlayMode 1/1; Console Error 0 | b40bbde | 그레이박스 외형 수동 확인 필요; 자동 차단 없음 |
+| S2 | Core/Runtime 복사(Tests 제외), Runtime asmdef·시스템·EventSystem·Player/카메라 | S2 빌더 + PlayMode 2/2; Console Error 0 | 5f728ee | 마우스 감도·조작감 수동 확인 필요; 자동 차단 없음 |
+| S3 | OFL Noto Sans KR 동적 TMP 4096, UI 6패널·버튼·핫바 8칸 | S3 빌더 + PlayMode 3/3; Console Error 0 | 36bc0ba | 실제 UI 클릭·한글 렌더링 수동 확인 필요; 자동 차단 없음 |
+| S4 | 정본 ItemData 7종·카탈로그·색상 임시 아이콘 | S4 빌더 + PlayMode 4/4; Console Error 0 | 4ffaa50 | 아이콘 식별·이름 가독성 수동 확인 필요; 자동 차단 없음 |
+| S5 | 액자 III/I/IV/II와 보이는 숫자/문양/장면·칠판·읽기 | S5 빌더 + PlayMode 5/5; Console Error 0 | bda1d18 | 액자/문양/칠판 가독성 수동 확인 필요; 자동 차단 없음 |
+| S6 | P1 문양석6·발광·뚜껑·오답3회/힌트·푸른 수정·Seal1/P2 해금 | S6 빌더 + PlayMode 6/6; Console Error 0 | 9f2c71c | 발광/뚜껑/보상 연출 체감 수동 확인 필요; 자동 차단 없음 |
+| S7 | P2 가마솥/마법서 결계/재료4·오답 원위치 재생성·보상2종·Seal2 | S7 빌더 + PlayMode 7/7; Console Error 0 | ea3ca54 | 색/연기/보상 피드백 체감 수동 확인 필요; 자동 차단 없음 |
+| S8 | P3 비문/소켓 거부·소모/핵·문 코루틴·실제 Trigger/Cleared·재시작 | S8 빌더 + PlayMode 8/8; Console Error 0 | 0b471db | 문 회전/받침대 뒤 보행·비문 가독성 수동 확인 필요; 자동 차단 없음 |
+| S9 | 실제 입력/Raycast로 퍼즐3 해결, W/물리로 탈출; 6개 Prefab·기본 Volume/조명·멱등 확인 | S9 빌더 + PlayMode 9/9; Console Error 0 | f3331b9 | 사람의 전 구간 플레이·UI/감도/한글·10~15분 평가 수동 확인 필요; 자동 차단 없음 |
+
+## 실행 명령 및 증거
+
+저장소 루트에서 N=1~9 각각 실제 실행했다. S9는 수정 후 여러 차례 재실행했고, 최종 동일 소스/구성으로 빌더를 연속 두 번 실행한 뒤 PlayMode를 다시 통과했다.
 
 ```powershell
+git pull
+& 'C:\Program Files\Git\bin\bash.exe' -c date
 ./Tools/Run-Unity.ps1 -Name sN-fourth-builder -Method MagicEscape.EditorTools.ClassroomBuilder.SN
 ./Tools/Run-Unity.ps1 -Name sN-fourth-tests -Tests
-./Tools/Record-Stage.ps1 -Stage N -Description '<작업>' -Message '<기능 커밋>'
+./Tools/Record-Stage.ps1 -Stage N -Description '<해당 단계 작업>' -Message '<기능 커밋>'
 ```
 
-| 단계 | 한 일 | 실제 검증 | 수동 확인/남은 문제 |
-|---|---|---|---|
-| S1 | URP Asset/Renderer·레이어·교실/복도/북문 구멍·조명 저장 | builder exit 0; PlayMode 1/1; game Console Error 0 | 수동 감도·조작감·클릭·한글 확인 필요 |
+래퍼가 실행한 핵심 Unity 인자:
 
-S1 커밋: b40bbde (push 완료).
-| S2 | Core/Runtime 복사·Runtime asmdef·시스템·Player·이동 벽 충돌/일시정지 | builder exit 0; PlayMode 2/2; game Console Error 0 | 수동 감도·조작감·클릭·한글 확인 필요 |
+```console
+-batchmode -projectPath <repo>/UnityProject -quit -executeMethod MagicEscape.EditorTools.ClassroomBuilder.SN -logFile <repo>/docs/validation/sN-fourth-builder.log
+-batchmode -projectPath <repo>/UnityProject -runTests -testPlatform PlayMode -testResults <repo>/docs/validation/sN-fourth-tests.xml -logFile <repo>/docs/validation/sN-fourth-tests.log
+```
 
-S2 커밋: 5f728ee (push 완료).
-| S3 | uGUI/TMP·OFL Noto Sans KR·6패널·버튼·8슬롯·읽기/목표/일시정지 재시작 | builder exit 0; PlayMode 3/3; game Console Error 0 | 수동 감도·조작감·클릭·한글 확인 필요 |
+- [S1 XML](s1-fourth-tests.xml) ~ [S9 XML](s9-fourth-tests.xml): 각 단계 누적 1/1~9/9, skip 0.
+- [Console 계측](s9-console-audit.txt): Application.logMessageReceived에서 Error/Exception/Assert 이벤트 **0**. 예상 오류를 허용하는 LogAssert.Expect 사용 없음. NUnit 기본 unexpected Error 감시도 유지.
+- [원시 문자열 검사 요약](fourth-attempt-log-scan.json): 성공한 각 builder/test의 error CS, 관리 예외 헤더, Debug.LogError/LogException 0. 단순 Exception/ Error 부분 문자열 수는 별도 기록했다.
+- 로그 시작의 Licensing handshake/token Error 3줄은 이후 정상 라이선스 연결/exit 0과 구분했다. LogAssemblyErrors, ExecuteEnumerableAndRecordExceptions 같은 이름도 단순 문자열 검색에 걸리므로 게임 Console 이벤트 수로 치환하지 않았다.
+- 원시 로그/실패 중간 XML은 UnityProject/Logs/fourth-attempt에 로컬 보존(식별자 포함 가능, gitignore). 성공 XML/계측/스캔 요약만 커밋했다.
+- [멱등 검사](s9-idempotency.txt): 최종 S9 두 번 재구성 후 171개 오브젝트의 이름/계층·활성·위치·스케일·컴포넌트 타입 manifest SHA256 동일. [manifest](s9-scene-manifest.txt). Unity YAML 파일 ID/바이트 동일성을 의미하지 않는다. 에셋은 경로로 재사용한다.
+- CodeDrafts/Core·Runtime의 모든 .cs/.asmdef를 Assets/Scripts의 상대 대응 파일과 SHA256 비교: 차이 0. UnityStubs.cs 없음 확인. 패키지 버전/AGENTS 불변 확인.
 
-S3 커밋: 36bc0ba (push 완료).
-| S4 | ItemData 7종·정본 itemId·카탈로그·색상 아이콘·슬롯/휠 모델 반영 | builder exit 0; PlayMode 4/4; game Console Error 0 | 수동 감도·조작감·클릭·한글 확인 필요 |
+### TMP 사전 import 명령
 
-S4 커밋: 4ffaa50 (push 완료).
-| S5 | 액자 III/I/IV/II·보이는 문양/장면/숫자·칠판·읽기 패널 | builder exit 0; PlayMode 5/5; game Console Error 0 | 수동 감도·조작감·클릭·한글 확인 필요 |
+ImportPackage가 완료되기 전에 Font API를 호출한 ENV-W05를 수정했다. quit 없이 importPackageCompleted 콜백이 exit 0으로 종료하게 실행한 뒤 S3를 재실행했다.
 
-S5 커밋: bda1d18 (push 완료).
-| S6 | P1 문양석6·발광·뚜껑·숨김 보상·오답3회 힌트·P2 해금·Seal1 | builder exit 0; PlayMode 6/6; game Console Error 0 | 수동 감도·조작감·클릭·한글 확인 필요 |
+```console
+Unity.exe -batchmode -projectPath <repo>/UnityProject -executeMethod MagicEscape.EditorTools.ClassroomBuilder.ImportTMP -logFile <repo>/UnityProject/Logs/fourth-attempt/import-tmp.log
+```
 
-S6 커밋: 9f2c71c (push 완료).
-| S7 | P2 가마솥·마법서 결계·재료4·오답 재생성/힌트·선택 아이템 소모/보상·Seal2 | builder exit 0; PlayMode 7/7; game Console Error 0 | 수동 감도·조작감·클릭·한글 확인 필요 |
+폰트는 Google Fonts Noto Sans KR 원본 TTF/OFL 1.1을 Assets/Fonts에 보존했다. 출처/라이선스는 Assets/Fonts/README.md와 OFL.txt. authored TMP 전부 해당 폰트 적용, 글리프 커버리지 자동 검사 통과(실제 시각 렌더링은 미확인).
 
-S7 커밋: ea3ca54 (push 완료).
-| S8 | P3 비문/소켓 거부/소모·봉인핵·문 코루틴·실제 Trigger/Cleared·클리어 재시작 | builder exit 0; PlayMode 8/8; game Console Error 0 | 수동 감도·조작감·클릭·한글 확인 필요 |
+## 검증 범위와 해결 사항
 
-S8 커밋: 0b471db (push 완료).
-| S9 | 합성 키보드/휠·중앙 Raycast E로 세 퍼즐·W 물리 탈출 Cleared·Console 계측0·멱등 재실행 | builder exit 0; PlayMode 9/9; game Console Error 0 | 수동 감도·조작감·클릭·한글 확인 필요 |
+- S1~S8은 씬을 로드한 뒤 실제 Runtime 컴포넌트/인벤토리/코루틴/물리 Trigger/UI OnClick을 검사했다. S9는 테스트 장치를 통해 ESC/Tab/E/숫자키/마우스 휠을 전달하고 중앙 Raycast 거리 2.5m를 검증했다. 퍼즐/아이템 상호작용은 실제 PlayerInteraction 경로를 탄다.
+- 상호작용 장소 간 이동 및 조준 정렬은 테스트에서 결정론적으로 배치했다. **전 구간을 WASD로 돌아다닌 인간 플레이가 아니다.** 마지막 출구 우회 구간은 W 입력 → CharacterController 충돌 → 실제 Trigger → Cleared로 검증했다. S8/S3에서 클리어/일시정지 버튼 재시작과 초기화도 검증했다.
+- 정상 Flow 로그까지 실패시킨 테스트 API 사용(TEST-W04), TMP 비동기 import(ENV-W05), batch Game View 입력 라우팅(TEST-W06), 중복 out 변수(TEST-W09)는 원인 확인 후 수정했다.
+- 실제 Raycast가 찾은 GAME-W07: Cylinder 기본 CapsuleCollider가 시각 제단보다 높아 보상을 가렸다. 명세대로 BoxCollider(로컬 1,2,1)로 생성해 수정했다.
+- 실제 보행이 찾은 GAME-W08: 받침대/비문 주변과 북벽 틈이 좁았다. **시각 크기·위치와 Player 규격은 유지**하고 받침대 충돌 hull 깊이만 0.2m/중심을 0.1m 앞쪽으로 inset했다(후면 통로 0.7m). 비문판/소켓컵/핵은 Player 접촉만 제외하고 Raycast는 유지했다. 테스트 waypoint 오차도 조정한 뒤 최종 9/9를 연속 두 번 통과했다. 자세한 결함/실패 수치는 TEST_PLAN §3에 기록했다.
+- 빌드/실제 종료 버튼·일반 플레이어 평가·S10 외형 완성은 하지 않았다. 무음/기본 도형/단순 파티클의 그레이박스이며, VFX/빛/조작 체감 및 받침대 뒤쪽 보행은 수동 확인 필요.
+
+## 파일·설계 인계
+
+- 주요 생성물: Assets/Scenes/Classroom.unity, Assets/Settings, Assets/Data/Items(7종), Assets/Fonts, Assets/Prefabs(6종), Assets/Scripts/Core·Runtime, Assets/Editor/Classroom*Builder.cs, Assets/Tests/PlayMode.
+- 실행 도구: Tools/Run-Unity.ps1(TestFilter 옵션 추가), Tools/Record-Stage.ps1. 현재 전체 테스트는 최종 S9 씬을 전제로 한다. 이전 단계만 다시 구성하면 해당 단계 테스트를 -TestFilter로 선택한다.
+- 문서: TEST_PLAN 결과 칸/§3 결함, TASKS Windows 표, 이 보고서 갱신.
+- **CodeDrafts와 달라진 .cs/.asmdef 목록: 없음.** Runtime asmdef 신설은 양쪽에 같은 내용으로 반영했다. Editor 빌더/Unity PlayMode 테스트는 CodeDrafts 복제 대상이 아니다.
+- **큰 설계 판단: 없음.** 별도 PlayMode asmdef가 Assembly-CSharp를 참조할 수 없어 Runtime asmdef만 추가(Core/TMP/uGUI/Input System 참조). 정본/게임 설계 불변. 위 충돌 hull 조정은 실제 보행으로 확인한 그레이박스 구현 보정이다.
+- 남은 항목: 마우스 감도·조작감·실제 UI 클릭·한글 렌더링·전체 인간 플레이. S10/S11은 별도 작업.

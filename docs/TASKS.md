@@ -78,5 +78,3 @@ Runtime asmdef 추가 이유: 별도 PlayMode asmdef는 Assembly-CSharp를 참�
 - 실제 입력/Raycast/물리 경로가 발견한 콜라이더 문제를 수정했다. 정답/itemId/상태/문구·시각 배치/크기 불변. 상세 hull 조정과 테스트 결함은 TEST_PLAN §3 참조.
 - 마우스 감도·조작감·UI 실제 클릭·한글 렌더링·받침대 뒤쪽 보행 체감은 수동 확인 필요. 일반 플레이어 10~15분 평가/빌드는 미실행.
 - 명령·단계별 커밋·검증 한계: [Windows 최종 보고](validation/windows-unity-report.md#네-번째-시도--2026-11-12-kst).
-
-| S9 | ✅ 자동 검증: 합성 키보드/휠·중앙 Raycast E로 세 퍼즐·W 물리 탈출 Cleared·Console 계측0·멱등 재실행; PlayMode 9/9, Console Error 0. 수동 검증 별도 대기 |

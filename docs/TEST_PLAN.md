@@ -104,7 +104,7 @@ S1 createProject exit 0, S1 builder exit 1(Input System 패키지 CS0117 1종). 
 
 
 S1 자동 검증: URP Asset/Renderer·레이어·교실/복도/북문 구멍·조명 저장. PlayMode 1/1, game Console Error 0. 명령/범위는 windows-unity-report의 네 번째 시도 참조. 수동 TC는 별도 미실행.
-`n| 2026-11-12 | TEST-W04 | S2 1/2: NoUnexpectedReceived가 정상 Flow 로그까지 실패 처리 | 테스트 API를 모든 로그 무발생 검증으로 사용한 오류 | 해당 호출 제거, Test Framework 기본 unexpected Error/Exception 실패 감시는 유지; 재실행 | S2 수정 커밋 |
+`n| 2026-11-12 | TEST-W04 | S2 1/2: NoUnexpectedReceived가 정상 Flow 로그까지 실패 처리 | 테스트 API를 모든 로그 무발생 검증으로 사용한 오류 | 해당 호출 제거, Test Framework 기본 unexpected Error/Exception 실패 감시는 유지; 재실행 | 5f728ee |
 
 S2 자동 검증: Core/Runtime 복사·Runtime asmdef·시스템·Player·이동 벽 충돌/일시정지. PlayMode 2/2, game Console Error 0. 명령/범위는 windows-unity-report의 네 번째 시도 참조. 수동 TC는 별도 미실행.
 
@@ -131,10 +131,10 @@ S9 입력 시나리오는 테스트용 키보드/마우스로 ESC/Tab/E/숫자�
 
 | 날짜 | ID | 현상 | 원인 | 조치 | 커밋 |
 |---|---|---|---|---|---|
-| 2026-11-12 | ENV-W05 | S3 TMP_FontAsset 생성 NullReferenceException | TMP_Settings 미설치: ImportPackage 비동기 완료 전에 Font API를 호출함 | importPackageCompleted 후 종료하는 별도 ImportTMP 실행, S3 재실행 | S3 수정 커밋 |
-| 2026-11-12 | TEST-W06 | S9 합성 ESC가 Playing을 유지(8/9) | 비활성 batch Game View의 기본 입력 라우팅이 키보드 이벤트를 편집기로 보냄; 패키지 InputSettings/InputManager 소스 확인 | 테스트 동안만 AllDeviceInputAlwaysGoesToGameView/IgnoreFocus 설정 후 복구. 게임 코드/입력 설계 변경 없음. 이후 실제 E로 P1 해결 도달 | S9 수정 커밋 |
-| 2026-11-12 | GAME-W07 | 실제 Raycast에서 보상 수정을 AltarBase가 가림(8/9) | Unity Cylinder 기본 CapsuleCollider가 xz 최대 스케일에 맞춰 높이를 늘림: 시각 제단 상면 1.0m보다 콜라이더가 높음 | Cylinder 그레이박스 생성 시 명세의 BoxCollider로 교체(로컬 size 1,2,1). 보이는 치수/보상/정답 불변 | S9 수정 커밋 |
-| 2026-11-12 | GAME-W08 | 전체 E 풀이 후 출구 우회 보행 막힘(8/9) | 받침대/비문/상부 소켓이 북벽과 0.45m 틈을 만들어 지름 0.6m+skin의 CharacterController가 못 지남 | 시각 크기/위치·Player 규격 유지. 받침대 hull 깊이 0.2m, 중심 z를 0.1m 앞쪽으로 inset해 뒤 0.7m 통로 확보. 비문/소켓컵/핵은 Player 접촉만 제외(중앙 Raycast 유지). 보행 waypoint 허용 오차도 0.09→0.035m로 보정; 전체 입력 재검증 | S9 기능 커밋 |
-| 2026-11-12 | TEST-W09 | S9 글리프 검사 추가 후 CS0128 | 같은 테스트 범위에 out 변수 missing을 두 번 선언 | out discard로 수정, 빌더/전체 테스트 재실행 | S9 수정 커밋 |
+| 2026-11-12 | ENV-W05 | S3 TMP_FontAsset 생성 NullReferenceException | TMP_Settings 미설치: ImportPackage 비동기 완료 전에 Font API를 호출함 | importPackageCompleted 후 종료하는 별도 ImportTMP 실행, S3 재실행 | 36bc0ba |
+| 2026-11-12 | TEST-W06 | S9 합성 ESC가 Playing을 유지(8/9) | 비활성 batch Game View의 기본 입력 라우팅이 키보드 이벤트를 편집기로 보냄; 패키지 InputSettings/InputManager 소스 확인 | 테스트 동안만 AllDeviceInputAlwaysGoesToGameView/IgnoreFocus 설정 후 복구. 게임 코드/입력 설계 변경 없음. 이후 실제 E로 P1 해결 도달 | f3331b9 |
+| 2026-11-12 | GAME-W07 | 실제 Raycast에서 보상 수정을 AltarBase가 가림(8/9) | Unity Cylinder 기본 CapsuleCollider가 xz 최대 스케일에 맞춰 높이를 늘림: 시각 제단 상면 1.0m보다 콜라이더가 높음 | Cylinder 그레이박스 생성 시 명세의 BoxCollider로 교체(로컬 size 1,2,1). 보이는 치수/보상/정답 불변 | f3331b9 |
+| 2026-11-12 | GAME-W08 | 전체 E 풀이 후 출구 우회 보행 막힘(8/9) | 받침대/비문/상부 소켓이 북벽과 0.45m 틈을 만들어 지름 0.6m+skin의 CharacterController가 못 지남 | 시각 크기/위치·Player 규격 유지. 받침대 hull 깊이 0.2m, 중심 z를 0.1m 앞쪽으로 inset해 뒤 0.7m 통로 확보. 비문/소켓컵/핵은 Player 접촉만 제외(중앙 Raycast 유지). 보행 waypoint 허용 오차도 0.09→0.035m로 보정; 전체 입력 재검증 | f3331b9 |
+| 2026-11-12 | TEST-W09 | S9 글리프 검사 추가 후 CS0128 | 같은 테스트 범위에 out 변수 missing을 두 번 선언 | out discard로 수정, 빌더/전체 테스트 재실행 | f3331b9 |
 
 S9 자동 검증: 합성 키보드/휠·중앙 Raycast E로 세 퍼즐·W 물리 탈출 Cleared·Console 계측0·멱등 재실행. PlayMode 9/9, game Console Error 0. 명령/범위는 windows-unity-report의 네 번째 시도 참조. 수동 TC는 별도 미실행.
