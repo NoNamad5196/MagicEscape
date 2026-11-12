@@ -17,7 +17,7 @@ public class SystemsTests
         Assert.AreEqual(8,p.gameObject.layer); Assert.AreEqual(1,Object.FindObjectsByType<Camera>(FindObjectsSortMode.None).Length);
         Assert.NotNull(Object.FindFirstObjectByType<InputSystemUIInputModule>());
         Assert.AreEqual(8,InventoryManager.Instance.Model.Capacity);
-        gm.StartGame(); yield return null;
+        gm.StartGame(); gm.SkipPresentation(); yield return null;
         Assert.True(p.ControlEnabled); Assert.AreEqual(GameFlowState.Playing,gm.Progression.Flow);
         gm.TogglePause(); Assert.AreEqual(0,Time.timeScale); Assert.False(p.ControlEnabled);
         gm.Resume(); Assert.AreEqual(1,Time.timeScale); Assert.True(p.ControlEnabled);

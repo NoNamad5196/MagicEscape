@@ -26,6 +26,7 @@ namespace MagicEscape
         public bool InteractPressed { get; private set; }
         public bool PausePressed { get; private set; }
         public bool ObjectivePressed { get; private set; }
+        public bool AnyPressed { get; private set; }
         /// <summary>숫자키 1~8로 선택한 슬롯(0-based). 없으면 -1.</summary>
         public int SlotPressed { get; private set; }
         /// <summary>휠 방향: +1(위) / -1(아래) / 0.</summary>
@@ -48,7 +49,8 @@ namespace MagicEscape
         {
             Keyboard kb = Keyboard.current;
             Mouse mouse = Mouse.current;
-            if (kb == null || mouse == null)
+            AnyPressed = kb != null && kb.anyKey.wasPressedThisFrame;
+            if (kb == null)
             {
                 ClearAll();
                 return;
@@ -57,13 +59,13 @@ namespace MagicEscape
             float x = (kb.dKey.isPressed ? 1f : 0f) - (kb.aKey.isPressed ? 1f : 0f);
             float y = (kb.wKey.isPressed ? 1f : 0f) - (kb.sKey.isPressed ? 1f : 0f);
             Move = Vector2.ClampMagnitude(new Vector2(x, y), 1f);
-            Look = mouse.delta.ReadValue() * newInputMouseScale;
+            Look = mouse != null ? mouse.delta.ReadValue() * newInputMouseScale : Vector2.zero;
 
             InteractPressed = kb.eKey.wasPressedThisFrame;
             PausePressed = kb.escapeKey.wasPressedThisFrame;
             ObjectivePressed = kb.tabKey.wasPressedThisFrame;
 
-            float wheel = mouse.scroll.ReadValue().y;
+            float wheel = mouse != null ? mouse.scroll.ReadValue().y : 0;
             Scroll = wheel > 0.01f ? 1 : wheel < -0.01f ? -1 : 0;
 
             for (int i = 0; i < SlotKeys.Length; i++)
@@ -81,6 +83,7 @@ namespace MagicEscape
 #if ENABLE_LEGACY_INPUT_MANAGER
         private void ReadLegacyInput()
         {
+            AnyPressed = Input.anyKeyDown;
             Move = Vector2.ClampMagnitude(new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical")), 1f);
             Look = new Vector2(Input.GetAxisRaw("Mouse X"), Input.GetAxisRaw("Mouse Y"));
             InteractPressed = Input.GetKeyDown(KeyCode.E);
@@ -102,6 +105,7 @@ namespace MagicEscape
             Move = Vector2.zero;
             Look = Vector2.zero;
             InteractPressed = PausePressed = ObjectivePressed = false;
+            AnyPressed = false;
             Scroll = 0;
         }
     }

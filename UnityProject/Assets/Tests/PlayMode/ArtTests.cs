@@ -57,7 +57,7 @@ public class ArtTests
     {
         yield return SceneManager.LoadSceneAsync("Classroom"); yield return null;
         Directory.CreateDirectory(Output);
-        GameManager.Instance.StartGame();
+        GameManager.Instance.StartGame(); GameManager.Instance.SkipPresentation();
         Assert.True(RenderSettings.ambientLight.maxColorComponent<.08f,"Near-black blue ambient");
         Assert.AreEqual(FogMode.Exponential,RenderSettings.fogMode);
         Assert.AreEqual(2,Object.FindObjectsByType<Light>(FindObjectsSortMode.None).Count(l=>l.enabled&&l.shadows!=LightShadows.None),"Only lantern and moon cast real-time shadows");

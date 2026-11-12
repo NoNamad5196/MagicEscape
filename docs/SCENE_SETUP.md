@@ -1,6 +1,7 @@
 # MagicEscape — 씬·프리팹·Inspector 구성 명세
 
 ## S10e 추가 계층
+- `RoomPresentation`: 촛불/불꽃 6개, 오프닝 중 감출 기존 조명, 봉인등 3개, 제단 발광, 다음 퍼즐 신호, 봉인핵 파편, dawn spot(그림자 없음), 최상위 페이드 Image, ClearPanel CanvasGroup. 테스트는 GameManager.SkipPresentation() 사용.
 - `ClassroomFifthArtBuilder.S10ePhase1/2`는 저장된 Classroom을 열고 Editor API로 원소 표현과 시각 단서를 추가한다. YAML 수작업 없음.
 - `E_Element_*`: 공통 원소 메시/입자. 새 장식 콜라이더 없음, emitter 당 최대 36, 입자 라이트 없음.
 - 재료의 기존 월드 위치/상호작용 콜라이더 유지. 창가 화분의 월광초에 국소 달빛 spot(그림자 없음) 추가.

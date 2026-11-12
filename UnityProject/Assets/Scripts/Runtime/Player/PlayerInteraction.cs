@@ -32,6 +32,8 @@ namespace MagicEscape
             GameManager gm = GameManager.Instance;
             UIManager ui = UIManager.Instance;
             if (gm == null || ui == null) return;
+            var presentation=FindFirstObjectByType<RoomPresentation>();
+            if(presentation!=null && (presentation.InputBlocked||presentation.SkippedThisFrame)){ClearFocus(ui);return;}
 
             if (_input.PausePressed)
             {

@@ -11,7 +11,9 @@ namespace MagicEscape
         void Update()
         {
             bool playing=GameManager.Instance!=null && GameManager.Instance.IsPlaying;
-            Bed(drone,playing,.075f);Bed(wind,playing,.10f);
+            int stage=GameManager.Instance!=null?GameManager.Instance.Progression.SolvedCount:0;
+            Bed(drone,playing,.075f-stage*.015f);Bed(wind,playing,.10f+stage*.012f);
+            if(drone!=null)drone.pitch=1+stage*.06f;
             if(!playing)return;
             elapsed+=Time.deltaTime;
             if(elapsed<nextCreak||timber==null)return;

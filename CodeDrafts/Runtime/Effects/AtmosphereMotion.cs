@@ -30,7 +30,8 @@ namespace MagicEscape
             float t=Time.time;
             if(kind==Kind.Flame)
             {
-                if(source!=null) source.intensity=brightness*(.94f+.08f*Mathf.PerlinNoise(seed,t*4)+.025f*Mathf.Sin(t*13+seed));
+                int stage=GameManager.Instance!=null?GameManager.Instance.Progression.SolvedCount:0;
+                if(source!=null) source.intensity=brightness*(1+stage*.2f)*(.94f+.08f*Mathf.PerlinNoise(seed,t*4)+.025f*Mathf.Sin(t*13+seed));
             }
             else if(kind==Kind.Lantern)
             {

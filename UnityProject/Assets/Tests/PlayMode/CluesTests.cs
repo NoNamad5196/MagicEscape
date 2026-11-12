@@ -10,7 +10,7 @@ public class CluesTests
 {
     [UnityTest] public IEnumerator S5_ClueReadsAndVisibleOrder()
     {
-        yield return SceneManager.LoadSceneAsync("Classroom"); yield return null; GameManager.Instance.StartGame();
+        yield return SceneManager.LoadSceneAsync("Classroom"); yield return null; GameManager.Instance.StartGame(); GameManager.Instance.SkipPresentation();
         var player=Object.FindFirstObjectByType<PlayerInteraction>();
         var names=new[]{"III","I","IV","II"}; float last=-100;
         foreach(var roman in names)

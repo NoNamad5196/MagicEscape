@@ -11,7 +11,7 @@ public class ItemsTests
     [UnityTest] public IEnumerator S4_CatalogHotbarSelection()
     {
         yield return SceneManager.LoadSceneAsync("Classroom"); yield return null;
-        GameManager.Instance.StartGame(); yield return null;
+        GameManager.Instance.StartGame(); GameManager.Instance.SkipPresentation(); yield return null;
         var inv=InventoryManager.Instance;
         string[] ids={ItemIds.Moonpetal,ItemIds.SalamanderScale,ItemIds.CrystalDust,ItemIds.Toadstool,ItemIds.CrystalSapphire,ItemIds.CrystalRuby,ItemIds.PotionRevelation};
         foreach(var id in ids) { Assert.AreEqual(id,inv.GetData(id).itemId); Assert.NotNull(inv.GetData(id).icon); Assert.True(inv.TryAdd(id)); }

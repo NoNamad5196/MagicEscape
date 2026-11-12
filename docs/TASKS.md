@@ -1,6 +1,8 @@
 # MagicEscape — 작업 현황
 
 ## S10e 5차 — 진행 기록
+- Phase 3: RoomPresentation 12초 오프닝/아무 키 건너뛰기/조작 잠금, 3봉인 점등 및 단계별 주변광·앰비언스·다음 위치 신호, 봉인핵 빛 파편/새벽 조명, 출구 통과 후 백색 페이드. Cleared/ExitTrigger/Core 그대로. 테스트는 명시 SkipPresentation 경로 사용.
+- `s10e-phase3` 빌더 exit 0. Runtime/Editor/PlayMode 소스 CodeDrafts 동기화. 전체 플레이 검증은 아직 대기. 복사 과정에서 생긴 CodeDrafts Unity 메타데이터는 정리했다.
 - Phase 2: E는 그림 확대, Tab은 단서 문장 안전망. 비문 자동 글 패널 제거, 액자 진행 조명/소켓 물·불 효과 추가. `s10e-phase2` 빌더 exit 0. 기존 테스트의 글 표시 기대만 변경; 흐름/정답/실패 검증 유지. PlayMode 전체 실행은 Phase 4에서 수행 예정.
 - 사용자 요청으로 단서 표현을 시각 우선으로 변경.
 - Phase 1: 원소 6종 메시/움직임/입자, 물결 셰이더, 수정/재료 입자, 가마솥 증기/거품/탁한 실패색 구현. 기존 재료 위치와 Core 불변.

@@ -21,7 +21,7 @@ public class RuneTests
 {
     [UnityTest] public IEnumerator S6_WrongHintCorrectRewardSeal()
     {
-        yield return SceneManager.LoadSceneAsync("Classroom"); yield return null; GameManager.Instance.StartGame();
+        yield return SceneManager.LoadSceneAsync("Classroom"); yield return null; GameManager.Instance.StartGame(); GameManager.Instance.SkipPresentation();
         var puzzle=Object.FindFirstObjectByType<RunePuzzle>(); Assert.False(Scenario.Pickup(ItemIds.CrystalSapphire).IsAvailable);
         var stones=Object.FindObjectsByType<RuneStone>(FindObjectsSortMode.None);
         for(int i=0;i<3;i++){ foreach(var r in new[]{RuneId.Earth,RuneId.Water,RuneId.Wind}) stones.First(x=>x.Rune==r).Interact(Scenario.Player); }

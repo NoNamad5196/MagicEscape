@@ -61,12 +61,21 @@ namespace MagicEscape
 
         private void Update()
         {
-            Progression.Tick(Time.deltaTime);
+            var presentation=FindFirstObjectByType<RoomPresentation>();
+            if(presentation==null || !presentation.InputBlocked)Progression.Tick(Time.deltaTime);
         }
 
         // ---------- UI 버튼/입력에서 호출 ----------
 
-        public void StartGame() => Progression.StartGame();
+        public void StartGame()
+        {
+            if(Progression.Flow!=GameFlowState.Title)return;
+            Progression.StartGame();
+            var presentation=FindFirstObjectByType<RoomPresentation>();
+            if(presentation!=null)presentation.BeginOpening();
+        }
+        public void SkipPresentation() {var p=FindFirstObjectByType<RoomPresentation>();if(p!=null)p.SkipPresentation();}
+        public void RefreshControlState() => ApplyControlState();
 
         public void TogglePause()
         {
@@ -153,6 +162,7 @@ namespace MagicEscape
                 ui.ShowFlow(state);
                 if (state == GameFlowState.Cleared) ui.ShowClear(Progression.ElapsedSeconds);
             }
+            if(state==GameFlowState.Cleared){var p=FindFirstObjectByType<RoomPresentation>();if(p!=null)p.BeginEnding();}
             if (state == GameFlowState.Playing) AudioManager.PlayBgm();
             Debug.Log("[GameManager] Flow → " + state);
         }
@@ -160,6 +170,7 @@ namespace MagicEscape
         private void OnPuzzleStateChanged(PuzzleId id, PuzzleState state)
         {
             if (exitDoor != null) exitDoor.SetSolvedCount(Progression.SolvedCount);
+            if(state==PuzzleState.Solved){var p=FindFirstObjectByType<RoomPresentation>();if(p!=null)p.SetProgress(Progression.SolvedCount);}
             if (UIManager.Instance != null) UIManager.Instance.RefreshObjective();
             Debug.Log("[GameManager] " + id + " → " + state);
         }
@@ -173,7 +184,8 @@ namespace MagicEscape
         private void ApplyControlState()
         {
             bool reading = UIManager.Instance != null && UIManager.Instance.IsReading;
-            bool control = IsPlaying && !reading;
+            var presentation=FindFirstObjectByType<RoomPresentation>();
+            bool control = IsPlaying && !reading && (presentation==null || !presentation.InputBlocked);
             if (player != null) player.ControlEnabled = control;
             Cursor.lockState = control ? CursorLockMode.Locked : CursorLockMode.None;
             Cursor.visible = !control;

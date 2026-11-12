@@ -15,7 +15,7 @@ public class UITests
         Assert.AreEqual(GameFlowState.Title,GameManager.Instance.Progression.Flow);
         Assert.True(Object.FindFirstObjectByType<TMP_Text>(FindObjectsInactive.Include).font.HasCharacters("마법학교 방탈출 계시의 물약",out uint[] _,false,true),"Korean glyph coverage");
         Assert.NotNull(GameObject.Find("TitlePanel"));
-        GameObject.Find("Button_Start").GetComponent<Button>().onClick.Invoke(); yield return null;
+        GameObject.Find("Button_Start").GetComponent<Button>().onClick.Invoke(); GameManager.Instance.SkipPresentation(); yield return null;
         Assert.True(GameManager.Instance.IsPlaying); Assert.NotNull(GameObject.Find("HUDPanel"));
         UIManager.Instance.ShowRead("칠판",GameText.Chalkboard); Assert.True(UIManager.Instance.IsReading);
         Assert.False(Object.FindFirstObjectByType<PlayerController>().ControlEnabled);

@@ -92,7 +92,7 @@ public class FullInputTests
         yield return SceneManager.LoadSceneAsync("Classroom"); yield return null;
         previousEditor=InputSystem.settings.editorInputBehaviorInPlayMode; previousBackground=InputSystem.settings.backgroundBehavior;
         InputSystem.settings.editorInputBehaviorInPlayMode=InputSettings.EditorInputBehaviorInPlayMode.AllDeviceInputAlwaysGoesToGameView; InputSystem.settings.backgroundBehavior=InputSettings.BackgroundBehavior.IgnoreFocus;
-        keyboard=InputSystem.AddDevice<Keyboard>(); mouse=InputSystem.AddDevice<Mouse>(); GameManager.Instance.StartGame();
+        keyboard=InputSystem.AddDevice<Keyboard>(); mouse=InputSystem.AddDevice<Mouse>(); GameManager.Instance.StartGame(); GameManager.Instance.SkipPresentation();
         yield return Scenario.Rune(); Scenario.Collect(ItemIds.CrystalSapphire); yield return Scenario.Potion();
         Scenario.Select(ItemIds.PotionRevelation); Object.FindFirstObjectByType<SealInscription>().Interact(Scenario.Player); UIManager.Instance.CloseRead();
         foreach(var socket in Object.FindObjectsByType<CrystalSocket>(FindObjectsSortMode.None)) {Scenario.Select(socket.Side==SocketSide.Left?ItemIds.CrystalSapphire:ItemIds.CrystalRuby); socket.Interact(Scenario.Player);}

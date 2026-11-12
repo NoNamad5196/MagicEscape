@@ -156,6 +156,32 @@ namespace MagicEscape.EditorTools
             var hint=Resources.FindObjectsOfTypeAll<TMPro.TMP_Text>().First(t=>t.name=="HintText"&&t.gameObject.scene.IsValid());hint.rectTransform.sizeDelta=new Vector2(950,270);hint.rectTransform.anchoredPosition=new Vector2(0,-40);hint.fontSize=23;
             Save();
         }
+        public static void S10ePhase3()
+        {
+            EOpen();var root=ERoot("RoomPresentation");var p=root.gameObject.AddComponent<RoomPresentation>();
+            p.openingDarkenedLights=Object.FindObjectsByType<Light>(FindObjectsSortMode.None).Where(l=>l.enabled&&!l.name.Contains("AnswerFrame")&&!l.transform.IsChildOf(Find("ExitDoor").transform)).ToArray();
+            p.candles=new Light[6];p.candleFlames=new Renderer[6];
+            for(int i=0;i<6;i++)
+            {
+                var pos=new Vector3(i%2==0?-1.9f:1.9f,.12f,4.15f-(i/2)*1.45f);
+                EShape("OpeningCandle",root,pos,new Vector3(.1f,.15f,.1f),EMat("CandleWax",new Color(.64f,.52f,.30f)),PrimitiveType.Cylinder);
+                var f=EShape("OpeningFlame",root,pos+Vector3.up*.22f,new Vector3(.04f,.12f,.04f),EMat("CandleFlame",new Color(1,.5f,.12f),2));EMotion(f,ElementMotion.Motion.Flame);p.candleFlames[i]=f.GetComponent<Renderer>();
+                var light=new GameObject("E_CandleLight_"+i).AddComponent<Light>();light.transform.SetParent(root,true);light.transform.position=pos+Vector3.up*.3f;light.color=Candle;light.intensity=.6f;light.range=2.2f;light.shadows=UnityEngine.LightShadows.None;p.candles[i]=light;
+            }
+            p.sealLamps=Enumerable.Range(1,3).Select(i=>Find("SealLight_"+i)).ToArray();
+            var circle=Find("ArtB_AltarCircle");p.altarCircle=circle.GetComponent<GlowFeedback>()??circle.AddComponent<GlowFeedback>();Set(p.altarCircle,"targetRenderer",circle.GetComponent<Renderer>());Set(p.altarCircle,"intensity",1f);
+            p.brewSignal=EParticles("BrewSignal",root,new Vector3(3,.25f,2.5f),Elements[2],"Spark",0,.09f,.35f,.25f);var main=p.brewSignal.main;main.loop=false;main.playOnAwake=false;var emission=p.brewSignal.emission;emission.SetBursts(new[]{new ParticleSystem.Burst(0,30)});
+            p.sealSignal=EParticles("SealSignal",root,new Vector3(-3,1.7f,3.7f),Elements[4],"Spark",0,.07f,.6f,.08f);main=p.sealSignal.main;main.loop=false;main.playOnAwake=false;emission=p.sealSignal.emission;emission.SetBursts(new[]{new ParticleSystem.Burst(0,30)});
+            p.coreShards=EParticles("CoreShards",root,new Vector3(-3,1.3f,3.6f),Elements[4],"Spark",0,.12f,.2f,.4f);main=p.coreShards.main;main.loop=false;main.playOnAwake=false;main.startSpeed=.7f;emission=p.coreShards.emission;emission.SetBursts(new[]{new ParticleSystem.Burst(0,36)});
+            p.coreRenderers=Find("SealCore").GetComponentsInChildren<Renderer>(true);
+            var dawn=new GameObject("E_DawnLight").AddComponent<Light>();dawn.transform.SetParent(root,true);dawn.transform.position=new Vector3(0,2,6.7f);dawn.transform.LookAt(new Vector3(0,.8f,1));dawn.type=LightType.Spot;dawn.spotAngle=100;dawn.innerSpotAngle=65;dawn.range=9;dawn.color=new Color(1,.71f,.40f);dawn.intensity=9;dawn.shadows=UnityEngine.LightShadows.None;dawn.enabled=false;p.dawn=dawn;
+            var canvas=SceneComponent<UIManager>().transform;
+            var overlay=Rect("PresentationFade",canvas,new Vector2(1920,1080),Vector2.zero).gameObject.AddComponent<UnityEngine.UI.Image>();overlay.color=Color.clear;overlay.raycastTarget=false;overlay.transform.SetAsLastSibling();p.fade=overlay;
+            var clear=Resources.FindObjectsOfTypeAll<UnityEngine.RectTransform>().First(t=>t.name=="ClearPanel"&&t.gameObject.scene.IsValid());p.clearGroup=clear.GetComponent<CanvasGroup>()??clear.gameObject.AddComponent<CanvasGroup>();
+            var paper=EPicture("PictureRecipe"); // UI uses the quiet original parchment rather than recipe symbols.
+            var im=clear.GetComponent<UnityEngine.UI.Image>();im.sprite=AssetDatabase.LoadAssetAtPath<Sprite>(DArt+"ClothPanel.png");im.color=new Color(.72f,.60f,.40f,1);
+            RenderSettings.ambientLight=new Color(.052f,.062f,.078f);Save();
+        }
     }
 }
 

@@ -12,7 +12,7 @@ public class SealTests
 {
     [UnityTest] public IEnumerator S8_SealRejectionDoorPhysicalTriggerClearRestart()
     {
-        yield return SceneManager.LoadSceneAsync("Classroom"); yield return null; GameManager.Instance.StartGame();
+        yield return SceneManager.LoadSceneAsync("Classroom"); yield return null; GameManager.Instance.StartGame(); GameManager.Instance.SkipPresentation();
         var p=Object.FindFirstObjectByType<SealPuzzle>(); var inscription=Object.FindFirstObjectByType<SealInscription>(); var core=Object.FindFirstObjectByType<SealCore>();
         var sockets=Object.FindObjectsByType<CrystalSocket>(FindObjectsSortMode.None); var left=sockets.First(x=>x.Side==SocketSide.Left); var right=sockets.First(x=>x.Side==SocketSide.Right);
         var exit=Object.FindFirstObjectByType<ExitTrigger>(FindObjectsInactive.Include);
