@@ -66,7 +66,6 @@ namespace MagicEscape
         {
             if (Stage == SealStage.AwaitingCrystals || Stage == SealStage.ReadyToRelease || Stage == SealStage.Released)
             {
-                if (UIManager.Instance != null) UIManager.Instance.ShowRead("봉인 비문", GameText.InscriptionRevealed);
                 return;
             }
 
@@ -84,7 +83,8 @@ namespace MagicEscape
                     if (inscriptionGlow != null) inscriptionGlow.SetGlow(readyColor);
                     if (revealVfx != null) revealVfx.Play();
                     AudioManager.Play(SfxId.SealReveal);
-                    if (UIManager.Instance != null) UIManager.Instance.ShowRead("봉인 비문", GameText.InscriptionRevealed);
+                    var clues=FindFirstObjectByType<VisualClues>();
+                    if(clues!=null)clues.RevealElements();
                     break;
             }
         }

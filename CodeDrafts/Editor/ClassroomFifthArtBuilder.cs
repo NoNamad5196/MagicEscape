@@ -117,6 +117,45 @@ namespace MagicEscape.EditorTools
             var smoke=EParticles("WrongBlackSmoke",potion.transform,new Vector3(3,1.1f,2.5f),new Color(.025f,.018f,.035f,.9f),"Soft",0,.3f,.3f,.35f);var main=smoke.main;main.loop=false;main.playOnAwake=false;var em=smoke.emission;em.SetBursts(new[]{new ParticleSystem.Burst(0,30)});Set(potion,"smokeVfx",smoke);
             File.WriteAllText("../docs/validation/s10e/phase1-audit.txt","Original procedural elements; no new colliders, no per-particle lights. Each emitter <=36 particles. Ingredient transforms unchanged.\n");Save();
         }
+        static Material EPicture(string file,float glow=.15f)
+        {
+            var m=EMat(file,Color.white,glow);m.mainTexture=AssetDatabase.LoadAssetAtPath<Texture2D>(EArt+file+".png");m.SetTexture("_EmissionMap",m.mainTexture);EditorUtility.SetDirty(m);return m;
+        }
+        public static void S10ePhase2()
+        {
+            EOpen();var root=ERoot("VisualClues");var clues=root.gameObject.AddComponent<VisualClues>();
+            Find("ChalkboardLabel").SetActive(false);
+            var board=EShape("ChalkSequence",root,new Vector3(-5.77f,1.5f,-4),new Vector3(1.22f,.95f,1),EPicture("ChalkSequence"),PrimitiveType.Quad);board.transform.rotation=Quaternion.Euler(0,-90,0);
+            Set(Find("Chalkboard").GetComponent<InspectableObject>(),"picture",AssetDatabase.LoadAssetAtPath<Texture2D>(EArt+"ChalkSequence.png"));
+            var book=Find("RecipeBook");Set(book.GetComponent<InspectableObject>(),"picture",AssetDatabase.LoadAssetAtPath<Texture2D>(EArt+"PictureRecipe.png"));
+            var page=EShape("OpenPictureRecipe",root,new Vector3(4.2f,1.165f,3.6f),new Vector3(.64f,.4f,1),EPicture("PictureRecipe",.28f),PrimitiveType.Quad);page.transform.rotation=Quaternion.Euler(90,0,0);
+            string[] romans={"I","II","III","IV"};string[] names={"Earth","Water","Fire","Light"};
+            for(int i=0;i<4;i++)
+            {
+                var painting=Find("Painting_"+romans[i]);var tex=AssetDatabase.LoadAssetAtPath<Texture2D>("Assets/Art/S10b/Story_"+(i+1)+".png");Set(painting.GetComponent<InspectableObject>(),"picture",tex);
+                var frame=painting.transform.Find("ArtB_PictureFrame_"+romans[i]);
+                var icon=frame.Find("ArtB_CornerRune_"+names[i]);if(icon!=null){icon.localScale=new Vector3(.31f,.31f,1);icon.localPosition=new Vector3(-.35f,.25f,-.025f);}
+                int index=Array.IndexOf(new[]{"III","I","IV","II"},romans[i]);var old=GameObject.Find("ArtC_Picture_"+index);if(old!=null)old.GetComponent<Light>().enabled=false;
+                var l=CLight("AnswerFrame_"+romans[i],new Vector3(-5.1f,2.35f,painting.transform.position.z),Elements[(int)(RuneId)Enum.Parse(typeof(RuneId),names[i])],2.6f,2.6f,new Vector3(-5.8f,1.65f,painting.transform.position.z),64);l.enabled=false;clues.frameLights[i]=l;
+            }
+            var reveal=Find("Inscription").transform.Find("RevealedText");reveal.Find("InscriptionText").gameObject.SetActive(false);
+            foreach(string name in new[]{"Water","Fire"})
+            {
+                var icon=reveal.Find("ArtB_InscriptionIcon_"+name);icon.position=new Vector3(name=="Water"?-3.55f:-2.45f,1.76f,3.82f);icon.localScale=new Vector3(.46f,.46f,1);
+            }
+            var effects=new GameObject("RevealedSocketElements").transform;effects.SetParent(root,false);clues.socketElements=effects.gameObject;
+            foreach(var socket in Object.FindObjectsByType<CrystalSocket>(FindObjectsSortMode.None))
+            {
+                bool water=socket.Side==SocketSide.Left;var pos=socket.transform.position;
+                EElement(effects,pos+Vector3.up*.35f,water?RuneId.Water:RuneId.Fire,.25f);
+                if(water){var drops=EParticles("SocketWaterfall",effects,pos+Vector3.up*.55f,Elements[1],"Drop",16,.04f,.12f,-.34f);ERing("SocketPool",effects,pos+Vector3.up*.075f,.19f,Elements[1]);}
+                else EParticles("SocketFlames",effects,pos+Vector3.up*.25f,Elements[2],"Spark",15,.07f,.12f,.32f);
+            }
+            effects.gameObject.SetActive(false);Set(Find("Liquid").GetComponent<GlowFeedback>(),"affectBaseColor",true);
+            var objective=Resources.FindObjectsOfTypeAll<UnityEngine.RectTransform>().First(t=>t.name=="ObjectivePanel"&&t.gameObject.scene.IsValid());objective.sizeDelta=new Vector2(1000,390);objective.anchoredPosition=new Vector2(-420,290);
+            var hint=Resources.FindObjectsOfTypeAll<TMPro.TMP_Text>().First(t=>t.name=="HintText"&&t.gameObject.scene.IsValid());hint.rectTransform.sizeDelta=new Vector2(950,270);hint.rectTransform.anchoredPosition=new Vector2(0,-40);hint.fontSize=23;
+            Save();
+        }
     }
 }
 

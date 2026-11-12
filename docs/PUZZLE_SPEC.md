@@ -1,5 +1,11 @@
 # MagicEscape — 퍼즐 3종 구현 명세
 
+## S10e 표시 계층 정정 (Core 규칙 불변)
+- P1 Earth→Water→Fire→Light: 칠판 I→II→III→IV 씨앗 스케치, 액자의 큰 유색 문양. ProgressCount만큼 대응 액자 점등, 오답 0개. 로마숫자/벽 순서 III,I,IV,II 유지.
+- P2 moonpetal→salamander_scale→crystal_dust: 달/꽃잎→불/비늘→별가루 그림, 독버섯 X. 액체 청백→주황→금, 실패 시 탁한 보라검정/검은 연기. 소모/복원 로직 불변.
+- P3 Left=sapphire, Right=ruby: 물약 사용 시 문장 패널 대신 물/불 각인 확대 점등과 소켓 물줄기/불씨 공개. 수정 자체의 물방울/불씨가 독립된 짝 단서.
+- E는 그림 확대. 기존 실패 임계치 3/2/2에서만 자동 글 힌트, Tab은 현재 단서 문장 안전망. GameText의 정답·상수 변경 없음.
+
 > 규칙 구현: `CodeDrafts/Core/RunePuzzleLogic.cs`, `PotionPuzzleLogic.cs`, `SealPuzzleLogic.cs`, `ProgressionModel.cs`
 > 연출 구현: `CodeDrafts/Runtime/Puzzles/*.cs` · 모든 문구는 `GameText.cs` 상수와 동일
 > 상태: 규칙은 dotnet 테스트 통과, Unity 연출은 미검증

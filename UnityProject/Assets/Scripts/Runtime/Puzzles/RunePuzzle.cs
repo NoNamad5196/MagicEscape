@@ -54,6 +54,8 @@ namespace MagicEscape
         public void Press(RuneStone stone, PlayerInteraction interactor)
         {
             RuneInputResult result = Logic.Press(stone.Rune);
+            var clues=FindFirstObjectByType<VisualClues>();
+            if(clues!=null)clues.ShowRuneProgress(Logic.ProgressCount);
             switch (result)
             {
                 case RuneInputResult.Progress:

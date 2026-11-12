@@ -17,6 +17,7 @@ namespace MagicEscape
         [Tooltip("선택: 발광과 함께 켜고 끌 Point Light")]
         [SerializeField] private Light glowLight;
         [SerializeField] private float intensity = 3f;
+        [SerializeField] private bool affectBaseColor;
 
         private MaterialPropertyBlock _block;
         private Color _steadyColor = Color.black;
@@ -61,6 +62,7 @@ namespace MagicEscape
             {
                 targetRenderer.GetPropertyBlock(_block);
                 _block.SetColor(EmissionColorId, color * (on ? intensity : 0f));
+                if(affectBaseColor && on)_block.SetColor("_BaseColor",color);
                 targetRenderer.SetPropertyBlock(_block);
             }
             if (glowLight != null)

@@ -13,6 +13,7 @@ namespace MagicEscape
         [SerializeField] private string promptVerb = "조사하기";
         [SerializeField] private string title = "단서";
         [TextArea(3, 8)] [SerializeField] private string body;
+        [SerializeField] private Texture2D picture;
 
         [Header("잠금 조건 (선택)")]
         [SerializeField] private bool requirePuzzleSolved;
@@ -47,7 +48,12 @@ namespace MagicEscape
                 interactor.Say(lockedMessage);
                 return;
             }
-            if (UIManager.Instance != null) UIManager.Instance.ShowRead(title, body);
+            if (UIManager.Instance != null)
+            {
+                if(picture!=null)UIManager.Instance.ShowPicture(picture);
+                // S10e clue objects never automatically print the answer-bearing prose.
+                else if(body!=GameText.Chalkboard && body!=GameText.Recipe) UIManager.Instance.ShowRead(title, body);
+            }
         }
 
         private bool IsLocked()

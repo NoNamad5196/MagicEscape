@@ -132,6 +132,15 @@ namespace MagicEscape
             return null;
         }
 
+        /// <summary>Explicit Tab safety net, independent of automatic failure hints.</summary>
+        public string GetVisualClueText()
+        {
+            if(Progression.GetState(PuzzleId.Rune)==PuzzleState.Active)return GameText.Chalkboard;
+            if(Progression.GetState(PuzzleId.Potion)==PuzzleState.Active)return GameText.Recipe;
+            if(sealPuzzle!=null && sealPuzzle.Stage>=SealStage.AwaitingCrystals)return GameText.InscriptionRevealed;
+            return GetCurrentHint();
+        }
+
         // ---------- 내부 ----------
 
         private void OnFlowStateChanged(GameFlowState state)

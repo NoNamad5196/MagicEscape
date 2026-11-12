@@ -17,10 +17,10 @@ public class CluesTests
         {
             var painting=GameObject.Find("Painting_"+roman); Assert.Greater(painting.transform.position.z,last); last=painting.transform.position.z;
             painting.GetComponent<InspectableObject>().Interact(player); Assert.True(UIManager.Instance.IsReading);
-            Assert.AreEqual("씨앗의 일생 "+roman,GameObject.Find("ReadTitle").GetComponent<TMP_Text>().text); UIManager.Instance.CloseRead();
+            Assert.AreEqual(string.Empty,GameObject.Find("ReadBody").GetComponent<TMP_Text>().text); UIManager.Instance.CloseRead();
             Assert.That(GameObject.Find("PaintingLabel_"+roman).GetComponent<TMP_Text>().text,Does.Contain(roman));
         }
         GameObject.Find("Chalkboard").GetComponent<InspectableObject>().Interact(player);
-        Assert.AreEqual(GameText.Chalkboard,GameObject.Find("ReadBody").GetComponent<TMP_Text>().text); UIManager.Instance.CloseRead();
+        Assert.AreEqual(string.Empty,GameObject.Find("ReadBody").GetComponent<TMP_Text>().text); Assert.NotNull(GameObject.Find("PictureClue").GetComponent<UnityEngine.UI.RawImage>().texture); UIManager.Instance.CloseRead();
     }
 }

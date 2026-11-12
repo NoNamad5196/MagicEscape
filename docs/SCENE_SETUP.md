@@ -1,5 +1,12 @@
 # MagicEscape — 씬·프리팹·Inspector 구성 명세
 
+## S10e 추가 계층
+- `ClassroomFifthArtBuilder.S10ePhase1/2`는 저장된 Classroom을 열고 Editor API로 원소 표현과 시각 단서를 추가한다. YAML 수작업 없음.
+- `E_Element_*`: 공통 원소 메시/입자. 새 장식 콜라이더 없음, emitter 당 최대 36, 입자 라이트 없음.
+- 재료의 기존 월드 위치/상호작용 콜라이더 유지. 창가 화분의 월광초에 국소 달빛 spot(그림자 없음) 추가.
+- `VisualClues`: 정답 순서의 액자 조명 4개, 공개 소켓 효과 컨테이너. Core 대신 표시만 관리.
+- `ChalkSequence`와 `OpenPictureRecipe`: 자체 제작 무문장 그림. InspectableObject.picture를 E 확대 패널에 연결. 비문 TMP 문장은 비활성화하고 문양·물·불만 공개.
+
 > 대상: Windows Unity 6.3 LTS(URP) 작업자(AyCode). 이 서버에서는 씬/프리팹 파일을 만들지 않았다. 아래 순서대로 Editor에서 직접 만든다.
 > 좌표계: 바닥 중앙 (0,0,0), **+Z = 북쪽(출구)**, +X = 동쪽, 단위 m. 레이아웃 근거는 [GAME_DESIGN.md §8](GAME_DESIGN.md#8-레벨-및-공간-구성).
 > 표기: `이름 [컴포넌트, …]` · Inspector 값은 `필드 = 값`.

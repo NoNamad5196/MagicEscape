@@ -19,7 +19,7 @@ public class ConsoleAudit
     static int errors;
     [OneTimeSetUp] public void Begin(){errors=0; Application.logMessageReceived+=OnLog;}
     static void OnLog(string text,string stack,LogType type){if(type==LogType.Error||type==LogType.Exception||type==LogType.Assert) errors++;}
-    [OneTimeTearDown] public void End(){Application.logMessageReceived-=OnLog; File.WriteAllText(Path.GetFullPath(Path.Combine(Application.dataPath,"../../docs/validation/s10d/console-audit.txt")),"PlayMode Error/Exception/Assert events="+errors+"\nNo expected-error suppression. UTC="+DateTime.UtcNow.ToString("O")); Assert.AreEqual(0,errors);}
+    [OneTimeTearDown] public void End(){Application.logMessageReceived-=OnLog; File.WriteAllText(Path.GetFullPath(Path.Combine(Application.dataPath,"../../docs/validation/s10e/console-audit.txt")),"PlayMode Error/Exception/Assert events="+errors+"\nNo expected-error suppression. UTC="+DateTime.UtcNow.ToString("O")); Assert.AreEqual(0,errors);}
 }
 public class FullInputTests
 {
@@ -51,7 +51,7 @@ public class FullInputTests
             Vector3 d=target-p.position; p.rotation=Quaternion.Euler(0,Mathf.Atan2(d.x,d.z)*Mathf.Rad2Deg,0); InputSystem.QueueStateEvent(keyboard,new KeyboardState(Key.W)); yield return null; elapsed+=Time.unscaledDeltaTime; simulated+=Time.deltaTime; frames++;
         }
         InputSystem.QueueStateEvent(keyboard,new KeyboardState()); yield return null; yield return null;
-        File.WriteAllText(Path.GetFullPath(Path.Combine(Application.dataPath,"../../docs/validation/s10d/walk-audit.txt")),"frames="+frames+" real="+elapsed+" simulated="+simulated+" position="+p.position+" doorEuler="+GameObject.Find("DoorHinge").transform.localEulerAngles);
+        File.WriteAllText(Path.GetFullPath(Path.Combine(Application.dataPath,"../../docs/validation/s10e/walk-audit.txt")),"frames="+frames+" real="+elapsed+" simulated="+simulated+" position="+p.position+" doorEuler="+GameObject.Find("DoorHinge").transform.localEulerAngles);
         if(GameManager.Instance.IsPlaying) Assert.Less(Vector2.Distance(new Vector2(p.position.x,p.position.z),new Vector2(target.x,target.z)),.2f,"Walk blocked at "+p.position+" toward "+target);
     }
     [UnityTest] public IEnumerator S9_KeyboardRaycastAllPuzzlesWalkExit()
@@ -75,7 +75,7 @@ public class FullInputTests
         yield return Slot(ItemIds.Moonpetal); InputSystem.QueueDeltaStateEvent(mouse.scroll,new Vector2(0,-120)); yield return null; yield return null; Assert.AreEqual(ItemIds.SalamanderScale,InventoryManager.Instance.SelectedItemId);
         foreach(var id in PotionPuzzleLogic.DefaultRecipe){yield return Slot(id); yield return Use(Object.FindFirstObjectByType<PotionPuzzle>(),new Vector3(3,0,1.2f));}
         yield return new WaitForSeconds(1); Assert.AreEqual(PuzzleState.Solved,GameManager.Instance.Progression.GetState(PuzzleId.Potion));
-        yield return Slot(ItemIds.PotionRevelation); yield return Use(Object.FindFirstObjectByType<SealInscription>(),new Vector3(-3,0,2.3f)); Assert.True(UIManager.Instance.IsReading); yield return Tap(Key.E);
+        yield return Slot(ItemIds.PotionRevelation); yield return Use(Object.FindFirstObjectByType<SealInscription>(),new Vector3(-3,0,2.3f)); Assert.False(UIManager.Instance.IsReading);
         var sockets=Object.FindObjectsByType<CrystalSocket>(FindObjectsSortMode.None);
         yield return Slot(ItemIds.CrystalSapphire); yield return Use(sockets.First(x=>x.Side==SocketSide.Left),new Vector3(-3.6f,0,2.3f));
         yield return Slot(ItemIds.CrystalRuby); yield return Use(sockets.First(x=>x.Side==SocketSide.Right),new Vector3(-2.4f,0,2.3f));

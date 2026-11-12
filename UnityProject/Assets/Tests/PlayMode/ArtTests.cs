@@ -14,7 +14,7 @@ using Object = UnityEngine.Object;
 
 public class ArtTests
 {
-    static string Output => Path.GetFullPath(Path.Combine(Application.dataPath, "../../docs/validation/s10d"));
+    static string Output => Path.GetFullPath(Path.Combine(Application.dataPath, "../../docs/validation/s10e"));
     static void View(Vector3 position, Vector3 target)
     {
         var player = Scenario.Player.GetComponent<PlayerController>();
@@ -53,7 +53,7 @@ public class ArtTests
         Assert.Greater(new FileInfo(path).Length, 1000);
     }
     [UnityTest]
-    public IEnumerator S10d_ArtAudioEffectsLayoutAndGameViewCaptures()
+    public IEnumerator S10e_ArtAudioEffectsLayoutAndGameViewCaptures()
     {
         yield return SceneManager.LoadSceneAsync("Classroom"); yield return null;
         Directory.CreateDirectory(Output);
@@ -78,11 +78,10 @@ public class ArtTests
         View(new Vector3(-1.35f,0,-.1f),new Vector3(-5.8f,1.7f,0));yield return Capture("02-painting-wall");
         View(new Vector3(-4.1f,0,-.8f),new Vector3(-5.8f,1.5f,-.8f));yield return Capture("10-painting-closeup");
         View(new Vector3(-4.2f,0,-4),new Vector3(-5.8f,1.5f,-4));yield return Capture("11-chalkboard-closeup");
-        var chalk=GameObject.Find("ChalkboardLabel").GetComponent<TMPro.TMP_Text>();chalk.ForceMeshUpdate();
-        Assert.AreEqual(GameText.Chalkboard,chalk.text.Replace('\n',' '));Assert.AreEqual(TMPro.TextWrappingModes.NoWrap,chalk.textWrappingMode);Assert.LessOrEqual(chalk.textBounds.size.x,chalk.rectTransform.rect.width+.01f);
+        Assert.NotNull(GameObject.Find("ChalkSequence"));
+        Assert.False(Resources.FindObjectsOfTypeAll<TMPro.TMP_Text>().First(t=>t.name=="ChalkboardLabel"&&t.gameObject.scene.IsValid()).gameObject.activeSelf);
         Assert.True(GameObject.Find("Art_SecondPass").GetComponentsInChildren<Collider>().Length==0);
         Assert.True(GameObject.Find("Art_FourthPass").GetComponentsInChildren<Collider>(true).Length==0);
-        Assert.That(chalk.font.name,Does.Contain("NanumPenScript"));
         var uiFont=Resources.FindObjectsOfTypeAll<TMPro.TMP_Text>().First(t=>t.name=="PromptText"&&t.gameObject.scene.IsValid()).font;
         foreach(var field in typeof(GameText).GetFields(BindingFlags.Public|BindingFlags.Static).Where(f=>f.FieldType==typeof(string)))
             foreach(char c in ((string)field.GetValue(null)).Where(c=>!char.IsControl(c)))Assert.True(uiFont.HasCharacter(c,false,false),"Missing GameText glyph U+"+((int)c).ToString("X4"));
@@ -110,16 +109,8 @@ public class ArtTests
         View(new Vector3(-3, 0, 1.5f), new Vector3(-3, 1.4f, 3.7f));
         Scenario.Select(ItemIds.PotionRevelation); Object.FindFirstObjectByType<SealInscription>().Interact(Scenario.Player); UIManager.Instance.CloseRead();
         var reveal=Object.FindFirstObjectByType<SealInscription>().transform.Find("RevealedText");
-        var sentence=reveal.Find("InscriptionText").GetComponent<TMPro.TMP_Text>();sentence.ForceMeshUpdate();
-        Assert.AreEqual(GameText.InscriptionRevealed,sentence.text.Replace('\n',' '));
-        Assert.LessOrEqual(sentence.textBounds.size.x,sentence.rectTransform.rect.width+.01f,"Inscription glyphs fit plaque width");
-        Assert.LessOrEqual(sentence.textBounds.size.y,sentence.rectTransform.rect.height+.01f,"Inscription glyphs fit plaque height");
-        Assert.LessOrEqual(sentence.preferredHeight,sentence.rectTransform.rect.height+.01f,"Inscription fits its box without ellipsis");
-        var sentenceBottom=sentence.transform.position.y-sentence.rectTransform.rect.height/2;
-        foreach(string name in new[]{"Water","Fire"}) {
-            var icon=reveal.Find("ArtB_InscriptionIcon_"+name).GetComponent<Renderer>();
-            Assert.Less(icon.bounds.max.y,sentenceBottom-.05f,"Runes are below the sentence");
-        }
+        Assert.False(reveal.Find("InscriptionText").gameObject.activeSelf);
+        Assert.True(Object.FindFirstObjectByType<VisualClues>().socketElements.activeSelf);
         var prompt=Resources.FindObjectsOfTypeAll<TMPro.TMP_Text>().First(t=>t.name=="PromptText" && t.gameObject.scene.IsValid());
         Assert.AreNotEqual(RenderMode.WorldSpace,prompt.GetComponentInParent<Canvas>().renderMode);
         Assert.LessOrEqual(prompt.rectTransform.anchoredPosition.y,-280);

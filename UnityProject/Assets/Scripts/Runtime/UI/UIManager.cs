@@ -2,6 +2,7 @@ using System;
 using MagicEscape.Core;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace MagicEscape
 {
@@ -43,6 +44,25 @@ namespace MagicEscape
         public event Action<bool> ReadingChanged;
 
         public bool IsReading => readPanel != null && readPanel.activeSelf;
+        RawImage _picture;
+
+        public void ShowPicture(Texture2D picture)
+        {
+            if(readPanel==null || picture==null)return;
+            if(_picture==null)
+            {
+                _picture=new GameObject("PictureClue",typeof(RectTransform),typeof(RawImage)).GetComponent<RawImage>();
+                _picture.transform.SetParent(readPanel.transform,false);
+                _picture.rectTransform.anchoredPosition=new Vector2(0,15);
+                _picture.raycastTarget=false;
+            }
+            float width=Mathf.Min(1120,580f*picture.width/picture.height);
+            _picture.rectTransform.sizeDelta=new Vector2(width,width*picture.height/picture.width);
+            _picture.texture=picture;_picture.gameObject.SetActive(true);
+            if(readTitleText!=null)readTitleText.text=string.Empty;
+            if(readBodyText!=null)readBodyText.text=string.Empty;
+            readPanel.SetActive(true);ReadingChanged?.Invoke(true);
+        }
 
         private void Awake()
         {
@@ -102,6 +122,7 @@ namespace MagicEscape
         /// <summary>단서(액자·칠판·마법서) 읽기 패널. E 또는 ESC로 닫는다.</summary>
         public void ShowRead(string title, string body)
         {
+            if(_picture!=null)_picture.gameObject.SetActive(false);
             if (readPanel == null) { ShowToast(body); return; }
             if (readTitleText != null) readTitleText.text = title;
             if (readBodyText != null) readBodyText.text = body;
@@ -132,7 +153,7 @@ namespace MagicEscape
             if (objectiveText != null) objectiveText.text = gm.GetObjectiveText();
             if (hintText != null)
             {
-                string hint = gm.GetCurrentHint();
+                string hint = gm.GetVisualClueText();
                 hintText.gameObject.SetActive(!string.IsNullOrEmpty(hint));
                 hintText.text = string.IsNullOrEmpty(hint) ? string.Empty : "힌트: " + hint;
             }

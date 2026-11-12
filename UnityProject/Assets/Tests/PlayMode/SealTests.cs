@@ -21,7 +21,7 @@ public class SealTests
         Scenario.Select(ItemIds.CrystalSapphire); inscription.Interact(Scenario.Player); Assert.AreEqual(GameText.InscriptionBlurred,GameObject.Find("ToastText").GetComponent<TMP_Text>().text);
         left.Interact(Scenario.Player); Assert.AreEqual(SealStage.AwaitingReveal,p.Stage);
         core.Interact(Scenario.Player); Assert.AreEqual(GameText.CoreNotReady,GameObject.Find("ToastText").GetComponent<TMP_Text>().text);
-        Scenario.Select(ItemIds.PotionRevelation); inscription.Interact(Scenario.Player); Assert.False(InventoryManager.Instance.Contains(ItemIds.PotionRevelation)); Assert.AreEqual(SealStage.AwaitingCrystals,p.Stage); Assert.True(UIManager.Instance.IsReading); UIManager.Instance.CloseRead();
+        Scenario.Select(ItemIds.PotionRevelation); inscription.Interact(Scenario.Player); Assert.False(InventoryManager.Instance.Contains(ItemIds.PotionRevelation)); Assert.AreEqual(SealStage.AwaitingCrystals,p.Stage); Assert.False(UIManager.Instance.IsReading); Assert.True(Object.FindFirstObjectByType<VisualClues>().socketElements.activeSelf);
         Scenario.Select(ItemIds.CrystalRuby); left.Interact(Scenario.Player); left.Interact(Scenario.Player); Assert.True(InventoryManager.Instance.Contains(ItemIds.CrystalRuby)); Assert.AreEqual(GameText.HintSeal,p.CurrentHint);
         Scenario.Select(ItemIds.CrystalSapphire); left.Interact(Scenario.Player); Assert.False(InventoryManager.Instance.Contains(ItemIds.CrystalSapphire)); Scenario.Select(ItemIds.CrystalRuby); right.Interact(Scenario.Player); Assert.AreEqual(SealStage.ReadyToRelease,p.Stage);
         Assert.True(left.transform.Find("PlacedCrystal").gameObject.activeSelf); Assert.True(right.transform.Find("PlacedCrystal").gameObject.activeSelf);
