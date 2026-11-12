@@ -1,0 +1,25 @@
+{
+  "slides": 12,
+  "pdfPages": 12,
+  "embeddedImages": 1,
+  "nativeShapes": 345,
+  "speakerNotes": 0,
+  "allItemIdsMatched": [
+    "ing_moonpetal",
+    "ing_salamander_scale",
+    "ing_crystal_dust",
+    "ing_toadstool",
+    "crystal_sapphire",
+    "crystal_ruby",
+    "potion_revelation"
+  ],
+  "puzzleAnswersMatched": true,
+  "roomDimensionsAndDistanceAndInventoryMatched": true,
+  "playModeSourceTestCount": 19,
+  "playModeRun": "Not rerun for presentation; existing S10f record is 19/19",
+  "coreRun": "dotnet test Tests/MagicEscape.Core.Tests --no-restore: 44 passed, 0 failed, 0 skipped",
+  "pdfTextBounds": "All body blocks within slide and above footer",
+  "replacementCharacters": 0,
+  "visualReview": "All 12 PNG files opened individually; slides 08 and 12 spacing repaired and reopened; six alchemical signs visible",
+  "authoring": "Bundled artifact runtime and load_workspace_dependencies not available; standalone JavaScript emits native OOXML, Python stdlib packages ZIP. No python-pptx or dependency installation."
+}
