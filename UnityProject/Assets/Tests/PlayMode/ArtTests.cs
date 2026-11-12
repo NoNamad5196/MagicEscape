@@ -14,7 +14,7 @@ using Object = UnityEngine.Object;
 
 public class ArtTests
 {
-    static string Output => Path.GetFullPath(Path.Combine(Application.dataPath, "../../docs/validation/s10e"));
+    static string Output => Path.GetFullPath(Path.Combine(Application.dataPath, "../../docs/validation/s10f"));
     public static void View(Vector3 position, Vector3 target)
     {
         var player = Scenario.Player.GetComponent<PlayerController>();
@@ -53,7 +53,7 @@ public class ArtTests
         Assert.Greater(new FileInfo(path).Length, 1000);
     }
     [UnityTest]
-    public IEnumerator S10e_ArtAudioEffectsLayoutAndGameViewCaptures()
+    public IEnumerator S10f_ArtAudioEffectsLayoutAndGameViewCaptures()
     {
         yield return SceneManager.LoadSceneAsync("Classroom"); yield return null;
         Directory.CreateDirectory(Output);
@@ -113,6 +113,16 @@ public class ArtTests
             View(new Vector3(0,0,.5f)+radial*1.3f,stone.transform.position+Vector3.up*.08f);
             yield return Capture((29+elementIndex).ToString("00")+"-element-closeup-"+stone.Rune);elementIndex++;
         }
+        // Temporary mesh-only validation exhibit: six identical slabs at a measured 2m.
+        var lineup=new GameObject("ValidationSixSymbols");
+        int lineIndex=0;
+        foreach(var stone in Object.FindObjectsByType<RuneStone>(FindObjectsSortMode.None).OrderBy(s=>s.Rune))
+        {
+            float x=(lineIndex++-2.5f)*.46f;
+            var slab=Object.Instantiate(stone.transform.Find("AlchemicalSlab").gameObject,lineup.transform);slab.transform.position=new Vector3(x,1.6f,.5f);slab.transform.rotation=Quaternion.identity;slab.transform.localScale=new Vector3(.42f,.42f,.05f);
+            var icon=Object.Instantiate(stone.transform.Find("ArtB_RuneIcon_"+stone.Rune).gameObject,lineup.transform);icon.transform.position=new Vector3(x,1.6f,.465f);icon.transform.rotation=Quaternion.identity;icon.transform.localScale=new Vector3(.40f,.40f,1);
+        }
+        View(new Vector3(0,0,-1.535f),new Vector3(0,1.6f,.465f));yield return Capture("35-six-symbols-at-2m");Object.Destroy(lineup);yield return null;
         View(new Vector3(-1.5f, 0, -1), new Vector3(0, 1, .5f));
         foreach (var rune in RunePuzzleLogic.DefaultAnswer) Object.FindObjectsByType<RuneStone>(FindObjectsSortMode.None).First(s => s.Rune == rune).Interact(Scenario.Player);
         yield return new WaitForSeconds(.65f); yield return Capture("03-altar");
@@ -145,7 +155,7 @@ public class ArtTests
         View(new Vector3(-3,0,1.4f),new Vector3(-3,1.55f,3.7f));yield return new WaitForSeconds(.2f);yield return Capture("13-seal-ready-crystal-colours");
         Object.FindFirstObjectByType<SealCore>().Interact(Scenario.Player);
         yield return new WaitForSeconds(3.8f);
-        View(new Vector3(0,0,2.5f),new Vector3(0,1.6f,6));yield return Capture("06-exit");
+        View(new Vector3(0,0,2.5f),new Vector3(0,1.6f,6));yield return Capture("06-exit");yield return Capture("36-cold-corridor-before-escape");
         // Isolate the corridor lighting without entering the actual exit trigger / clear overlay.
         var exitTrigger=Object.FindFirstObjectByType<ExitTrigger>();exitTrigger.gameObject.SetActive(false);
         View(new Vector3(0,0,5.6f),new Vector3(0,1.65f,7.9f));
@@ -156,7 +166,10 @@ public class ArtTests
         View(new Vector3(0,0,-4.65f),new Vector3(0,1.2f,1));yield return Capture("14-hotbar-model-icons");
         Assert.True(GameManager.Instance.IsPlaying,"No clear overlay hides validation views");exitTrigger.gameObject.SetActive(true);
         File.WriteAllText(Path.Combine(Output,"effect-budget.txt"),"Emitters="+Object.FindObjectsByType<ParticleSystem>(FindObjectsSortMode.None).Length+"\nActive lights="+Object.FindObjectsByType<Light>(FindObjectsSortMode.None).Count(l=>l.enabled)+"\nRealtime shadow lights="+Object.FindObjectsByType<Light>(FindObjectsSortMode.None).Count(l=>l.enabled&&l.shadows!=LightShadows.None)+"\nLaptop FPS not measured; batchmode is not a performance acceptance test.\n");
-        GameManager.Instance.NotifyPlayerEscaped();yield return new WaitForSecondsRealtime(2.4f);yield return Capture("28-ending");
+        GameManager.Instance.NotifyPlayerEscaped();yield return new WaitForSecondsRealtime(.65f);yield return Capture("37-black-fade-midpoint");
+        Assert.Greater(Object.FindFirstObjectByType<RoomPresentation>().fade.color.a,.3f);
+        Assert.AreEqual(0,Object.FindFirstObjectByType<RoomPresentation>().fade.color.r);
+        yield return new WaitForSecondsRealtime(2);yield return Capture("28-ending");
     }
 }
 

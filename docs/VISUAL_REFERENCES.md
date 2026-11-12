@@ -186,3 +186,11 @@
 - Quaternius Standard FREE ZIP `License_Standard.txt`? CC0 1.0 ??. Crate_Wooden, Candle_2, Scroll_2, Book_7? ??? ??. ?? 11? + KayKit ??/?? ???. ????? ?? ThirdParty/Quaternius/License_Standard.txt ??. ?? PRO/SOURCE ?? ?? ??.
 - ?? ?? ??? S10c 33? ? S10d 72?(? **2.18?**). ? 39? ?? mesh/renderer? ???? ????/????? ???? ???. ?? ??, ?? ??/??, ??????????? ?? ?? ?? ?? ??.
 - ?? ??? ??/?? ??: `validation/s10d/REVIEW.md`.
+
+## S10f — 중세 연금술 사본/목판화 (2026-11-12)
+- 시각 기준: 16세기 연금술 목판화의 세피아 잉크, 해칭, 이중 장식 테두리. 역사 원본 이미지를 복제/다운로드하지 않았으며 그림은 `Tools/Generate-Alchemy.py` 자체 제작이다. Splendor Solis / Rosarium philosophorum은 방향 참고 명칭일 뿐 원본 에셋 사용을 주장하지 않는다.
+- 기호: Fire U+1F702 / Water U+1F704 / Wind U+1F701 / Earth U+1F703 / Light U+2609 / Shadow U+2644. 모든 문맥에서 동일 7/256 선 굵기, 낡은 황동, 저채도. 실제 `NotoSansSymbols[wght].ttf` cmap 조사에서 U+2609가 없고 나머지 5개는 존재함을 확인. 통일된 선 굵기를 위해 6종 모두 독자 벡터로 작성(Shadow는 토성 십자+낫). 글리프 원본을 래스터화한 것이 아니다.
+- Noto 원본/라이선스: https://github.com/google/fonts/tree/main/ofl/notosanssymbols ; https://raw.githubusercontent.com/google/fonts/main/ofl/notosanssymbols/OFL.txt — SIL OFL 1.1 원문 직접 확인/보관. `Tools/FontSource/NotoSansSymbols/{NotoSansSymbols.ttf,OFL.txt,glyph-audit.json}`. 게임에 새 폰트를 임베드하지 않음; 기존 고운바탕 유지.
+- 불 플립북: Unity Labs Paris, Thomas Iché, Flame02 / `Flame02_16x4.tga` 64프레임. 공식 다운로드/CC0 고지 직접 확인: https://unity.com/blog/engine-platform/free-vfx-image-sequences-flipbooks ; https://unity3d.com/files/labs/downloads/vfx/assets01/Flame02/Flame02-flipbooks.zip . RGBA PNG 무손실 변환, 2048×1024. 게임 파일 `UnityProject/Assets/Art/S10f/Flame02.png`. Asset Store 사용 없음. 라이선스 원문: https://creativecommons.org/publicdomain/zero/1.0/legalcode .
+- 물 노멀: 외부 자산 아님. 사인 합성 높이장의 기울기로 만든 자체 256×256 타일 노멀 (`WaterNormal.png`). ambientCG 후보 다운로드 Water002는 404이므로 사용하지 않음. 물과 가마솥은 같은 스크롤 노멀/프레넬/환경반사/표면 높이 셰이더, 색만 다름. 실제 scene-depth 기반 굴절 및 열 왜곡은 미구현(오버드로 절제).
+- 재현: 최초 실행에는 `Tools/asset-cache/s10f/Flame02/Flame02_16x4.tga`, Noto 원본이 필요하며, 캐시는 Git 제외. 커밋된 원본 폰트와 게임 PNG는 보존된다.

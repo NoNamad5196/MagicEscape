@@ -1,0 +1,1 @@
+Collider manifest unchanged. Six equal slate visuals; original collider transforms retained. Orange rectangle = SealLight_3/ArtB_C_SealLampLens, replaced by brass fire incision. External fire = Unity Labs Flame02 CC0. Water normals original. No heat distortion (overdraw budget).

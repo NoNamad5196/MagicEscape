@@ -31,7 +31,7 @@ namespace MagicEscape
             if(kind==Kind.Flame)
             {
                 int stage=GameManager.Instance!=null?GameManager.Instance.Progression.SolvedCount:0;
-                if(source!=null) source.intensity=brightness*(1+stage*.2f)*(.94f+.08f*Mathf.PerlinNoise(seed,t*4)+.025f*Mathf.Sin(t*13+seed));
+                if(source!=null) source.intensity=brightness*(1-stage*.10f)*(.94f+.08f*Mathf.PerlinNoise(seed,t*4)+.025f*Mathf.Sin(t*13+seed));
             }
             else if(kind==Kind.Lantern)
             {
@@ -46,7 +46,7 @@ namespace MagicEscape
                 bool released=stage==SealStage.Released;
                 float rate=stage==SealStage.ReadyToRelease?32:released?8:13;
                 transform.localRotation=rotation*Quaternion.AngleAxis(t*rate+seed,Vector3.forward);
-                Color c=released?new Color(1,.65f,.18f):stage==SealStage.ReadyToRelease?new Color(.65f,.4f,1):new Color(.25f,.28f,.55f);
+                Color c=released?new Color(.25f,.21f,.14f):stage==SealStage.ReadyToRelease?new Color(.65f,.52f,.28f):new Color(.28f,.25f,.18f);
                 float pulse=(.7f+.15f*Mathf.Sin(t*2.2f+seed))*(stage==SealStage.Dormant?.45f:1);
                 foreach(var r in emissives) { if(r==null)continue; r.GetPropertyBlock(block);block.SetColor("_EmissionColor",c*pulse*2);r.SetPropertyBlock(block); }
                 if(source!=null) {source.color=c;source.intensity=pulse*(released?.28f:.6f);}

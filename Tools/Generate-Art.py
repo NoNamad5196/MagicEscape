@@ -227,3 +227,7 @@ print('S10e: bold six elements, contrasted plates, picture-only chalk/recipe, fi
 im=paper((512,512),(198,174,125));d=ImageDraw.Draw(im)
 for off in (10,17):d.rectangle((off,off,511-off,511-off),outline=(108,77,41),width=2)
 im.save(E/'EndingParchment.png')
+
+# Final S10f visual vocabulary overrides the historical checkpoint artwork.
+import runpy
+runpy.run_path("Tools/Generate-Alchemy.py")

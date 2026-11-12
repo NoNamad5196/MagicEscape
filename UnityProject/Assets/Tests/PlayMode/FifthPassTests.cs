@@ -51,9 +51,9 @@ public class FifthPassTests
         var stones=Object.FindObjectsByType<RuneStone>(FindObjectsSortMode.None);Color ambient=RenderSettings.ambientLight;
         rune.Press(stones.First(s=>s.Rune==RuneId.Earth),Scenario.Player);Assert.AreEqual(1,clues.LitFrames);Assert.True(clues.frameLights[0].enabled);
         rune.Press(stones.First(s=>s.Rune==RuneId.Wind),Scenario.Player);Assert.AreEqual(0,clues.LitFrames);Assert.True(clues.frameLights.All(l=>!l.enabled));
-        yield return Scenario.Rune();Assert.AreEqual(1,Presentation.BrightnessStage);Assert.AreEqual(2,Presentation.LitSealCount);Assert.Greater(RenderSettings.ambientLight.grayscale,ambient.grayscale);
+        yield return Scenario.Rune();Assert.AreEqual(1,Presentation.BrightnessStage);Assert.AreEqual(2,Presentation.LitSealCount);Assert.Less(RenderSettings.ambientLight.grayscale,ambient.grayscale);
         Assert.AreEqual(4,clues.LitFrames);ambient=RenderSettings.ambientLight;Scenario.Collect(ItemIds.CrystalSapphire);
-        yield return Scenario.Potion();Assert.AreEqual(2,Presentation.BrightnessStage);Assert.AreEqual(1,Presentation.LitSealCount);Assert.Greater(RenderSettings.ambientLight.grayscale,ambient.grayscale);
+        yield return Scenario.Potion();Assert.AreEqual(2,Presentation.BrightnessStage);Assert.AreEqual(1,Presentation.LitSealCount);Assert.Less(RenderSettings.ambientLight.grayscale,ambient.grayscale);
         Reveal();foreach(var socket in Object.FindObjectsByType<CrystalSocket>(FindObjectsSortMode.None)){Scenario.Select(socket.Side==SocketSide.Left?ItemIds.CrystalSapphire:ItemIds.CrystalRuby);socket.Interact(Scenario.Player);}
         Object.FindFirstObjectByType<SealCore>().Interact(Scenario.Player);yield return new WaitForSeconds(.65f);
         Assert.AreEqual(3,Presentation.BrightnessStage);Assert.AreEqual(0,Presentation.LitSealCount);Assert.True(Presentation.dawn.enabled);Assert.True(Presentation.coreRenderers.All(r=>!r.enabled));
@@ -83,7 +83,7 @@ public class FifthPassTests
         yield return Scenario.Potion();Reveal();var left=Object.FindObjectsByType<CrystalSocket>(FindObjectsSortMode.None).First(s=>s.Side==SocketSide.Left);Scenario.Select(ItemIds.CrystalRuby);
         for(int i=1;i<=2;i++){left.Interact(Scenario.Player);Assert.AreEqual(i,Object.FindFirstObjectByType<SealPuzzle>().Logic.FailCount);Assert.AreEqual(i>=2,Toast.Contains(GameText.HintSeal));Assert.True(InventoryManager.Instance.Contains(ItemIds.CrystalRuby));}
     }
-    [UnityTest] public IEnumerator EndingShowsActualClearTimeAfterWhiteFade()
+    [UnityTest] public IEnumerator EndingShowsActualClearTimeAfterBlackFade()
     {
         yield return Load();var gm=GameManager.Instance;gm.Progression.Tick(125);gm.ReportSolved(PuzzleId.Rune);gm.ReportSolved(PuzzleId.Potion);gm.ReportSolved(PuzzleId.Seal);
         gm.NotifyPlayerEscaped();Assert.AreEqual(GameFlowState.Cleared,gm.Progression.Flow);Assert.True(Presentation.InputBlocked);Assert.False(Presentation.clearGroup.blocksRaycasts);

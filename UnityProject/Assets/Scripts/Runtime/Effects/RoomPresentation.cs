@@ -45,6 +45,16 @@ namespace MagicEscape
         }
         PlayerInputReader input;
         void Start() {input=FindFirstObjectByType<PlayerInputReader>();}
+        void LateUpdate()
+        {
+            if(BrightnessStage<3)return;
+            for(int i=0;i<candleFlames.Length;i++)if(candleFlames[i]!=null)
+            {
+                float sway=Mathf.Sin(Time.time*9+i)*8;
+                candleFlames[i].transform.rotation=Quaternion.Euler(16+sway,0,sway*.3f);
+                if(i<candles.Length&&candles[i]!=null)candles[i].intensity=candleIntensity[i]*(.45f+.13f*Mathf.PerlinNoise(Time.time*12,i));
+            }
+        }
         void Update()
         {
             if(opening&&input!=null&&input.AnyPressed)SkipPresentation();
@@ -97,14 +107,14 @@ namespace MagicEscape
         {
             if(sequence!=null)StopCoroutine(sequence);sequence=null;skipFrame=Time.frameCount;
             if(opening)CompleteOpening();
-            else {SetFade(Color.white,0);if(clearGroup!=null){clearGroup.alpha=1;clearGroup.blocksRaycasts=true;}SetBlocked(false);}
+            else {SetFade(Color.black,0);if(clearGroup!=null){clearGroup.alpha=1;clearGroup.blocksRaycasts=true;}SetBlocked(false);}
         }
-        static Color StageAmbient(int stage) => new Color(.105f,.12f,.15f)+new Color(.022f,.020f,.014f)*stage;
+        static Color StageAmbient(int stage) => new Color(.105f,.12f,.15f)-new Color(.009f,.008f,.006f)*stage;
         public void SetProgress(int count,bool cue=true)
         {
             BrightnessStage=Mathf.Clamp(count,0,3);RenderSettings.ambientLight=StageAmbient(BrightnessStage);
-            if(roomFill!=null)roomFill.intensity=.22f+BrightnessStage*.055f;
-            for(int i=0;i<candles.Length;i++)if(candles[i]!=null){candles[i].enabled=true;candles[i].intensity=candleIntensity[i]*(1+BrightnessStage*.2f);}
+            if(roomFill!=null)roomFill.intensity=.22f-BrightnessStage*.025f;
+            for(int i=0;i<candles.Length;i++)if(candles[i]!=null){candles[i].enabled=true;candles[i].intensity=candleIntensity[i]*(1-BrightnessStage*.12f);}
             if(!cue)return;
             AudioManager.Play(SfxId.SocketPlace);
             if(sealOff!=null && count>0 && count<=sealOff.Length && sealOff[count-1]!=null)sealOff[count-1].Play();
@@ -133,11 +143,11 @@ namespace MagicEscape
         IEnumerator Ending()
         {
             if(clearGroup!=null){clearGroup.alpha=0;clearGroup.blocksRaycasts=false;}
-            for(float t=0;t<1;t+=Time.unscaledDeltaTime/1.25f){SetFade(Color.white,t);yield return null;}
-            SetFade(Color.white,1);yield return new WaitForSecondsRealtime(.2f);
+            for(float t=0;t<1;t+=Time.unscaledDeltaTime/1.25f){SetFade(Color.black,t);yield return null;}
+            SetFade(Color.black,1);yield return new WaitForSecondsRealtime(.2f);
             if(clearGroup!=null)clearGroup.alpha=1;
-            for(float t=1;t>0;t-=Time.unscaledDeltaTime/.6f){SetFade(Color.white,t);yield return null;}
-            SetFade(Color.white,0);if(clearGroup!=null)clearGroup.blocksRaycasts=true;sequence=null;SetBlocked(false);
+            for(float t=1;t>0;t-=Time.unscaledDeltaTime/.6f){SetFade(Color.black,t);yield return null;}
+            SetFade(Color.black,0);if(clearGroup!=null)clearGroup.blocksRaycasts=true;sequence=null;SetBlocked(false);
         }
         void SetFade(Color color,float alpha) { if(fade!=null){color.a=alpha;fade.color=color;fade.raycastTarget=alpha>.01f;} }
         void PlayLatch() {if(sealLatch!=null&&sealLatch.clip!=null)sealLatch.PlayOneShot(sealLatch.clip);else AudioManager.Play(SfxId.SocketPlace);}
