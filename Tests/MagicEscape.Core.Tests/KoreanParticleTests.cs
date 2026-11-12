@@ -1,0 +1,25 @@
+using MagicEscape.Core;
+using Xunit;
+public class KoreanParticleTests
+{
+    [Theory]
+    [InlineData("???? ??", "???? ???")]
+    [InlineData("??? ??", "??? ???")]
+    [InlineData("?? ??", "?? ???")]
+    [InlineData("???", "????")]
+    [InlineData("?? ?? (?)", "?? ?? (?)?")]
+    [InlineData("?? ?? (?)", "?? ?? (?)?")]
+    [InlineData("??? ??", "??? ???")]
+    [InlineData("", "?")]
+    [InlineData(null, "?")]
+    public void ObjectParticle(string name, string expected) => Assert.Equal(expected, KoreanParticle.Object(name));
+    [Fact] public void OtherParticles()
+    {
+        Assert.Equal("???", KoreanParticle.Subject("??"));
+        Assert.Equal("???", KoreanParticle.Subject("??"));
+        Assert.Equal("???", KoreanParticle.With("??"));
+        Assert.Equal("???", KoreanParticle.With("??"));
+        Assert.True(KoreanParticle.HasFinalConsonant("??  "));
+        Assert.False(KoreanParticle.HasFinalConsonant("Ruby"));
+    }
+}
