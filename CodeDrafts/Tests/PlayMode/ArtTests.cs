@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.IO;
 using System.Linq;
@@ -14,7 +14,7 @@ using Object = UnityEngine.Object;
 
 public class ArtTests
 {
-    static string Output => Path.GetFullPath(Path.Combine(Application.dataPath, "../../docs/validation/s10c"));
+    static string Output => Path.GetFullPath(Path.Combine(Application.dataPath, "../../docs/validation/s10d"));
     static void View(Vector3 position, Vector3 target)
     {
         var player = Scenario.Player.GetComponent<PlayerController>();
@@ -53,7 +53,7 @@ public class ArtTests
         Assert.Greater(new FileInfo(path).Length, 1000);
     }
     [UnityTest]
-    public IEnumerator S10c_ArtAudioEffectsLayoutAndGameViewCaptures()
+    public IEnumerator S10d_ArtAudioEffectsLayoutAndGameViewCaptures()
     {
         yield return SceneManager.LoadSceneAsync("Classroom"); yield return null;
         Directory.CreateDirectory(Output);
@@ -81,6 +81,11 @@ public class ArtTests
         var chalk=GameObject.Find("ChalkboardLabel").GetComponent<TMPro.TMP_Text>();chalk.ForceMeshUpdate();
         Assert.AreEqual(GameText.Chalkboard,chalk.text.Replace('\n',' '));Assert.AreEqual(TMPro.TextWrappingModes.NoWrap,chalk.textWrappingMode);Assert.LessOrEqual(chalk.textBounds.size.x,chalk.rectTransform.rect.width+.01f);
         Assert.True(GameObject.Find("Art_SecondPass").GetComponentsInChildren<Collider>().Length==0);
+        Assert.True(GameObject.Find("Art_FourthPass").GetComponentsInChildren<Collider>(true).Length==0);
+        Assert.That(chalk.font.name,Does.Contain("NanumPenScript"));
+        var uiFont=Resources.FindObjectsOfTypeAll<TMPro.TMP_Text>().First(t=>t.name=="PromptText"&&t.gameObject.scene.IsValid()).font;
+        foreach(var field in typeof(GameText).GetFields(BindingFlags.Public|BindingFlags.Static).Where(f=>f.FieldType==typeof(string)))
+            foreach(char c in ((string)field.GetValue(null)).Where(c=>!char.IsControl(c)))Assert.True(uiFont.HasCharacter(c,false,false),"Missing GameText glyph U+"+((int)c).ToString("X4"));
         foreach(string roman in new[]{"I","II","III","IV"}) {
             var plate=GameObject.Find("PaintingLabel_"+roman).GetComponent<TMPro.TMP_Text>();plate.ForceMeshUpdate();
             Assert.AreEqual(roman,plate.text);Assert.Greater(plate.textInfo.characterCount,0);Assert.Greater(plate.textInfo.meshInfo[0].vertexCount,0,"Roman plate has visible glyph mesh");
@@ -106,7 +111,7 @@ public class ArtTests
         Scenario.Select(ItemIds.PotionRevelation); Object.FindFirstObjectByType<SealInscription>().Interact(Scenario.Player); UIManager.Instance.CloseRead();
         var reveal=Object.FindFirstObjectByType<SealInscription>().transform.Find("RevealedText");
         var sentence=reveal.Find("InscriptionText").GetComponent<TMPro.TMP_Text>();sentence.ForceMeshUpdate();
-        Assert.AreEqual(GameText.InscriptionRevealed,sentence.text);
+        Assert.AreEqual(GameText.InscriptionRevealed,sentence.text.Replace('\n',' '));
         Assert.LessOrEqual(sentence.textBounds.size.x,sentence.rectTransform.rect.width+.01f,"Inscription glyphs fit plaque width");
         Assert.LessOrEqual(sentence.textBounds.size.y,sentence.rectTransform.rect.height+.01f,"Inscription glyphs fit plaque height");
         Assert.LessOrEqual(sentence.preferredHeight,sentence.rectTransform.rect.height+.01f,"Inscription fits its box without ellipsis");

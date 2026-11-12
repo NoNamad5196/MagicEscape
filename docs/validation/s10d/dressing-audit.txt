@@ -1,0 +1,1 @@
+Added CC0 model clusters=39 plus 9 wax/pen/feather props, 3 cobwebs, 2 soot glazes. All mesh-only, no collision. Clear centre lane preserved.

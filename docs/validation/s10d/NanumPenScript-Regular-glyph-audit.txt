@@ -1,0 +1,2 @@
+Required unique characters=23
+Missing=0

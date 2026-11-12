@@ -1,0 +1,220 @@
+{
+  "result": "Passed",
+  "total": "13",
+  "passed": "13",
+  "failed": "0",
+  "skipped": "0",
+  "start-time": "2026-11-12 10:00:50Z",
+  "end-time": "2026-11-12 10:01:55Z",
+  "duration": "65.3894349",
+  "tests": [
+    {
+      "fullname": "ArtTests.S10d_ArtAudioEffectsLayoutAndGameViewCaptures",
+      "result": "Passed",
+      "duration": "14.576685"
+    },
+    {
+      "fullname": "ClassroomTests.S1_RoomAndDoorway",
+      "result": "Passed",
+      "duration": "0.286703"
+    },
+    {
+      "fullname": "CluesTests.S5_ClueReadsAndVisibleOrder",
+      "result": "Passed",
+      "duration": "0.268535"
+    },
+    {
+      "fullname": "FullInputTests.ExitStraightCenter",
+      "result": "Passed",
+      "duration": "8.937913"
+    },
+    {
+      "fullname": "FullInputTests.ExitStraightLeft",
+      "result": "Passed",
+      "duration": "8.681724"
+    },
+    {
+      "fullname": "FullInputTests.ExitStraightRight",
+      "result": "Passed",
+      "duration": "8.702185"
+    },
+    {
+      "fullname": "FullInputTests.S9_KeyboardRaycastAllPuzzlesWalkExit",
+      "result": "Passed",
+      "duration": "8.537536"
+    },
+    {
+      "fullname": "ItemsTests.S4_CatalogHotbarSelection",
+      "result": "Passed",
+      "duration": "0.416858"
+    },
+    {
+      "fullname": "PotionTests.S7_LocksWrongRespawnsAndRewards",
+      "result": "Passed",
+      "duration": "3.538587"
+    },
+    {
+      "fullname": "RuneTests.S6_WrongHintCorrectRewardSeal",
+      "result": "Passed",
+      "duration": "2.479786"
+    },
+    {
+      "fullname": "SealTests.S8_SealRejectionDoorPhysicalTriggerClearRestart",
+      "result": "Passed",
+      "duration": "7.779684"
+    },
+    {
+      "fullname": "SystemsTests.S2_PlayerSystems",
+      "result": "Passed",
+      "duration": "0.408460"
+    },
+    {
+      "fullname": "UITests.S3_PanelsButtonsReadRestart",
+      "result": "Passed",
+      "duration": "0.711637"
+    }
+  ],
+  "game_console_error_exception_assert_events": 0,
+  "runs": {
+    "s10d-release-build": {
+      "counts": {
+        "compiler_errors": 0,
+        "exception_headings": 0,
+        "shader_errors": 0,
+        "atlas_shadow_reduction_warnings": 0
+      },
+      "launch_headroom_gb": 18.23,
+      "editor_licensing_access_token_messages": 1
+    },
+    "s10d-tests-final": {
+      "counts": {
+        "compiler_errors": 0,
+        "exception_headings": 0,
+        "shader_errors": 0,
+        "atlas_shadow_reduction_warnings": 0
+      },
+      "launch_headroom_gb": 17.64,
+      "editor_licensing_access_token_messages": 1
+    }
+  },
+  "iterations": [
+    {
+      "run": "s10d-tests",
+      "passed": 12,
+      "failed": 1,
+      "cause": "UITests still required NotoSansKR. Updated expectation to Gowun UI / Nanum chalk."
+    },
+    {
+      "run": "s10d-tests-refine",
+      "passed": 12,
+      "failed": 1,
+      "cause": "Dynamic TMP atlas was cleared by TestRunner build. Baked static atlas, disabled clear-on-build; no fallback in glyph test."
+    },
+    {
+      "run": "s10d-build-baked",
+      "status": "compile failed",
+      "cause": "TMP clearDynamicDataOnBuild is not public in installed version; corrected using SerializedObject."
+    },
+    {
+      "run": "s10d-art-baked",
+      "passed": 1,
+      "failed": 0
+    }
+  ],
+  "glyph_audits": {
+    "GowunBatang-Regular-glyph-audit.txt": {
+      "required": 518,
+      "missing": 0
+    },
+    "NanumPenScript-Regular-glyph-audit.txt": {
+      "required": 23,
+      "missing": 0
+    }
+  },
+  "capture_viewpoints_equal_to_s10c": true,
+  "captures": [
+    {
+      "file": "01-classroom.png",
+      "bytes": 589147,
+      "sha256": "ff6b1ee610f534a4b24088ed94f2f3599a92593d40ed6a5e3eac34ad416527fd"
+    },
+    {
+      "file": "02-painting-wall.png",
+      "bytes": 547455,
+      "sha256": "64002ca05cbac7e9239fac6b08a00f79410f8f2c3e21af984f002fcd690c0aff"
+    },
+    {
+      "file": "03-altar.png",
+      "bytes": 654622,
+      "sha256": "3615d2962c841d56835f49809011e880bb0d4f3a0d1aabf6dd8c6740d44620b6"
+    },
+    {
+      "file": "04-cauldron.png",
+      "bytes": 752324,
+      "sha256": "ca34d42e4ed47f642979f720d5e2a852f1a307cd8e0125c696592af5b43b0f8f"
+    },
+    {
+      "file": "05-inscription-revealed.png",
+      "bytes": 633671,
+      "sha256": "528c2f470dbe4681481bddbd89f6933e7598a33f5f40369707cbda067e99fafa"
+    },
+    {
+      "file": "06-exit.png",
+      "bytes": 504424,
+      "sha256": "145bb7ed1b30cc4cd0f064960688205015e5c2c76a0ee9789724a9fd7cec88da"
+    },
+    {
+      "file": "07-student-desks-window.png",
+      "bytes": 562250,
+      "sha256": "6d315d70b5b11abc8e80d4b2f0681d83a1362372941638f88ed9cc9d29dcbc5f"
+    },
+    {
+      "file": "08-corridor-lantern-only.png",
+      "bytes": 376690,
+      "sha256": "7e39b717dc1c4020eae5e73566347f2f28833ba6eded6968b3ded54e61ecd6f2"
+    },
+    {
+      "file": "09-window-moonlight.png",
+      "bytes": 529921,
+      "sha256": "f3bcbbabaf4a848357dfa37ddc7089f6fa5c8279e6f0b8b1b1198cb1edb85b7b"
+    },
+    {
+      "file": "10-painting-closeup.png",
+      "bytes": 797593,
+      "sha256": "c68c48affce6718b44cb87a52ac5ea9d48ed9b14435f68969b34b58e2d7d1e1b"
+    },
+    {
+      "file": "11-chalkboard-closeup.png",
+      "bytes": 812880,
+      "sha256": "45c74459632e945cade2a68ab09eecaac8b18ba1ee2821b75a9013d2cdfd49b1"
+    },
+    {
+      "file": "12-inscription-closeup.png",
+      "bytes": 669990,
+      "sha256": "0559163598687b3dc75d98c1b508adcc27c9579de9cfd86e8a7b77578efafeda"
+    },
+    {
+      "file": "13-seal-ready-crystal-colours.png",
+      "bytes": 646257,
+      "sha256": "5aa813f381cf36800f0ab28a25770c6616226d6e9fd924861942b95cd63be6be"
+    },
+    {
+      "file": "14-hotbar-model-icons.png",
+      "bytes": 602973,
+      "sha256": "558ef4e742b9c70bed5920c2f5cda7dc925edd22e762612c598d79d2f3e4f463"
+    }
+  ],
+  "mirrors": {
+    "UnityProject/Assets/Editor/ClassroomFourthArtBuilder.cs": true,
+    "UnityProject/Assets/Tests/PlayMode/ArtTests.cs": true,
+    "UnityProject/Assets/Tests/PlayMode/FullInputTests.cs": true,
+    "UnityProject/Assets/Tests/PlayMode/UITests.cs": true,
+    "UnityProject/Assets/Scripts/Runtime/UI/UIManager.cs": true
+  },
+  "core_rules_and_GameText_unchanged": true,
+  "model_roots": {
+    "s10c": 33,
+    "s10d": 72
+  },
+  "scene_manifest_sha256": "37c9847dc066d16b110120fef06047d03fa9f729980bc0960679d55352cc5c17"
+}

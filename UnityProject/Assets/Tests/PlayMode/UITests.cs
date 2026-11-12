@@ -23,7 +23,7 @@ public class UITests
         UIManager.Instance.ToggleObjective(); Assert.AreEqual(GameText.ObjectiveRune,GameObject.Find("ObjectiveText").GetComponent<TMP_Text>().text);
         GameManager.Instance.TogglePause(); Assert.NotNull(GameObject.Find("PausePanel"));
         GameObject.Find("Button_Resume").GetComponent<Button>().onClick.Invoke(); Assert.True(GameManager.Instance.IsPlaying);
-        foreach(var text in Object.FindObjectsByType<TMP_Text>(FindObjectsInactive.Include,FindObjectsSortMode.None)) Assert.That(text.font.name,Does.Contain("NotoSansKR"));
+        foreach(var text in Object.FindObjectsByType<TMP_Text>(FindObjectsInactive.Include,FindObjectsSortMode.None)) Assert.That(text.font.name,Does.Contain(text.name=="ChalkboardLabel"?"NanumPenScript":"GowunBatang"));
         GameManager.Instance.TogglePause(); GameObject.Find("Button_Restart").GetComponent<Button>().onClick.Invoke(); yield return null; yield return null;
         Assert.AreEqual(GameFlowState.Title,GameManager.Instance.Progression.Flow);
         Assert.True(Object.FindFirstObjectByType<TMP_Text>(FindObjectsInactive.Include).font.HasCharacters("마법학교 방탈출 계시의 물약",out uint[] _,false,true),"Korean glyph coverage"); Assert.AreEqual(1,Time.timeScale); Assert.AreEqual(0,InventoryManager.Instance.Model.Count);

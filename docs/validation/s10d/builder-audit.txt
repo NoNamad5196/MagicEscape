@@ -1,0 +1,1 @@
+S10d rebuilt from S10c. Existing colliders, world transforms/scales/layers and gameplay MonoBehaviour configuration/references unchanged. No added colliders. GameText/Core unchanged. Font glyph coverage is checked before save.

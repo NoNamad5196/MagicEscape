@@ -1,0 +1,102 @@
+[
+  {
+    "file": "UnityProject/Assets/Art/OldCrystal.shader",
+    "bytes": 1316,
+    "sha256": "f41be8e69e9adc075c81fccddf06c6a4c945b3f4edbcfda2ecd203b154cb7f15"
+  },
+  {
+    "file": "UnityProject/Assets/Art/S10d/BronzeEmission.png",
+    "bytes": 7468,
+    "sha256": "a6fa9529f19c2f5c7ea3c63195910a499f313dd07342891c16fab6727e94debd"
+  },
+  {
+    "file": "UnityProject/Assets/Art/S10d/ClothPanel.png",
+    "bytes": 161175,
+    "sha256": "70023bb556394271a5063a81b8baa602b6c86c2721b73144bd053f5093b596c6"
+  },
+  {
+    "file": "UnityProject/Assets/Art/S10d/Cobweb.png",
+    "bytes": 6308,
+    "sha256": "c7b7f6497791235c81051cb3d0cb9a0941a42e457f70c7702e3bccc6119da449"
+  },
+  {
+    "file": "UnityProject/Assets/Art/S10d/Crosshair.png",
+    "bytes": 252,
+    "sha256": "57360203231a6afd1304641cf9feedc020015356528efcbf8dfb7fd9fedac7f2"
+  },
+  {
+    "file": "UnityProject/Assets/Art/S10d/Patina.png",
+    "bytes": 99249,
+    "sha256": "02d26c7bc4379bdce6c5dae5830c7dbdb189844c83d778031757a8c93955b7c4"
+  },
+  {
+    "file": "UnityProject/Assets/Art/S10d/SelectedSlot.png",
+    "bytes": 13128,
+    "sha256": "fdd9cbba81759e98207adc7142038ed2c8983472e4bf7224d30adebb275edbc4"
+  },
+  {
+    "file": "UnityProject/Assets/Art/S10d/Soot.png",
+    "bytes": 20299,
+    "sha256": "8efd458f953b6db0ef63975ac7e3a8db927dfbc0839061fbcb80685278686d0f"
+  },
+  {
+    "file": "UnityProject/Assets/Art/S10d/WoodSlot.png",
+    "bytes": 20055,
+    "sha256": "3c350fd1d3198f00b472fed9caf50dcef4db72cb3d77712fb57e08f94e375bec"
+  },
+  {
+    "file": "UnityProject/Assets/Fonts/GowunBatang-Regular-OFL.txt",
+    "bytes": 4397,
+    "sha256": "49a57cc769fa9affd6eefb9070a61e3d3f6b757c97cafb15848bc6d1c81acc78"
+  },
+  {
+    "file": "UnityProject/Assets/Fonts/GowunBatang-Regular-SDF.asset",
+    "bytes": 10135176,
+    "sha256": "d4ddd0eeee555a810c9f7451098241fc631b273a10101cbe9f7332c3187311a7"
+  },
+  {
+    "file": "UnityProject/Assets/Fonts/GowunBatang-Regular.ttf",
+    "bytes": 8433296,
+    "sha256": "466c593e7147412e748af4856d5ad14709b5a860bdf62b9c2546f2c5874e9849"
+  },
+  {
+    "file": "UnityProject/Assets/Fonts/NanumPenScript-Regular-OFL.txt",
+    "bytes": 4534,
+    "sha256": "eeacf16032901d0ed0456876ec77b8f0fda6b3fecec7d972f8543eb602e6c30f"
+  },
+  {
+    "file": "UnityProject/Assets/Fonts/NanumPenScript-Regular-SDF.asset",
+    "bytes": 8407197,
+    "sha256": "de4f474fdbc0e6db7b5828c2c73381a6c36c52ff3d2f0759f6f6b184052ffa35"
+  },
+  {
+    "file": "UnityProject/Assets/Fonts/NanumPenScript-Regular.ttf",
+    "bytes": 3201664,
+    "sha256": "6f0d1ab29c7894010dc88831fb7a0a51edb79136e450344183de5b1a8b52bd43"
+  },
+  {
+    "file": "UnityProject/Assets/ThirdParty/Quaternius/Book_7.fbx",
+    "bytes": 42300,
+    "sha256": "b08f60d40df652e0c81ddb12b45ba9b83827e12d76e426e3c2a347afe6cce9a3"
+  },
+  {
+    "file": "UnityProject/Assets/ThirdParty/Quaternius/Candle_2.fbx",
+    "bytes": 26892,
+    "sha256": "b70f9aca714341f960ebd1597ed8333e12a6c245c625bd5a4dce270855ac177c"
+  },
+  {
+    "file": "UnityProject/Assets/ThirdParty/Quaternius/Crate_Wooden.fbx",
+    "bytes": 59580,
+    "sha256": "1cea14e2d937586186cc8f0c0ca01b33fd999030622bc4c33133c7d91c257916"
+  },
+  {
+    "file": "UnityProject/Assets/ThirdParty/Quaternius/License_Standard.txt",
+    "bytes": 837,
+    "sha256": "edad12240087a33e08fc031e4e66c2b2b4b2a6d4f086339bde04f741b385fbda"
+  },
+  {
+    "file": "UnityProject/Assets/ThirdParty/Quaternius/Scroll_2.fbx",
+    "bytes": 40668,
+    "sha256": "41e72615126aa6c846d49085da3d4bc66b3bfc94218f751e85b3e1c9e7f9a2ec"
+  }
+]

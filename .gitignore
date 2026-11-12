@@ -50,3 +50,4 @@ Thumbs.db
 # S10b raw TestRunner XML includes local machine/environment metadata; commit sanitized results.json instead
 /docs/validation/s10b-*.xml
 /docs/validation/s10c-*.xml
+/docs/validation/s10d-*.xml
