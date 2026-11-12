@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.IO;
 using System.Linq;
@@ -19,7 +19,7 @@ public class ConsoleAudit
     static int errors;
     [OneTimeSetUp] public void Begin(){errors=0; Application.logMessageReceived+=OnLog;}
     static void OnLog(string text,string stack,LogType type){if(type==LogType.Error||type==LogType.Exception||type==LogType.Assert) errors++;}
-    [OneTimeTearDown] public void End(){Application.logMessageReceived-=OnLog; File.WriteAllText(Path.GetFullPath(Path.Combine(Application.dataPath,"../../docs/validation/s10b/console-audit.txt")),"PlayMode Error/Exception/Assert events="+errors+"\nNo expected-error suppression. UTC="+DateTime.UtcNow.ToString("O")); Assert.AreEqual(0,errors);}
+    [OneTimeTearDown] public void End(){Application.logMessageReceived-=OnLog; File.WriteAllText(Path.GetFullPath(Path.Combine(Application.dataPath,"../../docs/validation/s10c/console-audit.txt")),"PlayMode Error/Exception/Assert events="+errors+"\nNo expected-error suppression. UTC="+DateTime.UtcNow.ToString("O")); Assert.AreEqual(0,errors);}
 }
 public class FullInputTests
 {
@@ -51,7 +51,7 @@ public class FullInputTests
             Vector3 d=target-p.position; p.rotation=Quaternion.Euler(0,Mathf.Atan2(d.x,d.z)*Mathf.Rad2Deg,0); InputSystem.QueueStateEvent(keyboard,new KeyboardState(Key.W)); yield return null; elapsed+=Time.unscaledDeltaTime; simulated+=Time.deltaTime; frames++;
         }
         InputSystem.QueueStateEvent(keyboard,new KeyboardState()); yield return null; yield return null;
-        File.WriteAllText(Path.GetFullPath(Path.Combine(Application.dataPath,"../../docs/validation/s10/walk-audit.txt")),"frames="+frames+" real="+elapsed+" simulated="+simulated+" position="+p.position+" doorEuler="+GameObject.Find("DoorHinge").transform.localEulerAngles);
+        File.WriteAllText(Path.GetFullPath(Path.Combine(Application.dataPath,"../../docs/validation/s10c/walk-audit.txt")),"frames="+frames+" real="+elapsed+" simulated="+simulated+" position="+p.position+" doorEuler="+GameObject.Find("DoorHinge").transform.localEulerAngles);
         if(GameManager.Instance.IsPlaying) Assert.Less(Vector2.Distance(new Vector2(p.position.x,p.position.z),new Vector2(target.x,target.z)),.2f,"Walk blocked at "+p.position+" toward "+target);
     }
     [UnityTest] public IEnumerator S9_KeyboardRaycastAllPuzzlesWalkExit()

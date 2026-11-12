@@ -176,3 +176,23 @@ S9 자동 검증: 합성 키보드/휠·중앙 Raycast E로 세 퍼즐·W 물리
 - ?? Camera.main+HUD PNG **7?**, 1280?720, `validation/s10b/`. Unity ?? ??? 6GB ??? ? ?? Editor ??? ??.
 - **?? ??? ?? ?? ??**: ?? ??????2.5m ???/??????? ?????? ??/??. ?? ??/??/??? ??? ?? ?? ??. S11 ???.
 - ????? ?????/????? ??: [S10b ??](validation/s10b/report.md), [?? ??](validation/s10b/results.json).
+
+### S10c 자동 검증 및 직접 시각 점검 — 2026-11-12 KST
+
+- `ClassroomBuilder.S10c`를 두 번 재생성: 두 번 exit 0, scene-manifest hash 동일. S10b 대비 collider serialization/월드 위치·스케일/레이어 및 기존 gameplay MonoBehaviour 설정·참조 불변 검사 통과. 장식에 신규 collider 없음.
+- `s10c-tests-release` 및 감사 경로 정리 후 `s10c-tests-final`: 각각 **13/13**, failed/skipped 0, game Error/Exception/Assert **0**. [기계 판독 결과](validation/s10c/results.json). 기존 13개 테스트의 범위를 유지하면서 S10c 미술 검사를 확장했다.
+- 추가 검사: near-black ambient/Exponential Fog, shadowed light 2개 제한, 새 shader 지원 여부, CC0 ambience clip/loop 실제 재생 상태, 봉인 고리 회전, 256px 아이콘 연결, 칠판 원문·NoWrap·bounds. 기존 비문 glyph/아이콘 겹침/Emission 보존 검사 유지.
+- 실제 MainCamera+HUD PNG 14장: S10b와 동일 01~07, 랜턴만 켠 복도 08, 달빛 창문 09, 액자/칠판/공개 비문 10~12, 준비된 수정 색 13, 전 아이콘 14. 각 이미지를 직접 열어 확인했다.
+
+| 시각 확인 | 결과 / 근거 |
+|---|---|
+| 액자 로마숫자 | III/I/IV/II 구분 가능(02), 근접에서 선명(10) |
+| 칠판 | 원문 전체 읽힘, ‘순서로’·‘액자의’ 내부 끊김 없음(11) |
+| 공개 비문 | 두 줄 문장 전체 읽힘, 물/불 문양과 겹침 없음(05/12) |
+| 수정 | 왼쪽 파랑/오른쪽 빨강 명확(13), 핫바 색/형태 구분(14) |
+| 봉인 받침대 | 우하단 핫바가 중앙 받침대를 가리지 않음(05/13) |
+
+- 캡처 격리: 08은 다른 Light/ambient만 일시적으로 끄고 복구한다. ExitTrigger에 의해 클리어 UI가 덮이지 않도록 그 캡처 동안만 trigger를 비활성화했다가 원위치에서 복구한다. 전체 입력/출구 3경로 실제 W 테스트는 그대로다.
+- 중간 CS0200(읽기 전용 URP 그림자 해상도 프로퍼티)은 SerializedObject API로 수정했고, 그림자 atlas 자동 축소 경고는 Medium tier로 해결했다. 잘린 수정 아이콘/회색 병/촛불 겹침/뒤집힌 복도 유리는 시각 점검 후 수정·재촬영했다. 최종 컴파일/실행에 오류 없음.
+- 실행마다 6GB 메모리 및 Editor 단일 실행 게이트 통과. 원본 로그/XML의 환경·라이선스 식별정보는 커밋하지 않고 sanitized results/console/builder/lighting/idempotency audit만 보관한다.
+- **미검증 유지:** 실제 프로젝터, 일반 노트북 60fps, 실제 음향 청취·마우스 조작감·10~15분 사용자 플레이, S11 실행 파일 빌드. 자동 isPlaying 검사는 사람이 소리를 들은 검증이 아니다. [전체 보고/명령](validation/s10c/report.md).

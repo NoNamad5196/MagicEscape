@@ -1,0 +1,72 @@
+[
+  {
+    "file": "UnityProject/Assets/Art/S10c/AcademyCloth.png",
+    "bytes": 99921,
+    "sha256": "cf525c3433d4ab3d16f32d10211198a8e1c51f8efb00d2d6241ea8f30e42b7bf"
+  },
+  {
+    "file": "UnityProject/Assets/Art/S10c/Icons/crystal_ruby.png",
+    "bytes": 4991,
+    "sha256": "8c4597460e633c3ef9d02958418070d64a36dc0ee1a39ee1c028d9b98484f7a8"
+  },
+  {
+    "file": "UnityProject/Assets/Art/S10c/Icons/crystal_sapphire.png",
+    "bytes": 5024,
+    "sha256": "a7b52262de9a1b2f18954f0526872a479a956ca847f648186f7c75dcf417215e"
+  },
+  {
+    "file": "UnityProject/Assets/Art/S10c/Icons/ing_crystal_dust.png",
+    "bytes": 16061,
+    "sha256": "8d8f7c883c4574bee6cf66a2de77c106088ae23f606fd77fc7780929ed3d0cc1"
+  },
+  {
+    "file": "UnityProject/Assets/Art/S10c/Icons/ing_moonpetal.png",
+    "bytes": 8479,
+    "sha256": "51863fda94e8a249d97edbc135f7f68cddc1e35b66c0f8f8e34169b7f17b5c8b"
+  },
+  {
+    "file": "UnityProject/Assets/Art/S10c/Icons/ing_salamander_scale.png",
+    "bytes": 17135,
+    "sha256": "49fc91777ed18be883b43868ddf57fba5366789117479db7197da61255c91393"
+  },
+  {
+    "file": "UnityProject/Assets/Art/S10c/Icons/ing_toadstool.png",
+    "bytes": 8172,
+    "sha256": "a337c1fa7fc107706c6a0c2ce386df7b4f4e79d2225ba1ca5cd898eee1c7d692"
+  },
+  {
+    "file": "UnityProject/Assets/Art/S10c/Icons/potion_revelation.png",
+    "bytes": 15230,
+    "sha256": "11a0d337078bae35551e30a9d44c6989d293112791ea9586893a534f624f410a"
+  },
+  {
+    "file": "UnityProject/Assets/Art/S10c/NightGlass.png",
+    "bytes": 169297,
+    "sha256": "6a54157b894b06e90d43d9335c07080b134f126aa59721a0bcd4736375851584"
+  },
+  {
+    "file": "UnityProject/Assets/ThirdParty/AtmosphereCC0/CC0-1.0.txt",
+    "bytes": 7169,
+    "sha256": "f4e7f373b9b996950337e8d41a4a2939c2d90b7725e9baf3d5084a22717ad328"
+  },
+  {
+    "file": "UnityProject/Assets/ThirdParty/AtmosphereCC0/creak.wav",
+    "bytes": 43550,
+    "sha256": "8ddba13ab8d594e5b6cc815bdd868cb464162e0c2e8a3f319742d092bf4cba1d"
+  },
+  {
+    "file": "UnityProject/Assets/ThirdParty/AtmosphereCC0/CREDITS.md",
+    "bytes": 1594,
+    "sha256": "bc42627ab416d5563fa0c03b1a8d097ead39788d0b7b907bc7c2198aa114af7d"
+  },
+  {
+    "file": "UnityProject/Assets/ThirdParty/AtmosphereCC0/drone.wav",
+    "bytes": 2028644,
+    "sha256": "38546094e92c3720a5dd108c5ab76ff54faf84cfed470275f4699273be3ae1cf"
+  },
+  {
+    "file": "UnityProject/Assets/ThirdParty/AtmosphereCC0/wind.wav",
+    "bytes": 2028644,
+    "sha256": "03c11f3836b1d5501eaf789dd5e0d8ec418ecdfe191b44ace44cb7373eae2caf"
+  }
+]

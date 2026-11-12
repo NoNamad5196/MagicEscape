@@ -30,6 +30,7 @@ docs/                기획서·퍼즐 명세·기술 설계·씬 구성·인수
 - [게임 기획서](docs/GAME_DESIGN.md) · [퍼즐 명세](docs/PUZZLE_SPEC.md) · [기술 설계](docs/TECH_DESIGN.md)
 - [씬·Inspector 구성](docs/SCENE_SETUP.md) · [**Windows 인수인계**](docs/UNITY_HANDOFF.md) · [테스트 계획](docs/TEST_PLAN.md)
 - [비주얼·에셋](docs/VISUAL_REFERENCES.md) · [작업 현황](docs/TASKS.md) · [아이디어 일지](docs/IDEA_LOG.md)
+- [에셋·사운드 크레딧](docs/CREDITS.md)
 
 ## 서버에서 검증하기
 

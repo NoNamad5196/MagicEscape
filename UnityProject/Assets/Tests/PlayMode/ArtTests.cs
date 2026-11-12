@@ -14,7 +14,7 @@ using Object = UnityEngine.Object;
 
 public class ArtTests
 {
-    static string Output => Path.GetFullPath(Path.Combine(Application.dataPath, "../../docs/validation/s10b"));
+    static string Output => Path.GetFullPath(Path.Combine(Application.dataPath, "../../docs/validation/s10c"));
     static void View(Vector3 position, Vector3 target)
     {
         var player = Scenario.Player.GetComponent<PlayerController>();
@@ -53,11 +53,20 @@ public class ArtTests
         Assert.Greater(new FileInfo(path).Length, 1000);
     }
     [UnityTest]
-    public IEnumerator S10b_ArtAudioEffectsLayoutAndGameViewCaptures()
+    public IEnumerator S10c_ArtAudioEffectsLayoutAndGameViewCaptures()
     {
         yield return SceneManager.LoadSceneAsync("Classroom"); yield return null;
         Directory.CreateDirectory(Output);
         GameManager.Instance.StartGame();
+        Assert.True(RenderSettings.ambientLight.maxColorComponent<.08f,"Near-black blue ambient");
+        Assert.AreEqual(FogMode.Exponential,RenderSettings.fogMode);
+        Assert.AreEqual(2,Object.FindObjectsByType<Light>(FindObjectsSortMode.None).Count(l=>l.enabled&&l.shadows!=LightShadows.None),"Only lantern and moon cast real-time shadows");
+        Assert.True(GameObject.Find("Art_ThirdPass").GetComponentsInChildren<Collider>(true).Length==0);
+        var ambience=Object.FindFirstObjectByType<RoomAmbience>();Assert.NotNull(ambience);Assert.NotNull(ambience.wind.clip);Assert.NotNull(ambience.drone.clip);Assert.NotNull(ambience.timber.clip);
+        yield return null;Assert.True(ambience.wind.isPlaying);Assert.True(ambience.drone.isPlaying);
+        foreach(var renderer in Object.FindObjectsByType<MeshRenderer>(FindObjectsInactive.Include,FindObjectsSortMode.None))foreach(var material in renderer.sharedMaterials){Assert.NotNull(material,renderer.name);Assert.True(material.shader.isSupported,material.name+" supported shader");}
+        var orbit=GameObject.Find("ArtC_RuneRing_0").transform;var rotation=orbit.rotation;yield return new WaitForSeconds(.1f);Assert.Greater(Quaternion.Angle(rotation,orbit.rotation),.1f,"Seal ring rotates in play");
+        foreach(string id in new[]{ItemIds.Moonpetal,ItemIds.SalamanderScale,ItemIds.CrystalDust,ItemIds.Toadstool,ItemIds.CrystalSapphire,ItemIds.CrystalRuby,ItemIds.PotionRevelation})Assert.Greater(InventoryManager.Instance.GetData(id).icon.texture.width,128,"Model-rendered icon: "+id);
         var audio = Object.FindFirstObjectByType<AudioManager>();
         var entries = (AudioManager.SfxEntry[])typeof(AudioManager).GetField("clips", BindingFlags.NonPublic | BindingFlags.Instance).GetValue(audio);
         Assert.AreEqual(Enum.GetValues(typeof(SfxId)).Length, entries.Length);
@@ -67,6 +76,10 @@ public class ArtTests
         Assert.True(GameObject.Find("Art_Decor").GetComponentsInChildren<Collider>().Length == 0);
         View(new Vector3(0, 0, -4.65f), new Vector3(0, 1.2f, 1)); yield return Capture("01-classroom");
         View(new Vector3(-1.35f,0,-.1f),new Vector3(-5.8f,1.7f,0));yield return Capture("02-painting-wall");
+        View(new Vector3(-4.1f,0,-.8f),new Vector3(-5.8f,1.5f,-.8f));yield return Capture("10-painting-closeup");
+        View(new Vector3(-4.2f,0,-4),new Vector3(-5.8f,1.5f,-4));yield return Capture("11-chalkboard-closeup");
+        var chalk=GameObject.Find("ChalkboardLabel").GetComponent<TMPro.TMP_Text>();chalk.ForceMeshUpdate();
+        Assert.AreEqual(GameText.Chalkboard,chalk.text.Replace('\n',' '));Assert.AreEqual(TMPro.TextWrappingModes.NoWrap,chalk.textWrappingMode);Assert.LessOrEqual(chalk.textBounds.size.x,chalk.rectTransform.rect.width+.01f);
         Assert.True(GameObject.Find("Art_SecondPass").GetComponentsInChildren<Collider>().Length==0);
         foreach(string roman in new[]{"I","II","III","IV"}) {
             var plate=GameObject.Find("PaintingLabel_"+roman).GetComponent<TMPro.TMP_Text>();plate.ForceMeshUpdate();
@@ -80,6 +93,7 @@ public class ArtTests
         }
         Assert.True(GameObject.Find("ArtB_AltarCircle").GetComponent<Renderer>().sharedMaterial.IsKeywordEnabled("_EMISSION"));
         View(new Vector3(-2.7f,0,1.9f),new Vector3(1,1.25f,-3.5f));yield return Capture("07-student-desks-window");
+        View(new Vector3(3.2f,0,-2.2f),new Vector3(5,1.7f,-4.8f));yield return Capture("09-window-moonlight");
         View(new Vector3(-1.5f, 0, -1), new Vector3(0, 1, .5f));
         foreach (var rune in RunePuzzleLogic.DefaultAnswer) Object.FindObjectsByType<RuneStone>(FindObjectsSortMode.None).First(s => s.Rune == rune).Interact(Scenario.Player);
         yield return new WaitForSeconds(.65f); yield return Capture("03-altar");
@@ -106,10 +120,21 @@ public class ArtTests
         Assert.LessOrEqual(prompt.rectTransform.anchoredPosition.y,-280);
         View(new Vector3(-3,0,1.4f),new Vector3(-3,1.65f,3.7f));
         yield return new WaitForSeconds(2);yield return Capture("05-inscription-revealed");
+        View(new Vector3(-3,0,2.1f),new Vector3(-3,1.75f,3.7f));yield return Capture("12-inscription-closeup");
         foreach (var socket in Object.FindObjectsByType<CrystalSocket>(FindObjectsSortMode.None)) { Scenario.Select(socket.Side == SocketSide.Left ? ItemIds.CrystalSapphire : ItemIds.CrystalRuby); socket.Interact(Scenario.Player); }
+        View(new Vector3(-3,0,1.4f),new Vector3(-3,1.55f,3.7f));yield return new WaitForSeconds(.2f);yield return Capture("13-seal-ready-crystal-colours");
         Object.FindFirstObjectByType<SealCore>().Interact(Scenario.Player);
         yield return new WaitForSeconds(3.8f);
         View(new Vector3(0,0,2.5f),new Vector3(0,1.6f,6));yield return Capture("06-exit");
+        // Isolate the corridor lighting without entering the actual exit trigger / clear overlay.
+        var exitTrigger=Object.FindFirstObjectByType<ExitTrigger>();exitTrigger.gameObject.SetActive(false);
+        View(new Vector3(0,0,5.6f),new Vector3(0,1.65f,7.9f));
+        var lights=Object.FindObjectsByType<Light>(FindObjectsSortMode.None).Where(l=>l.enabled&&l.name!="ArtC_PlayerLantern").ToArray();foreach(var l in lights)l.enabled=false;
+        var ambient=RenderSettings.ambientLight;RenderSettings.ambientLight=Color.black;yield return Capture("08-corridor-lantern-only");
+        foreach(var l in lights)l.enabled=true;RenderSettings.ambientLight=ambient;
+        foreach(string id in new[]{ItemIds.Moonpetal,ItemIds.SalamanderScale,ItemIds.CrystalDust,ItemIds.Toadstool,ItemIds.CrystalSapphire,ItemIds.CrystalRuby,ItemIds.PotionRevelation})InventoryManager.Instance.TryAdd(id);
+        View(new Vector3(0,0,-4.65f),new Vector3(0,1.2f,1));yield return Capture("14-hotbar-model-icons");
+        Assert.True(GameManager.Instance.IsPlaying,"No clear overlay hides validation views");exitTrigger.gameObject.SetActive(true);
     }
 }
 

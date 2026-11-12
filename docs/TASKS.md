@@ -105,3 +105,14 @@ Runtime asmdef 추가 이유: 별도 PlayMode asmdef는 Assembly-CSharp를 참�
 - ?? Camera.main+HUD PNG **7?**, 1280?720, `validation/s10b/`. Unity ?? ??? 6GB ??? ? ?? Editor ??? ??.
 - **?? ??? ?? ?? ??**: ?? ??????2.5m ???/??????? ?????? ??/??. ?? ??/??/??? ??? ?? ?? ??. S11 ???.
 - ????? ?????/????? ??: [S10b ??](validation/s10b/report.md), [?? ??](validation/s10b/results.json).
+
+### S10c 3차 아트 패스 — 2026-11-12 KST
+
+- 어두운 푸른 ambient/청록 fog, 촛불 flicker·플레이어 랜턴 sway, 달빛/빛줄기/먼지, 액자별 그림 조명·퍼즐 가독성 조명과 URP Volume 조정 완료.
+- 창살 유리·진홍 금장 배너·기둥 석재/받침·봉인핵 룬 고리/맥동/파티클, 형태 있는 픽업/수정, 3D 렌더 핫바 아이콘 7종, 칠판 표시 줄바꿈·우하단 핫바 완료. 새 상호작용/아이템 없음.
+- CC0 드론·바람·나무 삐걱임 추가. 원문 라이선스 확인/동봉, 타이틀/문서 크레딧 완료. VISUAL_REFERENCES §9 및 CREDITS.md 참조.
+- `s10c-release-build`/`s10c-release-repeat` exit 0, 구조 hash 동일, 기존 collider/레이어/월드 변환/gameplay 설정·참조 불변 검사 통과. 정답·ID·GameText·2.5m·방 크기·3m 통로 유지.
+- `s10c-tests-release` 및 마지막 `s10c-tests-final`: 각각 PlayMode **13/13**, 실패/skip 0, game Error/Exception/Assert **0**. 감사 결과는 [results.json](validation/s10c/results.json). PNG 14장 직접 검토, 액자 숫자/칠판/공개 비문/수정 색 가독성 확인.
+- **Assets/Scripts가 정본**. 새 Runtime 2개 및 변경 Editor/테스트는 CodeDrafts와 동기화했다. 기존 Core/게임 로직 수정 없음.
+- 미검증: 실제 프로젝터·일반 노트북 60fps·사람의 음향 청취/조작감·전체 플레이·S11 빌드. 자동 통과로 대체하지 않는다.
+- 상세 파일·실행 명령·오류 수정·스크린샷: [S10c 보고](validation/s10c/report.md).

@@ -1,0 +1,191 @@
+{
+  "result": "Passed",
+  "total": "13",
+  "passed": "13",
+  "failed": "0",
+  "skipped": "0",
+  "start-time": "2026-11-12 09:16:03Z",
+  "end-time": "2026-11-12 09:17:08Z",
+  "duration": "64.992411",
+  "run": "s10c-tests-final",
+  "tests": [
+    {
+      "fullname": "ArtTests.S10c_ArtAudioEffectsLayoutAndGameViewCaptures",
+      "result": "Passed",
+      "duration": "13.148382"
+    },
+    {
+      "fullname": "ClassroomTests.S1_RoomAndDoorway",
+      "result": "Passed",
+      "duration": "0.296642"
+    },
+    {
+      "fullname": "CluesTests.S5_ClueReadsAndVisibleOrder",
+      "result": "Passed",
+      "duration": "0.321211"
+    },
+    {
+      "fullname": "FullInputTests.ExitStraightCenter",
+      "result": "Passed",
+      "duration": "9.016769"
+    },
+    {
+      "fullname": "FullInputTests.ExitStraightLeft",
+      "result": "Passed",
+      "duration": "8.896210"
+    },
+    {
+      "fullname": "FullInputTests.ExitStraightRight",
+      "result": "Passed",
+      "duration": "8.717764"
+    },
+    {
+      "fullname": "FullInputTests.S9_KeyboardRaycastAllPuzzlesWalkExit",
+      "result": "Passed",
+      "duration": "8.958755"
+    },
+    {
+      "fullname": "ItemsTests.S4_CatalogHotbarSelection",
+      "result": "Passed",
+      "duration": "0.347635"
+    },
+    {
+      "fullname": "PotionTests.S7_LocksWrongRespawnsAndRewards",
+      "result": "Passed",
+      "duration": "3.704462"
+    },
+    {
+      "fullname": "RuneTests.S6_WrongHintCorrectRewardSeal",
+      "result": "Passed",
+      "duration": "2.684976"
+    },
+    {
+      "fullname": "SealTests.S8_SealRejectionDoorPhysicalTriggerClearRestart",
+      "result": "Passed",
+      "duration": "7.748865"
+    },
+    {
+      "fullname": "SystemsTests.S2_PlayerSystems",
+      "result": "Passed",
+      "duration": "0.418727"
+    },
+    {
+      "fullname": "UITests.S3_PanelsButtonsReadRestart",
+      "result": "Passed",
+      "duration": "0.660932"
+    }
+  ],
+  "game_console_error_exception_assert_events": 0,
+  "captures": [
+    {
+      "file": "01-classroom.png",
+      "bytes": 632544,
+      "sha256": "98a9687fa69a3feea7b6dba6b1d2ae20a8c15a279f4a57de225e0380eb3e2e64"
+    },
+    {
+      "file": "02-painting-wall.png",
+      "bytes": 615860,
+      "sha256": "16e22c51ea817cc6e7bb6a82a4e2284764eb0040ea50c56a0a2a3d0bf2fd068c"
+    },
+    {
+      "file": "03-altar.png",
+      "bytes": 758945,
+      "sha256": "e896dfd124aa89d7ad4c587a974f9a21117bf323d9996d6083319a87e9e0f6f2"
+    },
+    {
+      "file": "04-cauldron.png",
+      "bytes": 843436,
+      "sha256": "c674a890faf04c1cbd41d853a0c222789ce9ab79dab67161c12df36f8ec8d97e"
+    },
+    {
+      "file": "05-inscription-revealed.png",
+      "bytes": 663003,
+      "sha256": "f70588e6dea7ca0dea7c59b8babbe897cb6db754ae056d816129764345db0c4d"
+    },
+    {
+      "file": "06-exit.png",
+      "bytes": 632949,
+      "sha256": "f220b979a6dec2aa16b40351f061dc942a71e04ed1adf98c4b86f3ed57acad67"
+    },
+    {
+      "file": "07-student-desks-window.png",
+      "bytes": 725255,
+      "sha256": "28777ec3c237955152dd1837a60589d4ccf29f1cbb6831bb86485a78282344c0"
+    },
+    {
+      "file": "08-corridor-lantern-only.png",
+      "bytes": 449594,
+      "sha256": "6e2f7496669d7cd6e21091d91552b18879f0bc3bd131117aa260826f9c9cd46b"
+    },
+    {
+      "file": "09-window-moonlight.png",
+      "bytes": 722262,
+      "sha256": "18d21dc1f952bd5f729299d0567629e922937cd41405e109b838a438c4b3e876"
+    },
+    {
+      "file": "10-painting-closeup.png",
+      "bytes": 653819,
+      "sha256": "70ca641b7ff04c21ddf9ec64774e8492f104e2f267de47119d12a6c2fba885b9"
+    },
+    {
+      "file": "11-chalkboard-closeup.png",
+      "bytes": 830179,
+      "sha256": "b7756343d4e980ec04de33434ee4f4c1dfcf30d622052fe3f86e73c94473d4fb"
+    },
+    {
+      "file": "12-inscription-closeup.png",
+      "bytes": 703033,
+      "sha256": "3ff038bd9d754524d685d2558ccb72a783239783b8277d39f4e6d8605c00ff93"
+    },
+    {
+      "file": "13-seal-ready-crystal-colours.png",
+      "bytes": 688806,
+      "sha256": "623807b424e9c24e73c0eef6c915f5dd2b6ae9ec3f125d7715ac6757f067e6a4"
+    },
+    {
+      "file": "14-hotbar-model-icons.png",
+      "bytes": 651068,
+      "sha256": "c6c74aac54936703b1d67f82953005089fd1484d36ab0e8196d9038eb4176f89"
+    }
+  ],
+  "runs": {
+    "s10c-release-build": {
+      "compiler_error_lines": 0,
+      "exception_headings": 0,
+      "shader_error_lines": 0,
+      "shadow_atlas_reduction_warnings": 0
+    },
+    "s10c-release-repeat": {
+      "compiler_error_lines": 0,
+      "exception_headings": 0,
+      "shader_error_lines": 0,
+      "shadow_atlas_reduction_warnings": 0
+    },
+    "s10c-tests-release": {
+      "compiler_error_lines": 0,
+      "exception_headings": 0,
+      "shader_error_lines": 0,
+      "shadow_atlas_reduction_warnings": 0
+    },
+    "s10c-tests-final": {
+      "compiler_error_lines": 0,
+      "exception_headings": 0,
+      "shader_error_lines": 0,
+      "shadow_atlas_reduction_warnings": 0
+    }
+  },
+  "launch_headroom_gb": {
+    "s10c-release-build": 13.32,
+    "s10c-release-repeat": 13.87,
+    "s10c-tests-release": 13.72,
+    "s10c-tests-final": 13.67
+  },
+  "scene_manifest_sha256": "8b19e50ef062cc9673de3b2c9a8494fe1578f2ea098bad55e2236a66c2684d3a",
+  "mirror_checks": {
+    "UnityProject/Assets/Scripts/Runtime/Audio/RoomAmbience.cs": true,
+    "UnityProject/Assets/Scripts/Runtime/Effects/AtmosphereMotion.cs": true,
+    "UnityProject/Assets/Editor/ClassroomThirdArtBuilder.cs": true,
+    "UnityProject/Assets/Tests/PlayMode/ArtTests.cs": true,
+    "UnityProject/Assets/Tests/PlayMode/FullInputTests.cs": true
+  }
+}

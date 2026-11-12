@@ -1,4 +1,4 @@
-﻿"""Fetch only public CC0 recordings; keep source evidence outside Unity."""
+"""Fetch only public CC0 recordings; keep source evidence outside Unity."""
 import requests, re, pathlib, subprocess, json,sys
 sys.stdout.reconfigure(encoding='utf-8')
 from bs4 import BeautifulSoup
@@ -28,4 +28,3 @@ for key,url in sources:
     peak=max(abs(data));data=data/max(peak,.001)*.7
     with wave.open(str(out/(key+'.wav')),'wb') as w:w.setnchannels(1);w.setsampwidth(2);w.setframerate(22050);w.writeframes((data*32767).astype('<i2').tobytes())
     print(key,len(data)/22050,'seconds')
-

@@ -1,0 +1,1 @@
+frames=1975 real=1.152299 simulated=1.152299 position=(0.00, 0.05, 5.36) doorEuler=(0.00, 260.00, 0.00)

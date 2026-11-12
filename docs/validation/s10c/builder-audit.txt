@@ -1,0 +1,1 @@
+S10c reconstructed from S10b via Editor API. Existing collider serialization, world positions/scales/layers AND gameplay MonoBehaviour serialization/references unchanged. No added collider/input/interaction. GameText and Core untouched. Two shadowed spotlights only (moon / player lantern).
