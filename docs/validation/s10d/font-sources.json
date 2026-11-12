@@ -1,0 +1,22 @@
+[
+  {
+    "url": "https://raw.githubusercontent.com/google/fonts/main/ofl/gowunbatang/GowunBatang-Regular.ttf",
+    "path": "UnityProject/Assets/Fonts/GowunBatang-Regular.ttf",
+    "sha256": "466c593e7147412e748af4856d5ad14709b5a860bdf62b9c2546f2c5874e9849"
+  },
+  {
+    "url": "https://raw.githubusercontent.com/google/fonts/main/ofl/gowunbatang/OFL.txt",
+    "path": "UnityProject/Assets/Fonts/GowunBatang-Regular-OFL.txt",
+    "sha256": "49a57cc769fa9affd6eefb9070a61e3d3f6b757c97cafb15848bc6d1c81acc78"
+  },
+  {
+    "url": "https://raw.githubusercontent.com/google/fonts/main/ofl/nanumpenscript/NanumPenScript-Regular.ttf",
+    "path": "UnityProject/Assets/Fonts/NanumPenScript-Regular.ttf",
+    "sha256": "6f0d1ab29c7894010dc88831fb7a0a51edb79136e450344183de5b1a8b52bd43"
+  },
+  {
+    "url": "https://raw.githubusercontent.com/google/fonts/main/ofl/nanumpenscript/OFL.txt",
+    "path": "UnityProject/Assets/Fonts/NanumPenScript-Regular-OFL.txt",
+    "sha256": "eeacf16032901d0ed0456876ec77b8f0fda6b3fecec7d972f8543eb602e6c30f"
+  }
+]
