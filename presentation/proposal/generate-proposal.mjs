@@ -5,14 +5,15 @@ const root=path.resolve(import.meta.dirname,'../..');
 const out=import.meta.dirname, build=path.join(out,'.build');fs.mkdirSync(build,{recursive:true});
 const E=s=>String(s).replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;').replaceAll('"','&quot;');
 const U=v=>Math.round(v*12700), bg='FFFFFF', gold='2864B4', ink='182638', muted='586576', blue='2864B4', red='2864B4';
+const slideCount=11;
 let parts={},slides=[],s,id,rels;
 const put=(p,t)=>parts[p]=t;
 const solid=(c,a=100000)=>c==='none'?'<a:noFill/>':`<a:solidFill><a:srgbClr val="${c}"><a:alpha val="${a}"/></a:srgbClr></a:solidFill>`;
 function shape(x,y,w,h,geo='rect',fill='none',stroke=gold,sw=.8,alpha=100000){let n=id++;s+=`<p:sp><p:nvSpPr><p:cNvPr id="${n}" name="shape-${n}"/><p:cNvSpPr/><p:nvPr/></p:nvSpPr><p:spPr><a:xfrm><a:off x="${U(x)}" y="${U(y)}"/><a:ext cx="${U(w)}" cy="${U(h)}"/></a:xfrm><a:prstGeom prst="${geo}"><a:avLst/></a:prstGeom>${solid(fill,alpha)}<a:ln w="${U(sw)}">${solid(stroke)}</a:ln></p:spPr></p:sp>`;}
 function text(t,x,y,w,h,size=16,color=ink,bold=false,align='l',font=(size>=20?'Paperlogy 7 Bold':'Pretendard')){let n=id++;s+=`<p:sp><p:nvSpPr><p:cNvPr id="${n}" name="text-${n}"/><p:cNvSpPr txBox="1"/><p:nvPr/></p:nvSpPr><p:spPr><a:xfrm><a:off x="${U(x)}" y="${U(y)}"/><a:ext cx="${U(w)}" cy="${U(h)}"/></a:xfrm><a:prstGeom prst="rect"><a:avLst/></a:prstGeom><a:noFill/><a:ln><a:noFill/></a:ln></p:spPr><p:txBody><a:bodyPr wrap="square" lIns="0" rIns="0" tIns="0" bIns="0" anchor="t"/><a:lstStyle/>${String(t).split('\n').map(line=>`<a:p><a:pPr algn="${align}" marL="0" marR="0"><a:lnSpc><a:spcPct val="118000"/></a:lnSpc><a:spcAft><a:spcPts val="500"/></a:spcAft></a:pPr><a:r><a:rPr lang="ko-KR" sz="${size*100}" b="${bold?1:0}">${solid(color)}<a:latin typeface="${font}"/><a:ea typeface="${font}"/><a:cs typeface="${font}"/></a:rPr><a:t>${E(line)}</a:t></a:r><a:endParaRPr lang="ko-KR" sz="${size*100}"/></a:p>`).join('')}</p:txBody></p:sp>`;}
 function line(x,y,x2,y2,c=gold,sw=1){let n=id++;let x0=Math.min(x,x2),y0=Math.min(y,y2);s+=`<p:sp><p:nvSpPr><p:cNvPr id="${n}" name="line-${n}"/><p:cNvSpPr/><p:nvPr/></p:nvSpPr><p:spPr><a:xfrm flipV="${(x2-x)*(y2-y)<0?1:0}"><a:off x="${U(x0)}" y="${U(y0)}"/><a:ext cx="${Math.max(1,U(Math.abs(x2-x)))}" cy="${Math.max(1,U(Math.abs(y2-y)))}"/></a:xfrm><a:prstGeom prst="line"><a:avLst/></a:prstGeom><a:noFill/><a:ln w="${U(sw)}">${solid(c)}</a:ln></p:spPr></p:sp>`;}
-function start(title,sub=''){s='';id=2;rels=[{id:'rId1',target:'../slideLayouts/slideLayout1.xml',type:'slideLayout'}];text(String(slides.length+1).padStart(2,'0'),878,32,42,23,14,gold,false,'r');text(title,44,38,808,46,28,ink,true);if(sub)text(sub,46,91,866,35,15,muted);line(44,130,916,130,gold,.6);}
-function end(){text('MagicEscape   /   멀티미디어와 가상현실 기말 과제 제안서',44,497,840,18,10,muted);let i=slides.length+1;slides.push(s);put(`ppt/slides/slide${i}.xml`,`<?xml version="1.0" encoding="UTF-8" standalone="yes"?><p:sld xmlns:a="http://schemas.openxmlformats.org/drawingml/2006/main" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships" xmlns:p="http://schemas.openxmlformats.org/presentationml/2006/main"><p:cSld><p:bg><p:bgPr>${solid(bg)}<a:effectLst/></p:bgPr></p:bg><p:spTree><p:nvGrpSpPr><p:cNvPr id="1" name=""/><p:cNvGrpSpPr/><p:nvPr/></p:nvGrpSpPr><p:grpSpPr><a:xfrm><a:off x="0" y="0"/><a:ext cx="0" cy="0"/><a:chOff x="0" y="0"/><a:chExt cx="0" cy="0"/></a:xfrm></p:grpSpPr>${s}</p:spTree></p:cSld><p:clrMapOvr><a:masterClrMapping/></p:clrMapOvr></p:sld>`);put(`ppt/slides/_rels/slide${i}.xml.rels`,relationships(rels));}
+function start(title,sub=''){s='';id=2;rels=[{id:'rId1',target:'../slideLayouts/slideLayout1.xml',type:'slideLayout'}];text(title,44,38,808,46,28,ink,true);if(sub)text(sub,46,91,866,35,15,muted);line(44,130,916,130,gold,.6);}
+function end(){text(`${String(slides.length+1).padStart(2,'0')} / ${slideCount}`,854,32,66,23,12,gold,false,'r');text('MagicEscape   /   멀티미디어와 가상현실 기말 과제 제안서',44,497,840,18,10,muted);let i=slides.length+1;slides.push(s);put(`ppt/slides/slide${i}.xml`,`<?xml version="1.0" encoding="UTF-8" standalone="yes"?><p:sld xmlns:a="http://schemas.openxmlformats.org/drawingml/2006/main" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships" xmlns:p="http://schemas.openxmlformats.org/presentationml/2006/main"><p:cSld><p:bg><p:bgPr>${solid(bg)}<a:effectLst/></p:bgPr></p:bg><p:spTree><p:nvGrpSpPr><p:cNvPr id="1" name=""/><p:cNvGrpSpPr/><p:nvPr/></p:nvGrpSpPr><p:grpSpPr><a:xfrm><a:off x="0" y="0"/><a:ext cx="0" cy="0"/><a:chOff x="0" y="0"/><a:chExt cx="0" cy="0"/></a:xfrm></p:grpSpPr>${s}</p:spTree></p:cSld><p:clrMapOvr><a:masterClrMapping/></p:clrMapOvr></p:sld>`);put(`ppt/slides/_rels/slide${i}.xml.rels`,relationships(rels));}
 const relationships=rs=>`<?xml version="1.0" encoding="UTF-8"?><Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships">${rs.map(r=>`<Relationship Id="${r.id}" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/${r.type||'image'}" Target="${r.target}"/>`).join('')}</Relationships>`;
 function row(label,value,y){line(46,y+44,912,y+44,gold,.5);text(label,48,y,165,40,17,gold);text(value,230,y,674,40,18);}
 function note(t,y=450){text(t,46,y,867,39,14,muted);}
@@ -28,16 +29,18 @@ text('1인 제작     이름 / 학번',54,451,820,32,18);end();
 start('작품 개요','PC 멀티미디어 작품 · 한 교실 안에서 이어지는 퍼즐 3개');
 [['장르','1인칭 3D 퍼즐 방탈출'],['플랫폼 / 엔진','Windows · 키보드·마우스 / Unity 6.3 LTS · URP'],['시간 / 공간','10~15분 목표 / 교실 12×10m · 천장 4.5m'],['최종 목표','문 위 봉인등 3개 소등 후 출구 통과'],['제작 범위','1인 팀 · 교실 1개 · 퍼즐 3개 · 시작/엔딩 연출'],['조작','WASD 이동 · 마우스 시점 · E 조사/사용 · 1~8/휠 선택']].forEach((r,i)=>row(...r,146+i*48));note('Tab 목표/힌트 · ESC 일시정지',451);end();
 //03
-start('글 단서를 그림 단서로 바꾼 설계','정답과 입력 규칙은 유지하고, 단서를 확인하는 방법을 바꾼다');
-text('이전: 칠판 문장',48,156,385,30,21,gold);
-text('“생명은 정해진 순서로 깨어난다.\n액자의 숫자를 따르라.”',48,205,382,67,19);
-text('이후: 칠판 도식과 액자 점등',496,156,416,30,21,gold);
-['I','II','III','IV'].forEach((v,i)=>{shape(497+i*101,205,79,52,'rect','none',gold);text(v,497+i*101,216,79,30,19,ink,false,'ctr');});
-text('액자에서 원소와 번호 확인 → 순서대로 입력\n맞힌 액자 점등 · 틀리면 전체 소등',496,283,414,64,18);
-line(48,362,912,362,gold,.6);
-text('액자',48,390,150,30,21,gold);text('번호별 원소 제공',48,433,230,31,18);
-text('칠판',344,390,150,30,21,gold);text('I부터 IV까지 순서의 틀',344,433,260,31,18);
-text('피드백',658,390,180,30,21,gold);text('입력한 순서 즉시 확인',658,433,254,31,18);end();
+start('문장 설명과 그림 단서의 설계 비교','순서는 번호와 그림으로, 입력 결과는 점등과 가마솥 색 변화로 전달한다');
+text('글로 설명하는 방식',48,155,410,30,21,gold);
+text('이 작품의 방식',496,155,416,30,21,gold);
+text('P1  문양 해독',48,207,410,29,19,ink,true);
+text('문장으로 원소의 입력 순서를 알려 줌\n플레이어가 문장을 읽고 순서를 기억',48,250,414,68,18);
+text('P1  액자 그림·칠판 도식',496,207,416,29,19,ink,true);
+text('액자의 번호와 원소를 칠판 I~IV에 대응\n정답은 해당 액자 점등, 오답은 전체 소등',496,250,416,68,18);
+line(48,333,912,333,gold,.6);
+text('P2  문장 레시피',48,354,410,29,19,ink,true);
+text('재료 이름과 투입 순서를 문장으로 나열\n플레이어가 글을 읽고 재료를 골라 투입',48,397,414,68,18);
+text('P2  번호 그림 레시피',496,354,416,29,19,ink,true);
+text('꽃잎·비늘·가루 그림에 1~3번 표시\n가마솥 액체는 청백·주황·금색으로 표시',496,397,416,68,18);end();
 //04
 start('원소 실습이 끝난 뒤의 교실','고풍 다크 판타지 · 아르카나 마법학교의 연금술 실습실');
 text('방과 후 원소 마법을 연습하던 견습생이 삼중 봉인을 깨운다.\n교수가 남긴 액자와 마법서에는 봉인을 푸는 규칙이 숨어 있다.\n문 위 세 불빛이 꺼지면 실습은 끝난다.',48,155,855,99,19);
@@ -61,8 +64,8 @@ line(176,363,790,363,blue);line(176,351,176,363,blue);line(790,363,790,378,blue)
 start('P1  문양 해독','액자 4점이 순서와 원소를 함께 보여 준다 · 칠판 도식과 겹쳐 읽는 단서');
 text('단서 A  서쪽 벽 액자 4점',48,155,430,30,21,gold);
 ['III','I','IV','II'].forEach((v,i)=>{shape(49+i*102,201,86,85,'rect','none',gold);text(['불','대지','빛','물'][i],50+i*102,214,82,28,19,ink,false,'ctr');text(v,50+i*102,250,82,28,17,ink,false,'ctr');});text('벽 배치는 섞임 · 번호와 원소 이름을 함께 확인',48,298,430,50,16);
-text('단서 B  칠판의 순서 도식',48,365,430,31,21,gold);text('I  →  II  →  III  →  IV',48,409,430,35,22);text('칠판은 채워야 할 네 칸의 순서를 보여 준다.\n각 칸에 넣을 원소의 답은 액자가 준다.',48,439,435,42,14,muted);
-line(505,155,505,476,gold,.6);text('입력과 판정',539,155,360,30,21,gold);text('문양석 6개 중 4개를 차례로 E 입력\n정답: 대지 → 물 → 불 → 빛',539,204,363,69,18);text('정답 입력   해당 액자 점등\n오답 입력   전부 소등, 진행 0으로 초기화\n실패 3회    글 힌트 자동 표시',539,294,364,100,17);text('완료: 제단 열림 · 푸른 수정 등장\n첫 봉인등 소등 · 마법서 결계 해제',539,414,364,64,17,gold);end();
+text('단서 B  칠판의 순서 도식',48,355,430,31,21,gold);text('I  →  II  →  III  →  IV',48,393,430,35,22);text('칠판은 채워야 할 네 칸의 순서를 보여 준다.\n각 칸에 넣을 원소의 답은 액자가 준다.',48,439,435,42,14,muted);
+line(505,155,505,476,gold,.6);text('입력과 판정',539,155,360,30,21,gold);text('문양석 6개 중 4개를 차례로 E 입력\n정답: 대지 → 물 → 불 → 빛',539,204,363,69,18);text('정답 입력   해당 액자 점등\n오답 입력   전부 소등, 진행 0으로 초기화\n실패 3회    글 힌트 자동 표시',539,294,364,100,17);text('해결 시: 제단 열림 · 푸른 수정 등장\n첫 봉인등 소등 · 마법서 결계 해제',539,414,364,64,17,gold);end();
 //08
 start('P2  마법약 제조','번호 그림 3단계 + 독버섯 금지 표시 · 선택한 슬롯의 재료를 E로 투입');
 const ing=[['01','월광초 꽃잎','','청백',blue],['02','불도마뱀 비늘','','주황',red],['03','수정 가루','','금색',gold]];
@@ -82,17 +85,13 @@ text('12초 동안 촛불 6개와 봉인등 3개 공개\n봉인 해제마다 주
 text('소리는 행동 피드백',535,363,375,30,21,gold);
 text('정답 차임 · 오답 둔탁음\n봉인 해제음과 방 소리의 변화\n순서와 원소의 답은 시각 단서로 전달',535,402,375,76,16);end();
 //11
-start('규칙·표현·씬 구성을 분리한 구조','순수 C# 퍼즐 규칙은 유지하고 입력과 3D 표현을 바꾸는 구성');
-[['Core','정답·아이템·진행 규칙\nUnityEngine 참조 없음'],['Runtime','MonoBehaviour\n입력·Raycast·조명·UI·음향'],['Editor','씬 빌더\n배치·참조 연결·재현 검사']].forEach((r,i)=>{let x=48+i*305;shape(x,158,257,103,'rect','none',gold);text(r[0],x+14,171,226,30,22,gold);text(r[1],x+14,211,232,43,15);if(i<2)text('↔',x+264,191,35,35,21,gold);});
+start('규칙·표현·씬 구성을 분리한 구조','퍼즐 규칙을 순수 C#으로 설계하고, 입력·3D 표현·씬 연결을 분리한다');
+[['Core','정답·아이템·진행 규칙\nUnityEngine 참조 없음'],['Runtime','MonoBehaviour\n입력·Raycast·조명·UI·음향'],['Editor','씬 구성\n배치·참조 연결 설계']].forEach((r,i)=>{let x=48+i*305;shape(x,158,257,103,'rect','none',gold);text(r[0],x+14,171,226,30,22,gold);text(r[1],x+14,211,232,43,15);if(i<2)text('↔',x+264,191,35,35,21,gold);});
 text('상태 머신',48,290,409,30,21,gold);text('GameFlowState\nTitle → Playing ↔ Paused → Cleared\nPuzzleState   Locked / Active / Solved',48,334,432,92,16);
 text('입력과 상호작용',523,290,390,30,21,gold);text('PlayerInputReader 한 곳에서 입력 수집\n중앙 Raycast 2.5m → IInteractable.Interact\n인벤토리 8칸, 선택 슬롯의 아이템만 사용',523,334,390,95,16);
-line(48,439,912,439,gold,.6);text('자동 테스트: 퍼즐 규칙 44개, Unity 플레이 테스트 19개',48,458,864,28,18);end();
-//12
-start('개발 단계와 사용 에셋','완료한 개발 단계와 남은 검증 단계');
-text('지금까지 한 단계',48,153,399,30,21,gold);text('01  교실·시스템·UI·아이템\n02  퍼즐 3종·전체 입력 경로\n03  아트·그림 단서·어두운 탈출 연출',48,197,411,91,17);
-line(48,301,456,301,gold,.7);text('남은 단계',48,319,409,28,21,gold);text('04  퍼즐 그림·문양 개편\n05  Windows 빌드\n06  처음 하는 사람 테스트와 수정\n07  최종 발표 시연',48,363,417,106,17);
-text('유료 없음 · 외부 에셋은 CC0/OFL',501,153,414,30,20,gold);const asset=[['가구·촛대','KayKit Dungeon / Kay Lousberg','CC0'],['책장·가마솥','Fantasy Props / Quaternius','CC0'],['석벽·목재','Poly Haven','CC0'],['효과음','Kenney Interface Sounds','CC0'],['방 소리','Luke.RUSTLTD / DaGameKnower','CC0'],['나무 소리','Rudmer_Rotteveel','CC0'],['게임 글꼴','Gowun Batang / Nanum Pen / Noto','OFL']];asset.forEach((r,i)=>{let y=193+i*34;text(r[0],501,y,91,28,14,gold);text(r[1],598,y,247,28,14);text(r[2],858,y,54,28,14);line(501,y+29,911,y+29,gold,.4);});text('문양·그림·마스크·셰이더·걸쇠 합성음은 자체 제작\n출처: docs/CREDITS.md · 동봉 라이선스 유지',501,436,411,47,14,muted);end();
+line(48,439,912,439,gold,.6);text('퍼즐 규칙을 엔진과 분리해 자동 테스트로 검증한다',48,458,864,28,18);end();
 // Package
+if(slides.length!==slideCount)throw new Error(`Expected ${slideCount} slides, got ${slides.length}`);
 const ns='http://schemas.openxmlformats.org/presentationml/2006/main';
 put('[Content_Types].xml',`<?xml version="1.0"?><Types xmlns="http://schemas.openxmlformats.org/package/2006/content-types"><Default Extension="rels" ContentType="application/vnd.openxmlformats-package.relationships+xml"/><Default Extension="xml" ContentType="application/xml"/><Default Extension="png" ContentType="image/png"/>${[['/ppt/presentation.xml','presentation.main'],['/ppt/slideMasters/slideMaster1.xml','slideMaster'],['/ppt/slideLayouts/slideLayout1.xml','slideLayout'],...slides.map((_,i)=>['/ppt/slides/slide'+(i+1)+'.xml','slide'])].map(([p,t])=>`<Override PartName="${p}" ContentType="application/vnd.openxmlformats-officedocument.presentationml.${t}+xml"/>`).join('')}<Override PartName="/ppt/theme/theme1.xml" ContentType="application/vnd.openxmlformats-officedocument.theme+xml"/></Types>`);
 put('_rels/.rels',relationships([{id:'rId1',type:'officeDocument',target:'ppt/presentation.xml'}]));
@@ -109,4 +108,4 @@ fs.rmSync(path.join(build,'package'),{recursive:true,force:true});
 for(const [p,t] of Object.entries(parts)){let f=path.join(build,'package',p);fs.mkdirSync(path.dirname(f),{recursive:true});fs.writeFileSync(f,t);}
 
 execFileSync('python',['-c',`import pathlib,zipfile; p=pathlib.Path(r'${path.join(build,'package')}'); z=zipfile.ZipFile(r'${path.join(out,'MagicEscape_제안서.pptx')}','w',zipfile.ZIP_DEFLATED); [z.write(f,f.relative_to(p).as_posix()) for f in p.rglob('*') if f.is_file()]; z.close()`]);
-console.log('Created 12 slides with editable native DrawingML shapes.');
+console.log(`Created ${slideCount} slides with editable native DrawingML shapes.`);

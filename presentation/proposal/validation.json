@@ -1,10 +1,12 @@
 {
-  "slides": 12,
-  "pdfPages": 12,
+  "slides": 11,
+  "pdfPages": 11,
   "embeddedImages": 0,
   "speakerNotes": 0,
-  "nativeShapes": 298,
+  "nativeShapes": 251,
   "forbiddenTextMatches": 0,
+  "itemCodesOutsideTechnicalSlide": 0,
+  "pageNumbersAndFooterMatched": true,
   "alchemyTriangleShapes": 0,
   "fonts": [
     "Paperlogy 7 Bold",
@@ -17,12 +19,9 @@
   ],
   "fontSubstitution": false,
   "puzzleAnswersAndHintThresholdsMatched": true,
-  "sourceChalkboardQuoteMatched": true,
   "roomDimensionsAndDistanceAndInventoryMatched": true,
-  "playModeSourceTestCount": 19,
-  "playModeRun": "Not rerun; existing project validation record only",
-  "coreRun": "dotnet test Tests/MagicEscape.Core.Tests --no-restore: 44 passed, 0 failed, 0 skipped",
   "pdfTextBounds": "All body blocks above y=490; footer at y=497",
-  "visualReview": "12 final slide PNGs opened individually; no overflow, unintended overlap or excessive whitespace. Cover intentionally minimal.",
-  "authoring": "Existing standalone JavaScript native OOXML generator retained: artifact-tool and dependency loader unavailable. LibreOffice PDF export and PyMuPDF PNG rendering."
+  "visualReview": "Manual review recorded in README; not evaluated by this script",
+  "gameTests": "Not rerun: presentation-only changes",
+  "authoring": "Existing JavaScript native OOXML generator retained; artifact-tool and dependency loader unavailable. LibreOffice PDF export and PyMuPDF PNG rendering."
 }
