@@ -98,7 +98,7 @@ namespace MagicEscape
                 case PotionInputResult.Accepted:
                     SetLiquidColor(Logic.ProgressCount);
                     AudioManager.Play(SfxId.CauldronAccept);
-                    interactor.Say(inv.GetDisplayName(itemId) + "을(를) 넣었다. (" + Logic.ProgressCount + "/" + Logic.RecipeLength + ")");
+                    interactor.Say(KoreanParticle.Object(inv.GetDisplayName(itemId)) + " 넣었다. (" + Logic.ProgressCount + "/" + Logic.RecipeLength + ")");
                     break;
                 case PotionInputResult.Wrong:
                     HandleWrong(interactor);

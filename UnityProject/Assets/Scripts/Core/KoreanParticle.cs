@@ -16,8 +16,8 @@ namespace MagicEscape.Core
             char c = word[word.Length - 1];
             return c >= '\uAC00' && c <= '\uD7A3' && (c - '\uAC00') % 28 != 0;
         }
-        public static string Object(string name) => name + (HasFinalConsonant(name) ? "?" : "?");
-        public static string Subject(string name) => name + (HasFinalConsonant(name) ? "?" : "?");
-        public static string With(string name) => name + (HasFinalConsonant(name) ? "?" : "?");
+        public static string Object(string name) => name + (HasFinalConsonant(name) ? "을" : "를");
+        public static string Subject(string name) => name + (HasFinalConsonant(name) ? "이" : "가");
+        public static string With(string name) => name + (HasFinalConsonant(name) ? "과" : "와");
     }
 }
