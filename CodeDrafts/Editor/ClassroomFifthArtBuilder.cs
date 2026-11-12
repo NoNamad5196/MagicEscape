@@ -185,6 +185,9 @@ namespace MagicEscape.EditorTools
         public static void S10ePhase4()
         {
             EOpen();var before=ColliderManifest();var decor=ERoot("Art_FifthFinish");
+            // The old transparent soot glaze still reads as a lit rectangular card in URP.
+            // Remove that surface rather than pretending the rebuilt sconce fixed it.
+            foreach(var r in Object.FindObjectsByType<MeshRenderer>(FindObjectsSortMode.None).Where(r=>r.name.EndsWith("WallSoot")))r.enabled=false;
             var piles=Object.FindObjectsByType<Transform>(FindObjectsSortMode.None).Where(t=>t.parent!=null&&t.parent.name=="Art_FourthPass"&&t.name=="ArtB_Fit_Book_Stack_1"&&t.position.y<.1f&&t.position.x<0).OrderBy(t=>t.position.z).ToArray();
             Vector3[] homes={new Vector3(-5.35f,0,-3.05f),new Vector3(-5.08f,0,-3.26f),new Vector3(-4.95f,0,2.9f),new Vector3(-5.25f,.20f,-3.12f),new Vector3(-5.18f,0,3.22f)};
             for(int i=0;i<piles.Length;i++){piles[i].position=homes[i%homes.Length];piles[i].rotation=Quaternion.Euler(0,new[]{-37,14,62,-14,27}[i%5],i==3?7:0);}
@@ -200,6 +203,38 @@ namespace MagicEscape.EditorTools
             }
             CLight("EastDeskBounce",new Vector3(3.5f,2,-2.7f),new Color(.55f,.63f,.72f),1.5f,5.5f);
             var p=SceneComponent<RoomPresentation>();if(p.clearGroup==null){var clearObject=Resources.FindObjectsOfTypeAll<UnityEngine.RectTransform>().First(t=>t.name=="ClearPanel"&&t.gameObject.scene.IsValid());p.clearGroup=clearObject.GetComponent<CanvasGroup>();if(p.clearGroup==null)p.clearGroup=clearObject.gameObject.AddComponent<CanvasGroup>();}p.openingDarkenedLights=p.openingDarkenedLights.Concat(new[]{Find("ArtC_EastDeskBounce").GetComponent<Light>()}).Distinct().ToArray();
+            p.roomFill=Find("Moonlight").GetComponent<Light>();p.roomFill.intensity=.22f;RenderSettings.ambientLight=new Color(.105f,.12f,.15f);
+            p.sealLatch=decor.gameObject.AddComponent<AudioSource>();p.sealLatch.clip=AssetDatabase.LoadAssetAtPath<AudioClip>(EArt+"SealLatch.wav");p.sealLatch.playOnAwake=false;p.sealLatch.volume=.4f;p.sealLatch.spatialBlend=0;
+            if(p.sealLatch.clip==null)throw new InvalidOperationException("Run python Tools/Generate-SealAudio.py before S10e");
+            p.dawnWindow=Object.FindObjectsByType<MeshRenderer>(FindObjectsSortMode.None).First(r=>r.name.EndsWith("_HallGlass"));p.dawnWindowMaterial=EMat("DawnWindow",new Color(1,.68f,.28f),1.8f);
+            var rays=new GameObject("DawnRays").transform;rays.SetParent(decor,false);p.dawnRays=rays.gameObject;
+            var rayMaterial=EMat("DawnRays",Color.white);rayMaterial.shader=Shader.Find("MagicEscape/MoonShaft");rayMaterial.SetColor("_Color",new Color(1,.58f,.20f,.13f));EditorUtility.SetDirty(rayMaterial);
+            Vector3 start=new Vector3(0,2.15f,7.5f),end=new Vector3(0,.65f,1.7f),axis=(end-start).normalized;
+            for(int j=0;j<2;j++)
+            {
+                var side=j==0?Vector3.Cross(axis,Vector3.up).normalized:Vector3.Cross(axis,Vector3.right).normalized;
+                var mesh=new Mesh{name="Original dawn ribbon",vertices=new[]{start-side*.55f,start+side*.55f,end-side*1.2f,end+side*1.2f},uv=new[]{new Vector2(0,0),new Vector2(1,0),new Vector2(0,1),new Vector2(1,1)},triangles=new[]{0,2,1,1,2,3}};mesh.RecalculateNormals();mesh.RecalculateBounds();
+                string meshPath="Assets/Settings/S10e_DawnRay_"+j+".asset";var saved=AssetDatabase.LoadAssetAtPath<Mesh>(meshPath);if(saved==null){AssetDatabase.CreateAsset(mesh,meshPath);saved=mesh;}else{EditorUtility.CopySerialized(mesh,saved);Object.DestroyImmediate(mesh);}
+                var ray=new GameObject("DawnRibbon_"+j,typeof(MeshFilter),typeof(MeshRenderer));ray.transform.SetParent(rays,false);ray.GetComponent<MeshFilter>().sharedMesh=saved;ray.GetComponent<Renderer>().sharedMaterial=rayMaterial;ray.GetComponent<Renderer>().shadowCastingMode=UnityEngine.Rendering.ShadowCastingMode.Off;
+            }
+            rays.gameObject.SetActive(false);
+            var smokeMaterial=AssetDatabase.LoadAssetAtPath<Material>("Assets/Settings/Art_S10e_ShadowSmoke.mat");smokeMaterial.shader=Shader.Find("MagicEscape/ElementSmoke");smokeMaterial.SetColor("_BaseColor",new Color(.07f,.008f,.11f));smokeMaterial.SetColor("_EmissionColor",new Color(.16f,.018f,.27f));EditorUtility.SetDirty(smokeMaterial);
+            p.sealOff=new ParticleSystem[3];
+            for(int i=0;i<3;i++){var ps=EParticles("SealExtinguish_"+i,decor,p.sealLamps[i].transform.position,new Color(1,.65f,.15f),"Spark",0,.045f,.1f,-.08f);var main=ps.main;main.loop=false;main.playOnAwake=false;main.startLifetime=.65f;var em=ps.emission;em.SetBursts(new[]{new ParticleSystem.Burst(0,14)});p.sealOff[i]=ps;}
+            foreach(string name in new[]{"Sapphire","Ruby"})
+            {
+                var mat=AssetDatabase.LoadAssetAtPath<Material>("Assets/Settings/Art_S10c_"+name+".mat");mat.shader=Shader.Find("MagicEscape/ElementCrystal");bool water=name=="Sapphire";mat.SetColor("_BaseColor",water?new Color(.025f,.10f,.38f):new Color(.38f,.012f,.025f));mat.SetColor("_EmissionColor",water?new Color(.08f,.45f,1):new Color(1,.17f,.015f));mat.SetFloat("_Opacity",.28f);mat.SetFloat("_Flow",water?1:0);EditorUtility.SetDirty(mat);
+            }
+            var bottleGlass=EMat("ClearBottle",new Color(.24f,.38f,.42f));bottleGlass.shader=Shader.Find("MagicEscape/ElementCrystal");bottleGlass.SetColor("_BaseColor",new Color(.10f,.19f,.20f));bottleGlass.SetColor("_EmissionColor",new Color(.25f,.4f,.42f));bottleGlass.SetFloat("_Opacity",.18f);bottleGlass.SetFloat("_Flow",0);EditorUtility.SetDirty(bottleGlass);
+            foreach(var pickup in Object.FindObjectsByType<ItemPickup>(FindObjectsInactive.Include,FindObjectsSortMode.None))
+                if(pickup.ItemId==ItemIds.SalamanderScale||pickup.ItemId==ItemIds.CrystalDust)foreach(var r in pickup.GetComponentsInChildren<MeshRenderer>(true).Where(r=>r.name=="Potion_1"||r.name=="Potion_2"))r.sharedMaterial=bottleGlass;
+            // A luminous interior is seen through the cut crystal rather than painted on an opaque shell.
+            foreach(var crystal in Object.FindObjectsByType<Transform>(FindObjectsInactive.Include,FindObjectsSortMode.None).Where(t=>t.name=="PlacedCrystal"||t.name=="Reward_Sapphire").ToArray())
+            {
+                bool water=crystal.name=="Reward_Sapphire"||crystal.parent.name=="Socket_Left";var pos=crystal.position;
+                foreach(var t in crystal.GetComponentsInChildren<Transform>(true).Where(t=>t.name=="ShallowBowl"||t.name=="FlowingWater"||t.name=="Charcoal").ToArray())Object.DestroyImmediate(t.gameObject);
+                var core=EShape(water?"InnerWaterDrop":"InnerEmber",crystal,pos,new Vector3(.035f,.07f,.035f),EMat(water?"InnerWater":"InnerFire",water?Elements[1]:Elements[2],1.4f));EMotion(core,water?ElementMotion.Motion.Orbit:ElementMotion.Motion.Flame,water ? .75f : 1.5f);
+            }
             string path=EArt+"EndingParchment.png";var importer=(TextureImporter)AssetImporter.GetAtPath(path);importer.textureType=TextureImporterType.Sprite;importer.spriteBorder=new Vector4(20,20,20,20);importer.SaveAndReimport();
             var clear=p.clearGroup.GetComponent<UnityEngine.UI.Image>();clear.sprite=AssetDatabase.LoadAssetAtPath<Sprite>(path);clear.type=UnityEngine.UI.Image.Type.Sliced;clear.color=Color.white;
             foreach(var t in p.clearGroup.GetComponentsInChildren<TMPro.TMP_Text>(true))t.color=new Color(.20f,.13f,.06f);
@@ -211,6 +246,13 @@ namespace MagicEscape.EditorTools
         }
         /// <summary>Reconstruct all five passes from source; phase methods are checkpoints on the saved scene.</summary>
         public static void S10e() {S10d();S10ePhase1();S10ePhase2();S10ePhase3();S10ePhase4();}
+        public static void S10eTypographyRepair()
+        {
+            EOpen();var credits=Resources.FindObjectsOfTypeAll<TMPro.TMP_Text>().First(t=>t.name=="ArtCredits"&&t.gameObject.scene.IsValid());
+            credits.text=credits.text.Replace("\uCA0C","/");
+            foreach(char c in credits.text.Where(c=>!char.IsControl(c)))if(!credits.font.HasCharacter(c,false,false))throw new InvalidOperationException("Credit glyph missing U+"+((int)c).ToString("X4"));
+            Save();
+        }
     }
 }
 

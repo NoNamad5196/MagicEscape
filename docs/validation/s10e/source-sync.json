@@ -1,0 +1,19 @@
+{
+  "UnityProject/Assets/Scripts/Runtime": {
+    "csharp_files": 27,
+    "mismatches": []
+  },
+  "UnityProject/Assets/Editor": {
+    "csharp_files": 14,
+    "mismatches": []
+  },
+  "UnityProject/Assets/Tests/PlayMode": {
+    "csharp_files": 11,
+    "mismatches": []
+  },
+  "UnityProject/Assets/Scripts/Core": {
+    "csharp_files": 8,
+    "mismatches": []
+  },
+  "core_diff_from_start": ""
+}

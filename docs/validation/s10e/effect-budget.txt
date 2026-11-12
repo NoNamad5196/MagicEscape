@@ -1,0 +1,4 @@
+Emitters=31
+Active lights=32
+Realtime shadow lights=2
+Laptop FPS not measured; batchmode is not a performance acceptance test.

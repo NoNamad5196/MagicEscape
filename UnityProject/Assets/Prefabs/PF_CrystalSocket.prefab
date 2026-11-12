@@ -269,3 +269,4 @@ MonoBehaviour:
   targetRenderer: {fileID: 8554013037390790778}
   glowLight: {fileID: 0}
   intensity: 3
+  affectBaseColor: 0

@@ -1,6 +1,8 @@
 # MagicEscape 크레딧
 
 ## S10e 자체 제작
+`Tools/Generate-SealAudio.py`의 `SealLatch.wav`는 표본 입력 없이 감쇠 사인파/잡음으로 합성한 자체 금속 걸쇠 효과음이다(0.72초, mono 44.1kHz). 새벽 빛줄기 메시도 자체 생성이다. 새 외부 라이선스/음원은 없다.
+현재 UI/엔딩 글꼴은 Gowun Batang Regular, 기존 분필 글꼴은 Nanum Pen Script Regular이며 둘 다 SIL OFL 1.1이다. 원문은 `Assets/Fonts/GowunBatang-Regular-OFL.txt`, `NanumPenScript-Regular-OFL.txt`에 동봉되어 있다. 새 외부 다운로드는 하지 않았다. 기존 Quaternius `License_Standard.txt`와 Kenney `License.txt`의 CC0 원문도 로컬 파일에서 재확인했다.
 `Tools/Generate-Art.py`로 만든 굵은 판화 문양 6종, 명암 보강 씨앗 판화, 무문장 칠판/레시피, Soft/Spark/Drop/Leaf/Bubble 마스크 5종. 외부 이미지 입력/외부 파티클 팩/유료 에셋 없음. 원소 메시·물결 셰이더·효과는 프로젝트 자체 코드. 새 외부 라이선스는 없으며 기존 무료 모델·음향·OFL 글꼴의 동봉 라이선스/아래 크레딧을 유지한다.
 
 ## 사용한 무료 에셋

@@ -1,6 +1,9 @@
 # MagicEscape — 씬·프리팹·Inspector 구성 명세
 
 ## S10e 추가 계층
+- 오프닝·출구 개방·엔딩 중에는 RoomPresentation이 플레이어 입력을 잠근다. 출구 개방 잠금은 DoorController.PassageReady(기존 ExitTrigger 활성)까지이며 새 Core 상태나 출구 판정은 추가하지 않는다.
+- 재구성 명령: `python Tools/Generate-Art.py`, `python Tools/Generate-SealAudio.py` 후 `Tools/Run-Unity.ps1 -Name s10e-build -Method MagicEscape.EditorTools.ClassroomBuilder.S10e`. 전체 S10e는 S10d부터 다시 생성하며, Phase1~4 메서드는 단계 체크포인트다.
+- Phase4에는 시작 ambient(.105,.12,.15), directional fill(.22), 반응형 조명의 오프닝 이전 enabled 상태 복원, 절차 연기/수정 투명 셰이더, 소등 파편, 합성 걸쇠 효과음, 새벽 창 재질/빛줄기 2장이 포함된다.
 - `RoomPresentation`: 촛불/불꽃 6개, 오프닝 중 감출 기존 조명, 봉인등 3개, 제단 발광, 다음 퍼즐 신호, 봉인핵 파편, dawn spot(그림자 없음), 최상위 페이드 Image, ClearPanel CanvasGroup. 테스트는 GameManager.SkipPresentation() 사용.
 - `ClassroomFifthArtBuilder.S10ePhase1/2`는 저장된 Classroom을 열고 Editor API로 원소 표현과 시각 단서를 추가한다. YAML 수작업 없음.
 - `E_Element_*`: 공통 원소 메시/입자. 새 장식 콜라이더 없음, emitter 당 최대 36, 입자 라이트 없음.

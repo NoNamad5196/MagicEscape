@@ -1,6 +1,11 @@
 # MagicEscape — 작업 현황
 
 ## S10e 5차 — 진행 기록
+- [x] 최종 채택: `s10e-release-build`/`s10e-credit-fix` exit 0, `s10e-tests-final-accepted` **18/18**(기존 13+추가 5), 실패/skip **0**. 게임 Console Error/Exception/Assert **0**, 누락 글리프 경고 **0**. 오프닝 자연 종료/실제 Space 건너뛰기, 출구 개방·엔딩 입력 잠금도 검증.
+- [x] `dotnet test Tests/MagicEscape.Core.Tests`: **34/34**. Core/GameText diff 없음. Runtime 27/Editor 14/PlayMode 11 C#와 CodeDrafts byte 일치, Core 8개 일치. 소스 diff whitespace 검사 통과(Unity 생성 YAML의 공백은 수작업 정리하지 않음).
+- [x] 실제 게임 카메라/HUD PNG **34장**, 접촉 시트, 검사 JSON/Console/효과 예산/씬 manifest: `validation/s10e/`. P1 무문장 추론은 조건부, P2/P3는 가능으로 자체 판정. 6원소는 약 2m에서 색/실루엣 구별 가능하나 사람 테스트는 아님.
+- [x] 후속 보강: 투명 수정/병과 내부 원소, 절차 연기 셰이더, soot 사각형 제거, 새벽 창·빛줄기, 자체 합성 걸쇠 소리, 오프닝 이전 반응형 조명 enabled 복원. 07 오른쪽 비교 휘도 10.84→15.40(약 42% 상승, 물리 조도 측정 아님). 크레딧 구분자 오타도 수정.
+- [ ] 일반 노트북 60fps, 무경험 플레이어/실제 프로젝터, 사람 음향 청취 미검증. Notion 동기화·S11 독립 실행 빌드 미수행. 상세 변경/명령/수정 이력/판정/한계는 `validation/s10e/REVIEW.md`, 기계 결과는 `results.json`.
 - Phase 4: 굵어진 판화/모서리 문양, 액자 아래 책을 두 모서리 비정형 군집으로 이동, 벽 등받침을 금속 팔/컵/촛농으로 교체, 동쪽 책상 보조광/시작 주변광 보강. 양피지 엔딩 UI. 기존 콜라이더 manifest 불변.
 - `s10e-phase4` 첫 실행은 Unity fake-null CanvasGroup 참조 때문에 실패. 명시적 Unity null 검사로 수정 후 `s10e-phase4-fixed` exit 0. 실패를 숨기지 않으며 뒤의 전체 테스트로 재검증한다.
 - 추가 5개 PlayMode 테스트와 28개 Game camera/HUD 캡처 경로 작성. 이 커밋 시점 전체 실행 결과는 대기.

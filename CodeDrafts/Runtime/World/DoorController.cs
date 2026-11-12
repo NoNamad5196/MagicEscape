@@ -20,6 +20,7 @@ namespace MagicEscape
         [SerializeField] private ParticleSystem openVfx;
 
         public bool IsOpen { get; private set; }
+        public bool PassageReady => exitTrigger != null && exitTrigger.gameObject.activeSelf;
 
         private void Awake()
         {

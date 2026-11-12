@@ -1,0 +1,81 @@
+{
+  "result": "Passed",
+  "total": "18",
+  "passed": "18",
+  "failed": "0",
+  "skipped": "0",
+  "tests": [
+    {
+      "name": "ArtTests.S10e_ArtAudioEffectsLayoutAndGameViewCaptures",
+      "result": "Passed"
+    },
+    {
+      "name": "ClassroomTests.S1_RoomAndDoorway",
+      "result": "Passed"
+    },
+    {
+      "name": "CluesTests.S5_ClueReadsAndVisibleOrder",
+      "result": "Passed"
+    },
+    {
+      "name": "FifthPassTests.ClueSentencesNeverAutomaticallyAppearBeforeFailure",
+      "result": "Passed"
+    },
+    {
+      "name": "FifthPassTests.EndingShowsActualClearTimeAfterWhiteFade",
+      "result": "Passed"
+    },
+    {
+      "name": "FifthPassTests.FailureThresholdsShowTextOnlyAtThreeTwoTwo",
+      "result": "Passed"
+    },
+    {
+      "name": "FifthPassTests.OpeningAnyKeySkipsWithoutGameplayInput",
+      "result": "Passed"
+    },
+    {
+      "name": "FifthPassTests.SealReleaseChangesLampsBrightnessAndFrameFeedback",
+      "result": "Passed"
+    },
+    {
+      "name": "FullInputTests.ExitStraightCenter",
+      "result": "Passed"
+    },
+    {
+      "name": "FullInputTests.ExitStraightLeft",
+      "result": "Passed"
+    },
+    {
+      "name": "FullInputTests.ExitStraightRight",
+      "result": "Passed"
+    },
+    {
+      "name": "FullInputTests.S9_KeyboardRaycastAllPuzzlesWalkExit",
+      "result": "Passed"
+    },
+    {
+      "name": "ItemsTests.S4_CatalogHotbarSelection",
+      "result": "Passed"
+    },
+    {
+      "name": "PotionTests.S7_LocksWrongRespawnsAndRewards",
+      "result": "Passed"
+    },
+    {
+      "name": "RuneTests.S6_WrongHintCorrectRewardSeal",
+      "result": "Passed"
+    },
+    {
+      "name": "SealTests.S8_SealRejectionDoorPhysicalTriggerClearRestart",
+      "result": "Passed"
+    },
+    {
+      "name": "SystemsTests.S2_PlayerSystems",
+      "result": "Passed"
+    },
+    {
+      "name": "UITests.S3_PanelsButtonsReadRestart",
+      "result": "Passed"
+    }
+  ]
+}

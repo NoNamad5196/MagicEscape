@@ -1,6 +1,24 @@
 # MagicEscape — 테스트 계획 및 결과
 
 ## S10e 검증 계획 (완료 결과는 validation/s10e 참조)
+### 최종 실행 결과 (2026-11-12)
+- `s10e-tests-final-accepted`: **18/18 Passed**, failed/skipped 0, 게임 Error/Exception/Assert 0, 누락 글리프 경고 0. 기존 13개를 유지하고 표시 기대만 수정했다.
+- 추가 5개: OpeningAnyKeySkipsWithoutGameplayInput(실제 Space/12초 자연 종료/타이머·조작 잠금), SealReleaseChangesLampsBrightnessAndFrameFeedback(각 봉인/액자 오답 리셋/밝기/새벽/문 개방 잠금), ClueSentencesNeverAutomaticallyAppearBeforeFailure(E 그림/Tab 글/비문 무자동패널), FailureThresholdsShowTextOnlyAtThreeTwoTwo(P1 3/P2 2/P3 2), EndingShowsActualClearTimeAfterWhiteFade(실제 시간·문구·버튼·페이드).
+- 기존 키보드/Raycast 전 퍼즐 + W-only 출구 중앙/좌/우 물리 통과 테스트도 통과. 출구 판정/정답/실패 복원 검증을 제거하지 않았다.
+- Core dotnet **34/34**, Core/GameText 변경 없음. Runtime/Editor/PlayMode CodeDrafts 동기화 감사 0불일치.
+- PNG **34장**(01~14 동일 구도, 추가 연출/그림/원소·색 단계/엔딩), contact-sheet와 `results.json`, `source-sync.json`, `console-audit.txt`, `effect-budget.txt`를 `validation/s10e/`에 보관.
+- 새 emitter 최대 36, 캡처 시 emitter 31/활성 조명 32/실시간 그림자 조명 2. 이 수치는 노트북 60fps 통과를 뜻하지 않는다. 실제 노트북·프로젝터·첫 플레이·음향 청취는 **미검증**.
+
+### 재현 명령
+```powershell
+python Tools/Generate-Art.py
+python Tools/Generate-SealAudio.py
+powershell -ExecutionPolicy Bypass -File Tools/Run-Unity.ps1 -Name s10e-build -Method MagicEscape.EditorTools.ClassroomBuilder.S10e
+powershell -ExecutionPolicy Bypass -File Tools/Run-Unity.ps1 -Name s10e-tests -Tests
+dotnet test Tests/MagicEscape.Core.Tests --nologo --verbosity minimal
+```
+
+### 최초 계획
 - 기존 13개: 정답/순서/실패복원/실제 키보드·Raycast·출구 충돌 검증 유지. 문장 읽기 기대만 그림 확대/무자동패널로 변경.
 - 추가: 오프닝 건너뛰기와 조작 잠금, 봉인 해제 시 봉인등/밝기 단계, 실패 전 문장 자동 미표시, 실패 기준 글 힌트, 엔딩 시간.
 - 01~14 동일 카메라 구도 + 오프닝 2장/그림 칠판·레시피/원소 6종/비문/가마솥 3단계/엔딩 저장 후 직접 검토.

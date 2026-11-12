@@ -129,6 +129,7 @@ MonoBehaviour:
   promptVerb: "\uC561\uC790 \uC0B4\uD3B4\uBCF4\uAE30"
   title: "\uC528\uC557\uC758 \uC77C\uC0DD I"
   body: "\uC528\uC557\uC774 \uD759 \uC18D\uC5D0\uC11C \uC7A0\uB4E0\uB2E4."
+  picture: {fileID: 0}
   requirePuzzleSolved: 0
   requiredPuzzle: 0
   lockedMessage: "\uB9C8\uBC95\uC11C\uAC00 \uBE5B\uC758 \uACB0\uACC4\uC5D0 \uC2F8\uC5EC

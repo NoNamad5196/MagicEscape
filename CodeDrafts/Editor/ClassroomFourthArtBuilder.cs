@@ -68,7 +68,7 @@ namespace MagicEscape.EditorTools
                 if(im.name=="Frame") {im.raycastTarget=false;}
             }
             var prompt=texts.First(t=>t.name=="PromptText");prompt.fontSize=27;
-            var credits=texts.First(t=>t.name=="ArtCredits");credits.text=credits.text.Replace("Noto Sans KR","Gowun Batang 쨌 Nanum Pen Script");credits.fontSize=17;
+            var credits=texts.First(t=>t.name=="ArtCredits");credits.text=credits.text.Replace("Noto Sans KR","Gowun Batang / Nanum Pen Script");credits.fontSize=17;
         }
         static Material DSurface(string name,Color color,float emission=0)
         {

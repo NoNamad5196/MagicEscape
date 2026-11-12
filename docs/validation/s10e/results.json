@@ -1,0 +1,308 @@
+{
+  "generated_utc": "2026-11-12T11:41:22.000827+00:00",
+  "unity": "6000.3.28f1",
+  "urp": "17.3.0",
+  "final_test_command": "Tools/Run-Unity.ps1 -Name s10e-tests-final-accepted -Tests",
+  "playmode": {
+    "result": "Passed",
+    "total": "18",
+    "passed": "18",
+    "failed": "0",
+    "skipped": "0",
+    "duration": "109.3523726"
+  },
+  "tests": [
+    {
+      "name": "ArtTests.S10e_ArtAudioEffectsLayoutAndGameViewCaptures",
+      "result": "Passed",
+      "duration": "26.650285"
+    },
+    {
+      "name": "ClassroomTests.S1_RoomAndDoorway",
+      "result": "Passed",
+      "duration": "0.349411"
+    },
+    {
+      "name": "CluesTests.S5_ClueReadsAndVisibleOrder",
+      "result": "Passed",
+      "duration": "0.394830"
+    },
+    {
+      "name": "FifthPassTests.ClueSentencesNeverAutomaticallyAppearBeforeFailure",
+      "result": "Passed",
+      "duration": "3.778687"
+    },
+    {
+      "name": "FifthPassTests.EndingShowsActualClearTimeAfterWhiteFade",
+      "result": "Passed",
+      "duration": "2.727503"
+    },
+    {
+      "name": "FifthPassTests.FailureThresholdsShowTextOnlyAtThreeTwoTwo",
+      "result": "Passed",
+      "duration": "3.611331"
+    },
+    {
+      "name": "FifthPassTests.OpeningAnyKeySkipsWithoutGameplayInput",
+      "result": "Passed",
+      "duration": "13.384283"
+    },
+    {
+      "name": "FifthPassTests.SealReleaseChangesLampsBrightnessAndFrameFeedback",
+      "result": "Passed",
+      "duration": "7.526406"
+    },
+    {
+      "name": "FullInputTests.ExitStraightCenter",
+      "result": "Passed",
+      "duration": "8.971113"
+    },
+    {
+      "name": "FullInputTests.ExitStraightLeft",
+      "result": "Passed",
+      "duration": "8.772435"
+    },
+    {
+      "name": "FullInputTests.ExitStraightRight",
+      "result": "Passed",
+      "duration": "8.739902"
+    },
+    {
+      "name": "FullInputTests.S9_KeyboardRaycastAllPuzzlesWalkExit",
+      "result": "Passed",
+      "duration": "8.739550"
+    },
+    {
+      "name": "ItemsTests.S4_CatalogHotbarSelection",
+      "result": "Passed",
+      "duration": "0.414337"
+    },
+    {
+      "name": "PotionTests.S7_LocksWrongRespawnsAndRewards",
+      "result": "Passed",
+      "duration": "3.585210"
+    },
+    {
+      "name": "RuneTests.S6_WrongHintCorrectRewardSeal",
+      "result": "Passed",
+      "duration": "2.596703"
+    },
+    {
+      "name": "SealTests.S8_SealRejectionDoorPhysicalTriggerClearRestart",
+      "result": "Passed",
+      "duration": "7.834882"
+    },
+    {
+      "name": "SystemsTests.S2_PlayerSystems",
+      "result": "Passed",
+      "duration": "0.432808"
+    },
+    {
+      "name": "UITests.S3_PanelsButtonsReadRestart",
+      "result": "Passed",
+      "duration": "0.773819"
+    }
+  ],
+  "game_console_error_exception_assert": 0,
+  "missing_glyph_warnings": 0,
+  "csharp_errors": 0,
+  "shader_errors": 0,
+  "editor_licensing_diagnostic": "Access token unavailable at launch; Editor and tests completed. Not a game-console error.",
+  "core_dotnet_tests": {
+    "total": 34,
+    "passed": 34,
+    "failed": 0,
+    "skipped": 0
+  },
+  "unchanged_core_and_gametext": true,
+  "builds": {
+    "phase1": 0,
+    "phase2": 0,
+    "phase3": 0,
+    "phase4_fixed": 0,
+    "full_rebuild": 0,
+    "accepted_build_fixed": 0,
+    "release_build": 0,
+    "credit_repair": 0
+  },
+  "corrected_builder_failures": [
+    "phase4: Unity fake-null CanvasGroup",
+    "accepted-build: deferred Transform enumeration during deletion"
+  ],
+  "launch_free_commit_gb": [
+    7.18,
+    8.57,
+    8.91,
+    8.26,
+    8.51,
+    9.68,
+    13.38,
+    13.17,
+    13.32,
+    13.57,
+    12.01,
+    10.73,
+    10.99,
+    10.89,
+    10.83,
+    10.68
+  ],
+  "minimum_launch_gate_gb": 6,
+  "screenshot_count": 34,
+  "screenshots": [
+    {
+      "file": "01-classroom.png",
+      "sha256": "c67b99da21780f67b7741bd881e7f596b1017d8dd884d2f946f54bf1fbbeb45f"
+    },
+    {
+      "file": "02-painting-wall.png",
+      "sha256": "c2cca05d09d29ae63fee0c5f9b2ceec20b58687b8b121db6ac0659a6cf9d6df5"
+    },
+    {
+      "file": "03-altar.png",
+      "sha256": "6fe12079bc9018a57f42f5cbc38533b2afbac65a4f05b11f826fc9b06dd7abea"
+    },
+    {
+      "file": "04-cauldron.png",
+      "sha256": "d1bad702398e1c26f62ab1f4208bd9a11c7c4fa414379c16320e64ae6d192f1f"
+    },
+    {
+      "file": "05-inscription-revealed.png",
+      "sha256": "3f9bf0bb1517281d53918c381943b4e40fe10f09c4bcdd01f793186a0e37de2e"
+    },
+    {
+      "file": "06-exit.png",
+      "sha256": "85e6e7c45c84f99ffbd96e0710737b88e920561280d7255cb141639dcbe395ea"
+    },
+    {
+      "file": "07-student-desks-window.png",
+      "sha256": "6d1fe83f9b4bbbc46a5a676652ed25a8cab4aced5d6e8aaecdaf8d6791ba976d"
+    },
+    {
+      "file": "08-corridor-lantern-only.png",
+      "sha256": "9b060ec6b292c7945192f3caf84c3cb4fc2127b59182701582095cbe09626ac9"
+    },
+    {
+      "file": "09-window-moonlight.png",
+      "sha256": "a2497920cd1456f041ce6e58b15e1098c1a646f6a7a8f2449b57a0dc19b3d2ab"
+    },
+    {
+      "file": "10-painting-closeup.png",
+      "sha256": "56762567a527bd2b8e6ab3708e6d0602d819087bba562539336e9aa1caf2942a"
+    },
+    {
+      "file": "11-chalkboard-closeup.png",
+      "sha256": "7b0bae96919988670d642108e12db5db768d3b1369e8b838e0579f8064fb5478"
+    },
+    {
+      "file": "12-inscription-closeup.png",
+      "sha256": "8f9a7b67e3c5f3c6d0da2126c3de9ab0320c9267dfd577ad090a723a1cc1f8cc"
+    },
+    {
+      "file": "13-seal-ready-crystal-colours.png",
+      "sha256": "ee3186474ca75464a953390cc5e2adc8947920708bea173cb8098a3d34a1ddfc"
+    },
+    {
+      "file": "14-hotbar-model-icons.png",
+      "sha256": "722e34cdfe1f1da8e292879918997f0a8f299bd52f29aefe5fcdd3c78273f376"
+    },
+    {
+      "file": "15-opening-candles.png",
+      "sha256": "eaf0aca76bbf2413264b74ae84b2ec23610335d9aca23c675f20f2b0c96fe438"
+    },
+    {
+      "file": "16-opening-seals.png",
+      "sha256": "f88c10971043fcc8d5d9923db58e260521357994229bfca9b34c5a6a7933246c"
+    },
+    {
+      "file": "17-picture-chalkboard.png",
+      "sha256": "c60d85f0ceadc89f8edafa1d24065bee2de50e65db23747967f3bcbec66eaa41"
+    },
+    {
+      "file": "18-picture-recipe.png",
+      "sha256": "f7637152c989e98986de4074454fa76dc01c5726371fbe3c201a2f3bc83c55d7"
+    },
+    {
+      "file": "19-element-Earth.png",
+      "sha256": "bd0cb1d384c4c4d0bc21ddf247cad7c9757b69da1822156e4d14f1e2e8b6fe8c"
+    },
+    {
+      "file": "20-element-Water.png",
+      "sha256": "1676fb4ed9e947ee1f8adeed66572c312dd216f0649502e938e101c0cfcc664a"
+    },
+    {
+      "file": "21-element-Fire.png",
+      "sha256": "55b646650e056d71fce673c2f27696e8d6333a61c05ebf5b12831167c4412f94"
+    },
+    {
+      "file": "22-element-Wind.png",
+      "sha256": "a08431651e686fa4d7cc3dd3ea8ca1b0be8260d31e408bc44a99e57989ca45db"
+    },
+    {
+      "file": "23-element-Light.png",
+      "sha256": "aa1caa783402315a4c275a8c1577c498503434ba1ecbfa9a19e31bf7228c21cf"
+    },
+    {
+      "file": "24-element-Shadow.png",
+      "sha256": "caec5328a6cd12b80ce86e736b4c9d06b39742d3693d51c5a00ea7666a842460"
+    },
+    {
+      "file": "25-cauldron-step-1.png",
+      "sha256": "c0d52d517b53de9ed24c5d6ca1ec9946dbefbeb0889d61de21d3b5fdab0de18a"
+    },
+    {
+      "file": "26-cauldron-step-2.png",
+      "sha256": "b7e01b4c6d38caa362c97c4f8b76a545f23c5f9e56b6cc1a31213466c7506ae6"
+    },
+    {
+      "file": "27-cauldron-step-3.png",
+      "sha256": "55f193599d15bf69626eae0d63bafa9c4448e3bc05f3821c3824de87939c1fc4"
+    },
+    {
+      "file": "28-ending.png",
+      "sha256": "200c5f3e7bf26c084681c1acaee1702373391dd65b62f195aada051c814ddbfd"
+    },
+    {
+      "file": "29-element-closeup-Earth.png",
+      "sha256": "1bf1283a065ff9686f7ef3925ccc8c55370937215e9643b932d2801c8f2f816f"
+    },
+    {
+      "file": "30-element-closeup-Water.png",
+      "sha256": "67d7d76b4b03e8e68bb95cb01595a5d54bfcd4a204a64b9656d2ca13f1ba306f"
+    },
+    {
+      "file": "31-element-closeup-Fire.png",
+      "sha256": "542a035315e8a85da11db4ce7194258a9eee237a1492c1f9d7730697cae14115"
+    },
+    {
+      "file": "32-element-closeup-Wind.png",
+      "sha256": "013fa8550ffe45a6b466d1495fe1536ca2217f4f80a0bd65baf29274c78dae61"
+    },
+    {
+      "file": "33-element-closeup-Light.png",
+      "sha256": "46b33d2786e22d00add5318e060ba93682972180fbe87e35f32f8850b70dcd9d"
+    },
+    {
+      "file": "34-element-closeup-Shadow.png",
+      "sha256": "6b44e0b83591d7ec813f1d7cff1619b18aa1864cafb28c3f59e6cf5f44b8ee61"
+    }
+  ],
+  "right_half_07_mean_luminance": {
+    "s10d": 10.844,
+    "s10e": 15.396
+  },
+  "effect_budget": [
+    "Emitters=31",
+    "Active lights=32",
+    "Realtime shadow lights=2",
+    "Laptop FPS not measured; batchmode is not a performance acceptance test."
+  ],
+  "unverified": [
+    "laptop 60fps",
+    "projector and physical display readability",
+    "naive player puzzle inference",
+    "human sound listening",
+    "standalone S11 build",
+    "Notion sync"
+  ]
+}

@@ -41,6 +41,9 @@ public class FifthPassTests
             Assert.AreEqual(GameFlowState.Playing,GameManager.Instance.Progression.Flow);Assert.False(UIManager.Instance.IsReading);
         }
         finally {InputSystem.RemoveDevice(keyboard);InputSystem.settings.editorInputBehaviorInPlayMode=oldEditor;InputSystem.settings.backgroundBehavior=oldBackground;}
+        yield return Load(false);yield return new WaitForSecondsRealtime(12.4f);
+        Assert.False(Presentation.InputBlocked,"Unskipped opening ends after its 12-second timeline");Assert.AreEqual(3,Presentation.LitSealCount);
+        Assert.Less(GameManager.Instance.Progression.ElapsedSeconds,1,"Opening is not counted as player clear time");
     }
     [UnityTest] public IEnumerator SealReleaseChangesLampsBrightnessAndFrameFeedback()
     {
@@ -54,6 +57,9 @@ public class FifthPassTests
         Reveal();foreach(var socket in Object.FindObjectsByType<CrystalSocket>(FindObjectsSortMode.None)){Scenario.Select(socket.Side==SocketSide.Left?ItemIds.CrystalSapphire:ItemIds.CrystalRuby);socket.Interact(Scenario.Player);}
         Object.FindFirstObjectByType<SealCore>().Interact(Scenario.Player);yield return new WaitForSeconds(.65f);
         Assert.AreEqual(3,Presentation.BrightnessStage);Assert.AreEqual(0,Presentation.LitSealCount);Assert.True(Presentation.dawn.enabled);Assert.True(Presentation.coreRenderers.All(r=>!r.enabled));
+        Assert.True(Presentation.dawnRays.activeSelf);Assert.AreSame(Presentation.dawnWindowMaterial,Presentation.dawnWindow.sharedMaterial);Assert.NotNull(Presentation.sealLatch.clip);
+        Assert.True(Presentation.InputBlocked,"Exit opening is also a protected cinematic");
+        yield return new WaitForSeconds(3.3f);Assert.True(Object.FindFirstObjectByType<DoorController>().PassageReady);Assert.False(Presentation.InputBlocked);
     }
     [UnityTest] public IEnumerator ClueSentencesNeverAutomaticallyAppearBeforeFailure()
     {

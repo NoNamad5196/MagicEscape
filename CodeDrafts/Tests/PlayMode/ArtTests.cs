@@ -62,7 +62,7 @@ public class ArtTests
         yield return new WaitForSecondsRealtime(2.5f);yield return Capture("15-opening-candles");
         yield return new WaitForSecondsRealtime(5.8f);yield return Capture("16-opening-seals");
         GameManager.Instance.SkipPresentation();yield return null;
-        Assert.True(RenderSettings.ambientLight.maxColorComponent<.08f,"Near-black blue ambient");
+        Assert.That(RenderSettings.ambientLight.maxColorComponent,Is.InRange(.14f,.17f),"Readable stage-zero ambient");
         Assert.AreEqual(FogMode.Exponential,RenderSettings.fogMode);
         Assert.AreEqual(2,Object.FindObjectsByType<Light>(FindObjectsSortMode.None).Count(l=>l.enabled&&l.shadows!=LightShadows.None),"Only lantern and moon cast real-time shadows");
         Assert.True(GameObject.Find("Art_ThirdPass").GetComponentsInChildren<Collider>(true).Length==0);
@@ -87,6 +87,8 @@ public class ArtTests
         Assert.True(GameObject.Find("Art_SecondPass").GetComponentsInChildren<Collider>().Length==0);
         Assert.True(GameObject.Find("Art_FourthPass").GetComponentsInChildren<Collider>(true).Length==0);
         var uiFont=Resources.FindObjectsOfTypeAll<TMPro.TMP_Text>().First(t=>t.name=="PromptText"&&t.gameObject.scene.IsValid()).font;
+        var credits=Resources.FindObjectsOfTypeAll<TMPro.TMP_Text>().First(t=>t.name=="ArtCredits"&&t.gameObject.scene.IsValid());
+        foreach(char c in credits.text.Where(c=>!char.IsControl(c)))Assert.True(credits.font.HasCharacter(c,false,false),"Credit glyph U+"+((int)c).ToString("X4"));
         foreach(var field in typeof(GameText).GetFields(BindingFlags.Public|BindingFlags.Static).Where(f=>f.FieldType==typeof(string)))
             foreach(char c in ((string)field.GetValue(null)).Where(c=>!char.IsControl(c)))Assert.True(uiFont.HasCharacter(c,false,false),"Missing GameText glyph U+"+((int)c).ToString("X4"));
         foreach(string roman in new[]{"I","II","III","IV"}) {
@@ -107,7 +109,9 @@ public class ArtTests
         {
             var radial=(stone.transform.position-new Vector3(0,stone.transform.position.y,.5f)).normalized;
             View(new Vector3(0,0,.5f)+radial*2.35f,stone.transform.position+Vector3.up*.08f);
-            yield return new WaitForSeconds(.25f);yield return Capture((19+elementIndex).ToString("00")+"-element-"+stone.Rune);elementIndex++;
+            yield return new WaitForSeconds(.25f);yield return Capture((19+elementIndex).ToString("00")+"-element-"+stone.Rune);
+            View(new Vector3(0,0,.5f)+radial*1.3f,stone.transform.position+Vector3.up*.08f);
+            yield return Capture((29+elementIndex).ToString("00")+"-element-closeup-"+stone.Rune);elementIndex++;
         }
         View(new Vector3(-1.5f, 0, -1), new Vector3(0, 1, .5f));
         foreach (var rune in RunePuzzleLogic.DefaultAnswer) Object.FindObjectsByType<RuneStone>(FindObjectsSortMode.None).First(s => s.Rune == rune).Interact(Scenario.Player);
