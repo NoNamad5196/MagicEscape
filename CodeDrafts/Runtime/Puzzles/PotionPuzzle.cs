@@ -25,7 +25,7 @@ namespace MagicEscape
         [Tooltip("재료 1·2·3개 투입 후 물약 색")]
         [SerializeField] private Color[] stepColors =
         {
-            new Color(0.55f, 0.6f, 1f), new Color(1f, 0.45f, 0.2f), new Color(0.3f, 1f, 0.5f)
+            new Color(0.55f, 0.6f, 1f), new Color(1f, 0.45f, 0.2f), new Color(1f, .72f, .15f)
         };
         [SerializeField] private Color solvedColor = new Color(1f, 0.8f, 0.3f);
 
@@ -113,7 +113,7 @@ namespace MagicEscape
 
         private void HandleWrong(PlayerInteraction interactor)
         {
-            if (liquidGlow != null) liquidGlow.Off();
+            if (liquidGlow != null) liquidGlow.SetGlow(new Color(.075f, .045f, .08f));
             if (smokeVfx != null) smokeVfx.Play();
             AudioManager.Play(SfxId.CauldronWrong);
 

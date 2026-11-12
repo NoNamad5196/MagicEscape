@@ -142,3 +142,85 @@ for y in range(256):
   alpha=int(max(0,1-radius)**2*rng.uniform(12,58))
   px[x,y]=(24,17,11,alpha)
 im.save(D/'Soot.png')
+
+# S10e: bold elemental points, original chalk pictograms and particle masks.
+E=Path('UnityProject/Assets/Art/S10e');E.mkdir(parents=True,exist_ok=True)
+colors={'Earth':(104,197,67),'Water':(65,171,246),'Fire':(246,100,28),'Wind':(152,190,153),'Light':(248,211,87),'Shadow':(169,87,205)}
+for name,col in colors.items():
+ im=paper((256,256),(36,30,23));d=ImageDraw.Draw(im)
+ # Triple, closely offset cuts make the same engraved vocabulary readable at distance.
+ for offset in (-2,0,2):symbol(d,name,128+offset,128,1,col)
+ symbol(d,name,128,128,.91,GOLD)
+ im.save(OUT/(name+'.png'))
+
+# Rework existing story plates without erasing the hand-cut surface character.
+from PIL import ImageEnhance, ImageOps
+for num in range(1,5):
+ im=Image.open(OUT/('Story_'+str(num)+'.png'))
+ # Dark strokes are dilated before contrast enhancement; broad soil/plant silhouettes survive mipmapping.
+ im=im.filter(ImageFilter.MinFilter(3));im=ImageEnhance.Contrast(im).enhance(1.65)
+ im.save(OUT/('Story_'+str(num)+'.png'))
+
+def arrow(d,x,y,length,col,width=6):
+ d.line((x,y,x+length,y),fill=col,width=width);d.line((x+length-12,y-12,x+length,y,x+length-12,y+12),fill=col,width=width)
+def roman(d,n,x,y,col):
+ if n<4:
+  for j in range(n):d.line((x+j*12,y,x+j*12,y+30),fill=col,width=5)
+ else:
+  d.line((x-8,y,x-8,y+30),fill=col,width=5);d.line((x+5,y,x+17,y+30,x+29,y),fill=col,width=5)
+def seed(d,x,y,stage,col):
+ d.line((x-40,y+35,x+40,y+35),fill=col,width=5)
+ if stage==1:d.ellipse((x-11,y+48,x+11,y+62),outline=col,width=5)
+ else:
+  d.line((x,y+56,x,y-12-(stage-2)*17),fill=col,width=6)
+  d.line((x,y+15,x-26,y-3,x-30,y+8,x,y+24,x+29,y-5,x+32,y+7,x,y+28),fill=col,width=4)
+ if stage==2:
+  for j in range(4):d.line((x-35+j*24,y-60,x-43+j*24,y-40),fill=col,width=4)
+ if stage>=3:
+  d.ellipse((x+22,y-70,x+49,y-43),outline=col,width=4)
+ if stage==4:
+  for j in range(6):
+   a=j*math.pi/3;xx=x+math.cos(a)*13;yy=y-47+math.sin(a)*13
+   d.ellipse((xx-8,yy-8,xx+8,yy+8),outline=col,width=3)
+im=paper((1024,512),(24,43,34));d=ImageDraw.Draw(im);chalk=(215,222,190)
+for n in range(1,5):
+ x=132+(n-1)*252;d.rectangle((x-95,86,x+95,410),outline=chalk,width=5);roman(d,n,x-15,110,chalk);seed(d,x,280,n,chalk)
+ if n<4:arrow(d,x+102,247,45,chalk,5)
+im.save(E/'ChalkSequence.png')
+
+im=paper((1024,640),(207,186,139));d=ImageDraw.Draw(im)
+for x in (12,505,1010):d.line((x,15,x,625),fill=(107,75,42),width=4)
+for n in range(1,4):
+ x=167+(n-1)*334;roman(d,n,x-10,40,INK)
+ if n==1:
+  d.ellipse((x-53,113,x+23,189),fill=(66,97,135));d.ellipse((x-25,96,x+44,165),fill=(207,186,139))
+  for j in range(5):
+   a=j*math.pi*2/5;xx=x+math.cos(a)*28;yy=290+math.sin(a)*28;d.ellipse((xx-16,yy-25,xx+16,yy+25),fill=(107,161,196),outline=INK,width=4)
+ elif n==2:
+  symbol(d,'Fire',x,196,.6,(203,78,22));d.polygon([(x,265),(x+53,301),(x+28,354),(x-28,354),(x-53,301)],fill=(184,72,28),outline=INK,width=5)
+  for j in range(4):d.arc((x-38,279+j*15,x+38,306+j*15),0,180,fill=GOLD,width=3)
+ else:
+  for j in range(10):
+   xx=x+rng.randrange(-62,63);yy=160+rng.randrange(0,185)
+   d.line((xx-9,yy,xx+9,yy),fill=(93,123,157),width=4);d.line((xx,yy-10,xx,yy+10),fill=INK,width=3)
+  d.arc((x-64,316,x+64,363),0,180,fill=INK,width=5)
+ if n<3:arrow(d,x+100,264,90,INK)
+# Poison mushroom: pictogram and unequivocal crossed-out candidate, no prose.
+x=512;d.rectangle((355,421,669,618),outline=(127,87,51),width=3)
+d.rectangle((x-10,514,x+10,568),fill=(149,126,91),outline=INK,width=3)
+d.pieslice((x-56,458,x+56,550),180,360,fill=(178,47,35),outline=INK,width=4)
+for xx,yy in [(x-30,495),(x,481),(x+30,497)]:d.ellipse((xx-5,yy-5,xx+5,yy+5),fill=(236,216,167))
+d.line((x-76,444,x+76,589),fill=(148,27,23),width=12);d.line((x+76,444,x-76,589),fill=(148,27,23),width=12)
+im.save(E/'PictureRecipe.png')
+for key in ('Soft','Spark','Drop','Leaf','Bubble'):
+ im=Image.new('RGBA',(64,64));d=ImageDraw.Draw(im)
+ if key=='Soft':
+  for y in range(64):
+   for x in range(64):
+    r=((x-31.5)**2+(y-31.5)**2)**.5/31.5;im.putpixel((x,y),(255,255,255,int(max(0,1-r)**2*220)))
+ elif key=='Spark':d.polygon([(32,2),(36,26),(62,32),(36,37),(32,62),(27,37),(2,32),(27,26)],fill=(255,255,255,240))
+ elif key=='Drop':d.polygon([(32,2),(48,35),(48,46),(40,57),(24,57),(16,46),(16,35)],fill=(255,255,255,220))
+ elif key=='Leaf':d.ellipse((12,6,48,58),fill=(255,255,255,220));d.line((22,51,39,13),fill=(70,100,70,130),width=3)
+ else:d.ellipse((7,7,57,57),outline=(255,255,255,180),width=3);d.arc((13,13,51,51),200,270,fill=(255,255,255,220),width=4)
+ im.save(E/(key+'.png'))
+print('S10e: bold six elements, contrasted plates, picture-only chalk/recipe, five original particle masks.')

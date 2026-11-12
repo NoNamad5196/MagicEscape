@@ -1,0 +1,1 @@
+Original procedural elements; no new colliders, no per-particle lights. Each emitter <=36 particles. Ingredient transforms unchanged.
