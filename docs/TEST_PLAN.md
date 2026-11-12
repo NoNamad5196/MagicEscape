@@ -232,3 +232,14 @@ S9 자동 검증: 합성 키보드/휠·중앙 Raycast E로 세 퍼즐·W 물리
 - [x] Runtime/UI/UIManager.cs? ? ??? ???? CodeDrafts ???. FourthArtBuilder/ArtTests/FullInputTests/UITests? ?? ???.
 - [ ] ?? ???? ?????? / ???? ?? ?? / ?? ??? ?? ??. ??? ?????? ?? ??? ??? ??? ?? ???? ?? ??? ???? ??.
 - ?? 12/13 ? ?(? ?? ???, Dynamic atlas ???)? TMP ??? API ??? ??? ????. ?? ??? ??? ??? results/REVIEW? ??. Editor ???? token ???? ?? Console ??? ????.
+
+## S10f 실제 검증 — 2026-11-12 / Windows / Unity 6000.3.28f1
+- Core **44/44**: 기존 34 + 조사 10. 7개 아이템, 받침/무받침, 괄호 설명/공백/null/영문, 이·가/와·과 확인.
+- PlayMode **19/19**, skipped 0: 기존 18 + SixthPassTests. 기존 진행 밝기 증가 검사를 요구대로 감소 검사로 변경. 검정 페이드/실제 클리어 시간/버튼 유지 검사. 테스트 삭제/오류 억제 없음.
+- FullInputTests: 실제 Input System 입력/CharacterController로 게임 진행 및 출구 통과. Console Error/Exception/Assert 이벤트 **0**. 셰이더 compile error **0**. 시작 시 LicenseClient Access token 경고는 entitlement 복구 후 종료 0, PlayMode Console과 별개.
+- ColliderManifest 전후 동일. Audit-S10f.py: 기존 Core 소스 기준 04d076d와 동일(새 표시 헬퍼 제외), 바뀐 Runtime 미러 일치, 모든 캡처 1280×720 무결성, 모든 PlayMode 결과 확인.
+- 매회 Run-Unity 메모리/단일 에디터 게이트 준수. 실행 전 headroom 최소 10.44GB. RTX3080 batchmode이며 노트북 성능 통과 근거 아님.
+- docs/validation/s10f/01~34 기존 구도, 35=실제 석판 크기 정면 2m 기호 전시, 36=탈출 직전 복도, 37=검정 페이드 중간. gameplay Camera+HUD RenderTexture, SceneView 아님.
+- 실제 명령과 자세한 자체 판정/출처/미검증은 docs/validation/s10f/REVIEW.md, 공유 기계 결과 results.json. 실행: Fetch-S10f.py → Generate-Art.py → Run-Unity.ps1 S10fApply → Run-Unity.ps1 -Tests → dotnet test → Audit-S10f.py.
+- 초기 Core 파이프 인코딩 문제는 250bea7에서 수정/44통과. 첫 PlayMode 17/19의 emission keyword/수동 일반 Log 검사 문제 수정 뒤 대상 2/2, 최종 전체 19/19. 초기 불꽃 안 보임도 플립북 카드로 수정/최종 재캡처.
+- **미검증:** 실제 사용자 2m 식별률/노트북 60fps/전체 S1→S10f 연속 재빌드/Linux RuntimeCompileCheck. **미구현:** 열 왜곡/scene-depth 굴절. 물줄기는 여전히 원통 실루엣이 강해 실사 물 품질 통과로 쓰지 않는다.

@@ -155,4 +155,6 @@ Runtime asmdef 추가 이유: 별도 PlayMode asmdef는 Assembly-CSharp를 참�
 - [x] Unity Labs CC0 플립북 불/불씨/소켓 라이트. 자체 물 노멀+프레넬/환경반사, 물줄기/드롭/링. 가마솥 무쇠 재질/같은 물 셰이더.
 - [x] 검정 탈출 페이드, 작은 금박 엔딩 카드, 봉인 진행 어둡게/고요하게. Runtime 변경 전부 CodeDrafts 동기화.
 - [x] Unity 빌더 실행 성공, collider manifest 동일. 주황 사각형은 세 번째 봉인등의 직사각 발광 렌즈, 삭제 대신 동일 연금술 각인으로 교체.
-- [ ] PlayMode/스크린샷/시각 QA 진행 중. 실측 노트북 60fps, 열 왜곡, scene-depth 굴절은 미검증/미구현.
+- [x] 최종 PlayMode 19/19, Core 44/44, Console Error/Exception/Assert 0. 01~37 PNG 생성/무결성 검사, 주요 구도 자체 시각 QA. 결과 `docs/validation/s10f/results.json`, 판정 `REVIEW.md`.
+- [x] 초기 캡처에서 보이지 않던 입자 불꽃을 한 장 플립북 카드로 교체/재검증. 칠판은 읽히는 식물 윤곽으로 개선. Fetch/Generate/Unity 빌더 재현 경로 제공.
+- [ ] 노트북 60fps 및 실제 사용자 2m 식별 테스트 미검증. 물줄기의 가는 원통 실루엣/실사 물 품질은 개선 여지. 열 왜곡/scene-depth 굴절 미구현. 자체 품질 판정은 부분 달성, 전부 통과 아님.
