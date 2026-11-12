@@ -1,6 +1,9 @@
 # MagicEscape — 작업 현황
 
 ## S10e 5차 — 진행 기록
+- Phase 4: 굵어진 판화/모서리 문양, 액자 아래 책을 두 모서리 비정형 군집으로 이동, 벽 등받침을 금속 팔/컵/촛농으로 교체, 동쪽 책상 보조광/시작 주변광 보강. 양피지 엔딩 UI. 기존 콜라이더 manifest 불변.
+- `s10e-phase4` 첫 실행은 Unity fake-null CanvasGroup 참조 때문에 실패. 명시적 Unity null 검사로 수정 후 `s10e-phase4-fixed` exit 0. 실패를 숨기지 않으며 뒤의 전체 테스트로 재검증한다.
+- 추가 5개 PlayMode 테스트와 28개 Game camera/HUD 캡처 경로 작성. 이 커밋 시점 전체 실행 결과는 대기.
 - Phase 3: RoomPresentation 12초 오프닝/아무 키 건너뛰기/조작 잠금, 3봉인 점등 및 단계별 주변광·앰비언스·다음 위치 신호, 봉인핵 빛 파편/새벽 조명, 출구 통과 후 백색 페이드. Cleared/ExitTrigger/Core 그대로. 테스트는 명시 SkipPresentation 경로 사용.
 - `s10e-phase3` 빌더 exit 0. Runtime/Editor/PlayMode 소스 CodeDrafts 동기화. 전체 플레이 검증은 아직 대기. 복사 과정에서 생긴 CodeDrafts Unity 메타데이터는 정리했다.
 - Phase 2: E는 그림 확대, Tab은 단서 문장 안전망. 비문 자동 글 패널 제거, 액자 진행 조명/소켓 물·불 효과 추가. `s10e-phase2` 빌더 exit 0. 기존 테스트의 글 표시 기대만 변경; 흐름/정답/실패 검증 유지. PlayMode 전체 실행은 Phase 4에서 수행 예정.

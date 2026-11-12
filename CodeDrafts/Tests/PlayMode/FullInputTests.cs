@@ -58,7 +58,7 @@ public class FullInputTests
     {
         yield return SceneManager.LoadSceneAsync("Classroom"); yield return null;
         previousEditor=InputSystem.settings.editorInputBehaviorInPlayMode; previousBackground=InputSystem.settings.backgroundBehavior; InputSystem.settings.editorInputBehaviorInPlayMode=InputSettings.EditorInputBehaviorInPlayMode.AllDeviceInputAlwaysGoesToGameView; InputSystem.settings.backgroundBehavior=InputSettings.BackgroundBehavior.IgnoreFocus; keyboard=InputSystem.AddDevice<Keyboard>(); mouse=InputSystem.AddDevice<Mouse>();
-        GameObject.Find("Button_Start").GetComponent<Button>().onClick.Invoke(); yield return null;
+        GameObject.Find("Button_Start").GetComponent<Button>().onClick.Invoke(); GameManager.Instance.SkipPresentation(); yield return null;
         yield return Tap(Key.Escape); Assert.AreEqual(GameFlowState.Paused,GameManager.Instance.Progression.Flow); yield return Tap(Key.Escape); Assert.True(GameManager.Instance.IsPlaying);
         yield return Tap(Key.Tab); Assert.NotNull(GameObject.Find("ObjectivePanel")); yield return Tap(Key.Tab);
         yield return Use(GameObject.Find("Painting_I").GetComponent<InspectableObject>(),new Vector3(-4.2f,0,-.8f)); Assert.True(UIManager.Instance.IsReading); yield return Tap(Key.E); Assert.False(UIManager.Instance.IsReading);

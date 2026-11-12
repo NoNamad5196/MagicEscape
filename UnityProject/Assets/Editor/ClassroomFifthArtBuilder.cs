@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.IO;
 using System.Linq;
 using MagicEscape.Core;
@@ -177,11 +177,40 @@ namespace MagicEscape.EditorTools
             var dawn=new GameObject("E_DawnLight").AddComponent<Light>();dawn.transform.SetParent(root,true);dawn.transform.position=new Vector3(0,2,6.7f);dawn.transform.LookAt(new Vector3(0,.8f,1));dawn.type=LightType.Spot;dawn.spotAngle=100;dawn.innerSpotAngle=65;dawn.range=9;dawn.color=new Color(1,.71f,.40f);dawn.intensity=9;dawn.shadows=UnityEngine.LightShadows.None;dawn.enabled=false;p.dawn=dawn;
             var canvas=SceneComponent<UIManager>().transform;
             var overlay=Rect("PresentationFade",canvas,new Vector2(1920,1080),Vector2.zero).gameObject.AddComponent<UnityEngine.UI.Image>();overlay.color=Color.clear;overlay.raycastTarget=false;overlay.transform.SetAsLastSibling();p.fade=overlay;
-            var clear=Resources.FindObjectsOfTypeAll<UnityEngine.RectTransform>().First(t=>t.name=="ClearPanel"&&t.gameObject.scene.IsValid());p.clearGroup=clear.GetComponent<CanvasGroup>()??clear.gameObject.AddComponent<CanvasGroup>();
+            var clear=Resources.FindObjectsOfTypeAll<UnityEngine.RectTransform>().First(t=>t.name=="ClearPanel"&&t.gameObject.scene.IsValid());p.clearGroup=clear.GetComponent<CanvasGroup>();if(p.clearGroup==null)p.clearGroup=clear.gameObject.AddComponent<CanvasGroup>();
             var paper=EPicture("PictureRecipe"); // UI uses the quiet original parchment rather than recipe symbols.
             var im=clear.GetComponent<UnityEngine.UI.Image>();im.sprite=AssetDatabase.LoadAssetAtPath<Sprite>(DArt+"ClothPanel.png");im.color=new Color(.72f,.60f,.40f,1);
             RenderSettings.ambientLight=new Color(.052f,.062f,.078f);Save();
         }
+        public static void S10ePhase4()
+        {
+            EOpen();var before=ColliderManifest();var decor=ERoot("Art_FifthFinish");
+            var piles=Object.FindObjectsByType<Transform>(FindObjectsSortMode.None).Where(t=>t.parent!=null&&t.parent.name=="Art_FourthPass"&&t.name=="ArtB_Fit_Book_Stack_1"&&t.position.y<.1f&&t.position.x<0).OrderBy(t=>t.position.z).ToArray();
+            Vector3[] homes={new Vector3(-5.35f,0,-3.05f),new Vector3(-5.08f,0,-3.26f),new Vector3(-4.95f,0,2.9f),new Vector3(-5.25f,.20f,-3.12f),new Vector3(-5.18f,0,3.22f)};
+            for(int i=0;i<piles.Length;i++){piles[i].position=homes[i%homes.Length];piles[i].rotation=Quaternion.Euler(0,new[]{-37,14,62,-14,27}[i%5],i==3?7:0);}
+            foreach(var lamp in Object.FindObjectsByType<Transform>(FindObjectsSortMode.None).Where(t=>t.name=="ArtB_Fit_Lantern_Wall").ToArray())
+            {
+                foreach(var r in lamp.GetComponentsInChildren<Renderer>())r.enabled=false;
+                var pos=lamp.position;var bronze=EMat("SconceBronze",new Color(.20f,.12f,.055f));
+                EShape("SconceMount",decor,pos+new Vector3(0,.22f,.10f),new Vector3(.10f,.18f,.045f),bronze,PrimitiveType.Sphere);
+                var arm=EShape("SconceArm",decor,pos+new Vector3(0,.07f,-.05f),new Vector3(.035f,.035f,.28f),bronze,PrimitiveType.Cube);
+                EShape("SconceCup",decor,pos+new Vector3(0,.10f,-.17f),new Vector3(.17f,.025f,.17f),bronze,PrimitiveType.Cylinder);
+                EShape("SconceWax",decor,pos+new Vector3(0,.24f,-.17f),new Vector3(.075f,.13f,.075f),EMat("CandleWax",new Color(.64f,.52f,.30f)),PrimitiveType.Cylinder);
+                var flame=EShape("SconceFlame",decor,pos+new Vector3(0,.41f,-.17f),new Vector3(.035f,.10f,.035f),EMat("CandleFlame",new Color(1,.5f,.12f),2));EMotion(flame,ElementMotion.Motion.Flame);
+            }
+            CLight("EastDeskBounce",new Vector3(3.5f,2,-2.7f),new Color(.55f,.63f,.72f),1.5f,5.5f);
+            var p=SceneComponent<RoomPresentation>();if(p.clearGroup==null){var clearObject=Resources.FindObjectsOfTypeAll<UnityEngine.RectTransform>().First(t=>t.name=="ClearPanel"&&t.gameObject.scene.IsValid());p.clearGroup=clearObject.GetComponent<CanvasGroup>();if(p.clearGroup==null)p.clearGroup=clearObject.gameObject.AddComponent<CanvasGroup>();}p.openingDarkenedLights=p.openingDarkenedLights.Concat(new[]{Find("ArtC_EastDeskBounce").GetComponent<Light>()}).Distinct().ToArray();
+            string path=EArt+"EndingParchment.png";var importer=(TextureImporter)AssetImporter.GetAtPath(path);importer.textureType=TextureImporterType.Sprite;importer.spriteBorder=new Vector4(20,20,20,20);importer.SaveAndReimport();
+            var clear=p.clearGroup.GetComponent<UnityEngine.UI.Image>();clear.sprite=AssetDatabase.LoadAssetAtPath<Sprite>(path);clear.type=UnityEngine.UI.Image.Type.Sliced;clear.color=Color.white;
+            foreach(var t in p.clearGroup.GetComponentsInChildren<TMPro.TMP_Text>(true))t.color=new Color(.20f,.13f,.06f);
+            // Button captions sit on dark cloth, so retain their light ink.
+            foreach(var button in p.clearGroup.GetComponentsInChildren<UnityEngine.UI.Button>(true))foreach(var t in button.GetComponentsInChildren<TMPro.TMP_Text>())t.color=new Color(.86f,.77f,.57f);
+            if(!before.SequenceEqual(ColliderManifest()))throw new InvalidOperationException("S10e finish altered collider geometry or transforms");
+            File.WriteAllText("../docs/validation/s10e/phase4-audit.txt","Floor books grouped in irregular corner clusters, wall lantern backplates replaced by metal arm/cup/wax shapes. East desk fill + brighter stage-0 ambient. Collider manifest unchanged.\n");
+            File.WriteAllLines("../docs/validation/s10e/scene-manifest.txt",Object.FindObjectsByType<Transform>(FindObjectsInactive.Include,FindObjectsSortMode.None).Select(t=>Hierarchy(t)+"|"+t.position.ToString("F4")+"|"+string.Join(",",t.GetComponents<Component>().Select(c=>c.GetType().Name))).OrderBy(x=>x));Save();
+        }
+        /// <summary>Reconstruct all five passes from source; phase methods are checkpoints on the saved scene.</summary>
+        public static void S10e() {S10d();S10ePhase1();S10ePhase2();S10ePhase3();S10ePhase4();}
     }
 }
 

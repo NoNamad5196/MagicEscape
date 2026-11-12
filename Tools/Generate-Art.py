@@ -224,3 +224,6 @@ for key in ('Soft','Spark','Drop','Leaf','Bubble'):
  else:d.ellipse((7,7,57,57),outline=(255,255,255,180),width=3);d.arc((13,13,51,51),200,270,fill=(255,255,255,220),width=4)
  im.save(E/(key+'.png'))
 print('S10e: bold six elements, contrasted plates, picture-only chalk/recipe, five original particle masks.')
+im=paper((512,512),(198,174,125));d=ImageDraw.Draw(im)
+for off in (10,17):d.rectangle((off,off,511-off,511-off),outline=(108,77,41),width=2)
+im.save(E/'EndingParchment.png')
