@@ -61,7 +61,7 @@ MonoBehaviour:
   itemId: ing_toadstool
   displayName: "\uB3C5\uBC84\uC12F"
   description: 
-  icon: {fileID: 8944643882392367514}
+  icon: {fileID: 3663154890014582633, guid: 160a142ede3a79d4b986f2a363cef65d, type: 3}
 --- !u!213 &8944643882392367514
 Sprite:
   m_ObjectHideFlags: 0

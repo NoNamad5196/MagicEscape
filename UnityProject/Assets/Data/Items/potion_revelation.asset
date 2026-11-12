@@ -61,7 +61,7 @@ MonoBehaviour:
   itemId: potion_revelation
   displayName: "\uACC4\uC2DC\uC758 \uBB3C\uC57D"
   description: 
-  icon: {fileID: 1039756524386679762}
+  icon: {fileID: 70710005462359181, guid: 4fbb957d876a3ac498410d639bf41411, type: 3}
 --- !u!213 &1039756524386679762
 Sprite:
   m_ObjectHideFlags: 0

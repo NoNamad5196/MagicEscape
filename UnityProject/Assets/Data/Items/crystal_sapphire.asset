@@ -61,7 +61,7 @@ MonoBehaviour:
   itemId: crystal_sapphire
   displayName: "\uD478\uB978 \uC218\uC815"
   description: 
-  icon: {fileID: 557190467371120605}
+  icon: {fileID: -412064680191340158, guid: aa2f9a54239d2744787df2ff1d6075c3, type: 3}
 --- !u!213 &557190467371120605
 Sprite:
   m_ObjectHideFlags: 0

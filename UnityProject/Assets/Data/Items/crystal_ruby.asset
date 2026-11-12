@@ -271,4 +271,4 @@ MonoBehaviour:
   itemId: crystal_ruby
   displayName: "\uBD89\uC740 \uC218\uC815"
   description: 
-  icon: {fileID: -7471989696738240736}
+  icon: {fileID: -625666644471211056, guid: 1ac1f5b21f504d545b2c9ac3cee78805, type: 3}

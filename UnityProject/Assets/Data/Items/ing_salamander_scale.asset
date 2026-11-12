@@ -15,7 +15,7 @@ MonoBehaviour:
   itemId: ing_salamander_scale
   displayName: "\uBD88\uB3C4\uB9C8\uBC40 \uBE44\uB298"
   description: 
-  icon: {fileID: 3542983050105783363}
+  icon: {fileID: -1381504827106233021, guid: df1e402346b70c7418769b6dfd4783ee, type: 3}
 --- !u!213 &3542983050105783363
 Sprite:
   m_ObjectHideFlags: 0

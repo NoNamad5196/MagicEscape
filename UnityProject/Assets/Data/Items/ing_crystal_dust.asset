@@ -15,7 +15,7 @@ MonoBehaviour:
   itemId: ing_crystal_dust
   displayName: "\uC218\uC815 \uAC00\uB8E8"
   description: 
-  icon: {fileID: 2323308105222995082}
+  icon: {fileID: -4564462783367028809, guid: edcf6a1eb2eb5f94cb5b7758655cea33, type: 3}
 --- !u!213 &2323308105222995082
 Sprite:
   m_ObjectHideFlags: 0

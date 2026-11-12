@@ -271,4 +271,4 @@ MonoBehaviour:
   itemId: ing_moonpetal
   displayName: "\uC6D4\uAD11\uCD08 \uAF43\uC78E"
   description: 
-  icon: {fileID: -6761334621218601563}
+  icon: {fileID: -9040807370406887531, guid: a1bcd989f50fd504f90d9165895acbcc, type: 3}

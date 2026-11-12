@@ -149,3 +149,19 @@
 - New KayKit 1.1 models use `dungeon_texture_1_1.png`; existing S10 1.0 models keep their original atlas. Window frame is original mesh-only timber trim using Poly Haven wood. New bookcase rows contain BookGroup_Medium_1 meshes, not empty shelves.
 - No S10b asset requires user login/manual download: both official free itch.io archives were downloadable. Furniture Bits was unnecessary (Dungeon + Quaternius cover the furniture). The previous optional Cartoon FX download remains optional and was not used.
 - Exact new payload sizes/file list: [asset inventory](validation/s10b/asset-inventory.json), excludes Unity .meta. All selected CC0 originals, licenses, authored PNGs and Unity-generated meta are committed; full ZIP archives are not.
+
+## 9. S10c 3차 아트 패스 — 2026-11-12
+
+거의 검정인 푸른 ambient, 제한된 따뜻한 빛 웅덩이, 차가운 창빛을 기준으로 조정했다. 실시간 그림자는 플레이어 랜턴과 창문 스포트 두 개만 사용한다. 기존 CC0 가구 모델만 재사용했으며 새 외부 3D/텍스처/아이콘은 없다.
+
+| 신규 사운드 | 제작자 | 원문 / 라이선스 | 프로젝트 파일 / 가공 |
+|---|---|---|---|
+| wind1 | Luke.RUSTLTD | [OpenGameArt](https://opengameart.org/content/wind1), CC0 1.0 | AtmosphereCC0/wind.wav, 900 Hz 저역 통과, 46초 순환 루프 |
+| ambient sound creepy | DaGameKnower | [OpenGameArt](https://opengameart.org/content/ambient-sound-creepy), CC0 1.0 | AtmosphereCC0/drone.wav, 220 Hz 저역 통과로 저음만 사용, 46초 순환 루프 |
+| Wood Creak Single V1 | Rudmer_Rotteveel | [Freesound](https://freesound.org/people/Rudmer_Rotteveel/sounds/502505/), CC0 1.0 | 공개 HQ MP3 preview를 creak.wav로 변환, 약 0.987초 |
+
+- 세 원문 페이지의 CC0 표기 및 [CC0 법률 원문](https://creativecommons.org/publicdomain/zero/1.0/legalcode.txt)을 직접 확인했다. 원문 전체는 `Assets/ThirdParty/AtmosphereCC0/CC0-1.0.txt`, 출처·가공 정보는 동 폴더 `CREDITS.md`와 [전체 크레딧](CREDITS.md)에 있다. 타이틀 화면 하단에도 제작자를 표기한다.
+- 22050 Hz/16-bit/mono PCM. 드론·바람은 최초 48초의 양끝 2초를 오버랩해 루프 이음매를 완화했다. 원본/HTML은 ignored `Tools/asset-cache/atmosphere`에만 보관한다. 재생 음량은 각각 0.075/0.10, 삐걱임 0.095. 새 오디오의 기본 재생 경로는 RoomAmbience이며 퍼즐 SfxId를 변경하지 않는다.
+- `Tools/Generate-Atmosphere-Art.py`: 직접 만든 진홍색 직물+금색 문장·테두리, 별/초승달 밤하늘. 외부 그림·글꼴 입력 없음. `ClassroomThirdArtBuilder.BakeItemIcons`: 같은 아이템 모델·메시를 카메라로 촬영한 투명 256px PNG 7장. 별도 아이콘 라이선스 부담 없음.
+- 기존 Quaternius Potion_1/2를 재료 병과 물약에 재사용. 꽃잎/버섯/6면 수정과 작은 수정군은 Editor API로 제작했다. 사파이어의 푸른색, 루비의 붉은색을 유지했다. 소켓·원래 상호작용 콜라이더는 유지한다.
+- ACES, Bloom 0.55, Vignette 0.33, Film Grain 0.075, Chromatic Aberration 0.012, 청록 그림자/주황 하이라이트 Split Toning, Saturation -12, 청록 Exponential Fog 0.023. URP HDR/Depth/Soft Shadows 활성화; 추가 그림자 두 개는 Medium/1024 atlas로 제한한다.
