@@ -118,9 +118,9 @@ public class ArtTests
         int lineIndex=0;
         foreach(var stone in Object.FindObjectsByType<RuneStone>(FindObjectsSortMode.None).OrderBy(s=>s.Rune))
         {
-            float x=(lineIndex++-2.5f)*.46f;
-            var slab=Object.Instantiate(stone.transform.Find("AlchemicalSlab").gameObject,lineup.transform);slab.transform.position=new Vector3(x,1.6f,.5f);slab.transform.rotation=Quaternion.identity;slab.transform.localScale=new Vector3(.42f,.42f,.05f);
-            var icon=Object.Instantiate(stone.transform.Find("ArtB_RuneIcon_"+stone.Rune).gameObject,lineup.transform);icon.transform.position=new Vector3(x,1.6f,.465f);icon.transform.rotation=Quaternion.identity;icon.transform.localScale=new Vector3(.40f,.40f,1);
+            float x=(lineIndex++-2.5f)*.36f;
+            var slab=Object.Instantiate(stone.transform.Find("AlchemicalSlab").gameObject,lineup.transform);slab.transform.position=new Vector3(x,1.6f,.5f);slab.transform.rotation=Quaternion.identity;slab.transform.localScale=new Vector3(.30f,.30f,.055f);
+            var icon=Object.Instantiate(stone.transform.Find("ArtB_RuneIcon_"+stone.Rune).gameObject,lineup.transform);icon.transform.position=new Vector3(x,1.6f,.465f);icon.transform.rotation=Quaternion.identity;icon.transform.localScale=new Vector3(.28f,.28f,1);
         }
         View(new Vector3(0,0,-1.535f),new Vector3(0,1.6f,.465f));yield return Capture("35-six-symbols-at-2m");Object.Destroy(lineup);yield return null;
         View(new Vector3(-1.5f, 0, -1), new Vector3(0, 1, .5f));

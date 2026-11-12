@@ -25,10 +25,8 @@ namespace MagicEscape.EditorTools
   {
    if(id==RuneId.Fire)
    {
-    var fire=EParticles("MaterialFire",parent,p+Vector3.up*size*.55f,Color.white,"Soft",1,size*2.4f,0,0);
-    var main=fire.main;main.startLifetime=1;main.maxParticles=2;main.startSize=new ParticleSystem.MinMaxCurve(size*2.1f,size*2.4f);
-    var shape=fire.shape;shape.enabled=false;var v=fire.velocityOverLifetime;v.enabled=false;
-    var renderer=fire.GetComponent<ParticleSystemRenderer>();var mat=EMat("F_Fire",Color.white);mat.shader=Shader.Find("MagicEscape/AlchemyFire");mat.SetTexture("_BaseMap",AssetDatabase.LoadAssetAtPath<Texture2D>(FArt+"Flame02.png"));EditorUtility.SetDirty(mat);renderer.sharedMaterial=mat;
+    var mat=EMat("F_Fire",Color.white);mat.shader=Shader.Find("MagicEscape/AlchemyFire");mat.SetTexture("_BaseMap",AssetDatabase.LoadAssetAtPath<Texture2D>(FArt+"Flame02.png"));EditorUtility.SetDirty(mat);
+    var fire=EShape("MaterialFire",parent,p+Vector3.up*size*.65f,new Vector3(size*1.1f,size*2.2f,1),mat,PrimitiveType.Quad);fire.AddComponent<FlameBillboard>();
     EParticles("FineEmbers",parent,p,new Color(.8f,.22f,.04f),"Soft",4,size*.045f,size*.3f,size*.6f);
     if(lights){var l=new GameObject("FireLight").AddComponent<Light>();l.transform.SetParent(parent,true);l.transform.position=p+Vector3.up*size;l.range=1.3f;l.color=new Color(1,.29f,.07f);l.shadows=LightShadows.None;var flick=l.gameObject.AddComponent<FireFlicker>();flick.source=l;flick.brightness=.3f;}
    }
@@ -52,6 +50,7 @@ namespace MagicEscape.EditorTools
   public static void S10fApply()
   {
    EditorSceneManager.OpenScene(ScenePath);AssetDatabase.Refresh();Directory.CreateDirectory("../docs/validation/s10f");var before=ColliderManifest();var root=ERoot("Art_SixthPass");
+   foreach(var t in Object.FindObjectsByType<Transform>(FindObjectsInactive.Include,FindObjectsSortMode.None).Where(t=>t.name=="AlchemicalSlab"||t.name.StartsWith("BriefElement_")||t.name=="MaterialInsideCrystal"||t.name=="SealLampEngraving"||t.name=="AlchemyEndingCard").ToArray())if(t!=null)Object.DestroyImmediate(t.gameObject);
    foreach(string file in new[]{"Flame02","WaterNormal"})
    {
     var imp=(TextureImporter)AssetImporter.GetAtPath(FArt+file+".png");imp.wrapMode=file=="WaterNormal"?TextureWrapMode.Repeat:TextureWrapMode.Clamp;imp.mipmapEnabled=true;imp.maxTextureSize=2048;
@@ -101,7 +100,7 @@ namespace MagicEscape.EditorTools
     var glow=mark.GetComponent<Renderer>().sharedMaterial;glow.SetColor("_EmissionColor",new Color(.24f,.19f,.10f));EditorUtility.SetDirty(glow);
     var light=lamp.GetComponentInChildren<Light>(true);light.color=new Color(.55f,.43f,.25f);light.intensity=.35f;
    }
-   var p=SceneComponent<RoomPresentation>();p.dawn.color=new Color(.24f,.34f,.52f);p.dawn.intensity=.35f;p.dawn.range=4;p.dawn.spotAngle=40;p.dawn.innerSpotAngle=12;
+   var p=SceneComponent<RoomPresentation>();p.candleFlames=p.candleFlames.Concat(Object.FindObjectsByType<Renderer>(FindObjectsSortMode.None).Where(r=>r.name=="SconceFlame")).Distinct().ToArray();p.dawn.color=new Color(.24f,.34f,.52f);p.dawn.intensity=.35f;p.dawn.range=4;p.dawn.spotAngle=40;p.dawn.innerSpotAngle=12;
    p.dawnWindowMaterial=EMat("F_NightWindow",new Color(.012f,.022f,.04f),.12f);p.dawnWindow.sharedMaterial=p.dawnWindowMaterial;
    foreach(var r in p.dawnRays.GetComponentsInChildren<Renderer>(true)){var mat=EMat("F_MoonRibbon",Color.white);mat.shader=Shader.Find("MagicEscape/MoonShaft");mat.SetColor("_Color",new Color(.20f,.30f,.48f,.025f));r.sharedMaterial=mat;EditorUtility.SetDirty(mat);}
    // A black full-screen root, with a modest gold-edged dark card. Existing text/buttons retained.

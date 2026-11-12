@@ -18,8 +18,8 @@ Shader "MagicEscape/AlchemyFire"
  float f=fmod(floor(_Time.y*30),64);float2 cell=float2(fmod(f,16),3-floor(f/16));
  float2 uv=(clamp(i.uv,.005,.995)+cell)/float2(16,4);
  half4 t=SAMPLE_TEXTURE2D(_BaseMap,sampler_BaseMap,uv);
- half a=saturate(max(t.r,max(t.g,t.b))*1.5)*i.c.a;
- return half4(t.rgb*_BaseColor.rgb*i.c.rgb*1.8*i.c.a,a);
+ half a=saturate(max(t.r,max(t.g,t.b))*1.5);
+ return half4(t.rgb*_BaseColor.rgb*1.8,a);
  }
  ENDHLSL }
  }

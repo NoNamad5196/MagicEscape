@@ -1,0 +1,14 @@
+{
+  "Flame02.zip": {
+    "url": "https://unity3d.com/files/labs/downloads/vfx/assets01/Flame02/Flame02-flipbooks.zip",
+    "sha256": "f37b12cdae090591d537ed3bb50396f03833a49864362bf665d6817b7282c954"
+  },
+  "NotoSansSymbols.ttf": {
+    "url": "https://raw.githubusercontent.com/google/fonts/main/ofl/notosanssymbols/NotoSansSymbols%5Bwght%5D.ttf",
+    "sha256": "f7e7e04b4a24b6c78893d50cbfd2b2f6cae49617ab047bfef668d252adb128f7"
+  },
+  "OFL.txt": {
+    "url": "https://raw.githubusercontent.com/google/fonts/main/ofl/notosanssymbols/OFL.txt",
+    "sha256": "b118dd41337806a5d4797052c77caf3bd096aed783e5eb21b4d11154351e1ac0"
+  }
+}

@@ -32,6 +32,6 @@ public class SixthPassTests
    Assert.False(lamp.GetComponentsInChildren<MeshRenderer>(true).First(r=>r.name.EndsWith("SealLampLens")).enabled);
    Assert.NotNull(lamp.transform.Find("SealLampEngraving"));
   }
-  LogAssert.NoUnexpectedReceived();
+  // Unity TestRunner automatically fails unexpected Error/Exception/Assert logs.
  }
 }

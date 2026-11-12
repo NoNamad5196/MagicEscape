@@ -123,7 +123,7 @@
 | Locked | 아무것 | — | `NotActive` | "가마솥이 차갑다. 제단의 봉인이 먼저인 것 같다." | 아니오 |
 | Active | 없음(빈 칸) | — | (런타임 처리) | "손에 든 아이템이 없다. …" | 아니오 |
 | Active | 수정/물약 | 재료 아님 | `NotIngredient` | "이건 넣을 수 없다." | 아니오 |
-| Active, 진행 k | 재료 X | X == 조합법[k], k<2 | `Accepted`, 진행 k+1 | 물약 색 변경, CauldronAccept, "…을(를) 넣었다. (k+1/3)" | 예 |
+| Active, 진행 k | 재료 X | X == 조합법[k], k<2 | `Accepted`, 진행 k+1 | 물약 색 변경, CauldronAccept, "…[받침에 따라 을/를] 넣었다. (k+1/3)" | 예 |
 | Active, 진행 2 | 수정 가루 | 정답 | `Solved` | 완료 시퀀스 | 예 |
 | Active, 진행 k | 재료 X | X ≠ 조합법[k] (독버섯 포함) | `Wrong`, 진행 0, 실패+1 | 검은 연기, CauldronWrong, 재료 원위치 | 예(곧 재생성) |
 | Solved | — | — | 프롬프트 숨김 | — | — |

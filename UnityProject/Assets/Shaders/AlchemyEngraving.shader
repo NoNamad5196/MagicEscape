@@ -13,7 +13,7 @@ Shader "MagicEscape/AlchemyEngraving"
  CBUFFER_END
  struct A {float4 p:POSITION;float2 uv:TEXCOORD0;};struct V {float4 p:SV_POSITION;float2 uv:TEXCOORD0;};
  V vert(A i){V o;o.p=TransformObjectToHClip(i.p.xyz);o.uv=i.uv;return o;}
- half4 frag(V i):SV_Target {half3 ink=SAMPLE_TEXTURE2D(_BaseMap,sampler_BaseMap,i.uv).rgb;float cut=smoothstep(.18,.45,ink.r);float fill=step(i.uv.y,_Fill)*step(.001,_Fill);return half4(lerp(half3(.027,.025,.022),_BaseColor.rgb*.45,cut)+cut*(_EmissionColor.rgb*.35+fill*half3(.7,.55,.27)),1);}
+ half4 frag(V i):SV_Target {half3 ink=SAMPLE_TEXTURE2D(_BaseMap,sampler_BaseMap,i.uv).rgb;float cut=smoothstep(.18,.45,ink.r);float fill=step(i.uv.y,_Fill)*step(.001,_Fill);return half4(lerp(half3(.008,.007,.006),_BaseColor.rgb*.45,cut)+cut*(_EmissionColor.rgb*.35+fill*half3(.7,.55,.27)),1);}
  ENDHLSL }
  }
 }
