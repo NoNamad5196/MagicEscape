@@ -1,6 +1,6 @@
 {
-  "slides": 10,
-  "pdfPages": 10,
+  "slides": 12,
+  "pdfPages": 12,
   "embeddedImages": 0,
   "speakerNotes": 0,
   "fonts": [
@@ -18,8 +18,8 @@
   "renderedTextSpanOverlap": false,
   "vrAndDesktop": "Proposed, not implementation claims",
   "designChangesVsCanonicalDocs": [
-    "VR/OpenXR and mouse-click rigs are newly requested plans."
+    "VR/OpenXR, mouse-click rigs, 9x7m storeroom and concealed props are proposal plans only."
   ],
-  "visualReview": "All ten final PNGs opened individually; README records the review.",
+  "visualReview": "All twelve final PNGs opened individually; README records the review.",
   "gameTests": "Not run; presentation-only change."
 }
