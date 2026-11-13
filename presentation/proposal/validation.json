@@ -18,8 +18,7 @@
   "renderedTextSpanOverlap": false,
   "vrAndDesktop": "Proposed, not implementation claims",
   "designChangesVsCanonicalDocs": [
-    "VR/OpenXR and mouse-click rigs are newly requested plans.",
-    "Seal lamps turn ON in this proposal per request; current AGENTS.md says OFF. Game rules/code unchanged."
+    "VR/OpenXR and mouse-click rigs are newly requested plans."
   ],
   "visualReview": "All ten final PNGs opened individually; README records the review.",
   "gameTests": "Not run; presentation-only change."

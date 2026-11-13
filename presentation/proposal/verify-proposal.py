@@ -31,7 +31,7 @@ with zipfile.ZipFile(out/'MagicEscape_제안서.pptx') as z:
     assert f==('Paperlogy 7 Bold' if r.attrib['b']=='1' else 'Pretendard')
  assert fonts=={'Paperlogy 7 Bold','Pretendard'}
  assert '이름 / 학번' in texts[0] and '콘셉트의 VR 방탈출' in texts[0]
- assert all(t in texts[2] for t in ['12×10m','10~15분','PC VR(OpenXR)','키보드·마우스','봉인등 3개를 켜고'])
+ assert all(t in texts[2] for t in ['12×10m','10~15분','PC VR(OpenXR)','키보드·마우스','봉인등 3개를 모두 끄고'])
  assert 'Earth → Water → Fire → Light' in agents and '대지 → 물 → 불 → 빛' in texts[5]
  assert 'ing_moonpetal → ing_salamander_scale → ing_crystal_dust' in agents
  assert texts[6].index('월광초 꽃잎')<texts[6].index('불도마뱀 비늘')<texts[6].index('수정 가루')
@@ -58,6 +58,6 @@ with zipfile.ZipFile(out/'MagicEscape_제안서.pptx') as z:
   pdf_fonts.update(f[3].split('+')[-1] for f in p.get_fonts())
  assert all('Paperlogy' in f or 'Pretendard' in f for f in pdf_fonts),pdf_fonts
  assert len(list((out/'preview').glob('slide-*.png')))==10
- report={'slides':10,'pdfPages':10,'embeddedImages':0,'speakerNotes':0,'fonts':sorted(fonts),'pdfEmbeddedFonts':sorted(pdf_fonts),'minimumBodyFontPt':20,'forbiddenTextMatches':0,'puzzleAnswersAndHintThresholdsMatched':True,'allTextWithinPage':True,'renderedTextSpanOverlap':False,'vrAndDesktop':'Proposed, not implementation claims','designChangesVsCanonicalDocs':['VR/OpenXR and mouse-click rigs are newly requested plans.','Seal lamps turn ON in this proposal per request; current AGENTS.md says OFF. Game rules/code unchanged.'],'visualReview':'All ten final PNGs opened individually; README records the review.','gameTests':'Not run; presentation-only change.'}
+ report={'slides':10,'pdfPages':10,'embeddedImages':0,'speakerNotes':0,'fonts':sorted(fonts),'pdfEmbeddedFonts':sorted(pdf_fonts),'minimumBodyFontPt':20,'forbiddenTextMatches':0,'puzzleAnswersAndHintThresholdsMatched':True,'allTextWithinPage':True,'renderedTextSpanOverlap':False,'vrAndDesktop':'Proposed, not implementation claims','designChangesVsCanonicalDocs':['VR/OpenXR and mouse-click rigs are newly requested plans.'],'visualReview':'All ten final PNGs opened individually; README records the review.','gameTests':'Not run; presentation-only change.'}
  (out/'validation.json').write_text(json.dumps(report,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
  print(json.dumps(report,ensure_ascii=True,indent=2))
