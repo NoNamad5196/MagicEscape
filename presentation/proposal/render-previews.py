@@ -2,7 +2,7 @@
 import pymupdf
 out=Path(__file__).resolve().parent
 with pymupdf.open(out/'MagicEscape_제안서.pdf') as doc:
- assert len(doc)==12
+ assert len(doc)==14
  (out/'preview').mkdir(exist_ok=True)
  for old in (out/'preview').glob('slide-*.png'): old.unlink()
  for i,page in enumerate(doc,1):
