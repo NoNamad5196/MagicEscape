@@ -1,27 +1,26 @@
 {
-  "slides": 11,
-  "pdfPages": 11,
+  "slides": 10,
+  "pdfPages": 10,
   "embeddedImages": 0,
   "speakerNotes": 0,
-  "nativeShapes": 251,
-  "forbiddenTextMatches": 0,
-  "itemCodesOutsideTechnicalSlide": 0,
-  "pageNumbersAndFooterMatched": true,
-  "alchemyTriangleShapes": 0,
   "fonts": [
     "Paperlogy 7 Bold",
     "Pretendard"
   ],
   "pdfEmbeddedFonts": [
     "Paperlogy-7Bold",
-    "Pretendard-Bold",
     "Pretendard-Regular"
   ],
-  "fontSubstitution": false,
+  "minimumBodyFontPt": 20,
+  "forbiddenTextMatches": 0,
   "puzzleAnswersAndHintThresholdsMatched": true,
-  "roomDimensionsAndDistanceAndInventoryMatched": true,
-  "pdfTextBounds": "All body blocks above y=490; footer at y=497",
-  "visualReview": "Manual review recorded in README; not evaluated by this script",
-  "gameTests": "Not rerun: presentation-only changes",
-  "authoring": "Existing JavaScript native OOXML generator retained; artifact-tool and dependency loader unavailable. LibreOffice PDF export and PyMuPDF PNG rendering."
+  "allTextWithinPage": true,
+  "renderedTextSpanOverlap": false,
+  "vrAndDesktop": "Proposed, not implementation claims",
+  "designChangesVsCanonicalDocs": [
+    "VR/OpenXR and mouse-click rigs are newly requested plans.",
+    "Seal lamps turn ON in this proposal per request; current AGENTS.md says OFF. Game rules/code unchanged."
+  ],
+  "visualReview": "All ten final PNGs opened individually; README records the review.",
+  "gameTests": "Not run; presentation-only change."
 }
