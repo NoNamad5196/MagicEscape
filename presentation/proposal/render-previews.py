@@ -6,5 +6,5 @@ with pymupdf.open(out/'MagicEscape_제안서.pdf') as doc:
  (out/'preview').mkdir(exist_ok=True)
  for old in (out/'preview').glob('slide-*.png'): old.unlink()
  for i,page in enumerate(doc,1):
-  page.get_pixmap(matrix=pymupdf.Matrix(1.5,1.5)).save(out/'preview'/f'slide-{i:02}.png')
+  page.get_pixmap(matrix=pymupdf.Matrix(1440/page.rect.width,810/page.rect.height)).save(out/'preview'/f'slide-{i:02}.png')
   print(f'slide {i:02}: rendered 1440x810')

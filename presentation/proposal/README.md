@@ -1,57 +1,61 @@
-# MagicEscape 제안서 5차
+# MagicEscape 제안서 6차 — GPT 컨셉 아트
 
-제출본 이름은 `MagicEscape_제안서.pptx`, `MagicEscape_제안서.pdf`로 유지했다. 총 12장이다.
+기준 커밋은 `0726fae`(5차, 12장)다. 제출 파일명 `MagicEscape_제안서.pptx`, `MagicEscape_제안서.pdf`와 12장 구성을 유지한다.
 
-## 장별 제목
-1. MagicEscape
-2. 기획 배경
-3. 작품 개요
-4. 이야기
-5. 창고 평면과 숨은 단서
-6. 치우기 상호작용
-7. 플레이 흐름
-8. P1 · 마법 문양 해독
-9. P2 · 마법약 제조
-10. P3 · 최종 봉인 해제
-11. 조작 설계
-12. 기술 구조
+## 변경
+- 표지 오른쪽에 창고 키 아트를 크게 넣었다. 선 도형으로 만든 상자·천·궤짝·문 삽화 코드는 제거했다.
+- 2장에 쪽지, 액자와 펼친 책, 상자 뒤 액자 발견 삽화를 각각 넣었다.
+- 3장 봉인등은 4장 문 삽화의 등 3개를 잘라 사용한다. 기존 빗금 원 아이콘은 제거했다.
+- 4장에 닫힌 철문과 켜진 봉인등 3개를 넣었다.
+- 5장은 기존 공간의 출구/서쪽 액자/동쪽 선반/중앙 제단·가마솥/앞쪽 궤짝·창가 관계를 유지하는 아이소메트릭 삽화를 채택했다. 실물의 펜 선은 보이는 물건, 파란 점선은 치워야 드러나는 위치다. 라벨과 점선은 편집 가능한 PPT 개체다. 축척도나 구현 씬 캡처가 아니다.
+- 6장 상자/액자와 천/비문판의 전후 두 쌍은 각각 전 그림을 이미지 편집해 후 그림으로 만들었다. 카메라와 배경을 유지했다. 표 아래 설명과 마지막 행 사이에 여백을 확보했다.
+- 11장 VR 손·컨트롤러·유리병과 데스크톱 1인칭 유리병·커서를 나란히 넣었다.
+- 전체의 '계획' 꼬리표를 제거하고 '가림 계획:'을 '숨긴 위치:'로 바꿨다. 12장 라벨과 설명은 같은 높이의 텍스트 상자 안에서 세로 가운데 정렬한다.
+- 밝은 배경, Paperlogy 7 Bold/Pretendard, 파란 단일 강조색, 본문 20pt 이상을 유지했다. 표지는 날짜 없이 `1인 제작 · 김선우 (202321850)`로 표기한다.
 
-## 수정 내용과 판단
-- 배경을 약 9×7m의 마법학교 연금술 실습 창고로 바꿨다. 표지에 김선우 (202321850)를 넣고 날짜는 넣지 않았다.
-- 이야기와 평면도를 분리했다. 새 상호작용 장까지 더해 기존 10장을 12장으로 구성했다. 20pt 본문과 그림 크기를 보존하기 위한 판단이다.
-- `git show 35ec8b4:presentation/proposal/generate-proposal.mjs`의 3차 평면도를 참고했다. 벽 윤곽·출구·소품 배치를 선화로 되돌리고 좌표를 지웠다. 배치 개념도이며 시공용 축척도는 아니다.
-- 보이는 물건은 남색 실선, 가려진 단서는 파란 점선이다. 벽면 선반, 쌓인 상자, 책더미, 천, 궤짝과 제단·가마솥을 그렸다.
-- 치우기 전/후는 상자-액자, 천-비문판의 두 쌍을 크게 배치했다. 요청 범위인 2~4쌍 중 두 쌍을 선택해 아래 조작 표의 가독성을 확보했다. 책더미·궤짝 속 재료는 평면도와 P2의 가림 계획에 표시했다.
-- 가벼운 물건, 무거운 물건, 고정 장치를 구분하고 VR/키보드·마우스 조작을 표로 정리했다. 무거운 물건은 밀기·끌기만 허용한다.
-- 각 퍼즐은 기존 단서/조작/결과/실패 구조를 유지하고, 가림 위치와 봉인등 소등을 추가했다. 회색 카드 채움 대신 선과 여백으로 구분했다.
-- 기획 배경은 문장 전달, 물건 읽기, 가림 걷기의 비교다. 실패 연출 다음 글 힌트만 표시했다. 정본에 없는 중간 단서 강조 단계는 추가하지 않았다.
-- 조작 설계와 기술 구조는 4차를 유지하고 물리 오브젝트의 Rigidbody 무게 구분과 잡기·밀기·소켓 계획을 더했다.
-- 밝은 배경, Paperlogy 7 Bold 제목, Pretendard 본문, 파란 단일 강조색을 유지했다. 본문은 20pt 이상이다. 원소 도안·원소별 색·클립아트·스크린샷은 사용하지 않았다. 도식은 편집 가능한 DrawingML 선과 도형이다.
+## 이미지 생성 기록
+- 도구: 내장 `image_gen.imagegen`(GPT 이미지 생성/편집). 도구 응답은 세부 모델 ID를 공개하지 않으므로 특정 모델 번호로 추정하지 않는다. 외부 이미지 API나 키는 사용하지 않았다.
+- 공통 스타일: 크림·흰 종이 바탕, 세피아 잉크 펜과 절제된 연한 수채 담채, 비대칭 소품 배치. 같은 스타일 문장을 모든 생성·편집 프롬프트에 그대로 사용했다.
+- 정확한 스타일 문장·장면 프롬프트·참조 관계·호출 횟수는 `art/prompts.json`에 기록했다.
+- 12개 생성 결과 + 파생 크롭 1개를 `art/`에 PNG로 저장하고 모두 PPTX에 내장한다. 기본 생성 폴더를 런타임 참조하지 않는다.
+
+| 그림 | 파일 | 생성/편집 호출 | 재추출 |
+|---|---|---:|---:|
+| 표지 창고 | cover-warehouse.png | 1 | 0 |
+| 쪽지 | background-note.png | 1 | 0 |
+| 액자와 책 | background-frame-book.png | 1 | 0 |
+| 상자 뒤 발견 | background-discovery.png | 1 | 0 |
+| 철문과 봉인등 | story-door.png | 1 | 0 |
+| 상자 전 | clearing-crates-before.png | 1 | 0 |
+| 상자 후 | clearing-crates-after.png | 편집 1 | 0 |
+| 천 전 | clearing-cloth-before.png | 1 | 0 |
+| 천 후 | clearing-cloth-after.png | 편집 1 | 0 |
+| VR 조작 | interaction-vr.png | 1 | 0 |
+| 데스크톱 조작 | interaction-desktop.png | 1 | 0 |
+| 창고 아이소메트릭 | warehouse-isometric.png | 1 | 0 |
+| 봉인등 3개 | seal-lamps.png | 문 그림 크롭 | 0 |
 
 ## 재생성
-저장소 루트에서 실행한다. PPTX를 PowerPoint에서 열어 둔 경우 먼저 저장하고 닫는다.
+저장소 루트에서 실행한다. 기존 생성기의 DrawingML/ZIP 흐름을 유지하고 PNG 임베딩을 추가했다.
 
 ```powershell
 node presentation/proposal/generate-proposal.mjs
-& 'C:/Program Files/LibreOffice/program/soffice.com' '-env:UserInstallation=file:///C:/temp/magicescape-proposal-revision5' --headless --convert-to pdf --outdir presentation/proposal presentation/proposal/MagicEscape_제안서.pptx
+& 'C:/Program Files/LibreOffice/program/soffice.com' '-env:UserInstallation=file:///C:/temp/magicescape-proposal-revision6' --headless --convert-to pdf --outdir presentation/proposal presentation/proposal/MagicEscape_제안서.pptx
 python presentation/proposal/render-previews.py
 python presentation/proposal/verify-proposal.py
 ```
 
-## 실제 검증
-- 위 네 명령을 실행해 PPTX 12장, PDF 12쪽, 1440×810 PNG 12장을 생성했다.
-- 미리보기 12장을 모두 직접 열었다. 상호작용 장의 바닥글 겹침과 기술 구조 설명의 영역 넘침을 고친 뒤 재생성·재확인했다.
-- 검사기는 장수, 지정 폰트, 20pt 이상 본문, 도형/텍스트의 페이지 경계, PDF 텍스트 span 겹침, PPTX와 PDF 문구 일치, 금지어를 확인한다. 결과는 `validation.json`에 기록한다.
-- 금지어와 이전 공간 표현, 잘못된 점등 목표가 없다. 봉인등은 시작 때 켜지고 퍼즐 해결 때 하나씩 꺼진다.
-- P1 정답, P2 재료 순서·재생성, P3 수정 좌우·오답 보존, 글 힌트 기준 3/2/2회를 AGENTS.md §5와 대조했다.
-- PDF 내장 폰트는 Paperlogy-7Bold와 Pretendard-Regular다. 대체 폰트는 없다.
-- 복사한 Obsidian PDF와 저장소 PDF의 SHA-256 일치를 확인한다.
+## 실제 확인
+- PPTX 12장, PDF 12쪽, 1440×810 미리보기 12장을 다시 생성했다. PNG를 장별로 전부 직접 열었다. 마지막 5장 라벨 조정 후 해당 미리보기도 다시 열었다.
+- 생성 원본들을 직접 확인했다. 이미지 속 글자·원소/연금술 기호·추가 손가락은 보이지 않는다. 쪽지는 글자 대신 해칭이며 비문판은 빈 홈이다. 전후 그림의 배경·카메라·주요 소품 대응을 확인했다.
+- 본문 최소 20pt, 지정 글꼴, 페이지 경계, PDF 텍스트 span 겹침, PPTX/PDF 문구 일치, 금지어와 '계획' 0회를 검사했다.
+- 검사기는 장별 이미지 개수와 13개 PNG의 원본 바이트 일치, 이미지 관계 참조·페이지 경계, 12장 중앙 정렬도 확인한다. 결과는 `validation.json`에 기록한다.
+- AGENTS.md §5의 P1 정답, P2 재료 순서·실패 시 재생성, P3 수정 좌우·오답 보존, 글 힌트 기준 3/2/2회를 대조했다. 봉인등 목표는 모두 소등이다.
+- PDF 내장 글꼴은 Paperlogy-7Bold와 Pretendard-Regular다. 복사한 Obsidian PDF와 저장소 PDF는 SHA-256을 비교한다.
 
-## 정본과 다른 제안 계획 / 남은 범위
-- VR/OpenXR·마우스 클릭 리그는 4차에서 요청한 계획을 유지했다. 창고의 크기와 재료 가림/이동도 새 제안 계획이다. AGENTS.md의 PC 기본·XR 전환 금지, E키/슬롯 조작, 기존 재료 위치를 구현에서 변경한 것이 아니다.
-- 정답·아이템 이름·보상·실패 규칙·힌트 횟수는 정본을 유지했다. 책더미/궤짝 안 재료의 개별 배치는 구현 설계에서 확정할 일이다.
-- 게임 코드와 AGENTS.md는 수정하지 않았다. Unity·게임 테스트는 실행하지 않았다. 렌더 기준은 LibreOffice PDF이며 PowerPoint 앱에서의 최종 시각 검증은 별도로 하지 않았다.
-- 생성 전 열려 있던 기존 PPTX는 저장 완료 상태를 확인하고 닫아 파일 잠금을 해제했다. 저장되지 않은 편집은 없었다.
-- PPTX는 폰트를 내장하지 않는다. 다른 PC에서는 지정 폰트를 설치하거나 PDF를 사용한다.
-- 추적되지 않은 `docs/validation/*.xml`은 수정하거나 커밋하지 않았다.
-- 최종 PDF 복사 위치: Obsidian Vault의 `.aycode/artifacts/magicescape-proposal.pdf`.
+## 범위와 남은 사항
+- VR/OpenXR·클릭 리그와 재료 가림은 기존 제안 내용이다. AGENTS.md의 PC 기본·E키/슬롯·기존 재료 위치를 구현에서 바꾸지 않았다.
+- 게임 코드와 AGENTS.md는 수정하지 않았으며 Unity와 게임 테스트는 실행하지 않았다.
+- 렌더 검증은 LibreOffice PDF/미리보기 기준이다. PowerPoint 앱 렌더는 별도 확인하지 않았다. PPTX는 폰트를 내장하지 않으므로 다른 PC에서는 지정 폰트를 설치하거나 PDF를 사용한다.
+- 추적되지 않은 `docs/validation/*.xml`은 건드리거나 커밋하지 않는다.
+- 최종 PDF 복사: Obsidian Vault의 `.aycode/artifacts/magicescape-proposal.pdf`.

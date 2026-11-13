@@ -1,0 +1,108 @@
+﻿{
+  "tool": "image_gen.imagegen",
+  "model": "GPT image model; exact model ID not exposed by tool",
+  "stylePrefix": "Ink pen and pale watercolor concept-art sketch on warm white cream paper, fine sepia ink contours with restrained neutral watercolor washes, asymmetrical dense prop arrangement, three-quarter perspective, sophisticated hand-drawn environment design for a bright proposal. No text, no letters, no numbers, no alchemical or elemental symbols, no elemental colors, no emoji, no clipart, no toy-like 3D rendering, no symmetrical staging, no face close-ups.",
+  "promptComposition": "stylePrefix + newline + scenePrompt",
+  "assets": [
+    {
+      "file": "cover-warehouse.png",
+      "scenePrompt": "Create one portrait key art of a magic-school alchemy practice storeroom: wooden shelves packed with unlabelled glass bottles and books, uneven stacked wooden crates, draped objects, iron-bound chest, cauldron, closed metal door with exactly three small warm glowing lamps above it. Clear readable objects, full room, rich asymmetrical composition. 3:4 portrait. No written labels or decorative glyphs.",
+      "mode": "generate",
+      "calls": 1,
+      "rerolls": 0
+    },
+    {
+      "file": "background-note.png",
+      "scenePrompt": "A close view of a small loose parchment note on an old wooden storeroom workbench, near an unlabelled glass bottle and closed books. The note contains ONLY a few irregular pen hatching strokes, not writing, not letters. Landscape 3:2 composition, single scene.",
+      "mode": "generate",
+      "calls": 1,
+      "rerolls": 0
+    },
+    {
+      "file": "background-frame-book.png",
+      "scenePrompt": "A wall-mounted antique wooden picture frame containing an indistinct botanical watercolor with NO symbols, and an open old book on a nearby wooden lectern, all book pages entirely blank except subtle paper texture. Shelves and bottles behind. Landscape 3:2, single scene.",
+      "mode": "generate",
+      "calls": 1,
+      "rerolls": 0
+    },
+    {
+      "file": "background-discovery.png",
+      "scenePrompt": "A wooden crate has just been pushed aside to the right, revealing an antique picture frame leaning against a stone storeroom wall behind it. No people, no arrows, no motion lines. The frame holds a simple faint botanical watercolor with no marks or symbols. Unlabelled bottles and book piles at edges. Landscape 3:2 single scene.",
+      "mode": "generate",
+      "calls": 1,
+      "rerolls": 0
+    },
+    {
+      "file": "story-door.png",
+      "scenePrompt": "The same magic-school alchemy storeroom. Closed riveted dark iron door in stone wall, exactly THREE small hanging lanterns glowing warmly above the door. Asymmetrical crates, books, an iron-bound chest and shelves flank the door. Door and all three lanterns fully within the image. No markings on door. Landscape 4:3 single scene.",
+      "mode": "generate",
+      "calls": 1,
+      "rerolls": 0
+    },
+    {
+      "file": "clearing-crates-before.png",
+      "scenePrompt": "Close view of a storeroom wall and floor. Two uneven stacked wooden crates occupy center left, entirely concealing a picture frame behind them. Extra clear floor space to right where crates could slide. Shelf with unlabelled bottles at upper left, book pile at far right. Fixed eye-level three-quarter camera, landscape 3:2. No picture frame visible yet. No people.",
+      "mode": "generate",
+      "calls": 1,
+      "rerolls": 0
+    },
+    {
+      "file": "clearing-cloth-before.png",
+      "scenePrompt": "Close view of a storeroom wall and floor. A tall rectangular stone slab leaning against the wall is fully covered by a heavy cream cloth, its straight rectangular silhouette visible under cloth. Book pile at left, a small plain unlabelled glass bottle on floor to right. Fixed eye-level three-quarter camera, landscape 3:2. No people.",
+      "mode": "generate",
+      "calls": 1,
+      "rerolls": 0
+    },
+    {
+      "file": "clearing-crates-after.png",
+      "scenePrompt": "Edit this exact scene: slide the entire two-crate stack horizontally to the RIGHT side, revealing an antique wooden picture frame leaning against the wall at the original left position. The frame contains only a pale botanical flower watercolor, no text or symbols. Preserve the exact camera, floor, wall, shelf, bottles, book pile, lighting and all other details. No added people.",
+      "mode": "edit",
+      "reference": "clearing-crates-before.png",
+      "calls": 1,
+      "rerolls": 0
+    },
+    {
+      "file": "clearing-cloth-after.png",
+      "scenePrompt": "Edit this exact scene: remove the cream cloth from the tall slab and place the same cloth crumpled on the floor to the right. Reveal a rectangular weathered stone inscription tablet leaning against the wall, with ONLY a plain empty shallow recessed rectangular panel. Absolutely no text, no letters, no runes, no symbols. Preserve camera, floor, wall, shelf, book pile, small glass bottle, lighting, positions and all other details. No added people.",
+      "mode": "edit",
+      "reference": "clearing-cloth-before.png",
+      "calls": 1,
+      "rerolls": 0
+    },
+    {
+      "file": "interaction-vr.png",
+      "scenePrompt": "First person view inside the same alchemy storeroom. Two anatomically correct adult hands in foreground: left hand clearly grips a simple dark VR motion controller with tracking ring and wrist strap; right hand naturally wraps around a small clear unlabelled glass bottle on the workbench, lifting it. Only two hands, realistic five-finger anatomy, fingers partially occluded naturally. Glass bottle is the focal point, no faces, no UI, no text. Landscape 3:2.",
+      "mode": "generate",
+      "calls": 1,
+      "rerolls": 0
+    },
+    {
+      "file": "interaction-desktop.png",
+      "scenePrompt": "Desktop first-person game view of the same alchemy storeroom workbench. A small clear unlabelled glass bottle floats held upright prominently in front of the camera at lower right, with NO hands. A single simple white mouse pointer cursor with thin sepia outline is visible near bottle center. Background has books, bottles, wooden shelves and crates. No monitor frame, no keyboard, no letters, no HUD, no crosshair. Landscape 3:2.",
+      "mode": "generate",
+      "calls": 1,
+      "rerolls": 0
+    },
+    {
+      "file": "warehouse-isometric.png",
+      "scenePrompt": "A bird's-eye isometric cutaway of ONE rectangular 9 by 7 metre magic-school alchemy storeroom, showing entire floor. Exact layout: exit metal door centered on the BACK/NORTH wall with three lamps above; covered inscription slab immediately to right of door; four picture frames on LEFT/WEST wall, lower frames concealed behind stacked crates; shelving on RIGHT/EAST wall near back with bottles and books; cauldron at center-right; round stone altar at center-left; iron-bound chest at FRONT-LEFT; tall arched window at FRONT-RIGHT. Remove front walls to see inside. Keep these positions, open circulation between objects, asymmetrical clutter around walls. No other rooms, no stairs, NO labels, NO text, NO symbols. Landscape 3:2.",
+      "mode": "generate",
+      "calls": 1,
+      "rerolls": 0
+    }
+  ],
+  "derivedAssets": [
+    {
+      "file": "seal-lamps.png",
+      "source": "story-door.png",
+      "cropPixels": [
+        710,
+        10,
+        1205,
+        230
+      ],
+      "generationCalls": 0
+    }
+  ],
+  "review": "All generated images inspected. No visible text or forbidden symbols; hand anatomy checked; before/after pairs preserve camera and background."
+}
