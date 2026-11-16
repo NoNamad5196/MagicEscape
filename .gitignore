@@ -57,3 +57,5 @@ Thumbs.db
 
 # Raw nested Unity logs are local-only (license/session data).
 /docs/validation/**/*.log
+/docs/validation/warehouse/stage4-*.xml
+/docs/validation/warehouse/stage4-*.trx

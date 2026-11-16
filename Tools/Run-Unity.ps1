@@ -15,11 +15,11 @@ if ($Tests) {
     $arguments += " -runTests -testPlatform $TestPlatform -testResults `"$result`""
     if ($TestFilter) { $arguments += " -testFilter `"$TestFilter`"" }
 } else { $arguments += " -quit -executeMethod $Method" }
-# Regression tests write historical captures/audits. Keep their assertions, not unrelated tracked diffs.
+# Snapshot before launching Unity as its initial import may also reserialize shared assets / fonts.
 $preserved = @{}
-if ($Tests) {
-    git ls-files docs/validation | ForEach-Object {
-        if ($_ -notlike 'docs/validation/warehouse/stage4-*' -and (Test-Path -LiteralPath $_)) {
+if ($Tests -or $Method -like "*Warehouse") {
+    git ls-files docs/validation UnityProject/Assets/Fonts UnityProject/Assets/Settings UnityProject/Assets/Prefabs UnityProject/Assets/Data UnityProject/Assets/Art/S10c/Icons UnityProject/Assets/Scenes/Classroom.unity | ForEach-Object {
+        if ($_ -notlike 'docs/validation/warehouse/stage4-*' -and $_ -notlike '*WarehouseLighting*' -and (Test-Path -LiteralPath $_)) {
             $preserved[$_] = [System.IO.File]::ReadAllBytes((Join-Path (Get-Location) $_))
         }
     }
