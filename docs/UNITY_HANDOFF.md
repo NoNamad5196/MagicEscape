@@ -1,3 +1,5 @@
+> **2026-11-16:** Current warehouse / VR-PC interaction specification: [WAREHOUSE_XRI.md](WAREHOUSE_XRI.md). Earlier classroom dimensions and PC-only assumptions below are historical; Core puzzle rules remain unchanged.
+
 # MagicEscape — Windows / AyCode / Unity 인수인계
 
 > 이 문서만 읽고 Windows에서 바로 제작을 시작할 수 있도록 작성했다.

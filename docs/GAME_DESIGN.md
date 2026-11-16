@@ -1,3 +1,5 @@
+> **2026-11-16:** Current warehouse / VR-PC interaction specification: [WAREHOUSE_XRI.md](WAREHOUSE_XRI.md). Earlier classroom dimensions and PC-only assumptions below are historical; Core puzzle rules remain unchanged.
+
 # MagicEscape — 게임 기획서 (Game Design Document)
 
 ## S10e 시각 우선 변경 (이전 문장 단서 표시 설명을 대체)

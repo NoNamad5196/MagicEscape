@@ -1,3 +1,5 @@
+> **2026-11-16:** Current warehouse / VR-PC interaction specification: [WAREHOUSE_XRI.md](WAREHOUSE_XRI.md). Earlier classroom dimensions and PC-only assumptions below are historical; Core puzzle rules remain unchanged.
+
 # MagicEscape — 씬·프리팹·Inspector 구성 명세
 
 ## S10e 추가 계층

@@ -10,6 +10,12 @@ namespace MagicEscape
         public PlayerInputReader input;
         public XRRayInteractor left, right, teleport;
         public SnapTurnProvider turn;
+        void Awake()
+        {
+            // VR carries at the tracked hand; only the desktop rig uses the camera-front offset.
+            left.attachTransform.localPosition = Vector3.zero;
+            right.attachTransform.localPosition = Vector3.zero;
+        }
         void Update()
         {
             var gm = GameManager.Instance; var p = FindFirstObjectByType<RoomPresentation>();

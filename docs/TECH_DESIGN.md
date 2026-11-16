@@ -1,3 +1,5 @@
+> **2026-11-16:** Current warehouse / VR-PC interaction specification: [WAREHOUSE_XRI.md](WAREHOUSE_XRI.md). Earlier classroom dimensions and PC-only assumptions below are historical; Core puzzle rules remain unchanged.
+
 # MagicEscape — 시스템 및 C# 아키텍처
 
 > 코드 위치: `CodeDrafts/Core`(순수 C#), `CodeDrafts/Runtime`(MonoBehaviour)

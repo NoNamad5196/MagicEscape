@@ -1,5 +1,17 @@
 {
   "name": "MagicEscape.PlayMode",
-  "references": ["MagicEscape.Core", "MagicEscape.Runtime", "Unity.TextMeshPro", "Unity.ugui", "Unity.InputSystem"],
-  "optionalUnityReferences": ["TestAssemblies"]
+  "references": [
+    "MagicEscape.Core",
+    "MagicEscape.Runtime",
+    "Unity.TextMeshPro",
+    "Unity.ugui",
+    "Unity.InputSystem",
+    "Unity.XR.Interaction.Toolkit",
+    "Unity.XR.CoreUtils",
+    "Unity.XR.Management",
+    "Unity.XR.OpenXR"
+  ],
+  "optionalUnityReferences": [
+    "TestAssemblies"
+  ]
 }

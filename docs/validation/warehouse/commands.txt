@@ -1,0 +1,9 @@
+# PowerShell; Unity 6000.3.28f1, Windows. Actual entry points and test commands used.
+$unity = 'C:/Program Files/Unity/Hub/Editor/6000.3.28f1/Editor/Unity.exe'
+$project = 'C:/Users/nonam/Documents/MagicEscape/UnityProject'
+Start-Process $unity -WindowStyle Hidden -Wait -ArgumentList "-batchmode -nographics -quit -projectPath $project -executeMethod MagicEscape.EditorTools.ClassroomBuilder.ImportXriSamples -logFile $project/Logs/xri-import.log"
+Start-Process $unity -WindowStyle Hidden -Wait -ArgumentList "-batchmode -quit -projectPath $project -executeMethod MagicEscape.EditorTools.ClassroomBuilder.Warehouse -logFile $project/Logs/warehouse-generate.log"
+Start-Process $unity -WindowStyle Hidden -Wait -ArgumentList "-batchmode -quit -projectPath $project -executeMethod MagicEscape.EditorTools.ClassroomBuilder.WarehouseHeaderApply -logFile $project/Logs/warehouse-header.log"
+Start-Process $unity -WindowStyle Hidden -Wait -ArgumentList "-batchmode -runTests -testPlatform EditMode -projectPath $project -testResults C:/Users/nonam/Documents/MagicEscape/docs/validation/warehouse/editmode.xml -logFile $project/Logs/warehouse-editmode.log"
+Start-Process $unity -WindowStyle Hidden -Wait -ArgumentList "-batchmode -runTests -testPlatform PlayMode -projectPath $project -testResults C:/Users/nonam/Documents/MagicEscape/docs/validation/warehouse/playmode-accepted-final.xml -logFile $project/Logs/warehouse-accepted-final-tests.log"
+dotnet test Tests/MagicEscape.Core.Tests --logger "trx;LogFileName=warehouse-core.trx" --results-directory docs/validation/warehouse

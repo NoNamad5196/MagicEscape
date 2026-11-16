@@ -1,3 +1,5 @@
+> **2026-11-16:** Current warehouse / VR-PC interaction specification: [WAREHOUSE_XRI.md](WAREHOUSE_XRI.md). Earlier classroom dimensions and PC-only assumptions below are historical; Core puzzle rules remain unchanged.
+
 # MagicEscape — 테스트 계획 및 결과
 
 ## S10e 검증 계획 (완료 결과는 validation/s10e 참조)

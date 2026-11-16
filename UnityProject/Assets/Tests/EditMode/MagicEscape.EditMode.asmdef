@@ -1,0 +1,15 @@
+{
+  "name": "MagicEscape.EditMode",
+  "references": [
+    "MagicEscape.Core",
+    "MagicEscape.Runtime",
+    "Unity.XR.Interaction.Toolkit",
+    "Unity.XR.OpenXR"
+  ],
+  "includePlatforms": [
+    "Editor"
+  ],
+  "optionalUnityReferences": [
+    "TestAssemblies"
+  ]
+}
