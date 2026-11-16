@@ -29,7 +29,7 @@ namespace MagicEscape
         public RunePuzzleLogic Logic { get; private set; }
 
         /// <summary>실패 기준 이상이면 힌트 문구, 아니면 null.</summary>
-        public string CurrentHint => Logic != null && Logic.ShouldShowHint ? GameText.HintRune : null;
+        public string CurrentHint => Logic != null && Logic.ShouldShowHint ? (UnityEngine.SceneManagement.SceneManager.GetActiveScene().name == "Warehouse" ? "칠판의 번호별 장면과 같은 액자를 찾고, 명판의 이름을 문양석과 맞춰 보자." : GameText.HintRune) : null;
         public bool IsSolved => Logic != null && Logic.IsSolved;
 
         private void Awake()
@@ -73,7 +73,7 @@ namespace MagicEscape
                         s.Glow.Flash(wrongColor);
                     }
                     AudioManager.Play(SfxId.RuneWrong);
-                    interactor.Say(Logic.ShouldShowHint ? GameText.RuneWrong + "\n힌트: " + GameText.HintRune : GameText.RuneWrong);
+                    interactor.Say(Logic.ShouldShowHint ? GameText.RuneWrong + "\n힌트: " + CurrentHint : GameText.RuneWrong);
                     break;
 
                 case RuneInputResult.Solved:

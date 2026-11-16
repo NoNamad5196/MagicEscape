@@ -46,7 +46,7 @@ namespace MagicEscape.EditorTools
             hinge.closedPosition=pivot.transform.localPosition; hinge.openEuler=new Vector3(165,0,0);
             hinge.colliders.Add(lid.GetComponent<Collider>());
             Object.FindObjectsByType<ItemPickup>(FindObjectsInactive.Include,FindObjectsSortMode.None).First(p=>p.ItemId==ItemIds.CrystalDust).gameObject.AddComponent<ClearingGate>().blocker=hinge;
-            // A fitted linen cover over III; the numbered painting itself remains wall-mounted.
+            // A fitted linen cover over III; the painting itself remains wall-mounted.
             var paintingIII=Find("Painting_III");
             var frameIII=paintingIII.transform.Find("ArtB_PictureFrame_III");
             var clothRoot=new GameObject("PaintingIIICloth");
@@ -88,7 +88,7 @@ namespace MagicEscape.EditorTools
             foreach(var r in Object.FindObjectsByType<MeshRenderer>(FindObjectsSortMode.None).Where(r=>r.name.StartsWith("ArtB_CornerRune_")))
             {
                 r.transform.localScale=new Vector3(.18f,.18f,1);r.transform.localPosition=new Vector3(-.08f,-.51f,-.103f);
-                r.sharedMaterial=FGlyph((RuneId)System.Enum.Parse(typeof(RuneId),r.name.Replace("ArtB_CornerRune_","")));
+                r.sharedMaterial=WarehouseMotif((RuneId)System.Enum.Parse(typeof(RuneId),r.name.Replace("ArtB_CornerRune_","")));
             }
         }
         static void ConfigureRuneNames()

@@ -66,3 +66,7 @@ Thumbs.db
 # Stage 6 raw test results stay local; sanitized summary is committed.
 /docs/validation/warehouse/stage6-*.xml
 /docs/validation/warehouse/stage6-*.trx
+
+# Stage 7 raw local evidence; sanitized summary is committed.
+/docs/validation/warehouse/stage7-*.xml
+/docs/validation/warehouse/stage7-*.trx

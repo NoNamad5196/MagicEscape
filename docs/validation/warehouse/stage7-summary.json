@@ -1,0 +1,141 @@
+{
+  "verified_at": "2026-11-17T05:16:46.443049+09:00",
+  "unity": "6000.3.28f1",
+  "generation_exit": 0,
+  "tests": {
+    "editmode": {
+      "result": "Passed",
+      "total": "11",
+      "passed": "11",
+      "failed": "0",
+      "skipped": "0"
+    },
+    "playmode": {
+      "result": "Passed",
+      "total": "38",
+      "passed": "38",
+      "failed": "0",
+      "skipped": "0"
+    },
+    "core": {
+      "total": "44",
+      "executed": "44",
+      "passed": "44",
+      "failed": "0",
+      "error": "0",
+      "timeout": "0",
+      "aborted": "0",
+      "inconclusive": "0",
+      "passedButRunAborted": "0",
+      "notRunnable": "0",
+      "notExecuted": "0",
+      "disconnected": "0",
+      "warning": "0",
+      "completed": "0",
+      "inProgress": "0",
+      "pending": "0"
+    }
+  },
+  "captures": [
+    {
+      "file": "stage7-altar-pc.png",
+      "sha256": "5f062f3fd8c95cb86bedef7b73fee4b8a1c46fb4eee6ef7a71e4b379e256db85",
+      "visually_reviewed": true
+    },
+    {
+      "file": "stage7-altar-standing.png",
+      "sha256": "77bc784d6b6d1086f2a7503b61b31fa26490e73e25af4c1147a8c6e4e8456823",
+      "visually_reviewed": true
+    },
+    {
+      "file": "stage7-chalk-frames-wide.png",
+      "sha256": "8f5402051475e934467b1111acd97d444680505c090eac263d4a952b8d596244",
+      "visually_reviewed": true
+    },
+    {
+      "file": "stage7-chalk-front.png",
+      "sha256": "327616851dd66b79f24bca84c1785eed5c9ce3a0e3cde6e5f0e6d5e6370f68e5",
+      "visually_reviewed": true
+    },
+    {
+      "file": "stage7-chalk-inspect.png",
+      "sha256": "646ab676eada20dfa795a33f72692222088d9f2d616122b4e58abc2a1c316b71",
+      "visually_reviewed": true
+    },
+    {
+      "file": "stage7-frame-I-close.png",
+      "sha256": "42d4655090d9a5e4ebc994769a9533b73f341b95edaf66333d75240e728583a4",
+      "visually_reviewed": true
+    },
+    {
+      "file": "stage7-frame-II-close.png",
+      "sha256": "64a131a4a8d95f6769b49f030eaec08b62ca8b91c3f052b3e24ac51f68e057ff",
+      "visually_reviewed": true
+    },
+    {
+      "file": "stage7-frame-III-chest-open.png",
+      "sha256": "07ea3720b1be4ea78cd17d8a234af3d44aa02a72d7b630ef2acea7c38dde8698",
+      "visually_reviewed": true
+    },
+    {
+      "file": "stage7-frame-III-close.png",
+      "sha256": "9855c0961d450a062efd7051053f4541ebd834a519816563af2979943d3257e4",
+      "visually_reviewed": true
+    },
+    {
+      "file": "stage7-frame-IV-close.png",
+      "sha256": "dea33e85b1f8420c00e89ab76163711d6ba66ab8dc111cef6d68e9ae14e228e2",
+      "visually_reviewed": true
+    },
+    {
+      "file": "stage7-item-crystal_ruby-darkest.png",
+      "sha256": "e539b0d7ecc8548bab7770c34535b410ca7b300e4c5b7b1332b1281399b27060",
+      "visually_reviewed": true
+    },
+    {
+      "file": "stage7-item-crystal_ruby.png",
+      "sha256": "9430bb4d3ea655c58fc74cac32d030c7a31ad5b3d569736694cef160e78d8a74",
+      "visually_reviewed": true
+    },
+    {
+      "file": "stage7-item-crystal_sapphire.png",
+      "sha256": "5fdf421b6c3cc2202e842eda618204d7f47205e293793c813b25d259130ea562",
+      "visually_reviewed": true
+    },
+    {
+      "file": "stage7-item-ing_crystal_dust.png",
+      "sha256": "21d749a9eeb0d8b85ce680c15ef3e66e2a3051abdae347fca8e3a79cf359ea50",
+      "visually_reviewed": true
+    },
+    {
+      "file": "stage7-item-ing_moonpetal.png",
+      "sha256": "66c2267a70f2ff2bc7edbd3ec50784a84acd3c20ca4023852b6bbba3e1e66842",
+      "visually_reviewed": true
+    },
+    {
+      "file": "stage7-item-ing_salamander_scale.png",
+      "sha256": "96f8f8ad0ef41713bc01febfaecc65e4980a70f241d082d89752015fdf073a97",
+      "visually_reviewed": true
+    },
+    {
+      "file": "stage7-item-ing_toadstool.png",
+      "sha256": "69f6d0e19f7ecf4b712a8bde29459bf0f4a94595787af3b36b08e24e7220a3db",
+      "visually_reviewed": true
+    },
+    {
+      "file": "stage7-item-map.png",
+      "sha256": "e78b08c5815744e07af52769c2b365d9fa283efce274d66a01431dd368312f46",
+      "visually_reviewed": true
+    },
+    {
+      "file": "stage7-item-potion_revelation.png",
+      "sha256": "e4254083b6ef7d162db3157335db6f7842a3da5d6da2728713168179eb6420e2",
+      "visually_reviewed": true
+    }
+  ],
+  "historical_evidence_files_unchanged": 237,
+  "existing_untracked_xml_trx_unchanged": 36,
+  "hmd_verified": false,
+  "player_build_verified": false,
+  "notion_updated": "https://app.notion.com/p/4147cdef782d81da9895f389197b0300"
+}

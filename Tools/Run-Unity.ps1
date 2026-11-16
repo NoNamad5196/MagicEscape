@@ -19,7 +19,7 @@ if ($Tests) {
 $preserved = @{}
 if ($Tests -or $Method -like "*Warehouse") {
     git ls-files docs/validation UnityProject/Assets/Fonts UnityProject/Assets/Settings UnityProject/Assets/Prefabs UnityProject/Assets/Data UnityProject/Assets/Art/S10c/Icons UnityProject/Assets/Scenes/Classroom.unity | ForEach-Object {
-        if ($_ -notlike 'docs/validation/warehouse/stage6-*' -and $_ -notlike '*WarehouseLighting*' -and $_ -notlike '*WarehouseChalkBlanks*' -and $_ -notlike '*WarehouseStoryIII*' -and (Test-Path -LiteralPath $_)) {
+        if ($_ -notlike 'docs/validation/warehouse/stage7-*' -and $_ -notlike 'UnityProject/Assets/Settings/*Warehouse*' -and $_ -ne 'docs/validation/warehouse/scene-manifest.txt' -and (Test-Path -LiteralPath $_)) {
             $preserved[$_] = [System.IO.File]::ReadAllBytes((Join-Path (Get-Location) $_))
         }
     }

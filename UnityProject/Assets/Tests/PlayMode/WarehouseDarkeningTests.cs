@@ -50,8 +50,10 @@ public class WarehouseDarkeningTests
         .Where(l=>l!=null&&l.enabled).Sum(l=>l.intensity)+Object.FindFirstObjectByType<RoomPresentation>().roomFill.intensity;
     void Guides(WarehouseDarkening d)
     {
-        Assert.AreEqual(6,d.localLights.Length);
-        Assert.True(d.localLights.All(l=>l.enabled && l.intensity>.1f));
+        Assert.AreEqual(13,d.localLights.Length);
+        Assert.True(d.localLights.Take(6).All(l=>l.enabled && l.intensity>.1f));
+        foreach(var b in Object.FindObjectsByType<WarehouseItemBeacon>(FindObjectsSortMode.None))
+            if(b.pickup.IsAvailable)Assert.True(b.source.enabled && b.source.intensity>.1f,b.pickup.ItemId);
         Assert.False(Object.FindFirstObjectByType<RoomPresentation>().InputBlocked);
         Assert.True(Scenario.Player.GetComponent<PlayerController>().ControlEnabled);
     }
@@ -66,7 +68,7 @@ public class WarehouseDarkeningTests
             if(stage==1){yield return Scenario.Rune();Scenario.Collect(ItemIds.CrystalSapphire);}
             if(stage==2)
             {
-                ArtTests.View(new Vector3(-2.1f,0,-2),new Vector3(-3.25f,.61f,-2.3f));yield return null;yield return null;
+                ArtTests.View(new Vector3(-2.1f,0,-2),new Vector3(-3.25f,1.21f,-2.3f));yield return null;yield return null;
                 Object.FindFirstObjectByType<DesktopXriDriver>().Click();yield return new WaitForSeconds(.7f);
                 yield return Scenario.Potion();yield return new WaitForSeconds(1.1f);
             }
@@ -105,7 +107,7 @@ public class WarehouseDarkeningTests
         yield return Scenario.Rune();Scenario.Collect(ItemIds.CrystalSapphire);
         var lid=GameObject.Find("ChestLidHinge").GetComponent<XriClearable>();
         // Select through the same XRI desktop ray used by gameplay, while light blend is active.
-        ArtTests.View(new Vector3(-2.1f,0,-2),new Vector3(-3.25f,.61f,-2.3f));
+        ArtTests.View(new Vector3(-2.1f,0,-2),new Vector3(-3.25f,1.21f,-2.3f));
         yield return null;yield return null;
         d.SetStage(1);Assert.True(d.Transitioning);
         Object.FindFirstObjectByType<DesktopXriDriver>().Click();

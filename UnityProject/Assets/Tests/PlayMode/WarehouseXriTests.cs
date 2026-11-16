@@ -104,7 +104,7 @@ public class WarehouseXriTests
         var lid = GameObject.Find("ChestLidHinge").GetComponent<XriClearable>();
         if (!lid.IsCleared)
         {
-            ArtTests.View(new Vector3(-2.1f,0,-2.0f),new Vector3(-3.25f,.61f,-2.3f));
+            ArtTests.View(new Vector3(-2.1f,0,-2.0f),new Vector3(-3.25f,1.21f,-2.3f));
             yield return null; yield return null;
             Driver.Click(); yield return new WaitForSeconds(.7f);
             Assert.True(lid.IsCleared,"PC opens the shared hinged lid");
@@ -184,7 +184,7 @@ public class WarehouseXriTests
         yield return ClearRoom();
         foreach(var gate in Object.FindObjectsByType<ClearingGate>(FindObjectsSortMode.None))Assert.True(gate.IsAccessible,gate.name);
     }
-    [UnityTest] public IEnumerator EmptyChalkAndFailureOnlyHintsHaveNoAlternateAnswerRoute()
+    [UnityTest] public IEnumerator SceneChalkAndFailureOnlyHintsHaveNoAlternateAnswerRoute()
     {
         var board=GameObject.Find("Chalkboard").GetComponent<InspectableObject>();
         ArtTests.View(new Vector3(-2.15f,0,-2.3f),board.transform.position);
@@ -193,17 +193,17 @@ public class WarehouseXriTests
         yield return null;yield return null;
         Assert.True(Driver.ray.TryGetCurrent3DRaycastHit(out var boardHit));
         Assert.AreEqual(board.gameObject,boardHit.collider.gameObject,"Unoccluded chalkboard E ray");
-        yield return CaptureClearing("stage6-chalk-front");
+        yield return CaptureClearing("stage7-chalk-front");
         // Use the same keyboard E -> XRI path as normal Warehouse inspection.
         yield return null;yield return null;yield return null;
         InputSystem.QueueStateEvent(keyboard,new KeyboardState(Key.E));yield return null;
         InputSystem.QueueStateEvent(keyboard,new KeyboardState());yield return null;yield return null;
         Assert.True(UIManager.Instance.IsReading,"E opens chalkboard");
         var picture=GameObject.Find("PictureClue").GetComponent<UnityEngine.UI.RawImage>();
-        Assert.AreEqual("ChalkBlanks",picture.texture.name);
+        Assert.AreEqual("ChalkScenes",picture.texture.name);
         Assert.AreSame(GameObject.Find("ChalkSequence").GetComponent<Renderer>().sharedMaterial.mainTexture,picture.texture);
         Assert.AreEqual(string.Empty,GameObject.Find("ReadBody").GetComponent<TMPro.TMP_Text>().text);
-        yield return CaptureClearing("stage6-chalk-inspect");UIManager.Instance.CloseRead();
+        yield return CaptureClearing("stage7-chalk-inspect");UIManager.Instance.CloseRead();
         UIManager.Instance.ToggleObjective();
         Assert.AreEqual(string.Empty,GameObject.Find("HintText")?.GetComponent<TMPro.TMP_Text>().text ?? "");
         UIManager.Instance.ToggleObjective();
@@ -211,17 +211,17 @@ public class WarehouseXriTests
         for(int i=1;i<=3;i++)
         {
             Assert.IsNull(GameManager.Instance.GetVisualClueText());wrong.Interact(Scenario.Player);
-            Assert.AreEqual(i<3?null:GameText.HintRune,GameManager.Instance.GetVisualClueText());
+            Assert.AreEqual(i<3?null:Object.FindFirstObjectByType<RunePuzzle>().CurrentHint,GameManager.Instance.GetVisualClueText());
         }
         yield return new WaitForSeconds(3.3f);
         yield return ClearRoom();
-        ArtTests.View(new Vector3(-2.9f,0,-1.75f),new Vector3(-4.2f,1.65f,-1.75f));
-        yield return CaptureClearing("stage6-frame-III-close");
+        ArtTests.View(new Vector3(-2.9f,0,-.85f),new Vector3(-4.2f,1.65f,-1.75f));
+        // Dedicated stage-7 fixture captures plaques before opening the unrelated chest.
         var ii=GameObject.Find("Painting_II").transform;
         ArtTests.View(new Vector3(-2.9f,0,ii.position.z),ii.position);
-        yield return CaptureClearing("stage6-frame-II-close");
+
         ArtTests.View(new Vector3(-1.8f,0,-.3f),new Vector3(-4.2f,1.25f,-1.7f));
-        yield return CaptureClearing("stage6-chalk-frames-wide");
+        yield return CaptureClearing("stage7-chalk-frames-wide");
         GameManager.Instance.ReportSolved(PuzzleId.Rune);
         Assert.IsNull(GameManager.Instance.GetVisualClueText(),"Tab must not print recipe before failure threshold");
         GameObject.Find("RecipeBook").GetComponent<InspectableObject>().Interact(Scenario.Player);
@@ -280,7 +280,7 @@ public class WarehouseXriTests
             var label=stone.transform.Find("RuneName_"+stone.Rune).GetComponent<Renderer>();
             Assert.NotNull(label,stone.Rune+" named incision");Assert.True(label.enabled);
             Assert.AreEqual("RuneName_"+stone.Rune,label.sharedMaterial.GetTexture("_BaseMap").name);
-            Assert.That(label.bounds.size.x,Is.EqualTo(.33f).Within(.002f));
+            Assert.That(label.bounds.size.x,Is.EqualTo(.38f).Within(.002f));
             var corner=GameObject.Find("ArtB_CornerRune_"+stone.Rune);
             if(corner!=null)Assert.AreSame(label.sharedMaterial,corner.transform.parent.Find("RuneName_"+stone.Rune).GetComponent<Renderer>().sharedMaterial);
         }
@@ -373,11 +373,13 @@ public class WarehouseXriTests
         var socket = Object.FindObjectsByType<XriPuzzleSocket>(FindObjectsSortMode.None).First(s => s.cauldron != null);
         yield return Grab(ItemIds.Moonpetal,new Vector3(3.15f,0,-1.8f));
         yield return ClickAt(socket,new Vector3(2.65f,0,-.5f));
-        yield return Grab(ItemIds.Toadstool,new Vector3(-3.1f,0,3.1f));
+        yield return Grab(ItemIds.Toadstool,new Vector3(2.25f,0,-1.5f));
         yield return ClickAt(socket,new Vector3(2.65f,0,-.5f));
         Assert.AreEqual(1,socket.cauldron.Logic.FailCount);
         Assert.True(Scenario.Pickup(ItemIds.Moonpetal).IsAvailable);
         Assert.True(Scenario.Pickup(ItemIds.Toadstool).IsAvailable);
+        Assert.Less(Vector3.Distance(new Vector3(3.5f,1.10f,-1.25f),Scenario.Pickup(ItemIds.Toadstool).transform.position),.001f,"Wrong ingredient returns to its new barrel home");
+        Assert.Less(Vector3.Distance(new Vector3(3.75f,.78f,-2.94f),Scenario.Pickup(ItemIds.Moonpetal).transform.position),.001f);
         Assert.False(InventoryManager.Instance.Contains(ItemIds.Moonpetal));
     }
     [UnityTest] public IEnumerator SharedPressRetiresUnheldConsumedPotion()

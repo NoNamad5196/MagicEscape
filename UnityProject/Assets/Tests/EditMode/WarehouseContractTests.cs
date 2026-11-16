@@ -124,20 +124,20 @@ public class WarehouseContractTests
         var lid=GameObject.Find("ChestLidHinge");var back=GameObject.Find("ChestBack").GetComponent<Collider>().bounds;back.Expand(.08f);
         Assert.True(back.Intersects(lid.GetComponentInChildren<Renderer>().bounds),"Lid physically touches back hinge edge");
     }
-    [Test] public void ChalkboardResourcesContainOnlyApprovedEmptyDiagram()
+    [Test] public void ChalkboardContainsScenesWithoutElementNamesOrPictograms()
     {
         EditorSceneManager.OpenScene("Assets/Scenes/Warehouse.unity");
-        const string allowed="Assets/Art/Warehouse/ChalkBlanks.png";
+        const string allowed="Assets/Art/Warehouse/ChalkScenes.png";
         var texture=AssetDatabase.LoadAssetAtPath<Texture2D>(allowed);
         Assert.NotNull(texture);
         using(var sha=System.Security.Cryptography.SHA256.Create())
-            Assert.AreEqual("A09AE7A9877824737B0D78F1009084A499D1A783981B70226B4F46986C3D13BC",
-                System.BitConverter.ToString(sha.ComputeHash(System.IO.File.ReadAllBytes(allowed))).Replace("-",""),"Reviewed numeral + empty-circle pixels must not silently gain answer art");
+            Assert.AreEqual("8C000ABFF8BE0E5C0D68C64C3A10C84542B96B197BB31D38026DB6568918E7B8",
+                System.BitConverter.ToString(sha.ComputeHash(System.IO.File.ReadAllBytes(allowed))).Replace("-",""),"Reviewed scene-only chalk pixels must not gain element names or pictograms");
         var board=GameObject.Find("Chalkboard");
         Assert.AreSame(texture,new SerializedObject(board.GetComponent<InspectableObject>()).FindProperty("picture").objectReferenceValue);
-        Assert.AreEqual("I \u25cb   II \u25cb   III \u25cb   IV \u25cb",new SerializedObject(board.GetComponent<InspectableObject>()).FindProperty("body").stringValue);
+        Assert.AreEqual("I   II   III   IV",new SerializedObject(board.GetComponent<InspectableObject>()).FindProperty("body").stringValue);
         var oldLabel=Object.FindObjectsByType<TMPro.TMP_Text>(FindObjectsInactive.Include,FindObjectsSortMode.None).Single(t=>t.name=="ChalkboardLabel");
-        Assert.AreEqual("I \u25cb   II \u25cb   III \u25cb   IV \u25cb",oldLabel.text);
+        Assert.AreEqual("I   II   III   IV",oldLabel.text);
         Assert.False(oldLabel.gameObject.activeSelf);
         var plate=GameObject.Find("ChalkSequence").GetComponent<Renderer>();
         Assert.AreSame(texture,plate.sharedMaterial.mainTexture,"World plate must actually have its approved texture");
@@ -183,6 +183,48 @@ public class WarehouseContractTests
                 Assert.That(t.localPosition.y,Is.EqualTo(-.51f).Within(.001f));
                 Assert.AreEqual("MagicEscape/AlchemyEngraving",t.GetComponent<Renderer>().sharedMaterial.shader.name);
             }
+        }
+    }
+
+    [Test] public void WarehouseUsesPictogramsWithoutAlchemicalResourcesOrFrameNumerals()
+    {
+        EditorSceneManager.OpenScene("Assets/Scenes/Warehouse.unity");
+        foreach(string roman in new[]{"I","II","III","IV"})
+        {
+            var label=GameObject.Find("PaintingLabel_"+roman).GetComponent<TMPro.TMP_Text>();
+            Assert.IsEmpty(label.text,"No visible numeral on a frame");
+            var frame=GameObject.Find("ArtB_PictureFrame_"+roman);
+            foreach(var text in frame.GetComponentsInChildren<TMPro.TMP_Text>(true))Assert.IsEmpty(text.text);
+        }
+        foreach(var renderer in Object.FindObjectsByType<Renderer>(FindObjectsInactive.Include,FindObjectsSortMode.None))
+            foreach(var mat in renderer.sharedMaterials)
+                if(mat!=null)foreach(var property in mat.GetTexturePropertyNames())
+                {
+                    string path=AssetDatabase.GetAssetPath(mat.GetTexture(property));
+                    foreach(RuneId id in System.Enum.GetValues(typeof(RuneId)))
+                        Assert.AreNotEqual("Assets/Art/S10b/"+id+".png",path,renderer.name+" alchemical mask reference");
+                }
+        var dependencies=AssetDatabase.GetDependencies("Assets/Scenes/Warehouse.unity",true);
+        foreach(RuneId id in System.Enum.GetValues(typeof(RuneId)))
+            CollectionAssert.DoesNotContain(dependencies,"Assets/Art/S10b/"+id+".png","No indirect alchemical dependency");
+        foreach(var stone in Object.FindObjectsByType<RuneStone>(FindObjectsSortMode.None))
+            Assert.AreEqual("Assets/Art/Warehouse/Pictogram_"+stone.Rune+".png",
+                AssetDatabase.GetAssetPath(stone.transform.Find("ArtB_RuneIcon_"+stone.Rune).GetComponent<Renderer>().sharedMaterial.GetTexture("_BaseMap")));
+    }
+    [Test] public void AllItemHomesHaveReachableHeightAndPersistentLocalLighting()
+    {
+        EditorSceneManager.OpenScene("Assets/Scenes/Warehouse.unity");
+        var items=Object.FindObjectsByType<ItemPickup>(FindObjectsInactive.Include,FindObjectsSortMode.None);
+        Assert.AreEqual(7,items.Length);
+        var dark=Object.FindFirstObjectByType<WarehouseDarkening>();
+        foreach(var item in items)
+        {
+            // User explicitly preserves the .78m moonflower. It is the sole height exception.
+            if(item.ItemId==ItemIds.Moonpetal)Assert.AreEqual(.78f,item.transform.position.y,.001f);
+            else Assert.That(item.transform.position.y,Is.InRange(.8f,1.6f),item.ItemId);
+            var beacon=Object.FindObjectsByType<WarehouseItemBeacon>(FindObjectsSortMode.None).Single(b=>b.pickup==item);
+            Assert.Less(Vector3.Distance(item.transform.position,beacon.source.transform.position),.5f,item.ItemId);
+            CollectionAssert.Contains(dark.localLights,beacon.source,"Darkness must not attenuate item guide");
         }
     }
 }

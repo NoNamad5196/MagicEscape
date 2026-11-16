@@ -144,7 +144,7 @@ namespace MagicEscape.EditorTools
             foreach (var t in geometry.GetComponentsInChildren<Transform>(true))
                 if (t.GetComponent<Collider>() != null && t.GetComponent<HandlingProfile>() == null) t.gameObject.AddComponent<HandlingProfile>();
             ConfigureWarehouseDarkening();
-            ConfigureXri(); ConfigureClearing(); ConfigureOpenXR();
+            ConfigureXri(); ConfigureClearing(); ConfigureWarehouseStage7(); ConfigureOpenXR();
             // The resized corridor can expose the scene background above its dark doorway.
             // Both rigs must see black, never the default blue skybox / a false dawn.
             foreach(var camera in Object.FindObjectsByType<Camera>(FindObjectsInactive.Include,FindObjectsSortMode.None))
@@ -160,22 +160,22 @@ namespace MagicEscape.EditorTools
         // Separate Warehouse allowlist asset: Classroom's answered plate is never reused.
         static void ConfigureWarehouseChalk()
         {
-            const string path="Assets/Art/Warehouse/ChalkBlanks.png";
+            const string path="Assets/Art/Warehouse/ChalkScenes.png";
             var texture=AssetDatabase.LoadAssetAtPath<Texture2D>(path);
-            if(texture==null)throw new System.InvalidOperationException("Generate Warehouse chalk blanks first");
-            var material=EPicture("WarehouseChalkBlanks");
+            if(texture==null)throw new System.InvalidOperationException("Generate Warehouse scene chalk first");
+            var material=EPicture("WarehouseChalkScenes");
             material.mainTexture=texture;material.SetTexture("_EmissionMap",texture);
             EditorUtility.SetDirty(material);
             Find("ChalkSequence").GetComponent<Renderer>().sharedMaterial=material;
             Set(Find("Chalkboard").GetComponent<InspectableObject>(),"picture",texture);
-            Set(Find("Chalkboard").GetComponent<InspectableObject>(),"body", "I \u25cb   II \u25cb   III \u25cb   IV \u25cb");
+            Set(Find("Chalkboard").GetComponent<InspectableObject>(),"body", "I   II   III   IV");
             var old=Object.FindObjectsByType<TMPro.TMP_Text>(FindObjectsInactive.Include,FindObjectsSortMode.None).Single(t=>t.name=="ChalkboardLabel");
-            old.text="I \u25cb   II \u25cb   III \u25cb   IV \u25cb";old.gameObject.SetActive(false);
+            old.text="I   II   III   IV";old.gameObject.SetActive(false);
             // The historical wooden rails were separate roots: attach them before moving the assembly.
             foreach(var trim in Object.FindObjectsByType<Transform>(FindObjectsInactive.Include,FindObjectsSortMode.None)
                 .Where(t=>t.name.StartsWith("ArtB_BoardRail_")||t.name.StartsWith("ArtB_BoardEdge_")))
                 trim.SetParent(Find("Chalkboard").transform,true);
-            // Keep the whole empty diagram above fixed stacked crates, not half-hidden behind them.
+            // Keep the whole scene diagram above fixed stacked crates, not half-hidden behind them.
             foreach(var t in new[]{Find("Chalkboard").transform,Find("ChalkSequence").transform,old.transform})
                 t.position+=Vector3.up*.85f;
             var boardLight=Find("ArtC_Chalkboard").transform;boardLight.position+=Vector3.up*.85f;
