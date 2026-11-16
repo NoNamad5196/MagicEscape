@@ -70,3 +70,9 @@ AGENTS.md and README.md are synchronized with this warehouse/XRI specification. 
 - Warehouse generation snapshots/restores historical Classroom, shared assets, fonts and S10 validation artifacts in a finally/Dispose scope. Run-Unity.ps1 similarly preserves tracked regression captures/audits around tests; new stage7 captures are retained. Existing local untracked evidence is not staged or deleted.
 
 - Completed brew emission falls to 6% over the same blend (profile solvedBrewGlow), preserving its short gold success feedback without keeping the solved cauldron as the brightest target. Inactive answer-frame lamps are included in background attenuation when later enabled. Both rig cameras clear to black; Warehouse fade and ending rects stretch to the canvas, preventing skybox leaks and uncovered borders.
+
+## Stage 8 visual cleanup (2026-11-17)
+- Board I now shows a pointed almond seed with a centre seam and one tiny upward shoot; no two-legged roots. World board and E still share `ChalkScenes.png`, with the same chalk tone/strokes as II-IV. Warehouse frame I uses its own matching `Story_1.png` in the scene and inspection; historical Classroom art stays unchanged.
+- Water's inner arc is replaced by one short upper-left diagonal glint. The same material/mask is shared by altar stones and frame plaques. The other five motifs retain their non-facial silhouettes.
+- Scale home remains `(3.65,1.30,.05)`. Its 1.20m-high support is now a thin plank worktop, four floor-supported legs and aprons, with visible plank seams. Two small muted fixed jars and a low mortar/pestle provide ingredient-workbench context; no new pickups, inspection clues or puzzle components. All other homes, clearing gates, darkness and puzzle contracts are unchanged.
+- `Tools/Run-Unity.ps1` preserves all historical captures (including stage7); current visual evidence uses `stage8-*`. Results and capture hashes: [Stage 8](validation/warehouse/STAGE8_RESULTS.md).

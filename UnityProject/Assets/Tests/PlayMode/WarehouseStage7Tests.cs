@@ -29,7 +29,7 @@ public class WarehouseStage7Tests
         {
             var frame=GameObject.Find("Painting_"+roman).transform;
             ArtTests.View(new Vector3(-2.9f,0,roman=="III"?-.85f:frame.position.z),frame.position);
-            yield return WarehouseDarkeningTests.Capture("stage7-frame-"+roman+"-close");
+            yield return WarehouseDarkeningTests.Capture("stage8-frame-"+roman+"-close");
         }
         var lid=GameObject.Find("ChestLidHinge").GetComponent<XriClearable>();
         var desktopRay=Object.FindFirstObjectByType<DesktopXriDriver>().ray;
@@ -37,13 +37,13 @@ public class WarehouseStage7Tests
         lid.interactionManager.SelectExit((UnityEngine.XR.Interaction.Toolkit.Interactors.IXRSelectInteractor)desktopRay,lid);
         yield return new WaitForSeconds(.8f);
         ArtTests.View(new Vector3(-2.9f,0,-1.75f),new Vector3(-4.2f,1.65f,-1.75f));
-        yield return WarehouseDarkeningTests.Capture("stage7-frame-III-chest-open");
+        yield return WarehouseDarkeningTests.Capture("stage8-frame-III-chest-open");
         var altar=Object.FindFirstObjectByType<RunePuzzle>().transform;
         ArtTests.View(new Vector3(altar.position.x,0,altar.position.z-1.5f),altar.position);
-        yield return WarehouseDarkeningTests.Capture("stage7-altar-pc");
+        yield return WarehouseDarkeningTests.Capture("stage8-altar-pc");
         var pivot=Scenario.Player.GetComponent<PlayerController>().CameraPivot;pivot.localPosition=new Vector3(0,1.75f,0);
         ArtTests.View(new Vector3(altar.position.x,0,altar.position.z-1.5f),altar.position);
-        yield return WarehouseDarkeningTests.Capture("stage7-altar-standing");
+        yield return WarehouseDarkeningTests.Capture("stage8-altar-standing");
         pivot.localPosition=new Vector3(0,1.6f,0);
         // Check actual wrong-material respawn at newly authored homes, not just serialized positions.
         var mushroom=Scenario.Pickup(ItemIds.Toadstool);var home=mushroom.transform.position;
@@ -80,7 +80,7 @@ public class WarehouseStage7Tests
         var mapFill=new GameObject("MapOnlyFill").AddComponent<Light>();mapFill.type=LightType.Directional;mapFill.intensity=.65f;mapFill.transform.rotation=Quaternion.Euler(90,0,0);
         var controller=Scenario.Player.GetComponent<PlayerController>();controller.ControlEnabled=false;
         var camera=Camera.main;camera.transform.SetPositionAndRotation(new Vector3(0,10,0),Quaternion.Euler(90,0,0));camera.orthographic=true;camera.orthographicSize=5.1f;
-        yield return WarehouseDarkeningTests.Capture("stage7-item-map");
+        yield return WarehouseDarkeningTests.Capture("stage8-item-map");
         camera.orthographic=false;foreach(var r in hidden)r.enabled=true;
     }
     IEnumerator ItemView(string id,Vector3 stand,string suffix="")
@@ -91,6 +91,6 @@ public class WarehouseStage7Tests
         Assert.That(screen.x,Is.InRange(0f,1f));Assert.That(screen.y,Is.InRange(0f,1f));Assert.Greater(screen.z,0);
         var beacon=Object.FindObjectsByType<WarehouseItemBeacon>(FindObjectsSortMode.None).Single(b=>b.pickup==item);
         Assert.True(beacon.source.enabled);Assert.Greater(beacon.source.intensity,.1f);
-        yield return WarehouseDarkeningTests.Capture("stage7-item-"+id+suffix);
+        yield return WarehouseDarkeningTests.Capture("stage8-item-"+id+suffix);
     }
 }

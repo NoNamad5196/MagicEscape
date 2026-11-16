@@ -131,7 +131,7 @@ public class WarehouseContractTests
         var texture=AssetDatabase.LoadAssetAtPath<Texture2D>(allowed);
         Assert.NotNull(texture);
         using(var sha=System.Security.Cryptography.SHA256.Create())
-            Assert.AreEqual("8C000ABFF8BE0E5C0D68C64C3A10C84542B96B197BB31D38026DB6568918E7B8",
+            Assert.AreEqual("158DCD8EE78741A0BC2931FE8926D6E5F44D75B7AC9517EEDB7F6ADEAF05F341",
                 System.BitConverter.ToString(sha.ComputeHash(System.IO.File.ReadAllBytes(allowed))).Replace("-",""),"Reviewed scene-only chalk pixels must not gain element names or pictograms");
         var board=GameObject.Find("Chalkboard");
         Assert.AreSame(texture,new SerializedObject(board.GetComponent<InspectableObject>()).FindProperty("picture").objectReferenceValue);
@@ -210,6 +210,41 @@ public class WarehouseContractTests
         foreach(var stone in Object.FindObjectsByType<RuneStone>(FindObjectsSortMode.None))
             Assert.AreEqual("Assets/Art/Warehouse/Pictogram_"+stone.Rune+".png",
                 AssetDatabase.GetAssetPath(stone.transform.Find("ArtB_RuneIcon_"+stone.Rune).GetComponent<Renderer>().sharedMaterial.GetTexture("_BaseMap")));
+    }
+    static bool Touching(Bounds a,Bounds b)
+    {
+        a.Expand(.004f); // 2mm contact tolerance for float-transformed primitive surfaces.
+        return a.Intersects(b);
+    }
+    [Test] public void ScaleWorkbenchAndDressingHaveSupportedNoninteractiveHomes()
+    {
+        EditorSceneManager.OpenScene("Assets/Scenes/Warehouse.unity");
+        var root=GameObject.Find("WarehouseIngredientWorkbench").transform;
+        var top=GameObject.Find("WarehouseIngredientShelf").GetComponent<Renderer>().bounds;
+        Assert.AreEqual(1.20f,top.max.y,.002f);
+        var legs=root.GetComponentsInChildren<Renderer>().Where(r=>r.name=="WarehouseShelfLeg").ToArray();
+        Assert.AreEqual(4,legs.Length);
+        foreach(var leg in legs){Assert.AreEqual(0,leg.bounds.min.y,.002f);Assert.AreEqual(top.min.y,leg.bounds.max.y,.002f);}
+        Assert.AreEqual(3,root.GetComponentsInChildren<Renderer>().Count(r=>r.name=="ArtB_WorkbenchPlankJoint"));
+        foreach(var r in root.GetComponentsInChildren<Renderer>())
+        {
+            if(r.name=="ArtB_WorkbenchDecorJar"||r.name=="ArtB_WorkbenchMortar")Assert.AreEqual(top.max.y,r.bounds.min.y,.002f,r.name+" floats");
+            if(r.name.StartsWith("ArtB_Workbench"))
+                Assert.True(root.GetComponentsInChildren<Renderer>().Any(other=>other!=r&&Touching(other.bounds,r.bounds)),r.name+" detached from furniture/dressing");
+            Assert.IsNull(r.GetComponentInParent<ItemPickup>());
+            Assert.IsNull(r.GetComponentInParent<InspectableObject>());
+            Assert.IsNull(r.GetComponentInParent<UnityEngine.XR.Interaction.Toolkit.Interactables.XRBaseInteractable>());
+        }
+        var item=Object.FindObjectsByType<ItemPickup>(FindObjectsSortMode.None).Single(i=>i.ItemId==ItemIds.SalamanderScale);
+        Assert.Less(Vector3.Distance(item.transform.position,new Vector3(3.65f,1.30f,.05f)),.001f);
+        var frame=GameObject.Find("ArtB_PictureFrame_I").transform.Find("ArtB_StoryIllustration").GetComponent<Renderer>();
+        var pic=new SerializedObject(GameObject.Find("Painting_I").GetComponent<InspectableObject>()).FindProperty("picture").objectReferenceValue;
+        Assert.AreSame(frame.sharedMaterial.mainTexture,pic);
+        Assert.AreEqual("Assets/Art/Warehouse/Story_1.png",AssetDatabase.GetAssetPath(pic));
+        var water=Object.FindObjectsByType<RuneStone>(FindObjectsSortMode.None).Single(r=>r.Rune==RuneId.Water);
+        var waterIcon=water.transform.Find("ArtB_RuneIcon_Water").GetComponent<Renderer>();
+        var plaque=GameObject.Find("ArtB_PictureFrame_II").GetComponentsInChildren<Renderer>().Single(r=>r.name.StartsWith("ArtB_CornerRune_"));
+        Assert.AreSame(waterIcon.sharedMaterial,plaque.sharedMaterial,"One shared drop design");
     }
     [Test] public void AllItemHomesHaveReachableHeightAndPersistentLocalLighting()
     {

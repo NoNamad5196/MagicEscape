@@ -70,3 +70,7 @@ Thumbs.db
 # Stage 7 raw local evidence; sanitized summary is committed.
 /docs/validation/warehouse/stage7-*.xml
 /docs/validation/warehouse/stage7-*.trx
+
+# Stage 8 raw local evidence; sanitized summary is committed.
+/docs/validation/warehouse/stage8-*.xml
+/docs/validation/warehouse/stage8-*.trx

@@ -193,7 +193,7 @@ public class WarehouseXriTests
         yield return null;yield return null;
         Assert.True(Driver.ray.TryGetCurrent3DRaycastHit(out var boardHit));
         Assert.AreEqual(board.gameObject,boardHit.collider.gameObject,"Unoccluded chalkboard E ray");
-        yield return CaptureClearing("stage7-chalk-front");
+        yield return CaptureClearing("stage8-chalk-front");
         // Use the same keyboard E -> XRI path as normal Warehouse inspection.
         yield return null;yield return null;yield return null;
         InputSystem.QueueStateEvent(keyboard,new KeyboardState(Key.E));yield return null;
@@ -203,7 +203,7 @@ public class WarehouseXriTests
         Assert.AreEqual("ChalkScenes",picture.texture.name);
         Assert.AreSame(GameObject.Find("ChalkSequence").GetComponent<Renderer>().sharedMaterial.mainTexture,picture.texture);
         Assert.AreEqual(string.Empty,GameObject.Find("ReadBody").GetComponent<TMPro.TMP_Text>().text);
-        yield return CaptureClearing("stage7-chalk-inspect");UIManager.Instance.CloseRead();
+        yield return CaptureClearing("stage8-chalk-inspect");UIManager.Instance.CloseRead();
         UIManager.Instance.ToggleObjective();
         Assert.AreEqual(string.Empty,GameObject.Find("HintText")?.GetComponent<TMPro.TMP_Text>().text ?? "");
         UIManager.Instance.ToggleObjective();
@@ -221,7 +221,7 @@ public class WarehouseXriTests
         ArtTests.View(new Vector3(-2.9f,0,ii.position.z),ii.position);
 
         ArtTests.View(new Vector3(-1.8f,0,-.3f),new Vector3(-4.2f,1.25f,-1.7f));
-        yield return CaptureClearing("stage7-chalk-frames-wide");
+        yield return CaptureClearing("stage8-chalk-frames-wide");
         GameManager.Instance.ReportSolved(PuzzleId.Rune);
         Assert.IsNull(GameManager.Instance.GetVisualClueText(),"Tab must not print recipe before failure threshold");
         GameObject.Find("RecipeBook").GetComponent<InspectableObject>().Interact(Scenario.Player);

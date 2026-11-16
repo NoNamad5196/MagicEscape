@@ -17,6 +17,37 @@ namespace MagicEscape.EditorTools
             mat.SetTexture("_BaseMap",AssetDatabase.LoadAssetAtPath<Texture2D>(path));
             mat.SetColor("_BaseColor",new Color(.64f,.55f,.37f));mat.SetColor("_EmissionColor",Color.black);mat.EnableKeyword("_EMISSION");EditorUtility.SetDirty(mat);return mat;
         }
+        static void ConfigureScaleWorkbench(Material wood)
+        {
+            // Keep the original top at 1.20m and pickup home at (3.65,1.30,.05).
+            // Four discrete legs replace the solid slab-like side supports.
+            var root=new GameObject("WarehouseIngredientWorkbench").transform;
+            root.SetParent(Find("WarehouseStorage").transform,true);
+            var top=Box("WarehouseIngredientShelf",root,new Vector3(3.83f,1.15f,.05f),new Vector3(.90f,.10f,.68f));
+            top.GetComponent<Renderer>().sharedMaterial=wood;
+            for(int x=-1;x<=1;x+=2)for(int z=-1;z<=1;z+=2)
+            {
+                var leg=Box("WarehouseShelfLeg",root,new Vector3(3.83f+x*.36f,.55f,.05f+z*.25f),new Vector3(.10f,1.10f,.10f));
+                leg.GetComponent<Renderer>().sharedMaterial=wood;
+            }
+            foreach(int z in new[]{-1,1})WorldVisual("WorkbenchApron",root,new Vector3(3.83f,1.04f,.05f+z*.25f),new Vector3(.82f,.17f,.07f),wood);
+            var seam=ArtMaterial("WarehouseSeam",new Color(.045f,.026f,.015f));
+            for(int n=-1;n<=1;n++)WorldVisual("WorkbenchPlankJoint",root,new Vector3(3.83f,1.2005f,.05f+n*.16f),new Vector3(.89f,.001f,.008f),seam);
+            // Small desaturated fixed dressing, no pickup, inspectable, rune or clue component.
+            var clay=ArtMaterial("WarehouseIngredientCeramic",new Color(.27f,.25f,.19f));
+            var glass=ArtMaterial("WarehouseIngredientGlass",new Color(.20f,.26f,.24f));
+            for(int n=0;n<2;n++)
+            {
+                float z=-.16f+n*.38f;
+                WorldVisual("WorkbenchDecorJar",root,new Vector3(4.08f,1.265f,z),new Vector3(.10f,.065f,.10f),glass,PrimitiveType.Cylinder);
+                WorldVisual("WorkbenchDecorJarNeck",root,new Vector3(4.08f,1.345f,z),new Vector3(.055f,.025f,.055f),glass,PrimitiveType.Cylinder);
+                WorldVisual("WorkbenchDecorCork",root,new Vector3(4.08f,1.375f,z),new Vector3(.06f,.008f,.06f),wood,PrimitiveType.Cylinder);
+            }
+            // Low mortar with a recessed dark bowl, below the hero bottle silhouette.
+            WorldVisual("WorkbenchMortar",root,new Vector3(3.71f,1.235f,.26f),new Vector3(.13f,.035f,.13f),clay,PrimitiveType.Cylinder);
+            WorldVisual("WorkbenchMortarBowl",root,new Vector3(3.71f,1.2705f,.26f),new Vector3(.095f,.001f,.095f),seam,PrimitiveType.Cylinder);
+            WorldVisual("WorkbenchPestle",root,new Vector3(3.75f,1.282f,.26f),new Vector3(.14f,.025f,.03f),clay);
+        }
         static void ConfigureWarehouseStage7()
         {
             // Substitute all historical alchemical mask dependencies, including lamps/inscription.
@@ -49,6 +80,11 @@ namespace MagicEscape.EditorTools
                 name.localPosition=new Vector3(.14f,-.51f,-.103f);name.localScale=new Vector3(.48f,.16f,1);
                 frame.Find("ArtB_RomanPlaque").localScale=new Vector3(1.02f,.23f,.07f);
             }
+            var seedPicture=AssetDatabase.LoadAssetAtPath<Texture2D>("Assets/Art/Warehouse/Story_1.png");
+            Set(Find("Painting_I").GetComponent<InspectableObject>(),"picture",seedPicture);
+            var seedMaterial=ArtMaterial("WarehouseSeedStory",Color.white);seedMaterial.mainTexture=seedPicture;
+            EditorUtility.SetDirty(seedMaterial);
+            Find("ArtB_PictureFrame_I").transform.Find("ArtB_StoryIllustration").GetComponent<Renderer>().sharedMaterial=seedMaterial;
             var recipe=AssetDatabase.LoadAssetAtPath<Texture2D>("Assets/Art/Warehouse/PictureRecipe.png");
             Set(Find("RecipeBook").GetComponent<InspectableObject>(),"picture",recipe);
             var recipeMat=ArtMaterial("WarehouseRecipe",Color.white);recipeMat.mainTexture=recipe;
@@ -62,8 +98,7 @@ namespace MagicEscape.EditorTools
             var baseBox=Box("WarehouseChestPlinth",Find("WarehouseStorage").transform,new Vector3(-3.25f,.30f,-2.3f),new Vector3(1.12f,.60f,.78f));baseBox.GetComponent<Renderer>().sharedMaterial=wood;
             MoveItem(ItemIds.CrystalDust,new Vector3(-3.25f,.96f,-2.3f));
             MoveItem(ItemIds.SalamanderScale,new Vector3(3.65f,1.30f,.05f));
-            var shelf=Box("WarehouseIngredientShelf",Find("WarehouseStorage").transform,new Vector3(3.83f,1.15f,.05f),new Vector3(.90f,.10f,.68f));shelf.GetComponent<Renderer>().sharedMaterial=wood;
-            for(int side=-1;side<=1;side+=2){var leg=Box("WarehouseShelfLeg",Find("WarehouseStorage").transform,new Vector3(3.83f+side*.37f,.55f,.05f),new Vector3(.10f,1.10f,.55f));leg.GetComponent<Renderer>().sharedMaterial=wood;}
+            ConfigureScaleWorkbench(wood);
             // Damp barrel top by the east work aisle, not a hidden floor corner.
             MoveItem(ItemIds.Toadstool,new Vector3(3.5f,1.10f,-1.25f));
             var barrel=WorldVisual("WarehouseDampBarrel",Find("WarehouseStorage").transform,new Vector3(3.55f,.48f,-1.25f),new Vector3(.70f,.48f,.70f),wood,PrimitiveType.Cylinder);

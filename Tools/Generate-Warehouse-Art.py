@@ -10,7 +10,7 @@ def motif(name):
   line([(34,194),(82,91),(123,150),(166,61),(224,194),(34,194)]);line([(152,89),(168,115),(181,97)])
  elif name=='Water':
   p=[(128,32),(116,54),(86,94),(60,134),(57,165),(69,193),(96,211),(128,217),(160,211),(187,193),(199,165),(196,134),(170,94),(140,54),(128,32)];line(p)
-  d.arc((82,118,174,191),25,125,fill=c,width=11)
+  line([(91,108),(78,130)]) # Short upper-left glint, never a smiling arc.
  elif name=='Fire':
   line([(127,29),(153,87),(180,62),(190,119),(213,151),(208,186),(182,213),(78,213),(48,182),(46,147),(70,103),(77,155),(100,123),(127,29)])
   line([(111,208),(98,183),(109,157),(129,133),(145,163),(158,183),(147,208)])
@@ -44,9 +44,10 @@ for n in range(4):
  # Scene box / baseline, not an empty slot.
  ln([(x-147,565),(x-66,552),(x+26,562),(x+145,550)])
  if n==0:
-  d.ellipse((x-26,591,x+30,628),outline=c,width=6)
-  ln([(x+16,623),(x+42,650),(x+25,679),(x+56,699)],4)
-  ln([(x+35,660),(x-12,680),(x-27,704)],4)
+  # Pointed almond seed, split seam and a single tiny shoot: no head/legs silhouette.
+  ln([(x-48,625),(x-32,603),(x-4,593),(x+25,599),(x+45,617),(x+25,639),(x-5,647),(x-32,640),(x-48,625)])
+  ln([(x-40,626),(x-10,618),(x+17,619),(x+38,618)],4)
+  ln([(x-3,594),(x+1,581),(x+8,570)],4)
   for j in range(7):ln([(x-130+j*41,598),(x-115+j*41,581)],3)
  else:
   top=355 if n==3 else 420
@@ -114,3 +115,17 @@ for n in range(3):
 rd.arc((416,470,608,564),180,360,fill=ink,width=5);rline([(416,517),(608,517)]);rline([(491,520),(491,586),(534,586),(534,520)])
 rline([(433,464),(589,600)],7);rline([(589,464),(433,600)],7)
 recipe.save(out/'PictureRecipe.png')
+
+# Warehouse-only frame I: retain the etched parchment vocabulary without changing Classroom.
+rng=random.Random(5196)
+frame=Image.new('RGB',(512,512));frame.putdata([tuple(v+rng.randrange(-6,7) for v in (173,151,110)) for _ in range(512*512)])
+fd=ImageDraw.Draw(frame);ink=(45,36,27)
+for y in range(40,326,5):fd.line([(28,y),(155,y-2),(310,y+1),(484,y)],fill=(113,99,73),width=1)
+for _ in range(280):
+ x=rng.randrange(30,480);y=rng.randrange(343,480);fd.line([(x,y),(x+10,y-7)],fill=(80,64,44),width=1)
+fd.line([(26,335),(105,318),(220,329),(330,314),(485,338)],fill=ink,width=3)
+fd.line([(210,394),(226,373),(252,362),(278,367),(295,385),(278,407),(251,416),(225,409),(210,394)],fill=ink,width=3,joint='curve')
+fd.line([(216,394),(243,386),(270,388),(289,385)],fill=ink,width=2)
+fd.line([(252,362),(255,348),(262,338)],fill=ink,width=2)
+for off in (16,22):fd.rectangle((off,off,511-off,511-off),outline=(79,57,33),width=2)
+frame.save(out/'Story_1.png')

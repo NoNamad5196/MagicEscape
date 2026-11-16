@@ -1,0 +1,82 @@
+{
+  "baseCommit": "5d943a4",
+  "unity": "6000.3.28f1",
+  "generationExitCode": 0,
+  "editMode": {
+    "result": "Passed",
+    "total": "12",
+    "passed": "12",
+    "failed": "0",
+    "skipped": "0"
+  },
+  "playMode": {
+    "result": "Passed",
+    "total": "38",
+    "passed": "38",
+    "failed": "0",
+    "skipped": "0"
+  },
+  "pureCSharp": {
+    "total": "44",
+    "executed": "44",
+    "passed": "44",
+    "failed": "0",
+    "error": "0",
+    "timeout": "0",
+    "aborted": "0",
+    "inconclusive": "0",
+    "passedButRunAborted": "0",
+    "notRunnable": "0",
+    "notExecuted": "0",
+    "disconnected": "0",
+    "warning": "0",
+    "completed": "0",
+    "inProgress": "0",
+    "pending": "0"
+  },
+  "unchangedItemHomes": {
+    "Ingredient_Moonpetal": "(3.750, 0.780, -2.940)",
+    "Ingredient_SalamanderScale": "(3.650, 1.300, 0.050)",
+    "Ingredient_CrystalDust": "(-3.250, 0.960, -2.300)",
+    "Ingredient_Toadstool": "(3.500, 1.100, -1.250)",
+    "Reward_Sapphire": "(-0.800, 1.120, -0.300)",
+    "Reward_Ruby": "(2.500, 1.050, 1.650)",
+    "Reward_Revelation": "(2.900, 1.050, 1.650)"
+  },
+  "preservedOriginalUntrackedEvidence": 36,
+  "historicalTrackedCapturesAndClassroomUnchanged": true,
+  "directlyReviewedCaptures": [
+    "stage8-chalk-inspect.png",
+    "stage8-chalk-front.png",
+    "stage8-frame-I-close.png",
+    "stage8-altar-pc.png",
+    "stage8-frame-II-close.png",
+    "stage8-item-ing_salamander_scale.png"
+  ],
+  "captureSha256": {
+    "stage8-altar-pc.png": "80003fae5fcc896b559e02026c495185d3804611775baf359ade0fa827046e8f",
+    "stage8-altar-standing.png": "45e5013c74911b88c458e45dfde027d03f2c1540be66a4758c8239eae2ae7e53",
+    "stage8-chalk-frames-wide.png": "a1fd3abcb0537ce3fb7e6a11594420557aabfa25da472cb1c396614a6f9cda97",
+    "stage8-chalk-front.png": "16f6090a737ad5ad26e4f0548bb002da7cb0f68753715a4ca987f3be2bf1ea35",
+    "stage8-chalk-inspect.png": "5cfad694a407c6faa8075c7269ef6e706f324662153950ebeb780403cafe18b3",
+    "stage8-frame-I-close.png": "99fdf4debb170e4f5e8df3ae5e9c59830f59440bfbfb3d589ffcfa60eeb6e997",
+    "stage8-frame-II-close.png": "43fd8679b2ff794a8bee56d8998d53fa8e8febd5f9ff5e7237acf9ff12520f02",
+    "stage8-frame-III-chest-open.png": "f9cfc5aab97544d9fc46a09fbd451112bf5280a21706021fc26935e2109324a0",
+    "stage8-frame-III-close.png": "8969c0b603e6a9a4687d98fa7066c431439c47ea32968d5cac32d78c3b940918",
+    "stage8-frame-IV-close.png": "82594a045cafe7b3b8c03832824f305ae7d99996ea3d8f99bd0304e94e096cd9",
+    "stage8-item-crystal_ruby-darkest.png": "324aea1bb713f949ad9d1994f05a919576446599d5b88da9e0b1fc81c3b7b3e4",
+    "stage8-item-crystal_ruby.png": "dcd58ce27c815caa12a74bd29ed80b7ceabc60331cae617d0b5788e87bf2476c",
+    "stage8-item-crystal_sapphire.png": "aa0772e7f52b3079be394afa4289237012a5a814a0f1bd2818b14bdf1b6536c5",
+    "stage8-item-ing_crystal_dust.png": "e36e1ff3f1e469f82d574131d4af4bb49e471da1ebea53bfa92aa63061b7b3da",
+    "stage8-item-ing_moonpetal.png": "5c38f12b0348a7b0419b5c299fe8bcd27f3088f18b74db712fde176e3caecd2a",
+    "stage8-item-ing_salamander_scale.png": "90f88fbb463a61f0e4be62c357c2d4374d0083da4d7e7831f7f4e66e37861d96",
+    "stage8-item-ing_toadstool.png": "2c7aa0843e1b49f8d2ca0729fe5d5216385a4fea0d75a22db3f26433fca4a544",
+    "stage8-item-map.png": "3a9adce155884d268e1de1aeab2fc937a2c828a17f19705fe760f3c755fc6bd3",
+    "stage8-item-potion_revelation.png": "82e956faa69fd6d1e9923e18decc0e2c1a73dc626e2183904c93659d0d932199"
+  },
+  "limitations": [
+    "Actual HMD use not tested",
+    "S11 player build not run",
+    "OpenXR without device and licensing token warnings remain"
+  ]
+}
