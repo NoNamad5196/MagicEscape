@@ -20,7 +20,7 @@ namespace MagicEscape
 
         public ItemData Item => item;
         public string ItemId => item != null ? item.itemId : null;
-        public bool IsAvailable => gameObject.activeSelf;
+        public bool IsAvailable => gameObject.activeSelf && ClearingGate.Allows(this);
 
         private void Awake()
         {
@@ -32,12 +32,14 @@ namespace MagicEscape
 
         public string GetPrompt(PlayerInteraction interactor)
         {
+            if (!ClearingGate.Allows(this)) return string.Empty;
             string itemName = item != null && !string.IsNullOrEmpty(item.displayName) ? item.displayName : name;
             return itemName + " " + promptVerb;
         }
 
         public void Interact(PlayerInteraction interactor)
         {
+            if (!ClearingGate.Allows(this)) return;
             InventoryManager inv = interactor.Inventory;
             if (inv == null || item == null) return;
             if (!inv.TryAdd(item))

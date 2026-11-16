@@ -27,6 +27,7 @@ namespace MagicEscape
         void OnRelease(SelectExitEventArgs args) { foreach (var collider in Grab.colliders) collider.gameObject.layer = 9; }
         public bool SelectInventory()
         {
+            if (!ClearingGate.Allows(this)) return false;
             var inv = InventoryManager.Instance;
             if (inv == null || (!inv.Contains(ItemId) && !inv.TryAdd(Pickup.Item))) return false;
             inv.Select(inv.Model.Items.ToList().IndexOf(ItemId));

@@ -13,6 +13,7 @@ namespace MagicEscape
         void OnDestroy() { if (press != null) press.selectEntered.RemoveListener(Press); }
         void Press(SelectEnterEventArgs args)
         {
+            if (!ClearingGate.Allows(this)) return;
             var gm = GameManager.Instance; var ui = UIManager.Instance;
             var presentation = FindFirstObjectByType<RoomPresentation>();
             if (gm == null || !gm.IsPlaying || (ui != null && ui.IsReading) || (presentation != null && presentation.InputBlocked)) return;

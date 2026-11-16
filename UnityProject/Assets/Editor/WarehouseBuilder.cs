@@ -62,7 +62,7 @@ namespace MagicEscape.EditorTools
                 if (feature is OculusTouchControllerProfile || feature is ValveIndexControllerProfile || feature is MicrosoftMotionControllerProfile) feature.enabled = true;
             EditorUtility.SetDirty(openxr); EditorUtility.SetDirty(general); EditorUtility.SetDirty(general.Manager);
         }
-        // Stage 1+2 only. Historical Classroom remains a regression fixture, not the startup scene.
+        // Stages 1-3. Historical Classroom remains a regression fixture, not the startup scene.
         public static void Warehouse()
         {
             S10f();
@@ -130,17 +130,17 @@ namespace MagicEscape.EditorTools
                 Box("ChestBack",chest,new Vector3(0,.33f,.315f),new Vector3(1.05f,.5f,.07f)) }) part.GetComponent<Renderer>().sharedMaterial = wood;
             var lid = Box("ChestOpenLid",chest,new Vector3(0,.78f,-.32f),new Vector3(1.05f,.45f,.07f));
             lid.GetComponent<Renderer>().sharedMaterial = wood; lid.transform.localRotation = Quaternion.Euler(12,0,0);
-            // Open, static chest: stage 3 will own clearing, not this builder.
+            // Base chest shell; ConfigureClearing installs the shared hinged lid.
             MoveItem(ItemIds.CrystalDust, new Vector3(-3.25f, .36f, -2.3f));
             MoveItem(ItemIds.SalamanderScale, new Vector3(3.9f, 1.03f, 1.05f));
             MoveItem(ItemIds.Moonpetal, new Vector3(3.75f, .78f, -2.94f));
-            MoveItem(ItemIds.Toadstool, new Vector3(-3.85f, .13f, 2.7f));
-            // Two oil paintings lean behind the stack but remain partly readable until stage 3.
+            MoveItem(ItemIds.Toadstool, new Vector3(-3.85f, .13f, 3.08f));
+            // Two oil paintings lean behind the movable clearing crates.
             FitWarehouseClues();
             foreach (var t in geometry.GetComponentsInChildren<Transform>(true))
                 if (t.GetComponent<Collider>() != null && t.GetComponent<HandlingProfile>() == null) t.gameObject.AddComponent<HandlingProfile>();
             presentation.progressiveDarkening = false; // Stage 4 deliberately not implemented here.
-            ConfigureXri(); ConfigureOpenXR();
+            ConfigureXri(); ConfigureClearing(); ConfigureOpenXR();
             EditorSceneManager.SaveScene(SceneManager.GetActiveScene(), WarehousePath);
             EditorBuildSettings.scenes = new[] { new EditorBuildSettingsScene(WarehousePath, true), new EditorBuildSettingsScene(ScenePath, true) };
             AssetDatabase.SaveAssets();

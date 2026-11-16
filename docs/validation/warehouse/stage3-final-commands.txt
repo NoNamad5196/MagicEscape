@@ -1,0 +1,8 @@
+# Repository root; Windows; one Unity Editor at a time.
+# Use fresh report filenames on subsequent runs; preserve existing XML/TRX.
+python Tools/Generate-Clearing-Art.py
+powershell -ExecutionPolicy Bypass -File Tools/Run-Unity.ps1 -Name warehouse/stage3-accept-generate -Method MagicEscape.EditorTools.ClassroomBuilder.Warehouse
+# Exclude/preserve unrelated historical Classroom/shared-asset regeneration changes.
+powershell -ExecutionPolicy Bypass -File Tools/Run-Unity.ps1 -Name warehouse/stage3-final-editmode -Tests -TestPlatform EditMode
+powershell -ExecutionPolicy Bypass -File Tools/Run-Unity.ps1 -Name warehouse/stage3-final-playmode -Tests
+dotnet test Tests/MagicEscape.Core.Tests --logger "trx;LogFileName=stage3-accept-core.trx" --results-directory docs/validation/warehouse

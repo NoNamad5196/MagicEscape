@@ -24,6 +24,7 @@ namespace MagicEscape
         /// <summary>이번 프레임 마우스 이동량(구 Input Manager 단위).</summary>
         public Vector2 Look { get; private set; }
         public bool InteractPressed { get; private set; }
+        public bool PrimaryHeld { get; private set; }
         public bool PrimaryPressed { get; private set; }
         public bool DropPressed { get; private set; }
         public bool RigTogglePressed { get; private set; }
@@ -73,6 +74,7 @@ namespace MagicEscape
             TeleportHeld = leftTeleport.IsPressed(); SnapTurn = snapTurn.ReadValue<Vector2>();
             Keyboard kb = Keyboard.current;
             Mouse mouse = Mouse.current;
+            PrimaryHeld = mouse != null && mouse.leftButton.isPressed;
             PrimaryPressed = mouse != null && mouse.leftButton.wasPressedThisFrame;
             DropPressed = mouse != null && mouse.rightButton.wasPressedThisFrame;
             RigTogglePressed = kb != null && kb.f9Key.wasPressedThisFrame;
@@ -110,6 +112,7 @@ namespace MagicEscape
 #if ENABLE_LEGACY_INPUT_MANAGER
         private void ReadLegacyInput()
         {
+            PrimaryHeld = Input.GetMouseButton(0);
             PrimaryPressed = Input.GetMouseButtonDown(0); DropPressed = Input.GetMouseButtonDown(1);
             RigTogglePressed = Input.GetKeyDown(KeyCode.F9);
             AnyPressed = Input.anyKeyDown;

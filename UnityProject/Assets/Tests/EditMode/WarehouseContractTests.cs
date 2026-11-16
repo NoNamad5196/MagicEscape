@@ -95,4 +95,29 @@ public class WarehouseContractTests
             foreach(var r in detail) Assert.IsTrue(support.Intersects(r.bounds),r.name+" detached from crate");
         }
     }
+    [Test] public void ClearingPropsHaveSupportedHomesAndDynamicAttachedVisuals()
+    {
+        EditorSceneManager.OpenScene("Assets/Scenes/Warehouse.unity");
+        foreach(var moving in UnityEngine.Object.FindObjectsByType<XriClearable>(FindObjectsSortMode.None))
+        {
+            Assert.AreEqual(1,moving.GetComponents<UnityEngine.XR.Interaction.Toolkit.Interactables.XRBaseInteractable>().Length);
+            foreach(var t in moving.GetComponentsInChildren<Transform>())Assert.False(t.gameObject.isStatic,t.name+" must not remain in static render batch");
+            if(moving.kind==ClearingKind.Slide)
+            {
+                var b=moving.GetComponent<Collider>().bounds;Assert.That(b.min.y,Is.EqualTo(0).Within(.01f));
+                var attached=b;attached.Expand(.08f);
+                foreach(var r in moving.GetComponentsInChildren<Renderer>())Assert.True(attached.Intersects(r.bounds),r.name+" detached");
+            }
+        }
+        var books=GameObject.Find("MovableBookStack").GetComponent<XriLooseProp>();
+        var source=GameObject.Find("SouthStorage_0").GetComponent<Collider>().bounds;
+        var destination=GameObject.Find("SouthStorage_1").GetComponent<Collider>().bounds;
+        Assert.That(books.GetComponent<Collider>().bounds.min.y,Is.EqualTo(source.max.y).Within(.01f));
+        Assert.That(books.parking.y-.13f,Is.EqualTo(destination.max.y).Within(.01f));
+        Assert.True(GameObject.Find("BookStackClue").GetComponent<Collider>().bounds.min.y>=source.max.y);
+        var cloth=GameObject.Find("ElementTableCloth");var rod=GameObject.Find("ClothDowel").GetComponent<Collider>().bounds;rod.Expand(.04f);
+        Assert.True(rod.Intersects(cloth.GetComponentInChildren<Renderer>().bounds),"Cloth touches hanging dowel");
+        var lid=GameObject.Find("ChestLidHinge");var back=GameObject.Find("ChestBack").GetComponent<Collider>().bounds;back.Expand(.08f);
+        Assert.True(back.Intersects(lid.GetComponentInChildren<Renderer>().bounds),"Lid physically touches back hinge edge");
+    }
 }

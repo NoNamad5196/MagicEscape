@@ -1,0 +1,245 @@
+{
+  "unity": "6000.3.28f1",
+  "generation": {
+    "local_log": "stage3-accept-generate.log",
+    "exit_code": 0,
+    "method": "MagicEscape.EditorTools.ClassroomBuilder.Warehouse"
+  },
+  "editmode": {
+    "local_evidence": "stage3-final-editmode.xml",
+    "result": "Passed",
+    "total": "7",
+    "passed": "7",
+    "failed": "0",
+    "skipped": "0",
+    "start-time": "2026-11-16 15:04:47Z",
+    "end-time": "2026-11-16 15:04:49Z",
+    "duration": "2.3183555",
+    "tests": [
+      {
+        "name": "WarehouseContractTests.ClearingPropsHaveSupportedHomesAndDynamicAttachedVisuals",
+        "result": "Passed"
+      },
+      {
+        "name": "WarehouseContractTests.InstalledVersionsAreTheUnity63ReleasedPackages",
+        "result": "Passed"
+      },
+      {
+        "name": "WarehouseContractTests.PictureAssembliesAreSupportedAndLabelsAndLightsStayAttached",
+        "result": "Passed"
+      },
+      {
+        "name": "WarehouseContractTests.ProgressionStillRequiresAllThreePuzzles",
+        "result": "Passed"
+      },
+      {
+        "name": "WarehouseContractTests.ProposalDoesNotChangeAnswersOrIds",
+        "result": "Passed"
+      },
+      {
+        "name": "WarehouseContractTests.StorageCratesHavePhysicalSupportAndAttachedDetail",
+        "result": "Passed"
+      },
+      {
+        "name": "WarehouseContractTests.WarehouseIsStartupAndClassroomIsRegressionFixture",
+        "result": "Passed"
+      }
+    ]
+  },
+  "playmode": {
+    "local_evidence": "stage3-final-playmode.xml",
+    "result": "Passed",
+    "total": "32",
+    "passed": "32",
+    "failed": "0",
+    "skipped": "0",
+    "start-time": "2026-11-16 15:05:29Z",
+    "end-time": "2026-11-16 15:08:03Z",
+    "duration": "154.6881984",
+    "tests": [
+      {
+        "name": "ArtTests.S10f_ArtAudioEffectsLayoutAndGameViewCaptures",
+        "result": "Passed"
+      },
+      {
+        "name": "ClassroomTests.S1_RoomAndDoorway",
+        "result": "Passed"
+      },
+      {
+        "name": "CluesTests.S5_ClueReadsAndVisibleOrder",
+        "result": "Passed"
+      },
+      {
+        "name": "FifthPassTests.ClueSentencesNeverAutomaticallyAppearBeforeFailure",
+        "result": "Passed"
+      },
+      {
+        "name": "FifthPassTests.EndingShowsActualClearTimeAfterBlackFade",
+        "result": "Passed"
+      },
+      {
+        "name": "FifthPassTests.FailureThresholdsShowTextOnlyAtThreeTwoTwo",
+        "result": "Passed"
+      },
+      {
+        "name": "FifthPassTests.OpeningAnyKeySkipsWithoutGameplayInput",
+        "result": "Passed"
+      },
+      {
+        "name": "FifthPassTests.SealReleaseChangesLampsBrightnessAndFrameFeedback",
+        "result": "Passed"
+      },
+      {
+        "name": "FullInputTests.ExitStraightCenter",
+        "result": "Passed"
+      },
+      {
+        "name": "FullInputTests.ExitStraightLeft",
+        "result": "Passed"
+      },
+      {
+        "name": "FullInputTests.ExitStraightRight",
+        "result": "Passed"
+      },
+      {
+        "name": "FullInputTests.S9_KeyboardRaycastAllPuzzlesWalkExit",
+        "result": "Passed"
+      },
+      {
+        "name": "ItemsTests.S4_CatalogHotbarSelection",
+        "result": "Passed"
+      },
+      {
+        "name": "PotionTests.S7_LocksWrongRespawnsAndRewards",
+        "result": "Passed"
+      },
+      {
+        "name": "RuneTests.S6_WrongHintCorrectRewardSeal",
+        "result": "Passed"
+      },
+      {
+        "name": "SealTests.S8_SealRejectionDoorPhysicalTriggerClearRestart",
+        "result": "Passed"
+      },
+      {
+        "name": "SixthPassTests.IncisionsAndMaterialEffectsStayPresentationOnly",
+        "result": "Passed"
+      },
+      {
+        "name": "SystemsTests.S2_PlayerSystems",
+        "result": "Passed"
+      },
+      {
+        "name": "UITests.S3_PanelsButtonsReadRestart",
+        "result": "Passed"
+      },
+      {
+        "name": "WarehouseXriTests.AutomaticSelectionFallsBackWithoutHmd",
+        "result": "Passed"
+      },
+      {
+        "name": "WarehouseXriTests.CrateRailsCannotBlockPuzzlesExitOrWalls",
+        "result": "Passed"
+      },
+      {
+        "name": "WarehouseXriTests.DesktopClearingAllFourAndHiddenTargetsCannotBeBypassed",
+        "result": "Passed"
+      },
+      {
+        "name": "WarehouseXriTests.DesktopCrystalLeftAndRightSockets",
+        "result": "Passed"
+      },
+      {
+        "name": "WarehouseXriTests.DesktopFullFlowTurnsOffThreeSealsAndOpensExit",
+        "result": "Passed"
+      },
+      {
+        "name": "WarehouseXriTests.DesktopGrabIngredientsIntoCauldronSocket",
+        "result": "Passed"
+      },
+      {
+        "name": "WarehouseXriTests.DesktopRunePressUsesXri",
+        "result": "Passed"
+      },
+      {
+        "name": "WarehouseXriTests.FrameAndStoneUseIdenticalBrassMotifs",
+        "result": "Passed"
+      },
+      {
+        "name": "WarehouseXriTests.SharedPressRetiresUnheldConsumedPotion",
+        "result": "Passed"
+      },
+      {
+        "name": "WarehouseXriTests.VrSimulatedControllerSharesRuneAndGrabComponents",
+        "result": "Passed"
+      },
+      {
+        "name": "WarehouseXriTests.VrTrackedHandPullsAndPushesSameHeavyCrate",
+        "result": "Passed"
+      },
+      {
+        "name": "WarehouseXriTests.WarehouseArchitectureAndRigSwitch",
+        "result": "Passed"
+      },
+      {
+        "name": "WarehouseXriTests.WrongPhysicalIngredientRespawnsEntireAttempt",
+        "result": "Passed"
+      }
+    ]
+  },
+  "core": {
+    "local_evidence": "stage3-accept-core.trx",
+    "total": "44",
+    "executed": "44",
+    "passed": "44",
+    "failed": "0",
+    "error": "0",
+    "timeout": "0",
+    "aborted": "0",
+    "inconclusive": "0",
+    "passedButRunAborted": "0",
+    "notRunnable": "0",
+    "notExecuted": "0",
+    "disconnected": "0",
+    "warning": "0",
+    "completed": "0",
+    "inProgress": "0",
+    "pending": "0"
+  },
+  "screenshots": [
+    {
+      "file": "stage3-element-table-close.png",
+      "sha256": "98ee960ac80fbf4173b79d043795eb98a50904e8ec87b7ff1ca4186ca1405563",
+      "directly_opened": true
+    },
+    {
+      "file": "stage3-frame-I-after.png",
+      "sha256": "2c2b13af0ec6ed2b2afff0f83a700ddf1f50afc24b2aa79cd842cdcec8fceca4",
+      "directly_opened": true
+    },
+    {
+      "file": "stage3-frame-IV-after.png",
+      "sha256": "83abbd95a2536cd01058909a151a06a6494e64e7baf8846db54a730c8d879897",
+      "directly_opened": true
+    },
+    {
+      "file": "stage3-frame-stone-comparison.png",
+      "sha256": "9d8db9340b5a73b67c90c61382ec8993b6c5b17a5c52321689b181ab135f1769",
+      "directly_opened": true
+    },
+    {
+      "file": "stage3-frames-after.png",
+      "sha256": "37a1d110061c9a5398475c6a59da6b50bcc2c1a348fb24df96bcf3107860e5c5",
+      "directly_opened": true
+    },
+    {
+      "file": "stage3-frames-before.png",
+      "sha256": "539b6633ae1cbcae4fd1c215ded34c15d98fa9a6e2a235a76f0a865b50932770",
+      "directly_opened": true
+    }
+  ],
+  "protected_entry_reports": 31,
+  "real_hmd_verified": false,
+  "s11_build": false,
+  "stage4_darkening": false
+}

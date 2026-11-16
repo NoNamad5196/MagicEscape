@@ -39,10 +39,11 @@ namespace MagicEscape
             if (gm != null && gm.Progression != null) gm.Progression.PuzzleStateChanged -= OnPuzzleStateChanged;
         }
 
-        public string GetPrompt(PlayerInteraction interactor) => promptVerb;
+        public string GetPrompt(PlayerInteraction interactor) => ClearingGate.Allows(this) ? promptVerb : string.Empty;
 
         public void Interact(PlayerInteraction interactor)
         {
+            if (!ClearingGate.Allows(this)) return;
             if (IsLocked())
             {
                 interactor.Say(lockedMessage);
