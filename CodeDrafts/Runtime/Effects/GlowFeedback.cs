@@ -19,6 +19,7 @@ namespace MagicEscape
         [SerializeField] private float intensity = 3f;
         [SerializeField] private bool affectBaseColor;
 
+        [SerializeField] private Renderer[] additionalRenderers = new Renderer[0];
         private MaterialPropertyBlock _block;
         private Color _steadyColor = Color.black;
         private Coroutine _flash;
@@ -64,6 +65,13 @@ namespace MagicEscape
                 _block.SetColor(EmissionColorId, color * (on ? intensity : 0f));
                 if(affectBaseColor && on)_block.SetColor("_BaseColor",color);
                 targetRenderer.SetPropertyBlock(_block);
+            }
+            foreach(var renderer in additionalRenderers)
+            {
+                if(renderer==null)continue;
+                renderer.GetPropertyBlock(_block);
+                _block.SetColor(EmissionColorId,color*(on?intensity:0f));
+                renderer.SetPropertyBlock(_block);
             }
             if (glowLight != null)
             {

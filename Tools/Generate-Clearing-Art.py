@@ -31,27 +31,6 @@ def sun(d,x,y,r):
 def ground(d,x,y):
  d.line((x-65,y,x+65,y),fill=INK,width=4)
  for j in range(13):d.line((x-60+j*10,y+14,x-48+j*10,y+2),fill=INK,width=1)
-def pict(d,n,x,y):
- if n=='Fire':
-  d.polygon([(x-35,y+45),(x-49,y+10),(x-20,y-20),(x-12,y+6),(x+8,y-55),(x+33,y-15),(x+43,y+20),(x+24,y+45)],outline=INK,width=4)
-  for j in range(6):d.line((x-25+j*9,y+30,x-19+j*8,y+8),fill=INK,width=1)
- elif n=='Water':
-  d.line([(x,y-55),(x-32,y+4),(x-28,y+34),(x,y+46),(x+28,y+34),(x+32,y+4),(x,y-55)],fill=INK,width=4,joint='curve');d.arc((x-21,y-4,x+20,y+32),20,150,fill=INK,width=2)
- elif n=='Wind':
-  for j in range(3):d.arc((x-65,y-38+j*26,x+43,y+5+j*26),180,355,fill=INK,width=4)
- elif n=='Earth':
-  d.polygon([(x-56,y+23),(x-30,y-26),(x+15,y-39),(x+57,y+12),(x+35,y+35),(x-56,y+23)],outline=INK,width=4)
-  for j in range(11):d.line((x-40+j*7,y+17,x-26+j*7,y-7),fill=INK,width=1)
- elif n=='Light':sun(d,x,y,28)
- else:
-  d.arc((x-40,y-47,x+40,y+43),55,305,fill=INK,width=4);d.arc((x-16,y-46,x+49,y+43),85,275,fill=INK,width=3)
-im=paper((1024,768));d=ImageDraw.Draw(im)
-for b in (14,22):d.rectangle((b,b,1023-b,767-b),outline=INK,width=2)
-# Deliberately unordered, unnumbered, no arrows. Symbol -> referent, never a solution sequence.
-for j,n in enumerate(['Wind','Light','Water','Shadow','Earth','Fire']):
- x=42+(j%2)*492;y=45+(j//2)*242
- g=glyph(n,166,INK,(0,0,0,0));im.paste(g,(x,y+16),g);pict(d,n,x+313,y+99)
-im.save(E/'ElementTable.png')
 # III is drought / heat, not IV's blooming flower.
 im=paper((512,512));d=ImageDraw.Draw(im)
 for b in (12,19):d.rectangle((b,b,511-b,511-b),outline=INK,width=2)
@@ -69,7 +48,7 @@ for x in (104,166,315,409):
  pts=[(x+math.sin(k*.5)*8,300-k*5) for k in range(22)];d.line(pts,fill=INK,width=2)
 g=glyph('Fire',105,INK,(0,0,0,0));im.paste(g,(35,35),g)
 im.save(B/'Story_3.png')
-print('Stage 3: bold matching brass glyphs, heat woodcut, unnumbered six-element manuscript.')
+print('Stage 3: bold matching brass glyphs, heat woodcut, woven cloth.')
 
 # Woven linen with broad vertical folds (not timber plank grain).
 im=Image.new('RGB',(256,256)); px=im.load()

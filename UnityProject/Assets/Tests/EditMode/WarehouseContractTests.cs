@@ -114,9 +114,12 @@ public class WarehouseContractTests
         var destination=GameObject.Find("SouthStorage_1").GetComponent<Collider>().bounds;
         Assert.That(books.GetComponent<Collider>().bounds.min.y,Is.EqualTo(source.max.y).Within(.01f));
         Assert.That(books.parking.y-.13f,Is.EqualTo(destination.max.y).Within(.01f));
-        Assert.True(GameObject.Find("BookStackClue").GetComponent<Collider>().bounds.min.y>=source.max.y);
-        var cloth=GameObject.Find("ElementTableCloth");var rod=GameObject.Find("ClothDowel").GetComponent<Collider>().bounds;rod.Expand(.04f);
-        Assert.True(rod.Intersects(cloth.GetComponentInChildren<Renderer>().bounds),"Cloth touches hanging dowel");
+        Assert.IsNull(GameObject.Find("ElementTable"));Assert.IsNull(GameObject.Find("BookStackClue"));
+        Assert.NotNull(GameObject.Find("BookbindingBoard"));
+        var cloth=GameObject.Find("PaintingIIICloth");
+        var frame=GameObject.Find("ArtB_PictureFrame_III");
+        Assert.True(cloth.GetComponentInChildren<Renderer>().bounds.Intersects(VisibleBounds(frame.transform)),"Cover touches frame");
+        Assert.AreSame(cloth.GetComponent<XriClearable>(),GameObject.Find("Painting_III").GetComponent<ClearingGate>().blocker);
         var lid=GameObject.Find("ChestLidHinge");var back=GameObject.Find("ChestBack").GetComponent<Collider>().bounds;back.Expand(.08f);
         Assert.True(back.Intersects(lid.GetComponentInChildren<Renderer>().bounds),"Lid physically touches back hinge edge");
     }

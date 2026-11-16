@@ -1,0 +1,409 @@
+{
+  "unity": "6000.3.28f1",
+  "platform": "Windows batchmode",
+  "generated_scene": "Warehouse.unity",
+  "generation_exit": 0,
+  "suites": {
+    "EditMode": {
+      "result": "Passed",
+      "total": "7",
+      "passed": "7",
+      "failed": "0",
+      "skipped": "0",
+      "tests": [
+        {
+          "name": "WarehouseContractTests.ClearingPropsHaveSupportedHomesAndDynamicAttachedVisuals",
+          "result": "Passed"
+        },
+        {
+          "name": "WarehouseContractTests.InstalledVersionsAreTheUnity63ReleasedPackages",
+          "result": "Passed"
+        },
+        {
+          "name": "WarehouseContractTests.PictureAssembliesAreSupportedAndLabelsAndLightsStayAttached",
+          "result": "Passed"
+        },
+        {
+          "name": "WarehouseContractTests.ProgressionStillRequiresAllThreePuzzles",
+          "result": "Passed"
+        },
+        {
+          "name": "WarehouseContractTests.ProposalDoesNotChangeAnswersOrIds",
+          "result": "Passed"
+        },
+        {
+          "name": "WarehouseContractTests.StorageCratesHavePhysicalSupportAndAttachedDetail",
+          "result": "Passed"
+        },
+        {
+          "name": "WarehouseContractTests.WarehouseIsStartupAndClassroomIsRegressionFixture",
+          "result": "Passed"
+        }
+      ]
+    },
+    "PlayMode": {
+      "result": "Passed",
+      "total": "36",
+      "passed": "36",
+      "failed": "0",
+      "skipped": "0",
+      "tests": [
+        {
+          "name": "ArtTests.S10f_ArtAudioEffectsLayoutAndGameViewCaptures",
+          "result": "Passed"
+        },
+        {
+          "name": "ClassroomTests.S1_RoomAndDoorway",
+          "result": "Passed"
+        },
+        {
+          "name": "CluesTests.S5_ClueReadsAndVisibleOrder",
+          "result": "Passed"
+        },
+        {
+          "name": "FifthPassTests.ClueSentencesNeverAutomaticallyAppearBeforeFailure",
+          "result": "Passed"
+        },
+        {
+          "name": "FifthPassTests.EndingShowsActualClearTimeAfterBlackFade",
+          "result": "Passed"
+        },
+        {
+          "name": "FifthPassTests.FailureThresholdsShowTextOnlyAtThreeTwoTwo",
+          "result": "Passed"
+        },
+        {
+          "name": "FifthPassTests.OpeningAnyKeySkipsWithoutGameplayInput",
+          "result": "Passed"
+        },
+        {
+          "name": "FifthPassTests.SealReleaseChangesLampsBrightnessAndFrameFeedback",
+          "result": "Passed"
+        },
+        {
+          "name": "FullInputTests.ExitStraightCenter",
+          "result": "Passed"
+        },
+        {
+          "name": "FullInputTests.ExitStraightLeft",
+          "result": "Passed"
+        },
+        {
+          "name": "FullInputTests.ExitStraightRight",
+          "result": "Passed"
+        },
+        {
+          "name": "FullInputTests.S9_KeyboardRaycastAllPuzzlesWalkExit",
+          "result": "Passed"
+        },
+        {
+          "name": "ItemsTests.S4_CatalogHotbarSelection",
+          "result": "Passed"
+        },
+        {
+          "name": "PotionTests.S7_LocksWrongRespawnsAndRewards",
+          "result": "Passed"
+        },
+        {
+          "name": "RuneTests.S6_WrongHintCorrectRewardSeal",
+          "result": "Passed"
+        },
+        {
+          "name": "SealTests.S8_SealRejectionDoorPhysicalTriggerClearRestart",
+          "result": "Passed"
+        },
+        {
+          "name": "SixthPassTests.IncisionsAndMaterialEffectsStayPresentationOnly",
+          "result": "Passed"
+        },
+        {
+          "name": "SystemsTests.S2_PlayerSystems",
+          "result": "Passed"
+        },
+        {
+          "name": "UITests.S3_PanelsButtonsReadRestart",
+          "result": "Passed"
+        },
+        {
+          "name": "WarehouseDarkeningTests.EveryPictureHasSeparateCloseHelp",
+          "result": "Passed"
+        },
+        {
+          "name": "WarehouseDarkeningTests.PuzzleAndClearingInteractionsContinueDuringSmoothTransitions",
+          "result": "Passed"
+        },
+        {
+          "name": "WarehouseDarkeningTests.StagesDecreaseLightKeepGuidesAndCaptureSameCamera",
+          "result": "Passed"
+        },
+        {
+          "name": "WarehouseXriTests.AutomaticSelectionFallsBackWithoutHmd",
+          "result": "Passed"
+        },
+        {
+          "name": "WarehouseXriTests.CrateRailsCannotBlockPuzzlesExitOrWalls",
+          "result": "Passed"
+        },
+        {
+          "name": "WarehouseXriTests.DesktopClearingAllFourAndHiddenTargetsCannotBeBypassed",
+          "result": "Passed"
+        },
+        {
+          "name": "WarehouseXriTests.DesktopCrystalLeftAndRightSockets",
+          "result": "Passed"
+        },
+        {
+          "name": "WarehouseXriTests.DesktopFullFlowTurnsOffThreeSealsAndOpensExit",
+          "result": "Passed"
+        },
+        {
+          "name": "WarehouseXriTests.DesktopGrabIngredientsIntoCauldronSocket",
+          "result": "Passed"
+        },
+        {
+          "name": "WarehouseXriTests.DesktopRunePressUsesXri",
+          "result": "Passed"
+        },
+        {
+          "name": "WarehouseXriTests.FrameAndStoneUseIdenticalBrassMotifs",
+          "result": "Passed"
+        },
+        {
+          "name": "WarehouseXriTests.NamedIncisionsAreReadableAndShareFillAndGlow",
+          "result": "Passed"
+        },
+        {
+          "name": "WarehouseXriTests.SharedPressRetiresUnheldConsumedPotion",
+          "result": "Passed"
+        },
+        {
+          "name": "WarehouseXriTests.VrSimulatedControllerSharesRuneAndGrabComponents",
+          "result": "Passed"
+        },
+        {
+          "name": "WarehouseXriTests.VrTrackedHandPullsAndPushesSameHeavyCrate",
+          "result": "Passed"
+        },
+        {
+          "name": "WarehouseXriTests.WarehouseArchitectureAndRigSwitch",
+          "result": "Passed"
+        },
+        {
+          "name": "WarehouseXriTests.WrongPhysicalIngredientRespawnsEntireAttempt",
+          "result": "Passed"
+        }
+      ]
+    },
+    "Core": {
+      "total": "44",
+      "executed": "44",
+      "passed": "44",
+      "failed": "0",
+      "tests": [
+        {
+          "name": "KoreanParticleTests.ObjectParticle(name: \"불도마뱀 비늘\", expected: \"불도마뱀 비늘을\")",
+          "result": "Passed"
+        },
+        {
+          "name": "MagicEscape.Core.Tests.SealPuzzleLogicTests.Inscription_requires_potion",
+          "result": "Passed"
+        },
+        {
+          "name": "MagicEscape.Core.Tests.PotionPuzzleLogicTests.Locked_cauldron_returns_NotActive_without_consuming",
+          "result": "Passed"
+        },
+        {
+          "name": "MagicEscape.Core.Tests.PotionPuzzleLogicTests.Non_ingredient_is_not_consumed_and_not_a_fail",
+          "result": "Passed"
+        },
+        {
+          "name": "MagicEscape.Core.Tests.RunePuzzleLogicTests.Hint_appears_after_three_fails",
+          "result": "Passed"
+        },
+        {
+          "name": "MagicEscape.Core.Tests.InventoryModelTests.Removing_selected_last_item_moves_selection_back",
+          "result": "Passed"
+        },
+        {
+          "name": "KoreanParticleTests.ObjectParticle(name: \"독버섯\", expected: \"독버섯을\")",
+          "result": "Passed"
+        },
+        {
+          "name": "MagicEscape.Core.Tests.PotionPuzzleLogicTests.Wrong_order_returns_whole_batch_for_respawn",
+          "result": "Passed"
+        },
+        {
+          "name": "MagicEscape.Core.Tests.SealPuzzleLogicTests.Wrong_socket_is_rejected_without_consuming",
+          "result": "Passed"
+        },
+        {
+          "name": "MagicEscape.Core.Tests.ProgressionModelTests.Flow_transitions_are_guarded",
+          "result": "Passed"
+        },
+        {
+          "name": "KoreanParticleTests.ObjectParticle(name: \"\", expected: \"를\")",
+          "result": "Passed"
+        },
+        {
+          "name": "MagicEscape.Core.Tests.RunePuzzleLogicTests.Correct_sequence_solves",
+          "result": "Passed"
+        },
+        {
+          "name": "MagicEscape.Core.Tests.PotionPuzzleLogicTests.Correct_recipe_solves",
+          "result": "Passed"
+        },
+        {
+          "name": "KoreanParticleTests.ObjectParticle(name: \"푸른 수정 (물)\", expected: \"푸른 수정 (물)을\")",
+          "result": "Passed"
+        },
+        {
+          "name": "MagicEscape.Core.Tests.RunePuzzleLogicTests.Wrong_rune_resets_progress_and_counts_fail",
+          "result": "Passed"
+        },
+        {
+          "name": "MagicEscape.Core.Tests.SealPuzzleLogicTests.Sockets_unavailable_before_reveal",
+          "result": "Passed"
+        },
+        {
+          "name": "MagicEscape.Core.Tests.SealPuzzleLogicTests.Hint_after_two_rejections",
+          "result": "Passed"
+        },
+        {
+          "name": "MagicEscape.Core.Tests.InventoryModelTests.Selected_item_follows_selection",
+          "result": "Passed"
+        },
+        {
+          "name": "KoreanParticleTests.ObjectParticle(name: \"수정 가루\", expected: \"수정 가루를\")",
+          "result": "Passed"
+        },
+        {
+          "name": "MagicEscape.Core.Tests.InventoryModelTests.Wheel_selection_wraps",
+          "result": "Passed"
+        },
+        {
+          "name": "MagicEscape.Core.Tests.PotionPuzzleLogicTests.Hint_after_two_fails_and_retry_still_possible",
+          "result": "Passed"
+        },
+        {
+          "name": "KoreanParticleTests.ObjectParticle(name: \"월광초 꽃잎\", expected: \"월광초 꽃잎을\")",
+          "result": "Passed"
+        },
+        {
+          "name": "MagicEscape.Core.Tests.ProgressionModelTests.Time_accumulates_only_while_playing",
+          "result": "Passed"
+        },
+        {
+          "name": "MagicEscape.Core.Tests.SealPuzzleLogicTests.Non_crystal_item_is_invalid_not_fail",
+          "result": "Passed"
+        },
+        {
+          "name": "KoreanParticleTests.ObjectParticle(name: \"붉은 수정 (불)\", expected: \"붉은 수정 (불)을\")",
+          "result": "Passed"
+        },
+        {
+          "name": "MagicEscape.Core.Tests.ProgressionModelTests.Initial_states_match_spec",
+          "result": "Passed"
+        },
+        {
+          "name": "MagicEscape.Core.Tests.InventoryModelTests.Changed_event_fires",
+          "result": "Passed"
+        },
+        {
+          "name": "KoreanParticleTests.OtherParticles",
+          "result": "Passed"
+        },
+        {
+          "name": "MagicEscape.Core.Tests.RunePuzzleLogicTests.Inactive_puzzle_ignores_input",
+          "result": "Passed"
+        },
+        {
+          "name": "MagicEscape.Core.Tests.ProgressionModelTests.Escape_only_when_exit_open_and_playing",
+          "result": "Passed"
+        },
+        {
+          "name": "MagicEscape.Core.Tests.SealPuzzleLogicTests.Dormant_device_reports_dormant_everywhere",
+          "result": "Passed"
+        },
+        {
+          "name": "MagicEscape.Core.Tests.ProgressionModelTests.Puzzles_unlock_in_order_and_open_exit",
+          "result": "Passed"
+        },
+        {
+          "name": "MagicEscape.Core.Tests.RunePuzzleLogicTests.Null_or_empty_answer_throws",
+          "result": "Passed"
+        },
+        {
+          "name": "MagicEscape.Core.Tests.RunePuzzleLogicTests.Default_answer_matches_spec",
+          "result": "Passed"
+        },
+        {
+          "name": "MagicEscape.Core.Tests.ProgressionModelTests.Potion_cannot_be_solved_before_rune",
+          "result": "Passed"
+        },
+        {
+          "name": "MagicEscape.Core.Tests.InventoryModelTests.Add_until_full_then_refuse",
+          "result": "Passed"
+        },
+        {
+          "name": "MagicEscape.Core.Tests.RunePuzzleLogicTests.After_wrong_must_restart_from_first_rune",
+          "result": "Passed"
+        },
+        {
+          "name": "MagicEscape.Core.Tests.SealPuzzleLogicTests.Full_sequence_releases_seal",
+          "result": "Passed"
+        },
+        {
+          "name": "MagicEscape.Core.Tests.FullRunTests.Whole_escape_flow",
+          "result": "Passed"
+        },
+        {
+          "name": "KoreanParticleTests.ObjectParticle(name: null, expected: \"를\")",
+          "result": "Passed"
+        },
+        {
+          "name": "MagicEscape.Core.Tests.InventoryModelTests.Rejects_null_or_empty",
+          "result": "Passed"
+        },
+        {
+          "name": "MagicEscape.Core.Tests.PotionPuzzleLogicTests.Toadstool_is_always_wrong_and_respawned",
+          "result": "Passed"
+        },
+        {
+          "name": "KoreanParticleTests.ObjectParticle(name: \"계시의 물약\", expected: \"계시의 물약을\")",
+          "result": "Passed"
+        },
+        {
+          "name": "MagicEscape.Core.Tests.ProgressionModelTests.Solving_twice_is_ignored",
+          "result": "Passed"
+        }
+      ]
+    }
+  },
+  "captures": {
+    "stage5-altar-pc.png": {
+      "sha256": "ee43ef5ef05fa4fd30d4ac10097572f963da80016a805bb013d7ab91057d5b6f",
+      "bytes": 853101
+    },
+    "stage5-altar-standing.png": {
+      "sha256": "8cad57d136a3595b72d33b1d3257462e057fc7ef2816139d27997d59c5d568e0",
+      "bytes": 854049
+    },
+    "stage5-frame-III-close.png": {
+      "sha256": "ff431d4ae75097f749178569e66dd065e7ba5db363a62bbc23345b2b305ef5ca",
+      "bytes": 800788
+    },
+    "stage5-III-after.png": {
+      "sha256": "c9f5c752d05d392238552152c23e46dbb79fe0d8aaa038c3719a70fed5388138",
+      "bytes": 770634
+    },
+    "stage5-III-before.png": {
+      "sha256": "cb56d4281df8153609f0c1cba80939fc05179a57d8b95ed249aea158b56f93ba",
+      "bytes": 782194
+    }
+  },
+  "existing_evidence": {
+    "xml_trx_files": 82,
+    "changed": 0,
+    "original_untracked_xml_trx": 36
+  }
+}

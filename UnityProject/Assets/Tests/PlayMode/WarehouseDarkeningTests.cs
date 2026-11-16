@@ -144,7 +144,6 @@ public class WarehouseDarkeningTests
             var picture=Object.FindObjectsByType<RawImage>(FindObjectsSortMode.None).Single(r=>r.name=="PictureClue").rectTransform;
             var help=picture.parent.Find("CloseHelp") as RectTransform;
             Assert.Less(help.anchoredPosition.y+help.rect.height/2,picture.anchoredPosition.y-picture.rect.height/2-10,item.name);
-            if(item.name=="ElementTable")yield return Capture("stage4-element-table-close");
             UIManager.Instance.CloseRead();
         }
     }

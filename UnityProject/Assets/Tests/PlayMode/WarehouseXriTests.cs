@@ -132,8 +132,7 @@ public class WarehouseXriTests
     }
     IEnumerator CaptureClearing(string name)
     {
-        yield return ArtTests.Capture(name);
-        System.IO.File.Copy(System.IO.Path.Combine(Application.dataPath,"../../docs/validation/s10f/"+name+".png"),System.IO.Path.Combine(Application.dataPath,"../../docs/validation/warehouse/"+name+".png"),true);
+        yield return WarehouseDarkeningTests.Capture(name);
     }
     IEnumerator ClearRoom()
     {
@@ -146,23 +145,25 @@ public class WarehouseXriTests
             yield return CaptureClearing("stage3-frame-"+roman+"-after");
         }
         ArtTests.View(new Vector3(-1.9f,0,.5f),new Vector3(-4.1f,.9f,.6f));yield return CaptureClearing("stage3-frames-after");
-        var cloth=GameObject.Find("ElementTableCloth").GetComponent<XriClearable>();
+        var cloth=GameObject.Find("PaintingIIICloth").GetComponent<XriClearable>();
+        ArtTests.View(new Vector3(-2.9f,0,-1.75f),new Vector3(-4.2f,1.65f,-1.75f));yield return CaptureClearing("stage5-III-before");
         // E is a real keyboard alias through PlayerInteraction -> DesktopXriDriver -> XRI.
-        ArtTests.View(new Vector3(-2.9f,0,.65f),cloth.GetComponentInChildren<Collider>().bounds.center);
+        ArtTests.View(new Vector3(-2.9f,0,-1.75f),cloth.GetComponentInChildren<Collider>().bounds.center);
         yield return null; yield return null; yield return null;
         InputSystem.QueueStateEvent(keyboard,new KeyboardState(Key.E)); yield return null;
         InputSystem.QueueStateEvent(keyboard,new KeyboardState());
         yield return new WaitForSeconds(.7f);Assert.True(cloth.IsCleared,"E opens the shared cloth interactable");
-        var table=GameObject.Find("ElementTable").GetComponent<InspectableObject>();
-        yield return ClickAt(table,new Vector3(-2.9f,0,.65f));Assert.True(UIManager.Instance.IsReading);
-        yield return CaptureClearing("stage3-element-table-close");UIManager.Instance.CloseRead();
+        yield return CaptureClearing("stage5-III-after");
+        var table=GameObject.Find("Painting_III").GetComponent<InspectableObject>();
+        yield return ClickAt(table,new Vector3(-2.9f,0,-1.75f));Assert.True(UIManager.Instance.IsReading);
+        UIManager.Instance.CloseRead();yield return null;yield return CaptureClearing("stage5-frame-III-close");
         yield return Chest();
         var books=GameObject.Find("MovableBookStack").GetComponent<XRGrabInteractable>();
         yield return ClickAt(books,new Vector3(-1.8f,0,-1.9f));Assert.True(books.isSelected);
         yield return new WaitForSeconds(.3f);
         Assert.Less(Vector3.Distance(books.transform.position,Driver.ray.attachTransform.position),.08f,"Books carry at the PC camera-front point");
         Driver.Drop();yield return null;yield return null;
-        Assert.True(books.GetComponent<XriLooseProp>().IsCleared);Assert.True(GameObject.Find("BookStackClue").GetComponent<ClearingGate>().IsAccessible);
+        Assert.True(books.GetComponent<XriLooseProp>().IsCleared);Assert.IsNull(GameObject.Find("BookStackClue"));
         Assert.AreEqual(PuzzleState.Active,GameManager.Instance.Progression.GetState(PuzzleId.Rune));
         Assert.AreEqual(PuzzleState.Locked,GameManager.Instance.Progression.GetState(PuzzleId.Potion));
         Assert.AreEqual(PuzzleState.Locked,GameManager.Instance.Progression.GetState(PuzzleId.Seal));
@@ -223,6 +224,45 @@ public class WarehouseXriTests
             }
         }
         ArtTests.View(new Vector3(0,0,-2.35f),new Vector3(0,1.6f,-.5f));yield return CaptureClearing("stage3-frame-stone-comparison");Object.Destroy(root);
+    }
+
+    [UnityTest] public IEnumerator NamedIncisionsAreReadableAndShareFillAndGlow()
+    {
+        Assert.IsNull(GameObject.Find("ElementTable"));Assert.IsNull(GameObject.Find("BookStackClue"));
+        var stones=Object.FindObjectsByType<RuneStone>(FindObjectsSortMode.None);
+        foreach(var stone in stones)
+        {
+            var label=stone.transform.Find("RuneName_"+stone.Rune).GetComponent<Renderer>();
+            Assert.NotNull(label,stone.Rune+" named incision");Assert.True(label.enabled);
+            Assert.AreEqual("RuneName_"+stone.Rune,label.sharedMaterial.GetTexture("_BaseMap").name);
+            Assert.That(label.bounds.size.x,Is.EqualTo(.33f).Within(.002f));
+            var corner=GameObject.Find("ArtB_CornerRune_"+stone.Rune);
+            if(corner!=null)Assert.AreSame(label.sharedMaterial,corner.transform.parent.Find("RuneName_"+stone.Rune).GetComponent<Renderer>().sharedMaterial);
+        }
+        var altar=Object.FindFirstObjectByType<RunePuzzle>().transform;
+        ArtTests.View(altar.position+new Vector3(0,-altar.position.y,-1.4f),altar.position);
+        yield return WarehouseDarkeningTests.Capture("stage5-altar-pc");
+        // Same gameplay camera at a standing-height eye, not a synthetic label board.
+        var pivot=Scenario.Player.GetComponent<PlayerController>().CameraPivot;
+        float height=pivot.localPosition.y;pivot.localPosition=new Vector3(0,1.75f,0);
+        ArtTests.View(altar.position+new Vector3(0,-altar.position.y,-1.4f),altar.position);
+        yield return WarehouseDarkeningTests.Capture("stage5-altar-standing");
+        pivot.localPosition=new Vector3(0,height,0);
+        foreach(var stone in stones)
+        {
+            stone.GetComponent<AlchemicalPulse>().Trigger();stone.Glow.SetGlow(new Color(.55f,.44f,.24f));
+        }
+        yield return new WaitForSecondsRealtime(.3f);
+        foreach(var stone in stones)
+        {
+            var a=new MaterialPropertyBlock();var b=new MaterialPropertyBlock();
+            stone.transform.Find("ArtB_RuneIcon_"+stone.Rune).GetComponent<Renderer>().GetPropertyBlock(a);
+            stone.transform.Find("RuneName_"+stone.Rune).GetComponent<Renderer>().GetPropertyBlock(b);
+            Assert.Greater(b.GetFloat("_Fill"),.5f);Assert.AreEqual(a.GetFloat("_Fill"),b.GetFloat("_Fill"));
+            Assert.AreEqual(a.GetColor("_EmissionColor"),b.GetColor("_EmissionColor"));
+            stone.Glow.Off();
+        }
+        yield return new WaitForSecondsRealtime(1);
     }
 
     [UnityTest] public IEnumerator DesktopRunePressUsesXri() { yield return Runes(); Assert.AreEqual(2, Object.FindFirstObjectByType<RoomPresentation>().LitSealCount); }
