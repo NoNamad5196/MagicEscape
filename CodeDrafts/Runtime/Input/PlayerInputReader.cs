@@ -24,6 +24,28 @@ namespace MagicEscape
         /// <summary>이번 프레임 마우스 이동량(구 Input Manager 단위).</summary>
         public Vector2 Look { get; private set; }
         public bool InteractPressed { get; private set; }
+        public bool PrimaryPressed { get; private set; }
+        public bool DropPressed { get; private set; }
+        public bool RigTogglePressed { get; private set; }
+        public bool LeftSelect { get; private set; }
+        public bool RightSelect { get; private set; }
+        public bool TeleportHeld { get; private set; }
+        public Vector2 SnapTurn { get; private set; }
+#if ENABLE_INPUT_SYSTEM
+        UnityEngine.InputSystem.InputAction leftGrab, rightGrab, leftTeleport, snapTurn;
+        void Awake()
+        {
+            leftGrab = new InputAction("Left select", InputActionType.Button, "<XRController>{LeftHand}/gripPressed");
+            leftGrab.AddBinding("<XRController>{LeftHand}/triggerPressed");
+            rightGrab = new InputAction("Right select", InputActionType.Button, "<XRController>{RightHand}/gripPressed");
+            rightGrab.AddBinding("<XRController>{RightHand}/triggerPressed");
+            leftTeleport = new InputAction("Teleport", InputActionType.Button, "<XRController>{LeftHand}/primaryButton");
+            snapTurn = new InputAction("Snap turn", InputActionType.Value, "<XRController>{RightHand}/primary2DAxis");
+        }
+        void OnEnable() { leftGrab.Enable(); rightGrab.Enable(); leftTeleport.Enable(); snapTurn.Enable(); }
+        void OnDisable() { leftGrab.Disable(); rightGrab.Disable(); leftTeleport.Disable(); snapTurn.Disable(); }
+        void OnDestroy() { leftGrab.Dispose(); rightGrab.Dispose(); leftTeleport.Dispose(); snapTurn.Dispose(); }
+#endif
         public bool PausePressed { get; private set; }
         public bool ObjectivePressed { get; private set; }
         public bool AnyPressed { get; private set; }
@@ -47,9 +69,14 @@ namespace MagicEscape
 #if ENABLE_INPUT_SYSTEM
         private void ReadNewInputSystem()
         {
+            LeftSelect = leftGrab.IsPressed(); RightSelect = rightGrab.IsPressed();
+            TeleportHeld = leftTeleport.IsPressed(); SnapTurn = snapTurn.ReadValue<Vector2>();
             Keyboard kb = Keyboard.current;
             Mouse mouse = Mouse.current;
-            AnyPressed = kb != null && kb.anyKey.wasPressedThisFrame;
+            PrimaryPressed = mouse != null && mouse.leftButton.wasPressedThisFrame;
+            DropPressed = mouse != null && mouse.rightButton.wasPressedThisFrame;
+            RigTogglePressed = kb != null && kb.f9Key.wasPressedThisFrame;
+            AnyPressed = (kb != null && kb.anyKey.wasPressedThisFrame) || PrimaryPressed || LeftSelect || RightSelect;
             if (kb == null)
             {
                 ClearAll();
@@ -83,6 +110,8 @@ namespace MagicEscape
 #if ENABLE_LEGACY_INPUT_MANAGER
         private void ReadLegacyInput()
         {
+            PrimaryPressed = Input.GetMouseButtonDown(0); DropPressed = Input.GetMouseButtonDown(1);
+            RigTogglePressed = Input.GetKeyDown(KeyCode.F9);
             AnyPressed = Input.anyKeyDown;
             Move = Vector2.ClampMagnitude(new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical")), 1f);
             Look = new Vector2(Input.GetAxisRaw("Mouse X"), Input.GetAxisRaw("Mouse Y"));

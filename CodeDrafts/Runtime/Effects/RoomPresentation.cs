@@ -9,6 +9,7 @@ namespace MagicEscape
     [DefaultExecutionOrder(-20)]
     public sealed class RoomPresentation : MonoBehaviour
     {
+        public bool progressiveDarkening = true;
         public Light[] candles;
         public Renderer[] candleFlames;
         public Light[] openingDarkenedLights;
@@ -47,7 +48,7 @@ namespace MagicEscape
         void Start() {input=FindFirstObjectByType<PlayerInputReader>();}
         void LateUpdate()
         {
-            if(BrightnessStage<3)return;
+            if(!progressiveDarkening || BrightnessStage<3)return;
             for(int i=0;i<candleFlames.Length;i++)if(candleFlames[i]!=null)
             {
                 float sway=Mathf.Sin(Time.time*9+i)*8;
@@ -112,9 +113,9 @@ namespace MagicEscape
         static Color StageAmbient(int stage) => new Color(.105f,.12f,.15f)-new Color(.009f,.008f,.006f)*stage;
         public void SetProgress(int count,bool cue=true)
         {
-            BrightnessStage=Mathf.Clamp(count,0,3);RenderSettings.ambientLight=StageAmbient(BrightnessStage);
-            if(roomFill!=null)roomFill.intensity=.22f-BrightnessStage*.025f;
-            for(int i=0;i<candles.Length;i++)if(candles[i]!=null){candles[i].enabled=true;candles[i].intensity=candleIntensity[i]*(1-BrightnessStage*.12f);}
+            BrightnessStage=Mathf.Clamp(count,0,3);RenderSettings.ambientLight=StageAmbient(progressiveDarkening ? BrightnessStage : 0);
+            if(roomFill!=null)roomFill.intensity=.22f-(progressiveDarkening ? BrightnessStage*.025f : 0);
+            for(int i=0;i<candles.Length;i++)if(candles[i]!=null){candles[i].enabled=true;candles[i].intensity=candleIntensity[i]*(1-(progressiveDarkening ? BrightnessStage*.12f : 0));}
             if(!cue)return;
             AudioManager.Play(SfxId.SocketPlace);
             if(sealOff!=null && count>0 && count<=sealOff.Length && sealOff[count-1]!=null)sealOff[count-1].Play();

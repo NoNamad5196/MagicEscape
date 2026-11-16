@@ -27,6 +27,8 @@ namespace MagicEscape
             if (viewCamera == null) Debug.LogError("[PlayerInteraction] viewCamera가 없습니다.", this);
         }
 
+        public void SetViewCamera(Camera camera) { viewCamera = camera; }
+
         private void Update()
         {
             GameManager gm = GameManager.Instance;
@@ -59,9 +61,12 @@ namespace MagicEscape
             if (_input.ObjectivePressed) ui.ToggleObjective();
 
             UpdateFocus(ui);
-            if (_input.InteractPressed && _current != null)
+            if (_input.InteractPressed)
             {
-                _current.Interact(this);
+                var desktop = GetComponentInChildren<DesktopXriDriver>();
+                if (desktop != null) desktop.Click(); // E is an alias for the same XRI transaction, never a second grab path.
+                else if (_current != null && FindFirstObjectByType<RigSelector>() == null) _current.Interact(this);
+                else return;
                 AudioManager.Play(SfxId.Interact);
             }
         }

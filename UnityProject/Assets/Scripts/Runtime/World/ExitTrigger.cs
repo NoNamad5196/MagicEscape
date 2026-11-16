@@ -16,7 +16,7 @@ namespace MagicEscape
 
         private void OnTriggerEnter(Collider other)
         {
-            if (other.GetComponentInParent<PlayerController>() == null) return;
+            if (other.GetComponentInParent<PlayerController>() == null && other.GetComponentInParent<PlayerRigBody>() == null) return;
             if (GameManager.Instance != null) GameManager.Instance.NotifyPlayerEscaped();
         }
     }
