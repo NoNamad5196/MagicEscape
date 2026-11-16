@@ -3,15 +3,15 @@
 ## 1. 프로젝트
 
 - 이름: MagicEscape — 마법학교 3D 1인칭 방탈출 (대학 '멀티미디어와 가상현실' 기말 작품, 제출물 = 게임 + PPT)
-- 로컬: `/home/box/projects/MagicSchoolEscape` (폴더명 ≠ 저장소명 주의)
+- Windows 작업 경로: `C:/Users/nonam/Documents/MagicEscape`; Linux 보조 경로: `/home/box/projects/MagicSchoolEscape` (폴더명 ≠ 저장소명 주의)
 - 원격: `https://github.com/NoNamad5196/MagicEscape.git`, 브랜치 `main`
 - Notion: 💡 아이디어 일지(`collection://4a1725c4-940c-470a-b663-d0e89ff7ef4f`)의 `MagicEscape — 마법학교 3D 방탈출 게임` 항목이 허브 — https://app.notion.com/p/4147cdef782d81da9895f389197b0300 (하위 문서 5개: 퍼즐 명세 / 시스템·C# / 씬·Unity 가이드 / 에셋·비주얼 / 개발·테스트 기록)
 
 ## 2. 환경 제약 (절대)
 
-- 이 서버(Instabox, 헤드리스 Linux)에서는 Unity Editor/Hub 설치·실행·빌드·Play Mode 금지.
+- Instabox 헤드리스 Linux 서버에서는 Unity Editor/Hub 설치·실행·빌드·Play Mode 금지. Windows 작업 환경에서는 Unity Editor batchmode 씬 생성과 EditMode/PlayMode 검증을 수행한다.
 - `.unity`, `.prefab`, `.meta`, `.asset`(ScriptableObject 인스턴스) YAML 직접 작성 금지. `.asmdef`(JSON)만 허용.
-- Unity 컴파일/플레이 결과를 검증했다고 주장 금지. Windows에서 확인 전까지 "미검증"으로 기록.
+- 실제 실행한 검증만 보고한다. Windows Unity 결과는 로그/XML로 남기며, 실제 HMD 미검증과 플레이어 빌드 미실행을 구분한다.
 - 순수 C# 로직(`CodeDrafts/Core`)만 서버에서 `dotnet test`로 검증한다.
 - 씬 제작·Prefab·Inspector 연결·빌드는 Windows(AyCode + Unity Editor)에서 수행.
 - 같은 파일을 서버와 Windows에서 동시에 수정하지 않는다. Windows 작업 시작 전 `git pull`, 끝나면 push.
@@ -24,8 +24,8 @@
 
 ## 4. 기술 기준 (정본)
 
-- Unity **6.3 LTS (6000.3.x)**, 템플릿 **Universal 3D (URP)**. VR 미확정 → PC 키보드/마우스 1인칭이 기본, XR 전환 금지.
-- 입력: `#if ENABLE_INPUT_SYSTEM`(새 Input System 직접 디바이스 폴링) / `#elif ENABLE_LEGACY_INPUT_MANAGER` 이중 지원. 입력은 `PlayerInputReader` 한 곳에서만 읽는다(VR 확장 지점).
+- Unity **6.3 LTS (6000.3.x)**, 템플릿 **Universal 3D (URP)**. 시작 씬은 **Warehouse.unity (9×7m, 천장 3.06m)**. PC/VR은 **XRI 공용 조작**을 사용한다. Classroom.unity는 역사적 회귀 테스트용 씬이다. 현행 공간·입력 기준은 `docs/WAREHOUSE_XRI.md`.
+- 입력: `#if ENABLE_INPUT_SYSTEM`(새 Input System 직접 디바이스 폴링) / `#elif ENABLE_LEGACY_INPUT_MANAGER` 이중 지원. 게임플레이 의도는 `PlayerInputReader`에서 읽고 DesktopXriDriver / VrXriDriver → XRInteractionManager → 공용 Interactable/Socket → 기존 퍼즐 어댑터 → Core로 전달한다. 추적·시뮬레이터·패키지 UI 입력은 패키지 드라이버가 담당한다.
 - UI: uGUI + TextMeshPro(uGUI 2.0에 포함). UI Toolkit 미사용.
 - C# 9 이하 문법(Unity 호환). `CodeDrafts/Core`는 `UnityEngine` 참조 금지(`noEngineReferences: true` asmdef).
 - 퍼즐 규칙은 Core 순수 클래스, MonoBehaviour는 입력·표현·연결만 담당.
@@ -41,10 +41,10 @@
 ### 아이템 (`ItemData.itemId`)
 | itemId | 이름 | 획득 |
 |---|---|---|
-| `ing_moonpetal` | 월광초 꽃잎 | 창가 화분 (시작부터 획득 가능) |
-| `ing_salamander_scale` | 불도마뱀 비늘 | 동쪽 책장 유리병 |
-| `ing_crystal_dust` | 수정 가루 | 교탁 서랍 |
-| `ing_toadstool` | 독버섯 (함정) | 북서쪽 바닥 구석 |
+| `ing_moonpetal` | 월광초 꽃잎 | 남동쪽 창가 화분 (3.75, .78, -2.94), 시작부터 획득 가능 |
+| `ing_salamander_scale` | 불도마뱀 비늘 | 동쪽 보관 선반 유리병 (3.9, 1.03, 1.05) |
+| `ing_crystal_dust` | 수정 가루 | 남서쪽 열린 상자 내부 (-3.25, .36, -2.3) |
+| `ing_toadstool` | 독버섯 (함정) | 북서쪽 바닥 구석 (-3.85, .13, 2.7) |
 | `crystal_sapphire` | 푸른 수정 (물) | P1 보상 (제단에서 픽업) |
 | `crystal_ruby` | 붉은 수정 (불) | P2 보상 (인벤토리에 직접 지급) |
 | `potion_revelation` | 계시의 물약 | P2 보상 (인벤토리에 직접 지급) |
@@ -53,7 +53,7 @@
 ### P1 — 마법 문양 해독 (`RunePuzzle`)
 - 문양 6개 `RuneId`: `Earth(대지) Water(물) Fire(불) Wind(바람) Light(빛) Shadow(그림자)` — 중앙 제단 원형 배치, 각 문양석 E로 누름.
 - 정답: **Earth → Water → Fire → Light** (길이 4).
-- 단서: 서쪽 벽 액자 4점 '씨앗의 일생'(흙 속 씨앗/비/햇볕의 열기/빛 속의 꽃), 각 액자 모서리에 해당 문양, 아래 로마숫자 판(I~IV). 벽 배치 순서는 섞임(왼→오: III, I, IV, II). 칠판 문구: "생명은 정해진 순서로 깨어난다. 액자의 숫자를 따르라."
+- 단서: 서쪽 벽 및 상자 뒤 바닥에 기대어 둔 액자 4점 '씨앗의 일생'(흙 속 씨앗/비/햇볕의 열기/빛 속의 꽃), 각 액자 모서리에 해당 문양, 아래 로마숫자 판(I~IV). 배치 순서는 섞임(III, I, IV, II). III·II는 같은 높이의 벽걸이, I·IV는 바닥과 벽에 닿도록 기댄다. 번호판과 그림등은 각 액자에 부착한다. 칠판 문구: "생명은 정해진 순서로 깨어난다. 액자의 숫자를 따르라."
 - 판정: 입력 즉시 비교. 오답 → 진행 0으로 리셋, failCount+1, 빨간 점멸+실패음. 재시도 무제한. failCount ≥ 3 → 힌트 "벽에 걸린 액자의 숫자 순서를 따라가 보자."
 - 완료: 문양석 6개 모두 금색 발광 → 제단 뚜껑 열림 → `crystal_sapphire` 픽업 등장, Seal1 소등, 마법서 독서대의 결계 해제(P2 Active).
 
@@ -75,7 +75,10 @@
 - ExitTrigger 진입 → Cleared: 클리어 화면(소요 시간, 다시 시작/종료).
 
 ### 조작
-WASD 이동, 마우스 시점, E 상호작용, 1~8/휠 슬롯 선택, Tab 목표/힌트 표시, ESC 일시정지. 상호작용 거리 2.5m, 화면 중앙 Raycast.
+- PC: WASD 이동, 마우스 시점, 좌클릭 잡기/누르기/소켓 투입, 우클릭 놓기. Warehouse의 E는 동일 XRI 클릭 경로 별칭. 1~8/휠 슬롯 선택, Tab 목표/힌트, ESC 일시정지. 카메라 XRRayInteractor 거리 2.5m. Classroom만 기존 E 입력 회귀 경로를 유지한다.
+- VR: XR Origin Floor, 양손 컨트롤러 grip/trigger 선택, 왼손 primary 버튼 해제 시 텔레포트, 오른손 스틱 45° 스냅 회전.
+- OpenXR 초기화 후 활성 HMD면 VR, 없으면 데스크톱. Inspector RigMode 또는 개발용 **F9**로 리그 전환. HMD 없이 강제 VR을 선택하면 공식 XR Device Simulator 샘플 사용.
+- XRI 3.3.2 / OpenXR 1.16.1. 인벤토리는 기존 퍼즐 거래 원장, P2 보상은 기존 지급과 물리 픽업을 함께 제공한다. HandlingProfile은 데이터만; 치우기·밀기, 새 어두워짐 연출, S11 빌드는 범위 밖. Warehouse는 progressiveDarkening=false.
 
 ## 6. 산출물 위치
 
@@ -90,6 +93,8 @@ WASD 이동, 마우스 시점, E 상호작용, 1~8/휠 슬롯 선택, Tab 목표
 - 유료 API·유료 에셋 구매 금지. 무료/CC0 에셋만 후보로 기록하고 라이선스를 명시.
 - 외부 조사는 Perplexity MCP, 출처 URL과 조사일 기록.
 
+> 아래 S10e/S10f는 Classroom 제작 이력이다. Warehouse의 공간·P2 위치·공용 XRI 입력·progressiveDarkening=false는 위 현행 기준과 `docs/WAREHOUSE_XRI.md`가 우선한다. 표시 규칙과 퍼즐 정답/ID는 유지한다.
+
 ## S10e — 시각 우선 단서와 연출 (2026-11-12)
 - 사용자 요청으로 단서 표현을 시각 우선으로 변경. 정답/ID/Core/거리/공간은 불변.
 - P1: 칠판 I→IV 그림 + 원소 모서리 문양, 정답 입력마다 대응 액자 점등/오답 전체 소등.
@@ -99,10 +104,10 @@ WASD 이동, 마우스 시점, E 상호작용, 1~8/휠 슬롯 선택, Tab 목표
 - Earth 갈색/녹색 균열, Water 파랑/물결·방울, Fire 주황/불씨, Wind 회녹/소용돌이·잎, Light 금/광륜, Shadow 보라검정/연기를 공통 사용.
 - 시작 뒤 12초 무문장 오프닝, 아무 키 건너뛰기. 봉인 해제마다 밝기/앰비언스/다음 위치 신호. 출구 통과 시 백색 페이드 후 기존 Ending/시간/버튼.
 - 연출은 표현 계층에서 입력 잠금. 테스트용 SkipPresentation() 명시 경로. Unity 하나, 시작 전 가상메모리 여유 6GB 필수.
-- 재료 위치는 기존 창가/책장/서랍/북서 구석 유지. 창가 월광초에 국소 달빛 추가. 새 외부 에셋 없이 자체 제작 그림/마스크 사용.
+- 재료 위치에 관한 이 역사적 S10e 항목은 현행 Warehouse 기준(위 아이템 표 및 `docs/WAREHOUSE_XRI.md`)으로 대체한다. Classroom 회귀 씬의 창가/책장/서랍/북서 구석 배치는 유지한다. 창가 월광초에 국소 달빛 추가. 새 외부 에셋 없이 자체 제작 그림/마스크 사용.
 
 ## S10f — 연금술 표시 규칙 (S10e 표시 규칙보다 우선)
-- RuneId/정답/ID/판정/공간/2.5m 거리 불변. Fire=위 삼각형, Water=아래 삼각형, Wind=가로선 위 삼각형, Earth=가로선 아래 삼각형, Light=원 안 점, Shadow=토성(납). 색이 아닌 형태로 구분.
+- RuneId/정답/ID/판정/2.5m 거리 불변. 공간은 현행 Warehouse 기준이 우선한다. Fire=위 삼각형, Water=아래 삼각형, Wind=가로선 위 삼각형, Earth=가로선 아래 삼각형, Light=원 안 점, Shadow=토성(납). 색이 아닌 형태로 구분.
 - 모든 기호는 동일 황동 각인, 같은 선 굵기/도안. 6개 석판 형태 통일, 누르면 각인 채움 뒤 짧은 효과. 물·불만 청·적 물질색 허용, 나머지는 저채도 황동.
 - 봉인 해제마다 봉인등 소등+앰비언트/촛불 감소. 실내 단서 조명은 보존. 문 뒤는 차가운 야간 복도, 탈출은 검정 페이드, 엔딩은 검정 바탕 작은 금박 패널+고운바탕.
 - 새 표시 코드 변경 시 CodeDrafts 미러 동기화. S10f 빌더는 기존 씬 위 `S10fApply`, 전체 재현은 `S10f`.

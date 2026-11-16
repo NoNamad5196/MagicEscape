@@ -39,8 +39,31 @@ New PlayMode coverage: desktop rune presses; grab/carry ingredients into the cau
 - Simulated XR controller events were tested; a full manual classic XR Device Simulator playthrough was not performed.
 - No standalone/player build or S11 acceptance; no new stage-3 or stage-4 behaviour.
 - Legacy RuntimeCompileCheck stubs do not model XRI and were not used as a substitute for actual Unity compilation.
-- Explicit user proposal/VR instructions supersede historical AGENTS.md PC-only/XR prohibition and classroom locations. AGENTS.md/README.md were not edited; Notion was not synchronized; current specification and overrides are documented in WAREHOUSE_XRI.md and linked from the design/setup/testing documents.
+- AGENTS.md and README.md are now synchronized with WAREHOUSE_XRI.md (see layout follow-up below). Notion was not synchronized.
 - Pre-existing untracked validation XML was not altered or staged. Additional local diagnostic runs remain untracked; only final evidence is committed.
 
 ## Reproduce
 See commands.txt and ../../WAREHOUSE_XRI.md. Run one Unity process at a time; do not build S11 for this scope.
+
+## Layout follow-up — 2026-11-16
+
+### Changes and root cause
+- The four glowing bars were the existing S10c picture-light housings/bulbs (`ArtB_C_PictureLamp_0..3`, `ArtB_C_PictureBulb_0..3`), not spare gameplay objects. They were in a separate art root, so moving only Painting transforms left them floating. Each is now parented to its frame and joined by a short brass mount; original answer lights are attached too. No puzzle-light behaviour was removed.
+- III/II wall paintings have identical 1.65m centres and no tilt, clear of beams. I/IV lean 12 degrees with their visible bottom at 0.015m and rear edge against the west wall (-4.425m). Their centres are computed from rendered geometry, not guessed collider pivots. Original fixed crates still partly obscure them; all four numerals are visible in frames.png.
+- Reparented I-IV plaques/text to their own frame. Reset TextMeshPro RectTransform anchoredPosition3D after moving all ancestors: resetting only localPosition had left II's cached anchor/mesh displaced. This explains and prevents the detached II seen in overview.png.
+- Added plank seams on all sides/lids, wooden edge rails, iron bindings and metal studs to all 13 warehouse storage/reward crates. Existing timber texture and warm/dark palette retained, no external assets.
+- Added two EditMode regression tests for all four frame assemblies (floor/wall contact, matching wall height, beam clearance, numeral/light attachment) and all 13 crates (floor/full stack support, detail attachment). This is deliberately scoped to the changed decor, not a universal audit of every legacy prop.
+- AGENTS.md / README.md now describe 9x7m Warehouse, shared XRI, automatic/Inspector/F9 rigs and exact P2 locations. Puzzle answers and item IDs unchanged; no runtime/Core code change.
+
+### Final actual verification
+| Run | Passed | Failed | Evidence |
+|---|---:|---:|---|
+| Unity EditMode | 6 | 0 | layout-editmode-final.xml |
+| Unity PlayMode (all historical + warehouse) | 28 | 0 | layout-playmode-final.xml |
+| Pure C# dotnet tests | 44 | 0 | layout-core-summary.json |
+
+- Full Warehouse batchmode generation exited 0 using Unity 6000.3.28f1. Historical Classroom/art regeneration noise was restored before final test runs; original historical test assertions were not changed.
+- overview.png / frames.png (and chest.png) were overwritten by the existing game-camera capture test, at unchanged camera coordinates and 1280x720 resolution. Both requested images were directly opened and visually inspected: attached lamps, aligned wall frames, floor-supported leaners, I-IV labels and crate detail confirmed. No detached II/bar remains in overview.
+- Final PlayMode XML reports zero failed tests; no Exception/Assertion events found. The Editor log still contains a nonfatal licensing access-token update message and an OpenXR Display initialization failure without HMD; desktop fallback and simulated-controller tests pass. These are not real-headset validation.
+- Existing untracked validation XML/TRX files were not overwritten, staged or removed. Final evidence uses new layout-prefixed filenames; raw logs/TRX remain in ignored UnityProject/Logs.
+- Remaining: real HMD/comfort/manual simulator QA and standalone build are still unverified. No clearing/pushing, new darkening or S11 build was attempted.

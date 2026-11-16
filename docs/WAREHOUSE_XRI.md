@@ -38,4 +38,4 @@ PlayerInputReader -> DesktopXriDriver / VrXriDriver -> XRInteractionManager -> s
 
 Run only one Unity process. Preserve existing untracked XML in docs/validation. XRI integration is validated with real Unity, not the old XR-unaware RuntimeCompileCheck stubs. Detailed test counts and unverified hardware limitations: validation/warehouse/RESULTS.md.
 
-The explicit 2026-11-16 task overrides AGENTS.md historical PC-only/XR prohibition and classroom locations. AGENTS.md itself was not modified.
+AGENTS.md and README.md are synchronized with this warehouse/XRI specification. Historical classroom-only locations and PC-only restrictions do not apply to Warehouse.

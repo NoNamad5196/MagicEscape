@@ -2,6 +2,7 @@
   "name": "MagicEscape.EditMode",
   "references": [
     "MagicEscape.Core",
+    "Unity.TextMeshPro",
     "MagicEscape.Runtime",
     "Unity.XR.Interaction.Toolkit",
     "Unity.XR.OpenXR"

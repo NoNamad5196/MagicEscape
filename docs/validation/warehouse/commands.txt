@@ -7,3 +7,15 @@ Start-Process $unity -WindowStyle Hidden -Wait -ArgumentList "-batchmode -quit -
 Start-Process $unity -WindowStyle Hidden -Wait -ArgumentList "-batchmode -runTests -testPlatform EditMode -projectPath $project -testResults C:/Users/nonam/Documents/MagicEscape/docs/validation/warehouse/editmode.xml -logFile $project/Logs/warehouse-editmode.log"
 Start-Process $unity -WindowStyle Hidden -Wait -ArgumentList "-batchmode -runTests -testPlatform PlayMode -projectPath $project -testResults C:/Users/nonam/Documents/MagicEscape/docs/validation/warehouse/playmode-accepted-final.xml -logFile $project/Logs/warehouse-accepted-final-tests.log"
 dotnet test Tests/MagicEscape.Core.Tests --logger "trx;LogFileName=warehouse-core.trx" --results-directory docs/validation/warehouse
+
+# Layout follow-up (2026-11-16): one Unity process at a time. Raw outputs stay in ignored Logs;
+# copy only the final evidence, never overwrite the pre-existing untracked validation XML.
+Start-Process $unity -WindowStyle Hidden -Wait -ArgumentList "-batchmode -quit -projectPath $project -executeMethod MagicEscape.EditorTools.ClassroomBuilder.Warehouse -logFile $project/Logs/warehouse-layout-generate.log"
+Start-Process $unity -WindowStyle Hidden -Wait -ArgumentList "-batchmode -runTests -testPlatform EditMode -projectPath $project -testResults $project/Logs/layout-editmode-final.xml -logFile $project/Logs/layout-editmode-final.log"
+Start-Process $unity -WindowStyle Hidden -Wait -ArgumentList "-batchmode -runTests -testPlatform PlayMode -projectPath $project -testResults $project/Logs/layout-playmode-final.xml -logFile $project/Logs/layout-playmode-final.log"
+dotnet test Tests/MagicEscape.Core.Tests --logger "trx;LogFileName=layout-core.trx" --results-directory UnityProject/Logs
+# WarehouseArchitectureAndRigSwitch retains the original ArtTests.View camera coordinates:
+# overview: position (0,0,-2.25), target (0,1.35,2.5)
+# frames: position (-1.8,0,.7), target (-4.08,1.4,.8); 1280x720 actual game-camera renders.
+# Full Warehouse generation also regenerates historical Classroom/art outputs; unrelated generated
+# changes were restored to HEAD before final tests to retain the original regression fixture.

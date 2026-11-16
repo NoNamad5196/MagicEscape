@@ -150,22 +150,65 @@ namespace MagicEscape.EditorTools
         }
         static void FitWarehouseClues()
         {
-            // Stage 3 is not available yet: leave numeral plates and most of each picture readable.
-            // Only an outer edge sits behind the fixed storage stack.
-            foreach (string roman in new[] { "I", "IV" })
+            // Normalize each complete clue assembly instead of moving only the old thin collider.
+            // Historical labels, lamps and bulbs lived in separate art roots: all must travel together.
+            string[] order = { "III", "I", "IV", "II" };
+            for (int i = 0; i < order.Length; i++)
             {
-                var frame = Find("Painting_"+roman).transform;
-                var destination = new Vector3(-4.08f,.82f,roman == "I" ? -.4f : 2.0f);
-                var delta = destination-frame.position; frame.position = destination; frame.rotation = Quaternion.Euler(0,0,-9);
-                var light = Find("ArtC_AnswerFrame_"+roman).transform;
-                light.position = frame.position+new Vector3(.585f,.442f,0); light.LookAt(frame.position);
+                string roman = order[i];
+                var painting = Find("Painting_" + roman).transform;
+                var frame = painting.Find("ArtB_PictureFrame_" + roman);
+                var label = Find("PaintingLabel_" + roman).transform;
+                frame.SetParent(null, true); label.SetParent(null, true);
+                painting.SetParent(null, true); painting.localScale = Vector3.one;
+                painting.rotation = Quaternion.identity;
+                painting.GetComponent<BoxCollider>().size = new Vector3(.13f, .92f, 1.08f);
+                frame.SetParent(painting, false); frame.localPosition = Vector3.zero;
+                frame.localRotation = Quaternion.Euler(0, -90, 0); frame.localScale = new Vector3(.85f,.85f,.85f);
+                var plaque = frame.Find("ArtB_RomanPlaque");
+                plaque.localPosition = new Vector3(0,-.45f,-.06f);
+                label.SetParent(frame, false); label.localPosition = new Vector3(0,-.45f,-.105f);
+                label.localRotation = Quaternion.identity; label.localScale = Vector3.one;
+                label.GetComponent<TMPro.TMP_Text>().ForceMeshUpdate();
+                // A short brass arm physically joins the old picture-light housing to its frame.
+                var lamp = Find("ArtB_C_PictureLamp_" + i).transform;
+                var bulb = Find("ArtB_C_PictureBulb_" + i).transform;
+                lamp.SetParent(frame, false); lamp.localPosition = new Vector3(0,.57f,-.13f);
+                lamp.localRotation = Quaternion.identity; lamp.localScale = new Vector3(.34f,.055f,.25f);
+                bulb.SetParent(lamp, false); bulb.localPosition = new Vector3(0,-.65f,0);
+                bulb.localRotation = Quaternion.identity; bulb.localScale = new Vector3(.8f,.45f,.6f);
+                if (frame.Find("LampMount") == null)
+                {
+                    var mount = GameObject.CreatePrimitive(PrimitiveType.Cube); mount.name = "LampMount";
+                    Object.DestroyImmediate(mount.GetComponent<Collider>());
+                    mount.transform.SetParent(frame, false); mount.transform.localPosition = new Vector3(0,.53f,-.07f);
+                    mount.transform.localScale = new Vector3(.09f,.10f,.17f);
+                    mount.GetComponent<Renderer>().sharedMaterial = lamp.GetComponent<Renderer>().sharedMaterial;
+                }
+                foreach (string lightName in new[] { "ArtC_Picture_" + i, "ArtC_AnswerFrame_" + roman })
+                {
+                    var light = Find(lightName).transform; light.SetParent(frame, false);
+                    light.localPosition = new Vector3(0,.5f,-.3f); light.LookAt(frame.position);
+                }
+                bool leaning = roman == "I" || roman == "IV";
+                painting.position = new Vector3(-4.39f,1.65f,roman == "III" ? -1.75f : roman == "II" ? 2.25f : roman == "I" ? -.65f : 2.35f);
+                if (leaning)
+                {
+                    painting.rotation = Quaternion.Euler(0,0,12);
+                    // Bounds include the actual frame, plaque and mounted light; put the lowest edge on the floor
+                    // and the rearmost edge against the inside of the west wall (x=-4.425).
+                    var bounds = frame.GetComponentInChildren<Renderer>().bounds;
+                    foreach (var r in frame.GetComponentsInChildren<Renderer>())
+                        if (r.transform != label) bounds.Encapsulate(r.bounds);
+                    painting.position += new Vector3(-4.425f - bounds.min.x, .015f - bounds.min.y, 0);
+                }
+                // RectTransform anchoring must be reset AFTER moving its non-RectTransform ancestors.
+                var text = label.GetComponent<TMPro.TMP_Text>();
+                text.rectTransform.anchoredPosition3D = new Vector3(0,-.45f,-.105f);
+                text.ForceMeshUpdate();
             }
-            var upper = Find("Painting_II").transform;
-            var upperDelta = new Vector3(-4.41f,2.25f,1.45f)-upper.position;
-            upper.position += upperDelta;
-            var upperLight = Find("ArtC_AnswerFrame_II").transform;
-            upperLight.position = upper.position+new Vector3(.585f,.442f,0); upperLight.LookAt(upper.position);
         }
+
         // Small idempotent architectural repair entry point; full Warehouse() produces the same header.
         public static void WarehouseHeaderApply()
         {
@@ -186,10 +229,32 @@ namespace MagicEscape.EditorTools
             var g = Box(name, parent, bottom + Vector3.up * size.y / 2, size);
             g.GetComponent<Renderer>().sharedMaterial = AssetDatabase.LoadAssetAtPath<Material>("Assets/Settings/Art_S10b_Timber.mat");
             g.AddComponent<HandlingProfile>().weight = HandlingWeight.Fixed;
-            // Visible iron binding, not classroom desks masquerading as storage.
-            var iron = ArtMaterial("WarehouseIron", new Color(.08f, .065f, .05f));
+            // WorldVisual preserves world size under the non-uniform primitive scale.
+            // The former helper prefixes ArtB_; explicit detail names make attachment checks reliable.
+            var iron = ArtMaterial("WarehouseIron", new Color(.13f, .105f, .075f));
+            var seam = ArtMaterial("WarehouseSeam", new Color(.045f,.026f,.015f));
+            var timber = g.GetComponent<Renderer>().sharedMaterial;
             for (int i = -1; i <= 1; i += 2)
-                WorldVisual(name + "_Binding", g.transform, bottom + new Vector3(i * size.x * .35f, size.y / 2, -.006f), new Vector3(.045f, size.y + .02f, size.z + .02f), iron);
+            {
+                WorldVisual("CrateBinding_"+i, g.transform, bottom + new Vector3(i*size.x*.34f,size.y/2,0), new Vector3(.045f,size.y+.012f,size.z+.012f), iron);
+                foreach (int side in new[] {-1,1})
+                {
+                    WorldVisual("CrateRail_"+i+"_"+side,g.transform,bottom+new Vector3(0,size.y/2+i*(size.y/2-.045f),side*(size.z/2+.008f)),new Vector3(size.x,.07f,.035f),timber);
+                    foreach (int edge in new[] {-1,1})
+                        WorldVisual("CrateStud_"+i+"_"+side+"_"+edge,g.transform,bottom+new Vector3(edge*size.x*.34f,size.y/2+i*(size.y/2-.045f),side*(size.z/2+.028f)),Vector3.one*.023f,iron,PrimitiveType.Sphere);
+                }
+            }
+            // Recess-coloured joints break all four faces and the lid into narrow planks.
+            for (int j=1;j<5;j++)
+            {
+                float x=-size.x/2+size.x*j/5, z=-size.z/2+size.z*j/5;
+                foreach (int side in new[] {-1,1})
+                {
+                    WorldVisual("CrateJointFront_"+j+"_"+side,g.transform,bottom+new Vector3(x,size.y/2,side*(size.z/2+.001f)),new Vector3(.009f,size.y-.10f,.004f),seam);
+                    WorldVisual("CrateJointSide_"+j+"_"+side,g.transform,bottom+new Vector3(side*(size.x/2+.001f),size.y/2,z),new Vector3(.004f,size.y-.10f,.009f),seam);
+                }
+                WorldVisual("CrateJointLid_"+j,g.transform,bottom+new Vector3(x,size.y+.001f,0),new Vector3(.009f,.004f,size.z),seam);
+            }
             return g;
         }
         static void MoveItem(string id, Vector3 position)
