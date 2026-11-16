@@ -56,8 +56,10 @@ namespace MagicEscape
                 _picture.rectTransform.anchoredPosition=new Vector2(0,15);
                 _picture.raycastTarget=false;
             }
-            float width=Mathf.Min(1120,580f*picture.width/picture.height);
+            float width=Mathf.Min(1120,500f*picture.width/picture.height);
             _picture.rectTransform.sizeDelta=new Vector2(width,width*picture.height/picture.width);
+            var help=readPanel.transform.Find("CloseHelp") as RectTransform;
+            if(help!=null){help.anchoredPosition=new Vector2(0,-290);help.SetAsLastSibling();}
             _picture.texture=picture;_picture.gameObject.SetActive(true);
             if(readTitleText!=null)readTitleText.text=string.Empty;
             if(readBodyText!=null)readBodyText.text=string.Empty;
