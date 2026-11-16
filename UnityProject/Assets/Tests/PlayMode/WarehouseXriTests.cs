@@ -236,7 +236,7 @@ public class WarehouseXriTests
         var core = Object.FindFirstObjectByType<SealCore>(); yield return ClickAt(core, new Vector3(2.1f,0,1.0f));
         yield return new WaitForSeconds(3.8f);
         Assert.AreEqual(0, p.LitSealCount); Assert.True(Object.FindFirstObjectByType<DoorController>().PassageReady);
-        Assert.AreEqual(ambient, RenderSettings.ambientLight, "Stage 4 darkening not enabled");
+        Assert.Less(RenderSettings.ambientLight.grayscale, ambient.grayscale, "Stage 4 darkening enabled");
         // W-only collision-tested exit, not a direct completion call.
         ArtTests.View(new Vector3(0,0,1.8f), new Vector3(0,1.6f,5));
         float elapsed = 0;

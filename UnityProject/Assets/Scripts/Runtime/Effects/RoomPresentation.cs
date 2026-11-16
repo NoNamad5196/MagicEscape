@@ -48,7 +48,7 @@ namespace MagicEscape
         void Start() {input=FindFirstObjectByType<PlayerInputReader>();}
         void LateUpdate()
         {
-            if(!progressiveDarkening || BrightnessStage<3)return;
+            if(GetComponent<WarehouseDarkening>()!=null || !progressiveDarkening || BrightnessStage<3)return;
             for(int i=0;i<candleFlames.Length;i++)if(candleFlames[i]!=null)
             {
                 float sway=Mathf.Sin(Time.time*9+i)*8;
@@ -113,9 +113,13 @@ namespace MagicEscape
         static Color StageAmbient(int stage) => new Color(.105f,.12f,.15f)-new Color(.009f,.008f,.006f)*stage;
         public void SetProgress(int count,bool cue=true)
         {
-            BrightnessStage=Mathf.Clamp(count,0,3);RenderSettings.ambientLight=StageAmbient(progressiveDarkening ? BrightnessStage : 0);
+            BrightnessStage=Mathf.Clamp(count,0,3);
+            var warehouse=GetComponent<WarehouseDarkening>();
+            if(warehouse!=null)warehouse.SetStage(BrightnessStage,cue);
+            if(warehouse==null){RenderSettings.ambientLight=StageAmbient(progressiveDarkening ? BrightnessStage : 0);
             if(roomFill!=null)roomFill.intensity=.22f-(progressiveDarkening ? BrightnessStage*.025f : 0);
             for(int i=0;i<candles.Length;i++)if(candles[i]!=null){candles[i].enabled=true;candles[i].intensity=candleIntensity[i]*(1-(progressiveDarkening ? BrightnessStage*.12f : 0));}
+            }
             if(!cue)return;
             AudioManager.Play(SfxId.SocketPlace);
             if(sealOff!=null && count>0 && count<=sealOff.Length && sealOff[count-1]!=null)sealOff[count-1].Play();
@@ -124,10 +128,10 @@ namespace MagicEscape
             if(count==3)
             {
                 if(coreShards!=null)coreShards.Play();foreach(var r in coreRenderers)if(r!=null)r.enabled=false;
-                if(dawn!=null)dawn.enabled=true;
-                if(dawnWindow!=null&&dawnWindowMaterial!=null)dawnWindow.sharedMaterial=dawnWindowMaterial;
-                if(dawnRays!=null)dawnRays.SetActive(true);
-                SetBlocked(true);sequence=StartCoroutine(ExitReveal());
+                if(warehouse==null && dawn!=null)dawn.enabled=true;
+                if(warehouse==null&&dawnWindow!=null&&dawnWindowMaterial!=null)dawnWindow.sharedMaterial=dawnWindowMaterial;
+                if(warehouse==null&&dawnRays!=null)dawnRays.SetActive(true);
+                if(warehouse==null){SetBlocked(true);sequence=StartCoroutine(ExitReveal());}
             }
         }
         public void BeginEnding()

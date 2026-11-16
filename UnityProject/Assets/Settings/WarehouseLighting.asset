@@ -1,0 +1,44 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 226cbb67850014a4998f8490ab54dc85, type: 3}
+  m_Name: WarehouseLighting
+  m_EditorClassIdentifier: MagicEscape.Runtime::MagicEscape.WarehouseLightingProfile
+  transitionSeconds: 1.6
+  solvedBrewGlow: 0.06
+  localIntensity: 0.65
+  localRange: 2.1
+  localColor: {r: 0.35, g: 0.55, b: 0.7, a: 1}
+  stages:
+  - ambient: {r: 0.105000004, g: 0.120000005, b: 0.15, a: 1}
+    reflection: 0.65
+    fill: 0.22
+    background: 1
+    candle: 1
+    flicker: 0.025
+  - ambient: {r: 0.0735, g: 0.084, b: 0.105, a: 1}
+    reflection: 0.4
+    fill: 0.15
+    background: 0.62
+    candle: 0.78
+    flicker: 0.045
+  - ambient: {r: 0.0455, g: 0.051999997, b: 0.065, a: 1}
+    reflection: 0.22
+    fill: 0.085
+    background: 0.3
+    candle: 0.53
+    flicker: 0.065
+  - ambient: {r: 0.0245, g: 0.028, b: 0.035, a: 1}
+    reflection: 0.1
+    fill: 0.035
+    background: 0.1
+    candle: 0.28
+    flicker: 0.085

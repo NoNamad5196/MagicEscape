@@ -22,7 +22,7 @@
 - PC: WASD/마우스, 좌클릭 잡기·누르기·투입(E도 동일 XRI 경로), 우클릭 놓기, 1~8/휠 슬롯, Tab 힌트, ESC 일시정지. 상호작용 거리 2.5m.
 - VR: 양손 grip/trigger, 왼손 primary 버튼 해제 텔레포트, 오른손 스틱 45° 스냅 회전. 활성 HMD에 따라 자동 리그 선택; Inspector RigMode / 개발용 **F9**로 전환합니다. HMD 없이 강제 VR이면 공식 XR Device Simulator를 사용합니다.
 - XRI 3.3.2 / OpenXR 1.16.1. PC·VR은 같은 Interactable/Socket과 기존 퍼즐 규칙을 사용합니다. 정답·아이템 ID는 바뀌지 않습니다.
-- 치우기: 상자는 좌클릭을 누른 채 이동해서 옆으로 밀고 끌며, 천/궤짝은 클릭/E로 열고, 책은 잡아 옮깁니다. VR도 같은 XRI 오브젝트를 씁니다. 서쪽 벽의 천 아래 원소표는 기호 뜻만 보여 주고, 정답 순서는 액자 번호로 찾습니다. 새로운 어두워짐 연출과 S11 빌드는 포함하지 않습니다.
+- 치우기: 상자는 좌클릭을 누른 채 이동해서 옆으로 밀고 끌며, 천/궤짝은 클릭/E로 열고, 책은 잡아 옮깁니다. VR도 같은 XRI 오브젝트를 씁니다. 서쪽 벽의 천 아래 원소표는 기호 뜻만 보여 주고, 정답 순서는 액자 번호로 찾습니다. Stage 4: four progressively darker lighting states with local puzzle lights and 1.6s transitions; S11 player build remains out of scope.
 
 | P2 재료 ID | 창고 위치 (m) |
 |---|---|

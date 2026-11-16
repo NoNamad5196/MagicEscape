@@ -1,0 +1,178 @@
+{
+  "unity": "6000.3.28f1",
+  "platform": "Windows",
+  "generation_exit_code": 0,
+  "suites": [
+    {
+      "suite": "EditMode",
+      "passed": 7,
+      "failed": 0,
+      "local_evidence": "stage4-release-editmode.xml",
+      "tests": [
+        "WarehouseContractTests.ClearingPropsHaveSupportedHomesAndDynamicAttachedVisuals",
+        "WarehouseContractTests.InstalledVersionsAreTheUnity63ReleasedPackages",
+        "WarehouseContractTests.PictureAssembliesAreSupportedAndLabelsAndLightsStayAttached",
+        "WarehouseContractTests.ProgressionStillRequiresAllThreePuzzles",
+        "WarehouseContractTests.ProposalDoesNotChangeAnswersOrIds",
+        "WarehouseContractTests.StorageCratesHavePhysicalSupportAndAttachedDetail",
+        "WarehouseContractTests.WarehouseIsStartupAndClassroomIsRegressionFixture"
+      ]
+    },
+    {
+      "suite": "PlayMode",
+      "passed": 35,
+      "failed": 0,
+      "local_evidence": "stage4-release-playmode.xml",
+      "tests": [
+        "ArtTests.S10f_ArtAudioEffectsLayoutAndGameViewCaptures",
+        "ClassroomTests.S1_RoomAndDoorway",
+        "CluesTests.S5_ClueReadsAndVisibleOrder",
+        "FifthPassTests.ClueSentencesNeverAutomaticallyAppearBeforeFailure",
+        "FifthPassTests.EndingShowsActualClearTimeAfterBlackFade",
+        "FifthPassTests.FailureThresholdsShowTextOnlyAtThreeTwoTwo",
+        "FifthPassTests.OpeningAnyKeySkipsWithoutGameplayInput",
+        "FifthPassTests.SealReleaseChangesLampsBrightnessAndFrameFeedback",
+        "FullInputTests.ExitStraightCenter",
+        "FullInputTests.ExitStraightLeft",
+        "FullInputTests.ExitStraightRight",
+        "FullInputTests.S9_KeyboardRaycastAllPuzzlesWalkExit",
+        "ItemsTests.S4_CatalogHotbarSelection",
+        "PotionTests.S7_LocksWrongRespawnsAndRewards",
+        "RuneTests.S6_WrongHintCorrectRewardSeal",
+        "SealTests.S8_SealRejectionDoorPhysicalTriggerClearRestart",
+        "SixthPassTests.IncisionsAndMaterialEffectsStayPresentationOnly",
+        "SystemsTests.S2_PlayerSystems",
+        "UITests.S3_PanelsButtonsReadRestart",
+        "WarehouseDarkeningTests.EveryPictureHasSeparateCloseHelp",
+        "WarehouseDarkeningTests.PuzzleAndClearingInteractionsContinueDuringSmoothTransitions",
+        "WarehouseDarkeningTests.StagesDecreaseLightKeepGuidesAndCaptureSameCamera",
+        "WarehouseXriTests.AutomaticSelectionFallsBackWithoutHmd",
+        "WarehouseXriTests.CrateRailsCannotBlockPuzzlesExitOrWalls",
+        "WarehouseXriTests.DesktopClearingAllFourAndHiddenTargetsCannotBeBypassed",
+        "WarehouseXriTests.DesktopCrystalLeftAndRightSockets",
+        "WarehouseXriTests.DesktopFullFlowTurnsOffThreeSealsAndOpensExit",
+        "WarehouseXriTests.DesktopGrabIngredientsIntoCauldronSocket",
+        "WarehouseXriTests.DesktopRunePressUsesXri",
+        "WarehouseXriTests.FrameAndStoneUseIdenticalBrassMotifs",
+        "WarehouseXriTests.SharedPressRetiresUnheldConsumedPotion",
+        "WarehouseXriTests.VrSimulatedControllerSharesRuneAndGrabComponents",
+        "WarehouseXriTests.VrTrackedHandPullsAndPushesSameHeavyCrate",
+        "WarehouseXriTests.WarehouseArchitectureAndRigSwitch",
+        "WarehouseXriTests.WrongPhysicalIngredientRespawnsEntireAttempt"
+      ]
+    },
+    {
+      "suite": "PlayMode focused",
+      "passed": 3,
+      "failed": 0,
+      "local_evidence": "stage4-release-smoke.xml",
+      "tests": [
+        "WarehouseDarkeningTests.EveryPictureHasSeparateCloseHelp",
+        "WarehouseDarkeningTests.PuzzleAndClearingInteractionsContinueDuringSmoothTransitions",
+        "WarehouseDarkeningTests.StagesDecreaseLightKeepGuidesAndCaptureSameCamera"
+      ]
+    },
+    {
+      "suite": "Pure C#",
+      "passed": 44,
+      "failed": 0,
+      "local_evidence": "stage4-core.trx"
+    }
+  ],
+  "original_untracked_xml_trx_preserved": 36,
+  "original_xml_trx_sha256_unchanged": true,
+  "captures": [
+    {
+      "file": "stage4-black-fade.png",
+      "size": [
+        1280,
+        720
+      ],
+      "sha256": "10883b5a0224c9ea7340afe587a2a37fd75090f89ee4401d54ea5de36be1d8ac",
+      "mean_luma_8bit": 0.011
+    },
+    {
+      "file": "stage4-element-table-close.png",
+      "size": [
+        1280,
+        720
+      ],
+      "sha256": "581b3c82b14f6c90ed013697fffd8aa97fea7c80d8709838d6ae8b588900f715",
+      "mean_luma_8bit": 44.965
+    },
+    {
+      "file": "stage4-ending.png",
+      "size": [
+        1280,
+        720
+      ],
+      "sha256": "c0c7d095d74ec9ed640c37a676926dff1c3eed50005acadd5cfb3480ebef5117",
+      "mean_luma_8bit": 3.178
+    },
+    {
+      "file": "stage4-final-sockets.png",
+      "size": [
+        1280,
+        720
+      ],
+      "sha256": "49eac583908f160df4d9000e9c5d6f2f8d8971fb2e34e3d76c790dfdcd440356",
+      "mean_luma_8bit": 12.448
+    },
+    {
+      "file": "stage4-p1-cauldron.png",
+      "size": [
+        1280,
+        720
+      ],
+      "sha256": "1a7d23fb896142df26579561228f05c553d0492b58795719c0c015f128c76930",
+      "mean_luma_8bit": 29.221
+    },
+    {
+      "file": "stage4-p1.png",
+      "size": [
+        1280,
+        720
+      ],
+      "sha256": "df542a73ea3222638e2992a6bb3193a37524fbb72597e5adb89b62b23739f61d",
+      "mean_luma_8bit": 19.044
+    },
+    {
+      "file": "stage4-p2-inscription.png",
+      "size": [
+        1280,
+        720
+      ],
+      "sha256": "1875fcc51dd784b26e67ea9b36204efad194fd51b10fc7ed7f103dde48a36d2e",
+      "mean_luma_8bit": 18.215
+    },
+    {
+      "file": "stage4-p2.png",
+      "size": [
+        1280,
+        720
+      ],
+      "sha256": "0cce91f7cccc501ded5c0ad049ea78bc7ccfc92bd8f09ef0c873ec7f2ed59bda",
+      "mean_luma_8bit": 11.489
+    },
+    {
+      "file": "stage4-p3.png",
+      "size": [
+        1280,
+        720
+      ],
+      "sha256": "724775c52e70041887e897503f0beddc490a5fc0fe7d99433b2a52ce507f04de",
+      "mean_luma_8bit": 6.932
+    },
+    {
+      "file": "stage4-start.png",
+      "size": [
+        1280,
+        720
+      ],
+      "sha256": "37a9a337b48fb2b466f0d2eff35cd40264f50dea283e7d6c1ed3511ba7017c41",
+      "mean_luma_8bit": 26.765
+    }
+  ],
+  "hardware_hmd_verified": false,
+  "standalone_player_build": false
+}

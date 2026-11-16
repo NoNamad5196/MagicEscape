@@ -80,7 +80,7 @@
 - PC: WASD 이동, 마우스 시점, 좌클릭 잡기/누르기/소켓 투입, 우클릭 놓기. Warehouse의 E는 동일 XRI 클릭 경로 별칭. 1~8/휠 슬롯 선택, Tab 목표/힌트, ESC 일시정지. 카메라 XRRayInteractor 거리 2.5m. Classroom만 기존 E 입력 회귀 경로를 유지한다.
 - VR: XR Origin Floor, 양손 컨트롤러 grip/trigger 선택, 왼손 primary 버튼 해제 시 텔레포트, 오른손 스틱 45° 스냅 회전.
 - OpenXR 초기화 후 활성 HMD면 VR, 없으면 데스크톱. Inspector RigMode 또는 개발용 **F9**로 리그 전환. HMD 없이 강제 VR을 선택하면 공식 XR Device Simulator 샘플 사용.
-- XRI 3.3.2 / OpenXR 1.16.1. 인벤토리는 기존 퍼즐 거래 원장, P2 보상은 기존 지급과 물리 픽업을 함께 제공한다. HandlingProfile은 Lift(책·작은 물건), PushPull(손잡이 상자), Fixed(뚜껑·천)로 분류한다. 공용 XRI 치우기는 퍼즐 상태를 바꾸지 않는다. 새 어두워짐 연출·S11 빌드는 범위 밖. Warehouse는 progressiveDarkening=false.
+- XRI 3.3.2 / OpenXR 1.16.1. 인벤토리는 기존 퍼즐 거래 원장, P2 보상은 기존 지급과 물리 픽업을 함께 제공한다. HandlingProfile은 Lift(책·작은 물건), PushPull(손잡이 상자), Fixed(뚜껑·천)로 분류한다. 공용 XRI 치우기는 퍼즐 상태를 바꾸지 않는다. Warehouse progressiveDarkening=true: four lighting stages, 1.6s blends, no interaction lock; tune WarehouseLighting.asset. S11 player build remains out of scope.
 
 ## 6. 산출물 위치
 
@@ -95,7 +95,7 @@
 - 유료 API·유료 에셋 구매 금지. 무료/CC0 에셋만 후보로 기록하고 라이선스를 명시.
 - 외부 조사는 Perplexity MCP, 출처 URL과 조사일 기록.
 
-> 아래 S10e/S10f는 Classroom 제작 이력이다. Warehouse의 공간·P2 위치·공용 XRI 입력·progressiveDarkening=false는 위 현행 기준과 `docs/WAREHOUSE_XRI.md`가 우선한다. 표시 규칙과 퍼즐 정답/ID는 유지한다.
+> 아래 S10e/S10f는 Classroom 제작 이력이다. Warehouse의 공간·P2 위치·공용 XRI 입력·progressiveDarkening=true는 위 현행 기준과 `docs/WAREHOUSE_XRI.md`가 우선한다. 표시 규칙과 퍼즐 정답/ID는 유지한다.
 
 ## S10e — 시각 우선 단서와 연출 (2026-11-12)
 - 사용자 요청으로 단서 표현을 시각 우선으로 변경. 정답/ID/Core/거리/공간은 불변.

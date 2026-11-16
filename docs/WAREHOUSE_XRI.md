@@ -1,7 +1,7 @@
-# Proposal stages 1-3: warehouse and shared XRI interaction
+# Proposal stages 1-4: warehouse and shared XRI interaction
 
 ## Scope and scene
-Proposal source: presentation/proposal/generate-proposal.mjs and preview slides 04/06/07/13/14. Core answers, IDs and P1 -> P2 -> P3 remain unchanged. Stage 3 clearing is implemented. Stage 4 darkening and S11 player build remain out of scope.
+Proposal source: presentation/proposal/generate-proposal.mjs and preview slides 04/06/07/13/14. Core answers, IDs and P1 -> P2 -> P3 remain unchanged. Stages 3 clearing and 4 progressive darkening are implemented. S11 player build remains out of scope.
 
 Warehouse.unity is the startup scene: 9x7m, ceiling 3.06m. Exit centred north, clear 2.25m-wide doorway. Seal device beside the exit on the right, cauldron east, altar slightly west of centre. West-wall paintings I and IV lean behind handled sliding crates and cannot be inspected until those crates move. Existing brass glyphs, I-IV chalkboard diagram, candle palette and parchment UI retained.
 
@@ -22,7 +22,7 @@ PlayerInputReader -> DesktopXriDriver / VrXriDriver -> XRInteractionManager -> s
 - RigSelector initializes OpenXR then checks XRSettings.isDeviceActive; no HMD selects desktop. Inspector RigMode and development F9 allow manual switching. Forced VR without an active HMD enables the official XR Device Simulator sample. Tracking, package UI and simulator internals use their own package drivers; gameplay intent is sampled only by PlayerInputReader and supplied to XRI manual readers.
 - Items have one XRGrabInteractable; runes/inspection devices use XRSimpleInteractable. Cauldron and crystal pedestals share XriPuzzleSocket, a XRSocketInteractor subclass.
 - Inventory remains the existing puzzle transaction ledger: grabbing registers/selects an ID, sockets invoke the original puzzle adapters. P2 still grants its original inventory rewards and additionally exposes physical ruby/potion pickups. Wrong ingredients respawn at their original warehouse positions. A shared press transaction also retires consumed physical potions when used by a free VR hand or selected inventory slot, preventing duplicate pickups. Socket consumption is deferred one frame after the XRI select event to avoid re-entrant manager mutation.
-- HandlingProfile.weight: Lift (books/small pickups), PushPull (handled crates), Fixed (hinged lid/cloth). XriClearable is one shared XRSimpleInteractable for both rigs, not a desktop-specific copy. Warehouse sets RoomPresentation.progressiveDarkening=false; seal lamps, existing exit and ending are retained.
+- HandlingProfile.weight: Lift (books/small pickups), PushPull (handled crates), Fixed (hinged lid/cloth). XriClearable is one shared XRSimpleInteractable for both rigs, not a desktop-specific copy. Warehouse sets RoomPresentation.progressiveDarkening=true; WarehouseDarkening owns its lighting, while the historical Classroom presentation remains unchanged. Exit corridor and ending stay dark.
 
 ## Package evidence - checked 2026-11-16
 - [Unity 6.3 XRI package listing](https://docs.unity3d.com/6000.3/Documentation/Manual/com.unity.xr.interaction.toolkit.html): XRI 3.3.2.
@@ -49,3 +49,14 @@ AGENTS.md and README.md are synchronized with this warehouse/XRI specification. 
 - ClearingGate disables target colliders and XRI components while covered; InspectableObject, ItemPickup, XriPress and XriItem also reject direct adapter calls. Clearing never modifies puzzle state. Ingredients respawn under the same open lid after errors.
 - All corner motifs use FGlyph, exactly the same brass material/vector as altar stones, enlarged from .31 to .40 local width. Glyph vector strokes 7 -> 11px clarify Earth/Wind crossbars. III uses cracked ground, drooping leaves and heat shimmer, not IV's flower. RuneId, item IDs and Earth -> Water -> Fire -> Light remain unchanged.
 - Original procedural art source: Tools/Generate-Clearing-Art.py (no third-party imagery).
+
+## Stage 4 progressive darkness
+- One shared PC/VR controller, WarehouseDarkening; RoomPresentation routes Warehouse progress without changing Core, item IDs or clearing gates.
+- Tune Assets/Settings/WarehouseLighting.asset (WarehouseLightingProfile): 1.6s smooth blend; ambient RGB = (.70, .80, 1) times [.15, .105, .065, .035]; reflection [.65, .40, .22, .10]; directional fill [.22, .15, .085, .035]; background multipliers [1, .62, .30, .10]; candle multipliers [1, .78, .53, .28]; bounded low-frequency flicker amplitude [.025, .045, .065, .085]. Existing fog is unchanged.
+- Six floor candles and two wall sconces shrink their flames before extinguishing, with a four-particle thin smoke wisp. West/altar candles go first, east/brew next, then north/exit; one dim navigation wick remains. Legacy AtmosphereMotion light writers are disabled only for Warehouse.
+- Six cold local lights (intensity .65, range 2.1m) preserve cauldron liquid, three real ingredient locations (including the gated chest), inscription/sockets and exit. They are not clues or answer-order signals. No audio clue or new sound is added.
+- Warehouse does not enable dawn, window replacement or rays after P3. Its transition never calls SetBlocked. Existing door timing, black fade and black ending are retained.
+- ShowPicture caps parchment height at 500 reference pixels and puts CloseHelp below its bounds; applies to element table, frames, recipes and all other picture overlays.
+- Warehouse generation snapshots/restores historical Classroom, shared assets, fonts and S10 validation artifacts in a finally/Dispose scope. Run-Unity.ps1 similarly preserves tracked regression captures/audits around tests; new stage4 captures are retained. Existing local untracked evidence is not staged or deleted.
+
+- Completed brew emission falls to 6% over the same blend (profile solvedBrewGlow), preserving its short gold success feedback without keeping the solved cauldron as the brightest target. Inactive answer-frame lamps are included in background attenuation when later enabled. Both rig cameras clear to black; Warehouse fade and ending rects stretch to the canvas, preventing skybox leaks and uncovered borders.
