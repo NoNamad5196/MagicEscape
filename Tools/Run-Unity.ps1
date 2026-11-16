@@ -1,4 +1,4 @@
-param([string]$Name, [string]$Method, [switch]$Tests, [string]$TestFilter, [ValidateSet("PlayMode","EditMode")][string]$TestPlatform = "PlayMode")
+﻿param([string]$Name, [string]$Method, [switch]$Tests, [string]$TestFilter, [ValidateSet("PlayMode","EditMode")][string]$TestPlatform = "PlayMode")
 $ErrorActionPreference = 'Stop'
 Set-Location (Split-Path $PSScriptRoot -Parent)
 $editor = 'C:\Program Files\Unity\Hub\Editor\6000.3.28f1\Editor\Unity.exe'
@@ -15,8 +15,19 @@ if ($Tests) {
     $arguments += " -runTests -testPlatform $TestPlatform -testResults `"$result`""
     if ($TestFilter) { $arguments += " -testFilter `"$TestFilter`"" }
 } else { $arguments += " -quit -executeMethod $Method" }
+# Regression tests write historical captures/audits. Keep their assertions, not unrelated tracked diffs.
+$preserved = @{}
+if ($Tests) {
+    git ls-files docs/validation | ForEach-Object {
+        if ($_ -notlike 'docs/validation/warehouse/stage4-*' -and (Test-Path -LiteralPath $_)) {
+            $preserved[$_] = [System.IO.File]::ReadAllBytes((Join-Path (Get-Location) $_))
+        }
+    }
+}
 $p = Start-Process $editor -ArgumentList $arguments -WindowStyle Hidden -PassThru
-$p.WaitForExit()
+try { $p.WaitForExit() } finally {
+    foreach ($file in $preserved.Keys) { [System.IO.File]::WriteAllBytes((Join-Path (Get-Location) $file), $preserved[$file]) }
+}
 Write-Output "Unity exit=$($p.ExitCode); log=$log"
 Select-String -Path $log -Pattern 'error CS','^[A-Za-z.]*Exception:','Error:' | ForEach-Object { $_.Line }
 if ($Tests -and (Test-Path $result)) {
