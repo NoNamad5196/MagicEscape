@@ -68,7 +68,8 @@ public class WarehouseContractTests
             var plaque = frame.Find("ArtB_RomanPlaque");
             var label = GameObject.Find("PaintingLabel_"+roman).transform;
             Assert.AreEqual(frame, label.parent, "No detached numeral labels");
-            Assert.Less(Vector3.Distance(plaque.position,label.position), .05f);
+            Assert.That(label.localPosition.x,Is.EqualTo(-.34f).Within(.001f));
+            Assert.That(label.localPosition.y,Is.EqualTo(plaque.localPosition.y).Within(.001f));
             Assert.IsTrue(GameObject.Find("ArtC_AnswerFrame_"+roman).transform.IsChildOf(frame));
             var lamp = frame.GetComponentsInChildren<Transform>().Single(t=>t.name.StartsWith("ArtB_C_PictureLamp_"));
             Assert.IsTrue(frame.Find("LampMount").GetComponent<Renderer>().bounds.Intersects(lamp.GetComponent<Renderer>().bounds), "Lamp must touch its mount");
@@ -122,5 +123,66 @@ public class WarehouseContractTests
         Assert.AreSame(cloth.GetComponent<XriClearable>(),GameObject.Find("Painting_III").GetComponent<ClearingGate>().blocker);
         var lid=GameObject.Find("ChestLidHinge");var back=GameObject.Find("ChestBack").GetComponent<Collider>().bounds;back.Expand(.08f);
         Assert.True(back.Intersects(lid.GetComponentInChildren<Renderer>().bounds),"Lid physically touches back hinge edge");
+    }
+    [Test] public void ChalkboardResourcesContainOnlyApprovedEmptyDiagram()
+    {
+        EditorSceneManager.OpenScene("Assets/Scenes/Warehouse.unity");
+        const string allowed="Assets/Art/Warehouse/ChalkBlanks.png";
+        var texture=AssetDatabase.LoadAssetAtPath<Texture2D>(allowed);
+        Assert.NotNull(texture);
+        using(var sha=System.Security.Cryptography.SHA256.Create())
+            Assert.AreEqual("A09AE7A9877824737B0D78F1009084A499D1A783981B70226B4F46986C3D13BC",
+                System.BitConverter.ToString(sha.ComputeHash(System.IO.File.ReadAllBytes(allowed))).Replace("-",""),"Reviewed numeral + empty-circle pixels must not silently gain answer art");
+        var board=GameObject.Find("Chalkboard");
+        Assert.AreSame(texture,new SerializedObject(board.GetComponent<InspectableObject>()).FindProperty("picture").objectReferenceValue);
+        Assert.AreEqual("I \u25cb   II \u25cb   III \u25cb   IV \u25cb",new SerializedObject(board.GetComponent<InspectableObject>()).FindProperty("body").stringValue);
+        var oldLabel=Object.FindObjectsByType<TMPro.TMP_Text>(FindObjectsInactive.Include,FindObjectsSortMode.None).Single(t=>t.name=="ChalkboardLabel");
+        Assert.AreEqual("I \u25cb   II \u25cb   III \u25cb   IV \u25cb",oldLabel.text);
+        Assert.False(oldLabel.gameObject.activeSelf);
+        var plate=GameObject.Find("ChalkSequence").GetComponent<Renderer>();
+        Assert.AreSame(texture,plate.sharedMaterial.mainTexture,"World plate must actually have its approved texture");
+        Assert.AreSame(texture,plate.sharedMaterial.GetTexture("_EmissionMap"));
+        foreach(var mat in plate.sharedMaterials)
+            foreach(var property in mat.GetTexturePropertyNames())
+            {
+                var tex=mat.GetTexture(property);if(tex!=null)Assert.AreSame(texture,tex,property);
+            }
+        Assert.IsEmpty(board.GetComponentsInChildren<RuneStone>(true));
+        Assert.That(board.transform.position.y,Is.EqualTo(1.87f).Within(.001f));
+        foreach(string side in new[]{"1","-1"})
+            foreach(string trim in new[]{"ArtB_BoardRail_","ArtB_BoardEdge_"})
+                Assert.AreSame(board.transform,GameObject.Find(trim+side).transform.parent,"No detached chalkboard border");
+        foreach(var t in board.GetComponentsInChildren<Transform>(true))
+            Assert.False(t.name.Contains("RuneName")||t.name.Contains("CornerRune")||t.name.Contains("Story_"));
+        foreach(var inspect in Object.FindObjectsByType<InspectableObject>(FindObjectsInactive.Include,FindObjectsSortMode.None))
+        {
+            var pic=new SerializedObject(inspect).FindProperty("picture").objectReferenceValue;
+            if(inspect.name.StartsWith("Painting_"))Assert.That(pic.name,Does.StartWith("Story_"));
+            else if(inspect.name=="Chalkboard")Assert.AreSame(texture,pic);
+            else if(inspect.name=="RecipeBook")Assert.AreEqual("PictureRecipe",pic.name);
+            else Assert.IsNull(pic,"Unexpected alternate inspection picture: "+inspect.name);
+        }
+    }
+    [Test] public void FrameNameplatesDoNotCoverIllustrations()
+    {
+        EditorSceneManager.OpenScene("Assets/Scenes/Warehouse.unity");
+        foreach(string roman in new[]{"I","II","III","IV"})
+        {
+            var frame=GameObject.Find("ArtB_PictureFrame_"+roman).transform;
+            if(roman=="III")
+            {
+                var tex=frame.Find("ArtB_StoryIllustration").GetComponent<Renderer>().sharedMaterial.mainTexture;
+                Assert.AreEqual("Assets/Art/Warehouse/Story_3.png",AssetDatabase.GetAssetPath(tex),"No baked corner glyph in Warehouse III art");
+                Assert.AreSame(tex,new SerializedObject(GameObject.Find("Painting_III").GetComponent<InspectableObject>()).FindProperty("picture").objectReferenceValue);
+            }
+            var glyph=frame.GetComponentsInChildren<Transform>().Single(t=>t.name.StartsWith("ArtB_CornerRune_"));
+            var name=frame.GetComponentsInChildren<Transform>().Single(t=>t.name.StartsWith("RuneName_"));
+            foreach(var t in new[]{glyph,name})
+            {
+                Assert.Less(t.localPosition.y+t.localScale.y/2,-.41f,"Must remain below the .82m illustration");
+                Assert.That(t.localPosition.y,Is.EqualTo(-.51f).Within(.001f));
+                Assert.AreEqual("MagicEscape/AlchemyEngraving",t.GetComponent<Renderer>().sharedMaterial.shader.name);
+            }
+        }
     }
 }

@@ -16,7 +16,7 @@ namespace MagicEscape.EditorTools
             {
                 foreach(var dir in new[]{"Assets/Settings","Assets/Fonts","Assets/Prefabs","Assets/Data","Assets/Art/S10c/Icons","../docs/validation/s10","../docs/validation/s10b","../docs/validation/s10c","../docs/validation/s10d","../docs/validation/s10e","../docs/validation/s10f"})
                     if(Directory.Exists(dir))foreach(var path in Directory.GetFiles(dir,"*",SearchOption.AllDirectories))
-                        if(!path.Contains("WarehouseLighting"))bytes[path]=File.ReadAllBytes(path);
+                        if(!path.Contains("WarehouseLighting") && !path.Contains("WarehouseChalkBlanks") && !path.Contains("WarehouseStoryIII"))bytes[path]=File.ReadAllBytes(path);
                 bytes[ScenePath]=File.ReadAllBytes(ScenePath);
             }
             public void Dispose()

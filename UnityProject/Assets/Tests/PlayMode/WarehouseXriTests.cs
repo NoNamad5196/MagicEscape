@@ -184,6 +184,51 @@ public class WarehouseXriTests
         yield return ClearRoom();
         foreach(var gate in Object.FindObjectsByType<ClearingGate>(FindObjectsSortMode.None))Assert.True(gate.IsAccessible,gate.name);
     }
+    [UnityTest] public IEnumerator EmptyChalkAndFailureOnlyHintsHaveNoAlternateAnswerRoute()
+    {
+        var board=GameObject.Find("Chalkboard").GetComponent<InspectableObject>();
+        ArtTests.View(new Vector3(-2.15f,0,-2.3f),board.transform.position);
+        yield return null;yield return null;yield return null;
+        ArtTests.View(Scenario.Player.transform.position,board.transform.position);
+        yield return null;yield return null;
+        Assert.True(Driver.ray.TryGetCurrent3DRaycastHit(out var boardHit));
+        Assert.AreEqual(board.gameObject,boardHit.collider.gameObject,"Unoccluded chalkboard E ray");
+        yield return CaptureClearing("stage6-chalk-front");
+        // Use the same keyboard E -> XRI path as normal Warehouse inspection.
+        yield return null;yield return null;yield return null;
+        InputSystem.QueueStateEvent(keyboard,new KeyboardState(Key.E));yield return null;
+        InputSystem.QueueStateEvent(keyboard,new KeyboardState());yield return null;yield return null;
+        Assert.True(UIManager.Instance.IsReading,"E opens chalkboard");
+        var picture=GameObject.Find("PictureClue").GetComponent<UnityEngine.UI.RawImage>();
+        Assert.AreEqual("ChalkBlanks",picture.texture.name);
+        Assert.AreSame(GameObject.Find("ChalkSequence").GetComponent<Renderer>().sharedMaterial.mainTexture,picture.texture);
+        Assert.AreEqual(string.Empty,GameObject.Find("ReadBody").GetComponent<TMPro.TMP_Text>().text);
+        yield return CaptureClearing("stage6-chalk-inspect");UIManager.Instance.CloseRead();
+        UIManager.Instance.ToggleObjective();
+        Assert.AreEqual(string.Empty,GameObject.Find("HintText")?.GetComponent<TMPro.TMP_Text>().text ?? "");
+        UIManager.Instance.ToggleObjective();
+        var wrong=Object.FindObjectsByType<RuneStone>(FindObjectsSortMode.None).First(x=>x.Rune==RuneId.Wind);
+        for(int i=1;i<=3;i++)
+        {
+            Assert.IsNull(GameManager.Instance.GetVisualClueText());wrong.Interact(Scenario.Player);
+            Assert.AreEqual(i<3?null:GameText.HintRune,GameManager.Instance.GetVisualClueText());
+        }
+        yield return new WaitForSeconds(3.3f);
+        yield return ClearRoom();
+        ArtTests.View(new Vector3(-2.9f,0,-1.75f),new Vector3(-4.2f,1.65f,-1.75f));
+        yield return CaptureClearing("stage6-frame-III-close");
+        var ii=GameObject.Find("Painting_II").transform;
+        ArtTests.View(new Vector3(-2.9f,0,ii.position.z),ii.position);
+        yield return CaptureClearing("stage6-frame-II-close");
+        ArtTests.View(new Vector3(-1.8f,0,-.3f),new Vector3(-4.2f,1.25f,-1.7f));
+        yield return CaptureClearing("stage6-chalk-frames-wide");
+        GameManager.Instance.ReportSolved(PuzzleId.Rune);
+        Assert.IsNull(GameManager.Instance.GetVisualClueText(),"Tab must not print recipe before failure threshold");
+        GameObject.Find("RecipeBook").GetComponent<InspectableObject>().Interact(Scenario.Player);
+        Assert.AreEqual("PictureRecipe",picture.texture.name);UIManager.Instance.CloseRead();
+        GameManager.Instance.ReportSolved(PuzzleId.Potion);
+        Assert.IsNull(GameManager.Instance.GetVisualClueText(),"No premature inscription prose");
+    }
     [UnityTest] public IEnumerator CrateRailsCannotBlockPuzzlesExitOrWalls()
     {
         foreach(var c in Object.FindObjectsByType<XriClearable>(FindObjectsSortMode.None).Where(c=>c.kind==ClearingKind.Slide))

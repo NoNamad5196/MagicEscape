@@ -84,10 +84,10 @@ namespace MagicEscape.EditorTools
                 .Concat(Object.FindObjectsByType<XRGrabInteractable>(FindObjectsInactive.Include,FindObjectsSortMode.None).Select(x=>x.transform)))
                 foreach(var part in moving.GetComponentsInChildren<Transform>(true)) part.gameObject.isStatic=false;
             ConfigureRuneNames();
-            // Same material instance / vector motif as each matching altar stone, larger on the frame.
+            // Same material instance / vector motif as each matching altar stone, fitted to the lower plaque.
             foreach(var r in Object.FindObjectsByType<MeshRenderer>(FindObjectsSortMode.None).Where(r=>r.name.StartsWith("ArtB_CornerRune_")))
             {
-                r.transform.localScale=new Vector3(.40f,.40f,1);r.transform.localPosition=new Vector3(-.32f,.22f,-.028f);
+                r.transform.localScale=new Vector3(.18f,.18f,1);r.transform.localPosition=new Vector3(-.08f,-.51f,-.103f);
                 r.sharedMaterial=FGlyph((RuneId)System.Enum.Parse(typeof(RuneId),r.name.Replace("ArtB_CornerRune_","")));
             }
         }
@@ -110,7 +110,7 @@ namespace MagicEscape.EditorTools
             {
                 var id=(RuneId)System.Enum.Parse(typeof(RuneId),corner.name.Replace("ArtB_CornerRune_",""));
                 var label=RuneName(corner.transform.parent,id,Vector3.zero,new Vector3(.36f,.12f,1));
-                label.transform.localPosition=new Vector3(-.32f,-.06f,-.030f);label.transform.localRotation=Quaternion.identity;label.transform.localScale=new Vector3(.36f,.12f,1);
+                label.transform.localPosition=new Vector3(.24f,-.51f,-.103f);label.transform.localRotation=Quaternion.identity;label.transform.localScale=new Vector3(.36f,.12f,1);
             }
         }
         static GameObject RuneName(Transform parent,RuneId id,Vector3 position,Vector3 size)

@@ -17,6 +17,8 @@
 
 ## 창고와 공용 조작
 
+칠판은 씬과 E 확대 모두 `I ○ II ○ III ○ IV ○` 빈칸 도식뿐입니다. 원소 기호·이름·그림은 없으며, 순서별 대응은 액자 4점의 하단 황동 명판(번호·기호·고운바탕 이름)에서 찾습니다. Tab 글 힌트는 실패 기준(P1 3회, P2·P3 2회)을 채운 뒤에만 표시합니다. 과거 Classroom의 정답 그림 칠판은 Warehouse에 적용되지 않습니다.
+
 시작 씬은 `UnityProject/Assets/Scenes/Warehouse.unity`. `Classroom.unity`는 기존 회귀 검증용으로 유지합니다. 현행 기준은 [WAREHOUSE_XRI.md](docs/WAREHOUSE_XRI.md), 실제 실행 결과는 [검증 기록](docs/validation/warehouse/RESULTS.md)을 참고하세요.
 
 - PC: WASD/마우스, 좌클릭 잡기·누르기·투입(E도 동일 XRI 경로), 우클릭 놓기, 1~8/휠 슬롯, Tab 힌트, ESC 일시정지. 상호작용 거리 2.5m.

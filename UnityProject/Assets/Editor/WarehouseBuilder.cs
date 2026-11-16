@@ -139,6 +139,8 @@ namespace MagicEscape.EditorTools
             MoveItem(ItemIds.Toadstool, new Vector3(-3.85f, .13f, 3.08f));
             // Two oil paintings lean behind the movable clearing crates.
             FitWarehouseClues();
+            ConfigureWarehouseChalk();
+            Set(SceneComponent<GameManager>(),"failureOnlyClues",true);
             foreach (var t in geometry.GetComponentsInChildren<Transform>(true))
                 if (t.GetComponent<Collider>() != null && t.GetComponent<HandlingProfile>() == null) t.gameObject.AddComponent<HandlingProfile>();
             ConfigureWarehouseDarkening();
@@ -154,6 +156,37 @@ namespace MagicEscape.EditorTools
             File.WriteAllLines("../docs/validation/warehouse/scene-manifest.txt", Object.FindObjectsByType<Transform>(FindObjectsInactive.Include, FindObjectsSortMode.None).Select(t => Hierarchy(t) + "|" + t.position.ToString("F3")).OrderBy(x => x));
             Debug.Log("WAREHOUSE_GENERATED: stage 4 lighting; shared XRI; no player build");
             }
+        }
+        // Separate Warehouse allowlist asset: Classroom's answered plate is never reused.
+        static void ConfigureWarehouseChalk()
+        {
+            const string path="Assets/Art/Warehouse/ChalkBlanks.png";
+            var texture=AssetDatabase.LoadAssetAtPath<Texture2D>(path);
+            if(texture==null)throw new System.InvalidOperationException("Generate Warehouse chalk blanks first");
+            var material=EPicture("WarehouseChalkBlanks");
+            material.mainTexture=texture;material.SetTexture("_EmissionMap",texture);
+            EditorUtility.SetDirty(material);
+            Find("ChalkSequence").GetComponent<Renderer>().sharedMaterial=material;
+            Set(Find("Chalkboard").GetComponent<InspectableObject>(),"picture",texture);
+            Set(Find("Chalkboard").GetComponent<InspectableObject>(),"body", "I \u25cb   II \u25cb   III \u25cb   IV \u25cb");
+            var old=Object.FindObjectsByType<TMPro.TMP_Text>(FindObjectsInactive.Include,FindObjectsSortMode.None).Single(t=>t.name=="ChalkboardLabel");
+            old.text="I \u25cb   II \u25cb   III \u25cb   IV \u25cb";old.gameObject.SetActive(false);
+            // The historical wooden rails were separate roots: attach them before moving the assembly.
+            foreach(var trim in Object.FindObjectsByType<Transform>(FindObjectsInactive.Include,FindObjectsSortMode.None)
+                .Where(t=>t.name.StartsWith("ArtB_BoardRail_")||t.name.StartsWith("ArtB_BoardEdge_")))
+                trim.SetParent(Find("Chalkboard").transform,true);
+            // Keep the whole empty diagram above fixed stacked crates, not half-hidden behind them.
+            foreach(var t in new[]{Find("Chalkboard").transform,Find("ChalkSequence").transform,old.transform})
+                t.position+=Vector3.up*.85f;
+            var boardLight=Find("ArtC_Chalkboard").transform;boardLight.position+=Vector3.up*.85f;
+            boardLight.LookAt(Find("Chalkboard").transform.position);
+            // III originally baked a second Fire glyph into the illustration itself.
+            // Use the same procedural drought artwork without that redundant overlay.
+            var story=AssetDatabase.LoadAssetAtPath<Texture2D>("Assets/Art/Warehouse/Story_3.png");
+            if(story==null)throw new System.InvalidOperationException("Generate-Clearing-Art.py --warehouse-iii required");
+            var storyMat=ArtMaterial("WarehouseStoryIII",Color.white);storyMat.mainTexture=story;EditorUtility.SetDirty(storyMat);
+            Find("ArtB_PictureFrame_III").transform.Find("ArtB_StoryIllustration").GetComponent<Renderer>().sharedMaterial=storyMat;
+            Set(Find("Painting_III").GetComponent<InspectableObject>(),"picture",story);
         }
         static void FitWarehouseClues()
         {
@@ -173,8 +206,9 @@ namespace MagicEscape.EditorTools
                 frame.SetParent(painting, false); frame.localPosition = Vector3.zero;
                 frame.localRotation = Quaternion.Euler(0, -90, 0); frame.localScale = new Vector3(.85f,.85f,.85f);
                 var plaque = frame.Find("ArtB_RomanPlaque");
-                plaque.localPosition = new Vector3(0,-.45f,-.06f);
-                label.SetParent(frame, false); label.localPosition = new Vector3(0,-.45f,-.105f);
+                plaque.localPosition = new Vector3(0,-.51f,-.06f);
+                plaque.localScale = new Vector3(1.02f,.19f,.07f);
+                label.SetParent(frame, false); label.localPosition = new Vector3(-.34f,-.51f,-.105f);
                 label.localRotation = Quaternion.identity; label.localScale = Vector3.one;
                 label.GetComponent<TMPro.TMP_Text>().ForceMeshUpdate();
                 // A short brass arm physically joins the old picture-light housing to its frame.
@@ -211,7 +245,7 @@ namespace MagicEscape.EditorTools
                 }
                 // RectTransform anchoring must be reset AFTER moving its non-RectTransform ancestors.
                 var text = label.GetComponent<TMPro.TMP_Text>();
-                text.rectTransform.anchoredPosition3D = new Vector3(0,-.45f,-.105f);
+                text.rectTransform.anchoredPosition3D = new Vector3(-.34f,-.51f,-.105f);
                 text.ForceMeshUpdate();
             }
         }

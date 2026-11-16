@@ -22,6 +22,8 @@ namespace MagicEscape
         [SerializeField] private SealPuzzle sealPuzzle;
         [SerializeField] private DoorController exitDoor;
 
+        [SerializeField] private bool failureOnlyClues;
+
         [Header("Debug")]
         [Tooltip("에디터 테스트용: 타이틀을 건너뛰고 바로 시작")]
         [SerializeField] private bool skipTitle;
@@ -144,6 +146,7 @@ namespace MagicEscape
         /// <summary>Explicit Tab safety net, independent of automatic failure hints.</summary>
         public string GetVisualClueText()
         {
+            if(failureOnlyClues)return GetCurrentHint();
             if(Progression.GetState(PuzzleId.Rune)==PuzzleState.Active)return GameText.Chalkboard;
             if(Progression.GetState(PuzzleId.Potion)==PuzzleState.Active)return GameText.Recipe;
             if(sealPuzzle!=null && sealPuzzle.Stage>=SealStage.AwaitingCrystals)return GameText.InscriptionRevealed;

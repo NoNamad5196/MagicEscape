@@ -1,0 +1,281 @@
+{
+  "unity": "6000.3.28f1",
+  "platform": "Windows batchmode",
+  "generated_scene": "Warehouse.unity",
+  "generation_exit": 0,
+  "generation_log": "stage6-final-generate.log",
+  "suites": {
+    "EditMode": {
+      "result": "Passed",
+      "total": "9",
+      "passed": "9",
+      "failed": "0",
+      "skipped": "0",
+      "evidence": "stage6-accepted-editmode.xml",
+      "tests": [
+        {
+          "name": "WarehouseContractTests.ChalkboardResourcesContainOnlyApprovedEmptyDiagram",
+          "result": "Passed"
+        },
+        {
+          "name": "WarehouseContractTests.ClearingPropsHaveSupportedHomesAndDynamicAttachedVisuals",
+          "result": "Passed"
+        },
+        {
+          "name": "WarehouseContractTests.FrameNameplatesDoNotCoverIllustrations",
+          "result": "Passed"
+        },
+        {
+          "name": "WarehouseContractTests.InstalledVersionsAreTheUnity63ReleasedPackages",
+          "result": "Passed"
+        },
+        {
+          "name": "WarehouseContractTests.PictureAssembliesAreSupportedAndLabelsAndLightsStayAttached",
+          "result": "Passed"
+        },
+        {
+          "name": "WarehouseContractTests.ProgressionStillRequiresAllThreePuzzles",
+          "result": "Passed"
+        },
+        {
+          "name": "WarehouseContractTests.ProposalDoesNotChangeAnswersOrIds",
+          "result": "Passed"
+        },
+        {
+          "name": "WarehouseContractTests.StorageCratesHavePhysicalSupportAndAttachedDetail",
+          "result": "Passed"
+        },
+        {
+          "name": "WarehouseContractTests.WarehouseIsStartupAndClassroomIsRegressionFixture",
+          "result": "Passed"
+        }
+      ]
+    },
+    "PlayMode": {
+      "result": "Passed",
+      "total": "37",
+      "passed": "37",
+      "failed": "0",
+      "skipped": "0",
+      "evidence": "stage6-accepted-playmode.xml",
+      "tests": [
+        {
+          "name": "ArtTests.S10f_ArtAudioEffectsLayoutAndGameViewCaptures",
+          "result": "Passed"
+        },
+        {
+          "name": "ClassroomTests.S1_RoomAndDoorway",
+          "result": "Passed"
+        },
+        {
+          "name": "CluesTests.S5_ClueReadsAndVisibleOrder",
+          "result": "Passed"
+        },
+        {
+          "name": "FifthPassTests.ClueSentencesNeverAutomaticallyAppearBeforeFailure",
+          "result": "Passed"
+        },
+        {
+          "name": "FifthPassTests.EndingShowsActualClearTimeAfterBlackFade",
+          "result": "Passed"
+        },
+        {
+          "name": "FifthPassTests.FailureThresholdsShowTextOnlyAtThreeTwoTwo",
+          "result": "Passed"
+        },
+        {
+          "name": "FifthPassTests.OpeningAnyKeySkipsWithoutGameplayInput",
+          "result": "Passed"
+        },
+        {
+          "name": "FifthPassTests.SealReleaseChangesLampsBrightnessAndFrameFeedback",
+          "result": "Passed"
+        },
+        {
+          "name": "FullInputTests.ExitStraightCenter",
+          "result": "Passed"
+        },
+        {
+          "name": "FullInputTests.ExitStraightLeft",
+          "result": "Passed"
+        },
+        {
+          "name": "FullInputTests.ExitStraightRight",
+          "result": "Passed"
+        },
+        {
+          "name": "FullInputTests.S9_KeyboardRaycastAllPuzzlesWalkExit",
+          "result": "Passed"
+        },
+        {
+          "name": "ItemsTests.S4_CatalogHotbarSelection",
+          "result": "Passed"
+        },
+        {
+          "name": "PotionTests.S7_LocksWrongRespawnsAndRewards",
+          "result": "Passed"
+        },
+        {
+          "name": "RuneTests.S6_WrongHintCorrectRewardSeal",
+          "result": "Passed"
+        },
+        {
+          "name": "SealTests.S8_SealRejectionDoorPhysicalTriggerClearRestart",
+          "result": "Passed"
+        },
+        {
+          "name": "SixthPassTests.IncisionsAndMaterialEffectsStayPresentationOnly",
+          "result": "Passed"
+        },
+        {
+          "name": "SystemsTests.S2_PlayerSystems",
+          "result": "Passed"
+        },
+        {
+          "name": "UITests.S3_PanelsButtonsReadRestart",
+          "result": "Passed"
+        },
+        {
+          "name": "WarehouseDarkeningTests.EveryPictureHasSeparateCloseHelp",
+          "result": "Passed"
+        },
+        {
+          "name": "WarehouseDarkeningTests.PuzzleAndClearingInteractionsContinueDuringSmoothTransitions",
+          "result": "Passed"
+        },
+        {
+          "name": "WarehouseDarkeningTests.StagesDecreaseLightKeepGuidesAndCaptureSameCamera",
+          "result": "Passed"
+        },
+        {
+          "name": "WarehouseXriTests.AutomaticSelectionFallsBackWithoutHmd",
+          "result": "Passed"
+        },
+        {
+          "name": "WarehouseXriTests.CrateRailsCannotBlockPuzzlesExitOrWalls",
+          "result": "Passed"
+        },
+        {
+          "name": "WarehouseXriTests.DesktopClearingAllFourAndHiddenTargetsCannotBeBypassed",
+          "result": "Passed"
+        },
+        {
+          "name": "WarehouseXriTests.DesktopCrystalLeftAndRightSockets",
+          "result": "Passed"
+        },
+        {
+          "name": "WarehouseXriTests.DesktopFullFlowTurnsOffThreeSealsAndOpensExit",
+          "result": "Passed"
+        },
+        {
+          "name": "WarehouseXriTests.DesktopGrabIngredientsIntoCauldronSocket",
+          "result": "Passed"
+        },
+        {
+          "name": "WarehouseXriTests.DesktopRunePressUsesXri",
+          "result": "Passed"
+        },
+        {
+          "name": "WarehouseXriTests.EmptyChalkAndFailureOnlyHintsHaveNoAlternateAnswerRoute",
+          "result": "Passed"
+        },
+        {
+          "name": "WarehouseXriTests.FrameAndStoneUseIdenticalBrassMotifs",
+          "result": "Passed"
+        },
+        {
+          "name": "WarehouseXriTests.NamedIncisionsAreReadableAndShareFillAndGlow",
+          "result": "Passed"
+        },
+        {
+          "name": "WarehouseXriTests.SharedPressRetiresUnheldConsumedPotion",
+          "result": "Passed"
+        },
+        {
+          "name": "WarehouseXriTests.VrSimulatedControllerSharesRuneAndGrabComponents",
+          "result": "Passed"
+        },
+        {
+          "name": "WarehouseXriTests.VrTrackedHandPullsAndPushesSameHeavyCrate",
+          "result": "Passed"
+        },
+        {
+          "name": "WarehouseXriTests.WarehouseArchitectureAndRigSwitch",
+          "result": "Passed"
+        },
+        {
+          "name": "WarehouseXriTests.WrongPhysicalIngredientRespawnsEntireAttempt",
+          "result": "Passed"
+        }
+      ]
+    },
+    "Core": {
+      "total": "44",
+      "passed": "44",
+      "failed": "0",
+      "evidence": "stage6-core.trx"
+    }
+  },
+  "captures": [
+    {
+      "file": "stage6-chalk-frames-wide.png",
+      "sha256": "eaa8b4f069620846f314a384588d0ade84227d33eaa547bd26648378b01251ed",
+      "reviewed": true
+    },
+    {
+      "file": "stage6-chalk-front.png",
+      "sha256": "d3576729fc07923764b2e28dc7d03d55b648a3e60ecf3fdea1356cfd5c6a432a",
+      "reviewed": true
+    },
+    {
+      "file": "stage6-chalk-inspect.png",
+      "sha256": "1f24649b0c90840e992169213f7cf020e865efecf1d273bdcc113520e86c47d7",
+      "reviewed": true
+    },
+    {
+      "file": "stage6-frame-II-close.png",
+      "sha256": "f036af0f8e6c1ff2db352ef9f2873c223f75dacde32e2ef013eef67632c67c35",
+      "reviewed": true
+    },
+    {
+      "file": "stage6-frame-III-close.png",
+      "sha256": "07d284f578901c27aa82642530138fb03279bd6bcab809dbf39f1890ace961c3",
+      "reviewed": true
+    }
+  ],
+  "reviewed_blank_asset_sha256": "a09ae7a9877824737b0d78f1009084a499d1a783981b70226b4f46986c3d13bc",
+  "preservation": {
+    "original_xml_trx_files": 88,
+    "changed": 0,
+    "historical_classroom_and_stage5_captures_unchanged": true
+  },
+  "iterations": [
+    {
+      "run": "stage6-generate",
+      "result": "failed",
+      "cause": "Inactive label lookup; replaced GameObject.Find with inactive-inclusive query."
+    },
+    {
+      "run": "stage6-playmode",
+      "passed": 36,
+      "failed": 1,
+      "cause": "Capture stand collided with storage; settled re-aim and asserted actual chalkboard ray hit."
+    },
+    {
+      "run": "stage6-smoke",
+      "passed": 1,
+      "failed": 0
+    },
+    {
+      "run": "stage6-verified-playmode",
+      "passed": 37,
+      "failed": 0,
+      "followup": "Visual review found original wooden board borders were separate roots; attached them and reran all tests."
+    }
+  ],
+  "unverified": [
+    "Real HMD readability and full physical VR play",
+    "S11 player build",
+    "Notion synchronization"
+  ]
+}

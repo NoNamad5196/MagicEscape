@@ -1,10 +1,14 @@
 """Original stage-3 manuscript plates; deterministic PIL vector/hatch source, no external assets."""
 from pathlib import Path
 from PIL import Image, ImageDraw
-import math, random
+import math, random, sys
+warehouse_iii = "--warehouse-iii" in sys.argv
 R=random.Random(5196)
 G=(177,151,98); INK=(57,43,29)
 B=Path('UnityProject/Assets/Art/S10b'); E=Path('UnityProject/Assets/Art/S10e')
+if warehouse_iii:
+ B=Path('UnityProject/Assets/Art/Warehouse'); B.mkdir(exist_ok=True)
+
 def glyph(name,size=256,col=G,bg=(33,31,28,255)):
  im=Image.new('RGBA',(256,256),bg);d=ImageDraw.Draw(im)
  def ln(p):d.line(p,fill=col,width=11,joint='curve')
@@ -21,7 +25,8 @@ def glyph(name,size=256,col=G,bg=(33,31,28,255)):
   ln([(192,153),(182,206),(195,213)])
  return im.resize((size,size),Image.Resampling.LANCZOS)
 
-for name in ['Earth','Water','Fire','Wind','Light','Shadow']:glyph(name).save(B/(name+'.png'))
+if not warehouse_iii:
+ for name in ['Earth','Water','Fire','Wind','Light','Shadow']:glyph(name).save(B/(name+'.png'))
 def paper(size):
  im=Image.new('RGB',size); im.putdata([tuple(c+R.randrange(-5,6) for c in (205,183,139)) for _ in range(size[0]*size[1])]);return im
 def sun(d,x,y,r):
@@ -46,8 +51,10 @@ for x,y,side in [(245,279,-1),(249,308,1)]:
  for j in range(4):d.line((x+side*(8+j*6),y+8+j*5,x+side*(16+j*7),y+13+j*5),fill=INK,width=1)
 for x in (104,166,315,409):
  pts=[(x+math.sin(k*.5)*8,300-k*5) for k in range(22)];d.line(pts,fill=INK,width=2)
-g=glyph('Fire',105,INK,(0,0,0,0));im.paste(g,(35,35),g)
+if not warehouse_iii:
+ g=glyph('Fire',105,INK,(0,0,0,0));im.paste(g,(35,35),g)
 im.save(B/'Story_3.png')
+if warehouse_iii: sys.exit(0)
 print('Stage 3: bold matching brass glyphs, heat woodcut, woven cloth.')
 
 # Woven linen with broad vertical folds (not timber plank grain).
