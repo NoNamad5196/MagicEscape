@@ -80,11 +80,21 @@ namespace MagicEscape.EditorTools
                 name.localPosition=new Vector3(.14f,-.51f,-.103f);name.localScale=new Vector3(.48f,.16f,1);
                 frame.Find("ArtB_RomanPlaque").localScale=new Vector3(1.02f,.23f,.07f);
             }
-            var seedPicture=AssetDatabase.LoadAssetAtPath<Texture2D>("Assets/Art/Warehouse/Story_1.png");
-            Set(Find("Painting_I").GetComponent<InspectableObject>(),"picture",seedPicture);
-            var seedMaterial=ArtMaterial("WarehouseSeedStory",Color.white);seedMaterial.mainTexture=seedPicture;
-            EditorUtility.SetDirty(seedMaterial);
-            Find("ArtB_PictureFrame_I").transform.Find("ArtB_StoryIllustration").GetComponent<Renderer>().sharedMaterial=seedMaterial;
+            // Image-generated scene textures are Warehouse-only; plaque/stone motifs stay intact.
+            string[] storyRomans={"I","II","III","IV"};
+            for(int i=0;i<storyRomans.Length;i++)
+            {
+                string path="Assets/Art/Warehouse/Textures/Story_"+(i+1)+".png";
+                var importer=(TextureImporter)AssetImporter.GetAtPath(path);
+                importer.maxTextureSize=1024;importer.mipmapEnabled=true;
+                importer.textureCompression=TextureImporterCompression.CompressedHQ;importer.SaveAndReimport();
+                var picture=AssetDatabase.LoadAssetAtPath<Texture2D>(path);
+                if(picture==null)throw new System.InvalidOperationException("Missing generated story: "+path);
+                Set(Find("Painting_"+storyRomans[i]).GetComponent<InspectableObject>(),"picture",picture);
+                var material=ArtMaterial("WarehouseGeneratedStory"+(i+1),Color.white);
+                material.mainTexture=picture;EditorUtility.SetDirty(material);
+                Find("ArtB_PictureFrame_"+storyRomans[i]).transform.Find("ArtB_StoryIllustration").GetComponent<Renderer>().sharedMaterial=material;
+            }
             var recipe=AssetDatabase.LoadAssetAtPath<Texture2D>("Assets/Art/Warehouse/PictureRecipe.png");
             Set(Find("RecipeBook").GetComponent<InspectableObject>(),"picture",recipe);
             var recipeMat=ArtMaterial("WarehouseRecipe",Color.white);recipeMat.mainTexture=recipe;

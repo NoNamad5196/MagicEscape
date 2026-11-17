@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="1" result="Passed" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-11-17 15:17:24Z" end-time="2026-11-17 15:17:33Z" duration="9.3043797">
+  <test-suite type="TestSuite" id="1059" name="UnityProject" fullname="UnityProject" runstate="Runnable" testcasecount="38" result="Passed" start-time="2026-11-17 15:17:24Z" end-time="2026-11-17 15:17:33Z" duration="9.304380" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+    <properties>
+      <property name="platform" value="PlayMode" />
+    </properties>
+    <test-suite type="SetUpFixture" id="1013" name="MagicEscape.PlayMode.dll" fullname="ConsoleAudit" classname="ConsoleAudit" runstate="Runnable" testcasecount="38" result="Passed" start-time="2026-11-17 15:17:24Z" end-time="2026-11-17 15:17:33Z" duration="9.294150" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="49928" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="PlayMode" />
+        <property name="EditorOnly" value="False" />
+      </properties>
+      <test-suite type="TestFixture" id="1037" name="WarehouseStage7Tests" fullname="WarehouseStage7Tests" classname="WarehouseStage7Tests" runstate="Runnable" testcasecount="1" result="Passed" start-time="2026-11-17 15:17:24Z" end-time="2026-11-17 15:17:33Z" duration="9.283628" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <test-case id="1038" name="ReadableScenesItemsAndRewardsAtStandingEye" fullname="WarehouseStage7Tests.ReadableScenesItemsAndRewardsAtStandingEye" methodname="ReadableScenesItemsAndRewardsAtStandingEye" classname="WarehouseStage7Tests" runstate="Runnable" seed="1761042142" result="Passed" start-time="2026-11-17 15:17:24Z" end-time="2026-11-17 15:17:33Z" duration="9.272775" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+          <output><![CDATA[[GameManager] Flow → Title
+Loading OpenXR loader library at path: C:\Users\nonam\Documents\MagicEscape\UnityProject\Library\PackageCache\com.unity.xr.openxr@ef0033a586bf\RuntimeLoaders\windows\x64\openxr_loader.dll
+Your project uses a scriptable render pipeline. You can use Camera.stereoTargetEye only with the built-in renderer.
+Your project uses a scriptable render pipeline. You can use Camera.stereoTargetEye only with the built-in renderer.
+[GameManager] Flow → Playing
+Your project uses a scriptable render pipeline. You can use Camera.stereoTargetEye only with the built-in renderer.
+Your project uses a scriptable render pipeline. You can use Camera.stereoTargetEye only with the built-in renderer.
+[RunePuzzle] Earth → Progress (진행 1, 실패 0)
+[RunePuzzle] Water → Progress (진행 2, 실패 0)
+[RunePuzzle] Fire → Progress (진행 3, 실패 0)
+[RunePuzzle] Light → Solved (진행 4, 실패 0)
+[Toast] 제단의 봉인이 풀렸다! 제단 안에서 푸른 수정이 떠오른다.
+[GameManager] Rune → Solved
+[GameManager] Potion → Active
+[Toast] 월광초 꽃잎 획득
+[PotionPuzzle] ing_moonpetal → Accepted (진행 1, 실패 0)
+[Toast] 월광초 꽃잎을 넣었다. (1/3)
+[Toast] 불도마뱀 비늘 획득
+[PotionPuzzle] ing_salamander_scale → Accepted (진행 2, 실패 0)
+[Toast] 불도마뱀 비늘을 넣었다. (2/3)
+[Toast] 수정 가루 획득
+[PotionPuzzle] ing_crystal_dust → Solved (진행 3, 실패 0)
+[Toast] 계시의 물약이 완성되었다! 가마솥 바닥에서 붉은 수정도 얻었다.
+[GameManager] Potion → Solved
+[GameManager] Seal → Active
+Saving results to: C:/Users/nonam/AppData/LocalLow/DefaultCompany/UnityProject\TestResults.xml
+]]></output>
+        </test-case>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>

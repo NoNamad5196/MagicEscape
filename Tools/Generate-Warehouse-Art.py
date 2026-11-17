@@ -32,57 +32,13 @@ def motif(name):
   p.append(p[0]);line(p)
  return im
 for n in ['Earth','Water','Fire','Light','Wind','Shadow']:motif(n).save(out/('Pictogram_'+n+'.png'))
-# Clean, large chalk narrative vignettes: no element motifs/names imported here.
-r=random.Random(5196);im=Image.new('RGB',(1536,768));im.putdata([tuple(c+r.randrange(-4,5) for c in (24,38,31)) for _ in range(1536*768)])
-d=ImageDraw.Draw(im);c=(211,218,194)
-def ln(p,w=6):d.line(p,fill=c,width=w,joint='curve')
+# Stage 9: compose reviewed image-generated textures; never procedurally redraw P1 art.
+# Numbering is separate Unity text, not baked into any generated picture.
+im=Image.new('RGB',(1536,768),(20,20,20))
 for n in range(4):
- x=192+n*384
- if n<3:
-  for j in range(n+1):ln([(x-12*n+24*j,62),(x-12*n+24*j,112)])
- else:ln([(x-35,62),(x-35,112)]);ln([(x-6,62),(x+16,112),(x+38,62)])
- # Scene box / baseline, not an empty slot.
- ln([(x-147,565),(x-66,552),(x+26,562),(x+145,550)])
- if n==0:
-  # Pointed almond seed, split seam and a single tiny shoot: no head/legs silhouette.
-  ln([(x-48,625),(x-32,603),(x-4,593),(x+25,599),(x+45,617),(x+25,639),(x-5,647),(x-32,640),(x-48,625)])
-  ln([(x-40,626),(x-10,618),(x+17,619),(x+38,618)],4)
-  ln([(x-3,594),(x+1,581),(x+8,570)],4)
-  for j in range(7):ln([(x-130+j*41,598),(x-115+j*41,581)],3)
- else:
-  top=355 if n==3 else 420
-  ln([(x,614),(x-4,517),(x+2,top)])
-  if n==2:
-   ln([(x-1,479),(x-43,487),(x-65,520),(x-24,501),(x-1,479)],5)
-   ln([(x-3,514),(x+42,527),(x+61,554),(x+18,537),(x-3,514)],5)
-  else:
-   ln([(x,480),(x-64,441),(x-80,455),(x-39,492),(x,480)],5)
-   ln([(x,510),(x+57,469),(x+78,479),(x+38,519),(x,510)],5)
- if n==1:
-  for j in range(5):d.arc((x-140+j*47,199,x-64+j*47,270),180,350,fill=c,width=5)
-  for j in range(7):
-   y=305+(j%2)*39;ln([(x-121+j*39,y),(x-137+j*39,y+63)],5)
- if n==2:
-  # Heat scene: small sun in sky + cracked earth + wilt, never flame pictogram.
-  d.ellipse((x+53,226,x+115,288),outline=c,width=5)
-  for j in range(3):ln([(x+55+j*22,312),(x+49+j*22,336),(x+60+j*22,361)],3)
-  for j in range(5):
-   xx=x-130+j*61;ln([(xx,563),(xx+16,598),(xx-8,633),(xx+21,677),(xx+10,712)],4)
-   ln([(xx+10,603),(xx+39,619)],3)
- if n==3:
-  # Bloom and broad shafts, not isolated sun / element icon.
-  for j in range(8):
-   a=j*math.tau/8;xx=x+math.cos(a)*30;yy=355+math.sin(a)*30
-   d.ellipse((xx-15,yy-22,xx+15,yy+22),outline=c,width=5)
-  d.ellipse((x-12,343,x+12,367),outline=c,width=4)
-  for dx in (-120,-72,72,120):ln([(x+dx,210),(x+dx*.38,292)],4)
- if n<3:
-  ln([(x+163,407),(x+207,407)],4);ln([(x+196,395),(x+208,407),(x+196,419)],4)
-# restrained grain in chalk strokes only
-p=im.load()
-for _ in range(8000):
- x=r.randrange(1536);y=r.randrange(768)
- if p[x,y]==c:p[x,y]=(151,165,142)
+ picture=Image.open(out/'Textures'/f'Chalk_{n+1}.png').convert('RGB')
+ picture=picture.resize((360,240),Image.Resampling.LANCZOS)
+ im.paste(picture,(12+n*384,270))
 im.save(out/'ChalkScenes.png')
 # Warehouse recipe uses narrative ingredient drawings only (no old Fire triangle).
 recipe=Image.new('RGB',(1024,640),(205,183,139));rd=ImageDraw.Draw(recipe);ink=(57,43,29)
@@ -115,17 +71,3 @@ for n in range(3):
 rd.arc((416,470,608,564),180,360,fill=ink,width=5);rline([(416,517),(608,517)]);rline([(491,520),(491,586),(534,586),(534,520)])
 rline([(433,464),(589,600)],7);rline([(589,464),(433,600)],7)
 recipe.save(out/'PictureRecipe.png')
-
-# Warehouse-only frame I: retain the etched parchment vocabulary without changing Classroom.
-rng=random.Random(5196)
-frame=Image.new('RGB',(512,512));frame.putdata([tuple(v+rng.randrange(-6,7) for v in (173,151,110)) for _ in range(512*512)])
-fd=ImageDraw.Draw(frame);ink=(45,36,27)
-for y in range(40,326,5):fd.line([(28,y),(155,y-2),(310,y+1),(484,y)],fill=(113,99,73),width=1)
-for _ in range(280):
- x=rng.randrange(30,480);y=rng.randrange(343,480);fd.line([(x,y),(x+10,y-7)],fill=(80,64,44),width=1)
-fd.line([(26,335),(105,318),(220,329),(330,314),(485,338)],fill=ink,width=3)
-fd.line([(210,394),(226,373),(252,362),(278,367),(295,385),(278,407),(251,416),(225,409),(210,394)],fill=ink,width=3,joint='curve')
-fd.line([(216,394),(243,386),(270,388),(289,385)],fill=ink,width=2)
-fd.line([(252,362),(255,348),(262,338)],fill=ink,width=2)
-for off in (16,22):fd.rectangle((off,off,511-off,511-off),outline=(79,57,33),width=2)
-frame.save(out/'Story_1.png')

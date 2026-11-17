@@ -180,13 +180,18 @@ namespace MagicEscape.EditorTools
                 t.position+=Vector3.up*.85f;
             var boardLight=Find("ArtC_Chalkboard").transform;boardLight.position+=Vector3.up*.85f;
             boardLight.LookAt(Find("Chalkboard").transform.position);
-            // III originally baked a second Fire glyph into the illustration itself.
-            // Use the same procedural drought artwork without that redundant overlay.
-            var story=AssetDatabase.LoadAssetAtPath<Texture2D>("Assets/Art/Warehouse/Story_3.png");
-            if(story==null)throw new System.InvalidOperationException("Generate-Clearing-Art.py --warehouse-iii required");
-            var storyMat=ArtMaterial("WarehouseStoryIII",Color.white);storyMat.mainTexture=story;EditorUtility.SetDirty(storyMat);
-            Find("ArtB_PictureFrame_III").transform.Find("ArtB_StoryIllustration").GetComponent<Renderer>().sharedMaterial=storyMat;
-            Set(Find("Painting_III").GetComponent<InspectableObject>(),"picture",story);
+            // Ordered captions are authored text above the art, never inside generated images.
+            var plate=Find("ChalkSequence").transform;
+            string[] captions={"I","II","III","IV"};
+            for(int i=0;i<4;i++)
+            {
+                var caption=WorldText("WarehouseSceneOrder_"+i,plate,captions[i],new Vector3(-.375f+i*.25f,.27f,-.01f),new Vector2(.2f,.12f),1.2f);
+                caption.transform.rotation=plate.rotation;
+                caption.rectTransform.anchoredPosition=new Vector2(-.375f+i*.25f,.27f);
+                caption.textWrappingMode=TMPro.TextWrappingModes.NoWrap;
+                caption.overflowMode=TMPro.TextOverflowModes.Overflow;
+                caption.color=new Color(.85f,.87f,.82f);
+            }
         }
         static void FitWarehouseClues()
         {

@@ -131,7 +131,7 @@ public class WarehouseContractTests
         var texture=AssetDatabase.LoadAssetAtPath<Texture2D>(allowed);
         Assert.NotNull(texture);
         using(var sha=System.Security.Cryptography.SHA256.Create())
-            Assert.AreEqual("158DCD8EE78741A0BC2931FE8926D6E5F44D75B7AC9517EEDB7F6ADEAF05F341",
+            Assert.AreEqual("221C98C6A463DEE061E5A6A8DD630E7E7C4CF5A0216D895D5E513BE8F18554EA",
                 System.BitConverter.ToString(sha.ComputeHash(System.IO.File.ReadAllBytes(allowed))).Replace("-",""),"Reviewed scene-only chalk pixels must not gain element names or pictograms");
         var board=GameObject.Find("Chalkboard");
         Assert.AreSame(texture,new SerializedObject(board.GetComponent<InspectableObject>()).FindProperty("picture").objectReferenceValue);
@@ -163,6 +163,24 @@ public class WarehouseContractTests
             else Assert.IsNull(pic,"Unexpected alternate inspection picture: "+inspect.name);
         }
     }
+    [Test] public void GeneratedStoriesShareWorldAndInspectionTextures()
+    {
+        EditorSceneManager.OpenScene("Assets/Scenes/Warehouse.unity");
+        string[] romans={"I","II","III","IV"};
+        for(int i=0;i<4;i++)
+        {
+            string path="Assets/Art/Warehouse/Textures/Story_"+(i+1)+".png";
+            var picture=AssetDatabase.LoadAssetAtPath<Texture2D>(path);
+            Assert.NotNull(picture);
+            Assert.LessOrEqual(picture.width,1024);Assert.LessOrEqual(picture.height,1024);
+            var frame=GameObject.Find("ArtB_PictureFrame_"+romans[i]).transform.Find("ArtB_StoryIllustration").GetComponent<Renderer>();
+            Assert.AreSame(picture,frame.sharedMaterial.mainTexture);
+            Assert.AreSame(picture,new SerializedObject(GameObject.Find("Painting_"+romans[i]).GetComponent<InspectableObject>()).FindProperty("picture").objectReferenceValue);
+            var caption=GameObject.Find("WarehouseSceneOrder_"+i).GetComponent<TMPro.TMP_Text>();
+            Assert.AreEqual(-.375f+i*.25f,caption.rectTransform.anchoredPosition.x,.001f);
+            Assert.AreEqual(.27f,caption.rectTransform.anchoredPosition.y,.001f);
+        }
+    }
     [Test] public void FrameNameplatesDoNotCoverIllustrations()
     {
         EditorSceneManager.OpenScene("Assets/Scenes/Warehouse.unity");
@@ -172,7 +190,7 @@ public class WarehouseContractTests
             if(roman=="III")
             {
                 var tex=frame.Find("ArtB_StoryIllustration").GetComponent<Renderer>().sharedMaterial.mainTexture;
-                Assert.AreEqual("Assets/Art/Warehouse/Story_3.png",AssetDatabase.GetAssetPath(tex),"No baked corner glyph in Warehouse III art");
+                Assert.AreEqual("Assets/Art/Warehouse/Textures/Story_3.png",AssetDatabase.GetAssetPath(tex),"No baked corner glyph in Warehouse III art");
                 Assert.AreSame(tex,new SerializedObject(GameObject.Find("Painting_III").GetComponent<InspectableObject>()).FindProperty("picture").objectReferenceValue);
             }
             var glyph=frame.GetComponentsInChildren<Transform>().Single(t=>t.name.StartsWith("ArtB_CornerRune_"));
@@ -240,7 +258,7 @@ public class WarehouseContractTests
         var frame=GameObject.Find("ArtB_PictureFrame_I").transform.Find("ArtB_StoryIllustration").GetComponent<Renderer>();
         var pic=new SerializedObject(GameObject.Find("Painting_I").GetComponent<InspectableObject>()).FindProperty("picture").objectReferenceValue;
         Assert.AreSame(frame.sharedMaterial.mainTexture,pic);
-        Assert.AreEqual("Assets/Art/Warehouse/Story_1.png",AssetDatabase.GetAssetPath(pic));
+        Assert.AreEqual("Assets/Art/Warehouse/Textures/Story_1.png",AssetDatabase.GetAssetPath(pic));
         var water=Object.FindObjectsByType<RuneStone>(FindObjectsSortMode.None).Single(r=>r.Rune==RuneId.Water);
         var waterIcon=water.transform.Find("ArtB_RuneIcon_Water").GetComponent<Renderer>();
         var plaque=GameObject.Find("ArtB_PictureFrame_II").GetComponentsInChildren<Renderer>().Single(r=>r.name.StartsWith("ArtB_CornerRune_"));

@@ -1,0 +1,1000 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="38" result="Passed" total="38" passed="38" failed="0" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-11-17 15:12:57Z" end-time="2026-11-17 15:16:21Z" duration="203.8426518">
+  <test-suite type="TestSuite" id="1059" name="UnityProject" fullname="UnityProject" runstate="Runnable" testcasecount="38" result="Passed" start-time="2026-11-17 15:12:57Z" end-time="2026-11-17 15:16:21Z" duration="203.842652" total="38" passed="38" failed="0" inconclusive="0" skipped="0" asserts="0">
+    <properties>
+      <property name="platform" value="PlayMode" />
+    </properties>
+    <test-suite type="SetUpFixture" id="1013" name="MagicEscape.PlayMode.dll" fullname="ConsoleAudit" classname="ConsoleAudit" runstate="Runnable" testcasecount="38" result="Passed" start-time="2026-11-17 15:12:57Z" end-time="2026-11-17 15:16:21Z" duration="203.831592" total="38" passed="38" failed="0" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="49884" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="PlayMode" />
+        <property name="EditorOnly" value="False" />
+      </properties>
+      <test-suite type="TestFixture" id="1001" name="ArtTests" fullname="ArtTests" classname="ArtTests" runstate="Runnable" testcasecount="1" result="Passed" start-time="2026-11-17 15:12:57Z" end-time="2026-11-17 15:13:24Z" duration="26.921915" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <test-case id="1002" name="S10f_ArtAudioEffectsLayoutAndGameViewCaptures" fullname="ArtTests.S10f_ArtAudioEffectsLayoutAndGameViewCaptures" methodname="S10f_ArtAudioEffectsLayoutAndGameViewCaptures" classname="ArtTests" runstate="Runnable" seed="1037298306" result="Passed" start-time="2026-11-17 15:12:57Z" end-time="2026-11-17 15:13:24Z" duration="26.909237" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+          <output><![CDATA[[GameManager] Flow → Title
+[GameManager] Flow → Playing
+[RunePuzzle] Earth → Progress (진행 1, 실패 0)
+[RunePuzzle] Water → Progress (진행 2, 실패 0)
+[RunePuzzle] Fire → Progress (진행 3, 실패 0)
+[RunePuzzle] Light → Solved (진행 4, 실패 0)
+[Toast] 제단의 봉인이 풀렸다! 제단 안에서 푸른 수정이 떠오른다.
+[GameManager] Rune → Solved
+[GameManager] Potion → Active
+[Toast] 푸른 수정 획득
+[Toast] 독버섯 획득
+[PotionPuzzle] ing_toadstool → Wrong (진행 0, 실패 1)
+[Toast] 가마솥에서 검은 연기가 피어올랐다! 재료들이 제자리로 돌아갔다.
+[Toast] 월광초 꽃잎 획득
+[PotionPuzzle] ing_moonpetal → Accepted (진행 1, 실패 1)
+[Toast] 월광초 꽃잎을 넣었다. (1/3)
+[Toast] 불도마뱀 비늘 획득
+[PotionPuzzle] ing_salamander_scale → Accepted (진행 2, 실패 1)
+[Toast] 불도마뱀 비늘을 넣었다. (2/3)
+[Toast] 수정 가루 획득
+[PotionPuzzle] ing_crystal_dust → Solved (진행 3, 실패 1)
+[Toast] 계시의 물약이 완성되었다! 가마솥 바닥에서 붉은 수정도 얻었다.
+[GameManager] Potion → Solved
+[GameManager] Seal → Active
+[SealPuzzle] Right ← crystal_ruby : CrystalPlaced
+[SealPuzzle] Left ← crystal_sapphire : CrystalPlaced
+[Toast] 마지막 봉인이 풀렸다! 출구가 열린다.
+[GameManager] Seal → Solved
+[DoorController] 출구 개방 완료
+[GameManager] Flow → Cleared
+]]></output>
+        </test-case>
+      </test-suite>
+      <test-suite type="TestFixture" id="1003" name="ClassroomTests" fullname="ClassroomTests" classname="ClassroomTests" runstate="Runnable" testcasecount="1" result="Passed" start-time="2026-11-17 15:13:24Z" end-time="2026-11-17 15:13:24Z" duration="0.300709" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <test-case id="1004" name="S1_RoomAndDoorway" fullname="ClassroomTests.S1_RoomAndDoorway" methodname="S1_RoomAndDoorway" classname="ClassroomTests" runstate="Runnable" seed="1816164199" result="Passed" start-time="2026-11-17 15:13:24Z" end-time="2026-11-17 15:13:24Z" duration="0.297101" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+          <output><![CDATA[[GameManager] Flow → Title
+]]></output>
+        </test-case>
+      </test-suite>
+      <test-suite type="TestFixture" id="1005" name="CluesTests" fullname="CluesTests" classname="CluesTests" runstate="Runnable" testcasecount="1" result="Passed" start-time="2026-11-17 15:13:24Z" end-time="2026-11-17 15:13:24Z" duration="0.327693" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <test-case id="1006" name="S5_ClueReadsAndVisibleOrder" fullname="CluesTests.S5_ClueReadsAndVisibleOrder" methodname="S5_ClueReadsAndVisibleOrder" classname="CluesTests" runstate="Runnable" seed="1530985811" result="Passed" start-time="2026-11-17 15:13:24Z" end-time="2026-11-17 15:13:24Z" duration="0.313333" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+          <output><![CDATA[[GameManager] Flow → Title
+[GameManager] Flow → Playing
+]]></output>
+        </test-case>
+      </test-suite>
+      <test-suite type="TestFixture" id="1007" name="FifthPassTests" fullname="FifthPassTests" classname="FifthPassTests" runstate="Runnable" testcasecount="5" result="Passed" start-time="2026-11-17 15:13:24Z" end-time="2026-11-17 15:13:55Z" duration="30.755323" total="5" passed="5" failed="0" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <test-case id="1010" name="ClueSentencesNeverAutomaticallyAppearBeforeFailure" fullname="FifthPassTests.ClueSentencesNeverAutomaticallyAppearBeforeFailure" methodname="ClueSentencesNeverAutomaticallyAppearBeforeFailure" classname="FifthPassTests" runstate="Runnable" seed="1677018528" result="Passed" start-time="2026-11-17 15:13:24Z" end-time="2026-11-17 15:13:28Z" duration="3.593667" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+          <output><![CDATA[[GameManager] Flow → Title
+[GameManager] Flow → Playing
+[RunePuzzle] Earth → Progress (진행 1, 실패 0)
+[RunePuzzle] Water → Progress (진행 2, 실패 0)
+[RunePuzzle] Fire → Progress (진행 3, 실패 0)
+[RunePuzzle] Light → Solved (진행 4, 실패 0)
+[Toast] 제단의 봉인이 풀렸다! 제단 안에서 푸른 수정이 떠오른다.
+[GameManager] Rune → Solved
+[GameManager] Potion → Active
+[Toast] 푸른 수정 획득
+[Toast] 월광초 꽃잎 획득
+[PotionPuzzle] ing_moonpetal → Accepted (진행 1, 실패 0)
+[Toast] 월광초 꽃잎을 넣었다. (1/3)
+[Toast] 불도마뱀 비늘 획득
+[PotionPuzzle] ing_salamander_scale → Accepted (진행 2, 실패 0)
+[Toast] 불도마뱀 비늘을 넣었다. (2/3)
+[Toast] 수정 가루 획득
+[PotionPuzzle] ing_crystal_dust → Solved (진행 3, 실패 0)
+[Toast] 계시의 물약이 완성되었다! 가마솥 바닥에서 붉은 수정도 얻었다.
+[GameManager] Potion → Solved
+[GameManager] Seal → Active
+]]></output>
+        </test-case>
+        <test-case id="1012" name="EndingShowsActualClearTimeAfterBlackFade" fullname="FifthPassTests.EndingShowsActualClearTimeAfterBlackFade" methodname="EndingShowsActualClearTimeAfterBlackFade" classname="FifthPassTests" runstate="Runnable" seed="1244602992" result="Passed" start-time="2026-11-17 15:13:28Z" end-time="2026-11-17 15:13:31Z" duration="2.726027" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+          <output><![CDATA[[GameManager] Flow → Title
+[GameManager] Flow → Playing
+[GameManager] Rune → Solved
+[GameManager] Potion → Active
+[GameManager] Potion → Solved
+[GameManager] Seal → Active
+[GameManager] Seal → Solved
+[GameManager] Flow → Cleared
+]]></output>
+        </test-case>
+        <test-case id="1011" name="FailureThresholdsShowTextOnlyAtThreeTwoTwo" fullname="FifthPassTests.FailureThresholdsShowTextOnlyAtThreeTwoTwo" methodname="FailureThresholdsShowTextOnlyAtThreeTwoTwo" classname="FifthPassTests" runstate="Runnable" seed="306281726" result="Passed" start-time="2026-11-17 15:13:31Z" end-time="2026-11-17 15:13:34Z" duration="3.554364" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+          <output><![CDATA[[GameManager] Flow → Title
+[GameManager] Flow → Playing
+[Toast] 문양의 빛이 꺼졌다. 순서가 틀린 것 같다.
+[RunePuzzle] Wind → Wrong (진행 0, 실패 1)
+[Toast] 문양의 빛이 꺼졌다. 순서가 틀린 것 같다.
+[RunePuzzle] Wind → Wrong (진행 0, 실패 2)
+[Toast] 문양의 빛이 꺼졌다. 순서가 틀린 것 같다.
+힌트: 벽에 걸린 액자의 숫자 순서를 따라가 보자.
+[RunePuzzle] Wind → Wrong (진행 0, 실패 3)
+[RunePuzzle] Earth → Progress (진행 1, 실패 3)
+[RunePuzzle] Water → Progress (진행 2, 실패 3)
+[RunePuzzle] Fire → Progress (진행 3, 실패 3)
+[RunePuzzle] Light → Solved (진행 4, 실패 3)
+[Toast] 제단의 봉인이 풀렸다! 제단 안에서 푸른 수정이 떠오른다.
+[GameManager] Rune → Solved
+[GameManager] Potion → Active
+[Toast] 푸른 수정 획득
+[Toast] 독버섯 획득
+[PotionPuzzle] ing_toadstool → Wrong (진행 0, 실패 1)
+[Toast] 가마솥에서 검은 연기가 피어올랐다! 재료들이 제자리로 돌아갔다.
+[Toast] 독버섯 획득
+[PotionPuzzle] ing_toadstool → Wrong (진행 0, 실패 2)
+[Toast] 가마솥에서 검은 연기가 피어올랐다! 재료들이 제자리로 돌아갔다.
+힌트: 마법서의 순서를 다시 읽어 보자. 독버섯은 함정이다.
+[Toast] 월광초 꽃잎 획득
+[PotionPuzzle] ing_moonpetal → Accepted (진행 1, 실패 2)
+[Toast] 월광초 꽃잎을 넣었다. (1/3)
+[Toast] 불도마뱀 비늘 획득
+[PotionPuzzle] ing_salamander_scale → Accepted (진행 2, 실패 2)
+[Toast] 불도마뱀 비늘을 넣었다. (2/3)
+[Toast] 수정 가루 획득
+[PotionPuzzle] ing_crystal_dust → Solved (진행 3, 실패 2)
+[Toast] 계시의 물약이 완성되었다! 가마솥 바닥에서 붉은 수정도 얻었다.
+[GameManager] Potion → Solved
+[GameManager] Seal → Active
+[SealPuzzle] Left ← crystal_ruby : Rejected
+[Toast] 수정이 튕겨 나왔다. 이 자리가 아닌 것 같다.
+[SealPuzzle] Left ← crystal_ruby : Rejected
+[Toast] 수정이 튕겨 나왔다. 이 자리가 아닌 것 같다.
+힌트: 물은 흐르고 불은 타오른다. 수정의 색을 보자.
+]]></output>
+        </test-case>
+        <test-case id="1008" name="OpeningAnyKeySkipsWithoutGameplayInput" fullname="FifthPassTests.OpeningAnyKeySkipsWithoutGameplayInput" methodname="OpeningAnyKeySkipsWithoutGameplayInput" classname="FifthPassTests" runstate="Runnable" seed="303223711" result="Passed" start-time="2026-11-17 15:13:34Z" end-time="2026-11-17 15:13:47Z" duration="13.384204" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+          <output><![CDATA[[GameManager] Flow → Title
+[GameManager] Flow → Playing
+[GameManager] Flow → Title
+[GameManager] Flow → Playing
+]]></output>
+        </test-case>
+        <test-case id="1009" name="SealReleaseChangesLampsBrightnessAndFrameFeedback" fullname="FifthPassTests.SealReleaseChangesLampsBrightnessAndFrameFeedback" methodname="SealReleaseChangesLampsBrightnessAndFrameFeedback" classname="FifthPassTests" runstate="Runnable" seed="1233671897" result="Passed" start-time="2026-11-17 15:13:47Z" end-time="2026-11-17 15:13:55Z" duration="7.493408" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+          <output><![CDATA[[GameManager] Flow → Title
+[GameManager] Flow → Playing
+[RunePuzzle] Earth → Progress (진행 1, 실패 0)
+[Toast] 문양의 빛이 꺼졌다. 순서가 틀린 것 같다.
+[RunePuzzle] Wind → Wrong (진행 0, 실패 1)
+[RunePuzzle] Earth → Progress (진행 1, 실패 1)
+[RunePuzzle] Water → Progress (진행 2, 실패 1)
+[RunePuzzle] Fire → Progress (진행 3, 실패 1)
+[RunePuzzle] Light → Solved (진행 4, 실패 1)
+[Toast] 제단의 봉인이 풀렸다! 제단 안에서 푸른 수정이 떠오른다.
+[GameManager] Rune → Solved
+[GameManager] Potion → Active
+[Toast] 푸른 수정 획득
+[Toast] 월광초 꽃잎 획득
+[PotionPuzzle] ing_moonpetal → Accepted (진행 1, 실패 0)
+[Toast] 월광초 꽃잎을 넣었다. (1/3)
+[Toast] 불도마뱀 비늘 획득
+[PotionPuzzle] ing_salamander_scale → Accepted (진행 2, 실패 0)
+[Toast] 불도마뱀 비늘을 넣었다. (2/3)
+[Toast] 수정 가루 획득
+[PotionPuzzle] ing_crystal_dust → Solved (진행 3, 실패 0)
+[Toast] 계시의 물약이 완성되었다! 가마솥 바닥에서 붉은 수정도 얻었다.
+[GameManager] Potion → Solved
+[GameManager] Seal → Active
+[SealPuzzle] Left ← crystal_sapphire : CrystalPlaced
+[SealPuzzle] Right ← crystal_ruby : CrystalPlaced
+[Toast] 마지막 봉인이 풀렸다! 출구가 열린다.
+[GameManager] Seal → Solved
+[DoorController] 출구 개방 완료
+]]></output>
+        </test-case>
+      </test-suite>
+      <test-suite type="TestFixture" id="1014" name="FullInputTests" fullname="FullInputTests" classname="FullInputTests" runstate="Runnable" testcasecount="4" result="Passed" start-time="2026-11-17 15:13:55Z" end-time="2026-11-17 15:14:30Z" duration="34.977788" total="4" passed="4" failed="0" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <test-case id="1016" name="ExitStraightCenter" fullname="FullInputTests.ExitStraightCenter" methodname="ExitStraightCenter" classname="FullInputTests" runstate="Runnable" seed="640162212" result="Passed" start-time="2026-11-17 15:13:55Z" end-time="2026-11-17 15:14:04Z" duration="8.853698" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+          <output><![CDATA[[GameManager] Flow → Title
+[GameManager] Flow → Playing
+[RunePuzzle] Earth → Progress (진행 1, 실패 0)
+[RunePuzzle] Water → Progress (진행 2, 실패 0)
+[RunePuzzle] Fire → Progress (진행 3, 실패 0)
+[RunePuzzle] Light → Solved (진행 4, 실패 0)
+[Toast] 제단의 봉인이 풀렸다! 제단 안에서 푸른 수정이 떠오른다.
+[GameManager] Rune → Solved
+[GameManager] Potion → Active
+[Toast] 푸른 수정 획득
+[Toast] 월광초 꽃잎 획득
+[PotionPuzzle] ing_moonpetal → Accepted (진행 1, 실패 0)
+[Toast] 월광초 꽃잎을 넣었다. (1/3)
+[Toast] 불도마뱀 비늘 획득
+[PotionPuzzle] ing_salamander_scale → Accepted (진행 2, 실패 0)
+[Toast] 불도마뱀 비늘을 넣었다. (2/3)
+[Toast] 수정 가루 획득
+[PotionPuzzle] ing_crystal_dust → Solved (진행 3, 실패 0)
+[Toast] 계시의 물약이 완성되었다! 가마솥 바닥에서 붉은 수정도 얻었다.
+[GameManager] Potion → Solved
+[GameManager] Seal → Active
+[SealPuzzle] Right ← crystal_ruby : CrystalPlaced
+[SealPuzzle] Left ← crystal_sapphire : CrystalPlaced
+[Toast] 마지막 봉인이 풀렸다! 출구가 열린다.
+[GameManager] Seal → Solved
+[DoorController] 출구 개방 완료
+[GameManager] Flow → Cleared
+]]></output>
+        </test-case>
+        <test-case id="1017" name="ExitStraightLeft" fullname="FullInputTests.ExitStraightLeft" methodname="ExitStraightLeft" classname="FullInputTests" runstate="Runnable" seed="1762955752" result="Passed" start-time="2026-11-17 15:14:04Z" end-time="2026-11-17 15:14:13Z" duration="8.684932" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+          <output><![CDATA[[GameManager] Flow → Title
+[GameManager] Flow → Playing
+[RunePuzzle] Earth → Progress (진행 1, 실패 0)
+[RunePuzzle] Water → Progress (진행 2, 실패 0)
+[RunePuzzle] Fire → Progress (진행 3, 실패 0)
+[RunePuzzle] Light → Solved (진행 4, 실패 0)
+[Toast] 제단의 봉인이 풀렸다! 제단 안에서 푸른 수정이 떠오른다.
+[GameManager] Rune → Solved
+[GameManager] Potion → Active
+[Toast] 푸른 수정 획득
+[Toast] 월광초 꽃잎 획득
+[PotionPuzzle] ing_moonpetal → Accepted (진행 1, 실패 0)
+[Toast] 월광초 꽃잎을 넣었다. (1/3)
+[Toast] 불도마뱀 비늘 획득
+[PotionPuzzle] ing_salamander_scale → Accepted (진행 2, 실패 0)
+[Toast] 불도마뱀 비늘을 넣었다. (2/3)
+[Toast] 수정 가루 획득
+[PotionPuzzle] ing_crystal_dust → Solved (진행 3, 실패 0)
+[Toast] 계시의 물약이 완성되었다! 가마솥 바닥에서 붉은 수정도 얻었다.
+[GameManager] Potion → Solved
+[GameManager] Seal → Active
+[SealPuzzle] Left ← crystal_sapphire : CrystalPlaced
+[SealPuzzle] Right ← crystal_ruby : CrystalPlaced
+[Toast] 마지막 봉인이 풀렸다! 출구가 열린다.
+[GameManager] Seal → Solved
+[DoorController] 출구 개방 완료
+[GameManager] Flow → Cleared
+]]></output>
+        </test-case>
+        <test-case id="1018" name="ExitStraightRight" fullname="FullInputTests.ExitStraightRight" methodname="ExitStraightRight" classname="FullInputTests" runstate="Runnable" seed="125406420" result="Passed" start-time="2026-11-17 15:14:13Z" end-time="2026-11-17 15:14:21Z" duration="8.784448" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+          <output><![CDATA[[GameManager] Flow → Title
+[GameManager] Flow → Playing
+[RunePuzzle] Earth → Progress (진행 1, 실패 0)
+[RunePuzzle] Water → Progress (진행 2, 실패 0)
+[RunePuzzle] Fire → Progress (진행 3, 실패 0)
+[RunePuzzle] Light → Solved (진행 4, 실패 0)
+[Toast] 제단의 봉인이 풀렸다! 제단 안에서 푸른 수정이 떠오른다.
+[GameManager] Rune → Solved
+[GameManager] Potion → Active
+[Toast] 푸른 수정 획득
+[Toast] 월광초 꽃잎 획득
+[PotionPuzzle] ing_moonpetal → Accepted (진행 1, 실패 0)
+[Toast] 월광초 꽃잎을 넣었다. (1/3)
+[Toast] 불도마뱀 비늘 획득
+[PotionPuzzle] ing_salamander_scale → Accepted (진행 2, 실패 0)
+[Toast] 불도마뱀 비늘을 넣었다. (2/3)
+[Toast] 수정 가루 획득
+[PotionPuzzle] ing_crystal_dust → Solved (진행 3, 실패 0)
+[Toast] 계시의 물약이 완성되었다! 가마솥 바닥에서 붉은 수정도 얻었다.
+[GameManager] Potion → Solved
+[GameManager] Seal → Active
+[SealPuzzle] Left ← crystal_sapphire : CrystalPlaced
+[SealPuzzle] Right ← crystal_ruby : CrystalPlaced
+[Toast] 마지막 봉인이 풀렸다! 출구가 열린다.
+[GameManager] Seal → Solved
+[DoorController] 출구 개방 완료
+[GameManager] Flow → Cleared
+]]></output>
+        </test-case>
+        <test-case id="1015" name="S9_KeyboardRaycastAllPuzzlesWalkExit" fullname="FullInputTests.S9_KeyboardRaycastAllPuzzlesWalkExit" methodname="S9_KeyboardRaycastAllPuzzlesWalkExit" classname="FullInputTests" runstate="Runnable" seed="1285375193" result="Passed" start-time="2026-11-17 15:14:21Z" end-time="2026-11-17 15:14:30Z" duration="8.650924" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+          <output><![CDATA[[GameManager] Flow → Title
+[GameManager] Flow → Playing
+[GameManager] Flow → Paused
+[GameManager] Flow → Playing
+[RunePuzzle] Earth → Progress (진행 1, 실패 0)
+[RunePuzzle] Water → Progress (진행 2, 실패 0)
+[RunePuzzle] Fire → Progress (진행 3, 실패 0)
+[RunePuzzle] Light → Solved (진행 4, 실패 0)
+[Toast] 제단의 봉인이 풀렸다! 제단 안에서 푸른 수정이 떠오른다.
+[GameManager] Rune → Solved
+[GameManager] Potion → Active
+[Toast] 푸른 수정 획득
+[Toast] 월광초 꽃잎 획득
+[Toast] 불도마뱀 비늘 획득
+[Toast] 수정 가루 획득
+[PotionPuzzle] ing_moonpetal → Accepted (진행 1, 실패 0)
+[Toast] 월광초 꽃잎을 넣었다. (1/3)
+[PotionPuzzle] ing_salamander_scale → Accepted (진행 2, 실패 0)
+[Toast] 불도마뱀 비늘을 넣었다. (2/3)
+[PotionPuzzle] ing_crystal_dust → Solved (진행 3, 실패 0)
+[Toast] 계시의 물약이 완성되었다! 가마솥 바닥에서 붉은 수정도 얻었다.
+[GameManager] Potion → Solved
+[GameManager] Seal → Active
+[SealPuzzle] Left ← crystal_sapphire : CrystalPlaced
+[SealPuzzle] Right ← crystal_ruby : CrystalPlaced
+[Toast] 마지막 봉인이 풀렸다! 출구가 열린다.
+[GameManager] Seal → Solved
+[DoorController] 출구 개방 완료
+[GameManager] Flow → Cleared
+]]></output>
+        </test-case>
+      </test-suite>
+      <test-suite type="TestFixture" id="1019" name="ItemsTests" fullname="ItemsTests" classname="ItemsTests" runstate="Runnable" testcasecount="1" result="Passed" start-time="2026-11-17 15:14:30Z" end-time="2026-11-17 15:14:30Z" duration="0.287164" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <test-case id="1020" name="S4_CatalogHotbarSelection" fullname="ItemsTests.S4_CatalogHotbarSelection" methodname="S4_CatalogHotbarSelection" classname="ItemsTests" runstate="Runnable" seed="146061161" result="Passed" start-time="2026-11-17 15:14:30Z" end-time="2026-11-17 15:14:30Z" duration="0.285911" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+          <output><![CDATA[[GameManager] Flow → Title
+[GameManager] Flow → Playing
+]]></output>
+        </test-case>
+      </test-suite>
+      <test-suite type="TestFixture" id="1021" name="PotionTests" fullname="PotionTests" classname="PotionTests" runstate="Runnable" testcasecount="1" result="Passed" start-time="2026-11-17 15:14:30Z" end-time="2026-11-17 15:14:34Z" duration="3.520081" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <test-case id="1022" name="S7_LocksWrongRespawnsAndRewards" fullname="PotionTests.S7_LocksWrongRespawnsAndRewards" methodname="S7_LocksWrongRespawnsAndRewards" classname="PotionTests" runstate="Runnable" seed="1823282528" result="Passed" start-time="2026-11-17 15:14:30Z" end-time="2026-11-17 15:14:34Z" duration="3.518737" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+          <output><![CDATA[[GameManager] Flow → Title
+[GameManager] Flow → Playing
+[Toast] 월광초 꽃잎 획득
+[PotionPuzzle] ing_moonpetal → NotActive (진행 0, 실패 0)
+[Toast] 가마솥이 차갑다. 제단의 봉인이 먼저인 것 같다.
+[Toast] 마법서가 빛의 결계에 싸여 있다. 제단의 봉인을 먼저 풀어야 할 것 같다.
+[RunePuzzle] Earth → Progress (진행 1, 실패 0)
+[RunePuzzle] Water → Progress (진행 2, 실패 0)
+[RunePuzzle] Fire → Progress (진행 3, 실패 0)
+[RunePuzzle] Light → Solved (진행 4, 실패 0)
+[Toast] 제단의 봉인이 풀렸다! 제단 안에서 푸른 수정이 떠오른다.
+[GameManager] Rune → Solved
+[GameManager] Potion → Active
+[Toast] 푸른 수정 획득
+[PotionPuzzle] crystal_sapphire → NotIngredient (진행 0, 실패 0)
+[Toast] 이건 넣을 수 없다.
+[PotionPuzzle] ing_moonpetal → Accepted (진행 1, 실패 0)
+[Toast] 월광초 꽃잎을 넣었다. (1/3)
+[Toast] 수정 가루 획득
+[PotionPuzzle] ing_crystal_dust → Wrong (진행 0, 실패 1)
+[Toast] 가마솥에서 검은 연기가 피어올랐다! 재료들이 제자리로 돌아갔다.
+[Toast] 독버섯 획득
+[PotionPuzzle] ing_toadstool → Wrong (진행 0, 실패 2)
+[Toast] 가마솥에서 검은 연기가 피어올랐다! 재료들이 제자리로 돌아갔다.
+힌트: 마법서의 순서를 다시 읽어 보자. 독버섯은 함정이다.
+[Toast] 월광초 꽃잎 획득
+[PotionPuzzle] ing_moonpetal → Accepted (진행 1, 실패 2)
+[Toast] 월광초 꽃잎을 넣었다. (1/3)
+[Toast] 불도마뱀 비늘 획득
+[PotionPuzzle] ing_salamander_scale → Accepted (진행 2, 실패 2)
+[Toast] 불도마뱀 비늘을 넣었다. (2/3)
+[Toast] 수정 가루 획득
+[PotionPuzzle] ing_crystal_dust → Solved (진행 3, 실패 2)
+[Toast] 계시의 물약이 완성되었다! 가마솥 바닥에서 붉은 수정도 얻었다.
+[GameManager] Potion → Solved
+[GameManager] Seal → Active
+]]></output>
+        </test-case>
+      </test-suite>
+      <test-suite type="TestFixture" id="1023" name="RuneTests" fullname="RuneTests" classname="RuneTests" runstate="Runnable" testcasecount="1" result="Passed" start-time="2026-11-17 15:14:34Z" end-time="2026-11-17 15:14:36Z" duration="2.480508" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <test-case id="1024" name="S6_WrongHintCorrectRewardSeal" fullname="RuneTests.S6_WrongHintCorrectRewardSeal" methodname="S6_WrongHintCorrectRewardSeal" classname="RuneTests" runstate="Runnable" seed="495154195" result="Passed" start-time="2026-11-17 15:14:34Z" end-time="2026-11-17 15:14:36Z" duration="2.479583" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+          <output><![CDATA[[GameManager] Flow → Title
+[GameManager] Flow → Playing
+[RunePuzzle] Earth → Progress (진행 1, 실패 0)
+[RunePuzzle] Water → Progress (진행 2, 실패 0)
+[Toast] 문양의 빛이 꺼졌다. 순서가 틀린 것 같다.
+[RunePuzzle] Wind → Wrong (진행 0, 실패 1)
+[RunePuzzle] Earth → Progress (진행 1, 실패 1)
+[RunePuzzle] Water → Progress (진행 2, 실패 1)
+[Toast] 문양의 빛이 꺼졌다. 순서가 틀린 것 같다.
+[RunePuzzle] Wind → Wrong (진행 0, 실패 2)
+[RunePuzzle] Earth → Progress (진행 1, 실패 2)
+[RunePuzzle] Water → Progress (진행 2, 실패 2)
+[Toast] 문양의 빛이 꺼졌다. 순서가 틀린 것 같다.
+힌트: 벽에 걸린 액자의 숫자 순서를 따라가 보자.
+[RunePuzzle] Wind → Wrong (진행 0, 실패 3)
+[RunePuzzle] Earth → Progress (진행 1, 실패 3)
+[RunePuzzle] Water → Progress (진행 2, 실패 3)
+[RunePuzzle] Fire → Progress (진행 3, 실패 3)
+[RunePuzzle] Light → Solved (진행 4, 실패 3)
+[Toast] 제단의 봉인이 풀렸다! 제단 안에서 푸른 수정이 떠오른다.
+[GameManager] Rune → Solved
+[GameManager] Potion → Active
+[Toast] 푸른 수정 획득
+]]></output>
+        </test-case>
+      </test-suite>
+      <test-suite type="TestFixture" id="1025" name="SealTests" fullname="SealTests" classname="SealTests" runstate="Runnable" testcasecount="1" result="Passed" start-time="2026-11-17 15:14:36Z" end-time="2026-11-17 15:14:44Z" duration="7.684652" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <test-case id="1026" name="S8_SealRejectionDoorPhysicalTriggerClearRestart" fullname="SealTests.S8_SealRejectionDoorPhysicalTriggerClearRestart" methodname="S8_SealRejectionDoorPhysicalTriggerClearRestart" classname="SealTests" runstate="Runnable" seed="302389486" result="Passed" start-time="2026-11-17 15:14:36Z" end-time="2026-11-17 15:14:44Z" duration="7.683634" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+          <output><![CDATA[[GameManager] Flow → Title
+[GameManager] Flow → Playing
+[Toast] 아직 봉인이 두 개 남아 있다.
+[SealPuzzle] Left ←  : Dormant
+[Toast] 아직 봉인이 두 개 남아 있다.
+[Toast] 아직 봉인이 두 개 남아 있다.
+[RunePuzzle] Earth → Progress (진행 1, 실패 0)
+[RunePuzzle] Water → Progress (진행 2, 실패 0)
+[RunePuzzle] Fire → Progress (진행 3, 실패 0)
+[RunePuzzle] Light → Solved (진행 4, 실패 0)
+[Toast] 제단의 봉인이 풀렸다! 제단 안에서 푸른 수정이 떠오른다.
+[GameManager] Rune → Solved
+[GameManager] Potion → Active
+[Toast] 푸른 수정 획득
+[Toast] 월광초 꽃잎 획득
+[PotionPuzzle] ing_moonpetal → Accepted (진행 1, 실패 0)
+[Toast] 월광초 꽃잎을 넣었다. (1/3)
+[Toast] 불도마뱀 비늘 획득
+[PotionPuzzle] ing_salamander_scale → Accepted (진행 2, 실패 0)
+[Toast] 불도마뱀 비늘을 넣었다. (2/3)
+[Toast] 수정 가루 획득
+[PotionPuzzle] ing_crystal_dust → Solved (진행 3, 실패 0)
+[Toast] 계시의 물약이 완성되었다! 가마솥 바닥에서 붉은 수정도 얻었다.
+[GameManager] Potion → Solved
+[GameManager] Seal → Active
+[Toast] 비문이 흐릿해 읽을 수 없다.
+[SealPuzzle] Left ← crystal_sapphire : NotAvailable
+[Toast] 소켓이 무엇을 원하는지 아직 알 수 없다. 비문을 먼저 읽어야 한다.
+[Toast] 봉인핵이 아직 잠잠하다. 두 수정을 모두 끼워야 한다.
+[SealPuzzle] Left ← crystal_ruby : Rejected
+[Toast] 수정이 튕겨 나왔다. 이 자리가 아닌 것 같다.
+[SealPuzzle] Left ← crystal_ruby : Rejected
+[Toast] 수정이 튕겨 나왔다. 이 자리가 아닌 것 같다.
+힌트: 물은 흐르고 불은 타오른다. 수정의 색을 보자.
+[SealPuzzle] Left ← crystal_sapphire : CrystalPlaced
+[SealPuzzle] Right ← crystal_ruby : CrystalPlaced
+[Toast] 마지막 봉인이 풀렸다! 출구가 열린다.
+[GameManager] Seal → Solved
+[DoorController] 출구 개방 완료
+[GameManager] Flow → Cleared
+[GameManager] Flow → Title
+]]></output>
+        </test-case>
+      </test-suite>
+      <test-suite type="TestFixture" id="1027" name="SixthPassTests" fullname="SixthPassTests" classname="SixthPassTests" runstate="Runnable" testcasecount="1" result="Passed" start-time="2026-11-17 15:14:44Z" end-time="2026-11-17 15:14:46Z" duration="1.625348" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <test-case id="1028" name="IncisionsAndMaterialEffectsStayPresentationOnly" fullname="SixthPassTests.IncisionsAndMaterialEffectsStayPresentationOnly" methodname="IncisionsAndMaterialEffectsStayPresentationOnly" classname="SixthPassTests" runstate="Runnable" seed="299913123" result="Passed" start-time="2026-11-17 15:14:44Z" end-time="2026-11-17 15:14:46Z" duration="1.623571" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+          <output><![CDATA[[GameManager] Flow → Title
+[GameManager] Flow → Playing
+[RunePuzzle] Earth → Progress (진행 1, 실패 0)
+]]></output>
+        </test-case>
+      </test-suite>
+      <test-suite type="TestFixture" id="1029" name="SystemsTests" fullname="SystemsTests" classname="SystemsTests" runstate="Runnable" testcasecount="1" result="Passed" start-time="2026-11-17 15:14:46Z" end-time="2026-11-17 15:14:46Z" duration="0.326381" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <test-case id="1030" name="S2_PlayerSystems" fullname="SystemsTests.S2_PlayerSystems" methodname="S2_PlayerSystems" classname="SystemsTests" runstate="Runnable" seed="547318797" result="Passed" start-time="2026-11-17 15:14:46Z" end-time="2026-11-17 15:14:46Z" duration="0.324543" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+          <output><![CDATA[[GameManager] Flow → Title
+[GameManager] Flow → Playing
+[GameManager] Flow → Paused
+[GameManager] Flow → Playing
+]]></output>
+        </test-case>
+      </test-suite>
+      <test-suite type="TestFixture" id="1031" name="UITests" fullname="UITests" classname="UITests" runstate="Runnable" testcasecount="1" result="Passed" start-time="2026-11-17 15:14:46Z" end-time="2026-11-17 15:14:46Z" duration="0.600993" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <test-case id="1032" name="S3_PanelsButtonsReadRestart" fullname="UITests.S3_PanelsButtonsReadRestart" methodname="S3_PanelsButtonsReadRestart" classname="UITests" runstate="Runnable" seed="471011631" result="Passed" start-time="2026-11-17 15:14:46Z" end-time="2026-11-17 15:14:46Z" duration="0.600021" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+          <output><![CDATA[[GameManager] Flow → Title
+[GameManager] Flow → Playing
+[GameManager] Flow → Paused
+[GameManager] Flow → Playing
+[GameManager] Flow → Paused
+[GameManager] Flow → Title
+]]></output>
+        </test-case>
+      </test-suite>
+      <test-suite type="TestFixture" id="1033" name="WarehouseDarkeningTests" fullname="WarehouseDarkeningTests" classname="WarehouseDarkeningTests" runstate="Runnable" testcasecount="3" result="Passed" start-time="2026-11-17 15:14:46Z" end-time="2026-11-17 15:15:23Z" duration="36.680754" total="3" passed="3" failed="0" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <test-case id="1036" name="EveryPictureHasSeparateCloseHelp" fullname="WarehouseDarkeningTests.EveryPictureHasSeparateCloseHelp" methodname="EveryPictureHasSeparateCloseHelp" classname="WarehouseDarkeningTests" runstate="Runnable" seed="894451317" result="Passed" start-time="2026-11-17 15:14:46Z" end-time="2026-11-17 15:14:47Z" duration="0.882813" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+          <output><![CDATA[[GameManager] Flow → Title
+Loading OpenXR loader library at path: C:\Users\nonam\Documents\MagicEscape\UnityProject\Library\PackageCache\com.unity.xr.openxr@ef0033a586bf\RuntimeLoaders\windows\x64\openxr_loader.dll
+Your project uses a scriptable render pipeline. You can use Camera.stereoTargetEye only with the built-in renderer.
+Your project uses a scriptable render pipeline. You can use Camera.stereoTargetEye only with the built-in renderer.
+[GameManager] Flow → Playing
+Your project uses a scriptable render pipeline. You can use Camera.stereoTargetEye only with the built-in renderer.
+Your project uses a scriptable render pipeline. You can use Camera.stereoTargetEye only with the built-in renderer.
+]]></output>
+        </test-case>
+        <test-case id="1035" name="PuzzleAndClearingInteractionsContinueDuringSmoothTransitions" fullname="WarehouseDarkeningTests.PuzzleAndClearingInteractionsContinueDuringSmoothTransitions" methodname="PuzzleAndClearingInteractionsContinueDuringSmoothTransitions" classname="WarehouseDarkeningTests" runstate="Runnable" seed="229341755" result="Passed" start-time="2026-11-17 15:14:47Z" end-time="2026-11-17 15:15:00Z" duration="12.983039" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+          <output><![CDATA[[GameManager] Flow → Title
+Loading OpenXR loader library at path: C:\Users\nonam\Documents\MagicEscape\UnityProject\Library\PackageCache\com.unity.xr.openxr@ef0033a586bf\RuntimeLoaders\windows\x64\openxr_loader.dll
+Your project uses a scriptable render pipeline. You can use Camera.stereoTargetEye only with the built-in renderer.
+Your project uses a scriptable render pipeline. You can use Camera.stereoTargetEye only with the built-in renderer.
+[GameManager] Flow → Playing
+Your project uses a scriptable render pipeline. You can use Camera.stereoTargetEye only with the built-in renderer.
+Your project uses a scriptable render pipeline. You can use Camera.stereoTargetEye only with the built-in renderer.
+[RunePuzzle] Earth → Progress (진행 1, 실패 0)
+[RunePuzzle] Water → Progress (진행 2, 실패 0)
+[RunePuzzle] Fire → Progress (진행 3, 실패 0)
+[RunePuzzle] Light → Solved (진행 4, 실패 0)
+[Toast] 제단의 봉인이 풀렸다! 제단 안에서 푸른 수정이 떠오른다.
+[GameManager] Rune → Solved
+[GameManager] Potion → Active
+[Toast] 푸른 수정 획득
+[Toast] 월광초 꽃잎 획득
+[PotionPuzzle] ing_moonpetal → Accepted (진행 1, 실패 0)
+[Toast] 월광초 꽃잎을 넣었다. (1/3)
+[Toast] 불도마뱀 비늘 획득
+[PotionPuzzle] ing_salamander_scale → Accepted (진행 2, 실패 0)
+[Toast] 불도마뱀 비늘을 넣었다. (2/3)
+[Toast] 수정 가루 획득
+[PotionPuzzle] ing_crystal_dust → Solved (진행 3, 실패 0)
+[Toast] 계시의 물약이 완성되었다! 가마솥 바닥에서 붉은 수정도 얻었다.
+[GameManager] Potion → Solved
+[GameManager] Seal → Active
+[SealPuzzle] Left ← crystal_sapphire : CrystalPlaced
+[SealPuzzle] Right ← crystal_ruby : CrystalPlaced
+[Toast] 마지막 봉인이 풀렸다! 출구가 열린다.
+[GameManager] Seal → Solved
+[DoorController] 출구 개방 완료
+[GameManager] Flow → Cleared
+]]></output>
+        </test-case>
+        <test-case id="1034" name="StagesDecreaseLightKeepGuidesAndCaptureSameCamera" fullname="WarehouseDarkeningTests.StagesDecreaseLightKeepGuidesAndCaptureSameCamera" methodname="StagesDecreaseLightKeepGuidesAndCaptureSameCamera" classname="WarehouseDarkeningTests" runstate="Runnable" seed="1350338216" result="Passed" start-time="2026-11-17 15:15:00Z" end-time="2026-11-17 15:15:23Z" duration="22.812002" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+          <output><![CDATA[[GameManager] Flow → Title
+Loading OpenXR loader library at path: C:\Users\nonam\Documents\MagicEscape\UnityProject\Library\PackageCache\com.unity.xr.openxr@ef0033a586bf\RuntimeLoaders\windows\x64\openxr_loader.dll
+Your project uses a scriptable render pipeline. You can use Camera.stereoTargetEye only with the built-in renderer.
+Your project uses a scriptable render pipeline. You can use Camera.stereoTargetEye only with the built-in renderer.
+[GameManager] Flow → Playing
+Your project uses a scriptable render pipeline. You can use Camera.stereoTargetEye only with the built-in renderer.
+Your project uses a scriptable render pipeline. You can use Camera.stereoTargetEye only with the built-in renderer.
+[RunePuzzle] Earth → Progress (진행 1, 실패 0)
+[RunePuzzle] Water → Progress (진행 2, 실패 0)
+[RunePuzzle] Fire → Progress (진행 3, 실패 0)
+[RunePuzzle] Light → Solved (진행 4, 실패 0)
+[Toast] 제단의 봉인이 풀렸다! 제단 안에서 푸른 수정이 떠오른다.
+[GameManager] Rune → Solved
+[GameManager] Potion → Active
+[Toast] 푸른 수정 획득
+[Toast] 월광초 꽃잎 획득
+[PotionPuzzle] ing_moonpetal → Accepted (진행 1, 실패 0)
+[Toast] 월광초 꽃잎을 넣었다. (1/3)
+[Toast] 불도마뱀 비늘 획득
+[PotionPuzzle] ing_salamander_scale → Accepted (진행 2, 실패 0)
+[Toast] 불도마뱀 비늘을 넣었다. (2/3)
+[Toast] 수정 가루 획득
+[PotionPuzzle] ing_crystal_dust → Solved (진행 3, 실패 0)
+[Toast] 계시의 물약이 완성되었다! 가마솥 바닥에서 붉은 수정도 얻었다.
+[GameManager] Potion → Solved
+[GameManager] Seal → Active
+[SealPuzzle] Right ← crystal_ruby : CrystalPlaced
+[SealPuzzle] Left ← crystal_sapphire : CrystalPlaced
+[Toast] 마지막 봉인이 풀렸다! 출구가 열린다.
+[GameManager] Seal → Solved
+[DoorController] 출구 개방 완료
+]]></output>
+        </test-case>
+      </test-suite>
+      <test-suite type="TestFixture" id="1037" name="WarehouseStage7Tests" fullname="WarehouseStage7Tests" classname="WarehouseStage7Tests" runstate="Runnable" testcasecount="1" result="Passed" start-time="2026-11-17 15:15:23Z" end-time="2026-11-17 15:15:31Z" duration="7.572852" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <test-case id="1038" name="ReadableScenesItemsAndRewardsAtStandingEye" fullname="WarehouseStage7Tests.ReadableScenesItemsAndRewardsAtStandingEye" methodname="ReadableScenesItemsAndRewardsAtStandingEye" classname="WarehouseStage7Tests" runstate="Runnable" seed="1233566350" result="Passed" start-time="2026-11-17 15:15:23Z" end-time="2026-11-17 15:15:31Z" duration="7.570073" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+          <output><![CDATA[[GameManager] Flow → Title
+Loading OpenXR loader library at path: C:\Users\nonam\Documents\MagicEscape\UnityProject\Library\PackageCache\com.unity.xr.openxr@ef0033a586bf\RuntimeLoaders\windows\x64\openxr_loader.dll
+Your project uses a scriptable render pipeline. You can use Camera.stereoTargetEye only with the built-in renderer.
+Your project uses a scriptable render pipeline. You can use Camera.stereoTargetEye only with the built-in renderer.
+[GameManager] Flow → Playing
+Your project uses a scriptable render pipeline. You can use Camera.stereoTargetEye only with the built-in renderer.
+Your project uses a scriptable render pipeline. You can use Camera.stereoTargetEye only with the built-in renderer.
+[RunePuzzle] Earth → Progress (진행 1, 실패 0)
+[RunePuzzle] Water → Progress (진행 2, 실패 0)
+[RunePuzzle] Fire → Progress (진행 3, 실패 0)
+[RunePuzzle] Light → Solved (진행 4, 실패 0)
+[Toast] 제단의 봉인이 풀렸다! 제단 안에서 푸른 수정이 떠오른다.
+[GameManager] Rune → Solved
+[GameManager] Potion → Active
+[Toast] 월광초 꽃잎 획득
+[PotionPuzzle] ing_moonpetal → Accepted (진행 1, 실패 0)
+[Toast] 월광초 꽃잎을 넣었다. (1/3)
+[Toast] 불도마뱀 비늘 획득
+[PotionPuzzle] ing_salamander_scale → Accepted (진행 2, 실패 0)
+[Toast] 불도마뱀 비늘을 넣었다. (2/3)
+[Toast] 수정 가루 획득
+[PotionPuzzle] ing_crystal_dust → Solved (진행 3, 실패 0)
+[Toast] 계시의 물약이 완성되었다! 가마솥 바닥에서 붉은 수정도 얻었다.
+[GameManager] Potion → Solved
+[GameManager] Seal → Active
+]]></output>
+        </test-case>
+      </test-suite>
+      <test-suite type="TestFixture" id="1039" name="WarehouseXriTests" fullname="WarehouseXriTests" classname="WarehouseXriTests" runstate="Runnable" testcasecount="15" result="Passed" start-time="2026-11-17 15:15:31Z" end-time="2026-11-17 15:16:21Z" duration="49.759276" total="15" passed="15" failed="0" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <test-case id="1053" name="AutomaticSelectionFallsBackWithoutHmd" fullname="WarehouseXriTests.AutomaticSelectionFallsBackWithoutHmd" methodname="AutomaticSelectionFallsBackWithoutHmd" classname="WarehouseXriTests" runstate="Runnable" seed="1496644632" result="Passed" start-time="2026-11-17 15:15:31Z" end-time="2026-11-17 15:15:31Z" duration="0.638776" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+          <output><![CDATA[[GameManager] Flow → Title
+[GameManager] Flow → Playing
+Your project uses a scriptable render pipeline. You can use Camera.stereoTargetEye only with the built-in renderer.
+Your project uses a scriptable render pipeline. You can use Camera.stereoTargetEye only with the built-in renderer.
+Loading OpenXR loader library at path: C:\Users\nonam\Documents\MagicEscape\UnityProject\Library\PackageCache\com.unity.xr.openxr@ef0033a586bf\RuntimeLoaders\windows\x64\openxr_loader.dll
+Your project uses a scriptable render pipeline. You can use Camera.stereoTargetEye only with the built-in renderer.
+Your project uses a scriptable render pipeline. You can use Camera.stereoTargetEye only with the built-in renderer.
+]]></output>
+        </test-case>
+        <test-case id="1042" name="CrateRailsCannotBlockPuzzlesExitOrWalls" fullname="WarehouseXriTests.CrateRailsCannotBlockPuzzlesExitOrWalls" methodname="CrateRailsCannotBlockPuzzlesExitOrWalls" classname="WarehouseXriTests" runstate="Runnable" seed="302745126" result="Passed" start-time="2026-11-17 15:15:31Z" end-time="2026-11-17 15:15:32Z" duration="0.497472" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+          <output><![CDATA[[GameManager] Flow → Title
+[GameManager] Flow → Playing
+Your project uses a scriptable render pipeline. You can use Camera.stereoTargetEye only with the built-in renderer.
+Your project uses a scriptable render pipeline. You can use Camera.stereoTargetEye only with the built-in renderer.
+]]></output>
+        </test-case>
+        <test-case id="1040" name="DesktopClearingAllFourAndHiddenTargetsCannotBeBypassed" fullname="WarehouseXriTests.DesktopClearingAllFourAndHiddenTargetsCannotBeBypassed" methodname="DesktopClearingAllFourAndHiddenTargetsCannotBeBypassed" classname="WarehouseXriTests" runstate="Runnable" seed="537124329" result="Passed" start-time="2026-11-17 15:15:32Z" end-time="2026-11-17 15:15:35Z" duration="3.444987" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+          <output><![CDATA[[GameManager] Flow → Title
+[GameManager] Flow → Playing
+Your project uses a scriptable render pipeline. You can use Camera.stereoTargetEye only with the built-in renderer.
+Your project uses a scriptable render pipeline. You can use Camera.stereoTargetEye only with the built-in renderer.
+]]></output>
+        </test-case>
+        <test-case id="1047" name="DesktopCrystalLeftAndRightSockets" fullname="WarehouseXriTests.DesktopCrystalLeftAndRightSockets" methodname="DesktopCrystalLeftAndRightSockets" classname="WarehouseXriTests" runstate="Runnable" seed="478901957" result="Passed" start-time="2026-11-17 15:15:35Z" end-time="2026-11-17 15:15:41Z" duration="5.224775" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+          <output><![CDATA[[GameManager] Flow → Title
+[GameManager] Flow → Playing
+Your project uses a scriptable render pipeline. You can use Camera.stereoTargetEye only with the built-in renderer.
+Your project uses a scriptable render pipeline. You can use Camera.stereoTargetEye only with the built-in renderer.
+[RunePuzzle] Earth → Progress (진행 1, 실패 0)
+[RunePuzzle] Water → Progress (진행 2, 실패 0)
+[RunePuzzle] Fire → Progress (진행 3, 실패 0)
+[RunePuzzle] Light → Solved (진행 4, 실패 0)
+[Toast] 제단의 봉인이 풀렸다! 제단 안에서 푸른 수정이 떠오른다.
+[GameManager] Rune → Solved
+[GameManager] Potion → Active
+[Toast] 월광초 꽃잎 획득
+[PotionPuzzle] ing_moonpetal → Accepted (진행 1, 실패 0)
+[Toast] 월광초 꽃잎을 넣었다. (1/3)
+[Toast] 불도마뱀 비늘 획득
+[PotionPuzzle] ing_salamander_scale → Accepted (진행 2, 실패 0)
+[Toast] 불도마뱀 비늘을 넣었다. (2/3)
+[Toast] 수정 가루 획득
+[PotionPuzzle] ing_crystal_dust → Solved (진행 3, 실패 0)
+[Toast] 계시의 물약이 완성되었다! 가마솥 바닥에서 붉은 수정도 얻었다.
+[GameManager] Potion → Solved
+[GameManager] Seal → Active
+[SealPuzzle] Left ← crystal_sapphire : CrystalPlaced
+[SealPuzzle] Right ← crystal_ruby : CrystalPlaced
+]]></output>
+        </test-case>
+        <test-case id="1048" name="DesktopFullFlowTurnsOffThreeSealsAndOpensExit" fullname="WarehouseXriTests.DesktopFullFlowTurnsOffThreeSealsAndOpensExit" methodname="DesktopFullFlowTurnsOffThreeSealsAndOpensExit" classname="WarehouseXriTests" runstate="Runnable" seed="707478646" result="Passed" start-time="2026-11-17 15:15:41Z" end-time="2026-11-17 15:15:53Z" duration="12.865524" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+          <output><![CDATA[[GameManager] Flow → Title
+[GameManager] Flow → Playing
+Your project uses a scriptable render pipeline. You can use Camera.stereoTargetEye only with the built-in renderer.
+Your project uses a scriptable render pipeline. You can use Camera.stereoTargetEye only with the built-in renderer.
+[RunePuzzle] Earth → Progress (진행 1, 실패 0)
+[RunePuzzle] Water → Progress (진행 2, 실패 0)
+[RunePuzzle] Fire → Progress (진행 3, 실패 0)
+[RunePuzzle] Light → Solved (진행 4, 실패 0)
+[Toast] 제단의 봉인이 풀렸다! 제단 안에서 푸른 수정이 떠오른다.
+[GameManager] Rune → Solved
+[GameManager] Potion → Active
+[PotionPuzzle] ing_moonpetal → Accepted (진행 1, 실패 0)
+[Toast] 월광초 꽃잎을 넣었다. (1/3)
+[PotionPuzzle] ing_salamander_scale → Accepted (진행 2, 실패 0)
+[Toast] 불도마뱀 비늘을 넣었다. (2/3)
+[PotionPuzzle] ing_crystal_dust → Solved (진행 3, 실패 0)
+[Toast] 계시의 물약이 완성되었다! 가마솥 바닥에서 붉은 수정도 얻었다.
+[GameManager] Potion → Solved
+[GameManager] Seal → Active
+[SealPuzzle] Left ← crystal_sapphire : CrystalPlaced
+[SealPuzzle] Right ← crystal_ruby : CrystalPlaced
+[Toast] 마지막 봉인이 풀렸다! 출구가 열린다.
+[GameManager] Seal → Solved
+[DoorController] 출구 개방 완료
+[GameManager] Flow → Cleared
+]]></output>
+        </test-case>
+        <test-case id="1046" name="DesktopGrabIngredientsIntoCauldronSocket" fullname="WarehouseXriTests.DesktopGrabIngredientsIntoCauldronSocket" methodname="DesktopGrabIngredientsIntoCauldronSocket" classname="WarehouseXriTests" runstate="Runnable" seed="1606440249" result="Passed" start-time="2026-11-17 15:15:53Z" end-time="2026-11-17 15:15:59Z" duration="5.145372" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+          <output><![CDATA[[GameManager] Flow → Title
+[GameManager] Flow → Playing
+Your project uses a scriptable render pipeline. You can use Camera.stereoTargetEye only with the built-in renderer.
+Your project uses a scriptable render pipeline. You can use Camera.stereoTargetEye only with the built-in renderer.
+[RunePuzzle] Earth → Progress (진행 1, 실패 0)
+[RunePuzzle] Water → Progress (진행 2, 실패 0)
+[RunePuzzle] Fire → Progress (진행 3, 실패 0)
+[RunePuzzle] Light → Solved (진행 4, 실패 0)
+[Toast] 제단의 봉인이 풀렸다! 제단 안에서 푸른 수정이 떠오른다.
+[GameManager] Rune → Solved
+[GameManager] Potion → Active
+[PotionPuzzle] ing_moonpetal → Accepted (진행 1, 실패 0)
+[Toast] 월광초 꽃잎을 넣었다. (1/3)
+[PotionPuzzle] ing_salamander_scale → Accepted (진행 2, 실패 0)
+[Toast] 불도마뱀 비늘을 넣었다. (2/3)
+[PotionPuzzle] ing_crystal_dust → Solved (진행 3, 실패 0)
+[Toast] 계시의 물약이 완성되었다! 가마솥 바닥에서 붉은 수정도 얻었다.
+[GameManager] Potion → Solved
+[GameManager] Seal → Active
+]]></output>
+        </test-case>
+        <test-case id="1045" name="DesktopRunePressUsesXri" fullname="WarehouseXriTests.DesktopRunePressUsesXri" methodname="DesktopRunePressUsesXri" classname="WarehouseXriTests" runstate="Runnable" seed="1332298256" result="Passed" start-time="2026-11-17 15:15:59Z" end-time="2026-11-17 15:16:01Z" duration="2.732766" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+          <output><![CDATA[[GameManager] Flow → Title
+[GameManager] Flow → Playing
+Your project uses a scriptable render pipeline. You can use Camera.stereoTargetEye only with the built-in renderer.
+Your project uses a scriptable render pipeline. You can use Camera.stereoTargetEye only with the built-in renderer.
+[RunePuzzle] Earth → Progress (진행 1, 실패 0)
+[RunePuzzle] Water → Progress (진행 2, 실패 0)
+[RunePuzzle] Fire → Progress (진행 3, 실패 0)
+[RunePuzzle] Light → Solved (진행 4, 실패 0)
+[Toast] 제단의 봉인이 풀렸다! 제단 안에서 푸른 수정이 떠오른다.
+[GameManager] Rune → Solved
+[GameManager] Potion → Active
+]]></output>
+        </test-case>
+        <test-case id="1043" name="FrameAndStoneUseIdenticalBrassMotifs" fullname="WarehouseXriTests.FrameAndStoneUseIdenticalBrassMotifs" methodname="FrameAndStoneUseIdenticalBrassMotifs" classname="WarehouseXriTests" runstate="Runnable" seed="39169865" result="Passed" start-time="2026-11-17 15:16:01Z" end-time="2026-11-17 15:16:02Z" duration="0.536994" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+          <output><![CDATA[[GameManager] Flow → Title
+[GameManager] Flow → Playing
+Your project uses a scriptable render pipeline. You can use Camera.stereoTargetEye only with the built-in renderer.
+Your project uses a scriptable render pipeline. You can use Camera.stereoTargetEye only with the built-in renderer.
+]]></output>
+        </test-case>
+        <test-case id="1044" name="NamedIncisionsAreReadableAndShareFillAndGlow" fullname="WarehouseXriTests.NamedIncisionsAreReadableAndShareFillAndGlow" methodname="NamedIncisionsAreReadableAndShareFillAndGlow" classname="WarehouseXriTests" runstate="Runnable" seed="896327778" result="Passed" start-time="2026-11-17 15:16:02Z" end-time="2026-11-17 15:16:04Z" duration="1.930274" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+          <output><![CDATA[[GameManager] Flow → Title
+[GameManager] Flow → Playing
+Your project uses a scriptable render pipeline. You can use Camera.stereoTargetEye only with the built-in renderer.
+Your project uses a scriptable render pipeline. You can use Camera.stereoTargetEye only with the built-in renderer.
+]]></output>
+        </test-case>
+        <test-case id="1041" name="SceneChalkAndFailureOnlyHintsHaveNoAlternateAnswerRoute" fullname="WarehouseXriTests.SceneChalkAndFailureOnlyHintsHaveNoAlternateAnswerRoute" methodname="SceneChalkAndFailureOnlyHintsHaveNoAlternateAnswerRoute" classname="WarehouseXriTests" runstate="Runnable" seed="1416681150" result="Passed" start-time="2026-11-17 15:16:04Z" end-time="2026-11-17 15:16:11Z" duration="7.211651" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+          <output><![CDATA[[GameManager] Flow → Title
+[GameManager] Flow → Playing
+Your project uses a scriptable render pipeline. You can use Camera.stereoTargetEye only with the built-in renderer.
+Your project uses a scriptable render pipeline. You can use Camera.stereoTargetEye only with the built-in renderer.
+[Toast] 문양의 빛이 꺼졌다. 순서가 틀린 것 같다.
+[RunePuzzle] Wind → Wrong (진행 0, 실패 1)
+[Toast] 문양의 빛이 꺼졌다. 순서가 틀린 것 같다.
+[RunePuzzle] Wind → Wrong (진행 0, 실패 2)
+[Toast] 문양의 빛이 꺼졌다. 순서가 틀린 것 같다.
+힌트: 칠판의 번호별 장면과 같은 액자를 찾고, 명판의 이름을 문양석과 맞춰 보자.
+[RunePuzzle] Wind → Wrong (진행 0, 실패 3)
+[GameManager] Rune → Solved
+[GameManager] Potion → Active
+[GameManager] Potion → Solved
+[GameManager] Seal → Active
+]]></output>
+        </test-case>
+        <test-case id="1051" name="SharedPressRetiresUnheldConsumedPotion" fullname="WarehouseXriTests.SharedPressRetiresUnheldConsumedPotion" methodname="SharedPressRetiresUnheldConsumedPotion" classname="WarehouseXriTests" runstate="Runnable" seed="870184710" result="Passed" start-time="2026-11-17 15:16:11Z" end-time="2026-11-17 15:16:15Z" duration="4.322415" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+          <output><![CDATA[[GameManager] Flow → Title
+[GameManager] Flow → Playing
+Your project uses a scriptable render pipeline. You can use Camera.stereoTargetEye only with the built-in renderer.
+Your project uses a scriptable render pipeline. You can use Camera.stereoTargetEye only with the built-in renderer.
+[RunePuzzle] Earth → Progress (진행 1, 실패 0)
+[RunePuzzle] Water → Progress (진행 2, 실패 0)
+[RunePuzzle] Fire → Progress (진행 3, 실패 0)
+[RunePuzzle] Light → Solved (진행 4, 실패 0)
+[Toast] 제단의 봉인이 풀렸다! 제단 안에서 푸른 수정이 떠오른다.
+[GameManager] Rune → Solved
+[GameManager] Potion → Active
+[Toast] 월광초 꽃잎 획득
+[PotionPuzzle] ing_moonpetal → Accepted (진행 1, 실패 0)
+[Toast] 월광초 꽃잎을 넣었다. (1/3)
+[Toast] 불도마뱀 비늘 획득
+[PotionPuzzle] ing_salamander_scale → Accepted (진행 2, 실패 0)
+[Toast] 불도마뱀 비늘을 넣었다. (2/3)
+[Toast] 수정 가루 획득
+[PotionPuzzle] ing_crystal_dust → Solved (진행 3, 실패 0)
+[Toast] 계시의 물약이 완성되었다! 가마솥 바닥에서 붉은 수정도 얻었다.
+[GameManager] Potion → Solved
+[GameManager] Seal → Active
+]]></output>
+        </test-case>
+        <test-case id="1049" name="VrSimulatedControllerSharesRuneAndGrabComponents" fullname="WarehouseXriTests.VrSimulatedControllerSharesRuneAndGrabComponents" methodname="VrSimulatedControllerSharesRuneAndGrabComponents" classname="WarehouseXriTests" runstate="Runnable" seed="1578768977" result="Passed" start-time="2026-11-17 15:16:15Z" end-time="2026-11-17 15:16:16Z" duration="0.739480" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+          <output><![CDATA[[GameManager] Flow → Title
+[GameManager] Flow → Playing
+Your project uses a scriptable render pipeline. You can use Camera.stereoTargetEye only with the built-in renderer.
+Your project uses a scriptable render pipeline. You can use Camera.stereoTargetEye only with the built-in renderer.
+Your project uses a scriptable render pipeline. You can use Camera.stereoTargetEye only with the built-in renderer.
+Your project uses a scriptable render pipeline. You can use Camera.stereoTargetEye only with the built-in renderer.
+[RunePuzzle] Earth → Progress (진행 1, 실패 0)
+Your project uses a scriptable render pipeline. You can use Camera.stereoTargetEye only with the built-in renderer.
+Your project uses a scriptable render pipeline. You can use Camera.stereoTargetEye only with the built-in renderer.
+]]></output>
+        </test-case>
+        <test-case id="1052" name="VrTrackedHandPullsAndPushesSameHeavyCrate" fullname="WarehouseXriTests.VrTrackedHandPullsAndPushesSameHeavyCrate" methodname="VrTrackedHandPullsAndPushesSameHeavyCrate" classname="WarehouseXriTests" runstate="Runnable" seed="996316022" result="Passed" start-time="2026-11-17 15:16:16Z" end-time="2026-11-17 15:16:17Z" duration="0.546222" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+          <output><![CDATA[[GameManager] Flow → Title
+[GameManager] Flow → Playing
+Your project uses a scriptable render pipeline. You can use Camera.stereoTargetEye only with the built-in renderer.
+Your project uses a scriptable render pipeline. You can use Camera.stereoTargetEye only with the built-in renderer.
+Your project uses a scriptable render pipeline. You can use Camera.stereoTargetEye only with the built-in renderer.
+Your project uses a scriptable render pipeline. You can use Camera.stereoTargetEye only with the built-in renderer.
+Your project uses a scriptable render pipeline. You can use Camera.stereoTargetEye only with the built-in renderer.
+Your project uses a scriptable render pipeline. You can use Camera.stereoTargetEye only with the built-in renderer.
+]]></output>
+        </test-case>
+        <test-case id="1054" name="WarehouseArchitectureAndRigSwitch" fullname="WarehouseXriTests.WarehouseArchitectureAndRigSwitch" methodname="WarehouseArchitectureAndRigSwitch" classname="WarehouseXriTests" runstate="Runnable" seed="960120271" result="Passed" start-time="2026-11-17 15:16:17Z" end-time="2026-11-17 15:16:17Z" duration="0.714581" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+          <output><![CDATA[[GameManager] Flow → Title
+[GameManager] Flow → Playing
+Your project uses a scriptable render pipeline. You can use Camera.stereoTargetEye only with the built-in renderer.
+Your project uses a scriptable render pipeline. You can use Camera.stereoTargetEye only with the built-in renderer.
+Your project uses a scriptable render pipeline. You can use Camera.stereoTargetEye only with the built-in renderer.
+Your project uses a scriptable render pipeline. You can use Camera.stereoTargetEye only with the built-in renderer.
+Your project uses a scriptable render pipeline. You can use Camera.stereoTargetEye only with the built-in renderer.
+Your project uses a scriptable render pipeline. You can use Camera.stereoTargetEye only with the built-in renderer.
+]]></output>
+        </test-case>
+        <test-case id="1050" name="WrongPhysicalIngredientRespawnsEntireAttempt" fullname="WarehouseXriTests.WrongPhysicalIngredientRespawnsEntireAttempt" methodname="WrongPhysicalIngredientRespawnsEntireAttempt" classname="WarehouseXriTests" runstate="Runnable" seed="2082763090" result="Passed" start-time="2026-11-17 15:16:17Z" end-time="2026-11-17 15:16:21Z" duration="3.196911" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+          <output><![CDATA[[GameManager] Flow → Title
+[GameManager] Flow → Playing
+Your project uses a scriptable render pipeline. You can use Camera.stereoTargetEye only with the built-in renderer.
+Your project uses a scriptable render pipeline. You can use Camera.stereoTargetEye only with the built-in renderer.
+[RunePuzzle] Earth → Progress (진행 1, 실패 0)
+[RunePuzzle] Water → Progress (진행 2, 실패 0)
+[RunePuzzle] Fire → Progress (진행 3, 실패 0)
+[RunePuzzle] Light → Solved (진행 4, 실패 0)
+[Toast] 제단의 봉인이 풀렸다! 제단 안에서 푸른 수정이 떠오른다.
+[GameManager] Rune → Solved
+[GameManager] Potion → Active
+[PotionPuzzle] ing_moonpetal → Accepted (진행 1, 실패 0)
+[Toast] 월광초 꽃잎을 넣었다. (1/3)
+[PotionPuzzle] ing_toadstool → Wrong (진행 0, 실패 1)
+[Toast] 가마솥에서 검은 연기가 피어올랐다! 재료들이 제자리로 돌아갔다.
+Saving results to: C:/Users/nonam/AppData/LocalLow/DefaultCompany/UnityProject\TestResults.xml
+]]></output>
+        </test-case>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>

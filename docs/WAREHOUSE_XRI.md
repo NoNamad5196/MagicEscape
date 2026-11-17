@@ -76,3 +76,10 @@ AGENTS.md and README.md are synchronized with this warehouse/XRI specification. 
 - Water's inner arc is replaced by one short upper-left diagonal glint. The same material/mask is shared by altar stones and frame plaques. The other five motifs retain their non-facial silhouettes.
 - Scale home remains `(3.65,1.30,.05)`. Its 1.20m-high support is now a thin plank worktop, four floor-supported legs and aprons, with visible plank seams. Two small muted fixed jars and a low mortar/pestle provide ingredient-workbench context; no new pickups, inspection clues or puzzle components. All other homes, clearing gates, darkness and puzzle contracts are unchanged.
 - `Tools/Run-Unity.ps1` preserves all historical captures (including stage7); current visual evidence uses `stage8-*`. Results and capture hashes: [Stage 8](validation/warehouse/STAGE8_RESULTS.md).
+
+## Stage 9 image-generated P1 pictures
+- Eight reviewed built-in image-generation outputs live in `Assets/Art/Warehouse/Textures/`: `Chalk_1.png` through `Chalk_4.png` and `Story_1.png` through `Story_4.png`, all 1024 square. No writing, numbers or alchemical glyphs occur inside those pictures.
+- Subjects remain ordered sprouting seed, rain, hot sun, open flower. The large two-leaf sprout replaces the ambiguous almond silhouette. The oil paintings fill their frames and match their chalk protagonists/compositions.
+- `Generate-Warehouse-Art.py` only composites the four generated chalk pictures into `ChalkScenes.png`; it no longer draws P1 scenes or frame I procedurally. Roman ordering is separate authored world text above the pictures, not painted into them. Inspection uses the same composite in left-to-right order.
+- Warehouse builder assigns all four generated oil textures to both world illustrations and inspection. Brass names/pictograms, rune stones, frame positions, lighting and III cloth remain unchanged. Historical Classroom assets are not replaced.
+- Current evidence: [Stage 9](validation/warehouse/STAGE9_RESULTS.md).
