@@ -51,7 +51,7 @@ namespace MagicEscape
                 case RuneId.Fire: return "불";
                 case RuneId.Wind: return "바람";
                 case RuneId.Light: return "빛";
-                case RuneId.Shadow: return "그림자";
+                case RuneId.Shadow: return "달";
                 default: return id.ToString();
             }
         }

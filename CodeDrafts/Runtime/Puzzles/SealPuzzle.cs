@@ -137,7 +137,6 @@ namespace MagicEscape
             if (coreGlow != null) coreGlow.SetGlow(releasedColor);
             if (releaseVfx != null) releaseVfx.Play();
             AudioManager.Play(SfxId.SealRelease);
-            interactor.Say(GameText.SealReleased);
             yield return new WaitForSeconds(0.5f);
             if (GameManager.Instance != null) GameManager.Instance.ReportSolved(PuzzleId.Seal);
         }

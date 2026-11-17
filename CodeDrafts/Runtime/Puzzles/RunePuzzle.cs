@@ -105,7 +105,6 @@ namespace MagicEscape
             }
 
             if (rewardCrystal != null) rewardCrystal.Reveal();
-            interactor.Say(GameText.RuneSolved);
             if (GameManager.Instance != null) GameManager.Instance.ReportSolved(PuzzleId.Rune);
         }
     }

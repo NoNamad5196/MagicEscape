@@ -67,7 +67,7 @@ namespace MagicEscape
             if (Logic.IsSolved) return null;
             InventoryManager inv = interactor.Inventory;
             string selected = inv != null ? inv.SelectedItemId : null;
-            if (!Logic.IsActive || selected == null) return "가마솥 살펴보기";
+            if (!Logic.IsActive || !Logic.IsIngredient(selected)) return "가마솥 살펴보기";
             return inv.GetDisplayName(selected) + " 넣기";
         }
 
@@ -98,7 +98,6 @@ namespace MagicEscape
                 case PotionInputResult.Accepted:
                     SetLiquidColor(Logic.ProgressCount);
                     AudioManager.Play(SfxId.CauldronAccept);
-                    interactor.Say(KoreanParticle.Object(inv.GetDisplayName(itemId)) + " 넣었다. (" + Logic.ProgressCount + "/" + Logic.RecipeLength + ")");
                     break;
                 case PotionInputResult.Wrong:
                     HandleWrong(interactor);
@@ -144,7 +143,6 @@ namespace MagicEscape
             if (!inv.TryAdd(ItemIds.PotionRevelation) || !inv.TryAdd(ItemIds.CrystalRuby))
                 Debug.LogError("[PotionPuzzle] 보상 지급 실패(인벤토리 가득) — 칸 수를 확인하세요.", this);
 
-            interactor.Say(GameText.PotionSolved);
             if (GameManager.Instance != null) GameManager.Instance.ReportSolved(PuzzleId.Potion);
         }
 
