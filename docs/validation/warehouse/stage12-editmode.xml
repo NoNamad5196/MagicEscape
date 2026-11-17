@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="18" result="Passed" total="18" passed="18" failed="0" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-11-17 22:16:51Z" end-time="2026-11-17 22:16:59Z" duration="7.6633195">
+  <test-suite type="TestSuite" id="1000" name="UnityProject" fullname="UnityProject" runstate="Runnable" testcasecount="18" result="Passed" start-time="2026-11-17 22:16:51Z" end-time="2026-11-17 22:16:59Z" duration="7.663320" total="18" passed="18" failed="0" inconclusive="0" skipped="0" asserts="0">
+    <properties>
+      <property name="platform" value="EditMode" />
+    </properties>
+    <test-suite type="Assembly" id="1022" name="MagicEscape.EditMode.dll" fullname="C:/Users/nonam/Documents/MagicEscape/UnityProject/Library/ScriptAssemblies/MagicEscape.EditMode.dll" runstate="Runnable" testcasecount="18" result="Passed" start-time="2026-11-17 22:16:51Z" end-time="2026-11-17 22:16:59Z" duration="7.655075" total="18" passed="18" failed="0" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="47224" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="EditMode" />
+        <property name="EditorOnly" value="True" />
+      </properties>
+      <test-suite type="TestFixture" id="1001" name="WarehouseContractTests" fullname="WarehouseContractTests" classname="WarehouseContractTests" runstate="Runnable" testcasecount="14" result="Passed" start-time="2026-11-17 22:16:51Z" end-time="2026-11-17 22:16:57Z" duration="5.444783" total="14" passed="14" failed="0" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <test-case id="1015" name="AllItemHomesHaveReachableHeightAndPersistentLocalLighting" fullname="WarehouseContractTests.AllItemHomesHaveReachableHeightAndPersistentLocalLighting" methodname="AllItemHomesHaveReachableHeightAndPersistentLocalLighting" classname="WarehouseContractTests" runstate="Runnable" seed="500868612" result="Passed" start-time="2026-11-17 22:16:51Z" end-time="2026-11-17 22:16:52Z" duration="0.894058" asserts="0">
+          <properties>
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1010" name="ChalkboardContainsScenesWithoutElementNamesOrPictograms" fullname="WarehouseContractTests.ChalkboardContainsScenesWithoutElementNamesOrPictograms" methodname="ChalkboardContainsScenesWithoutElementNamesOrPictograms" classname="WarehouseContractTests" runstate="Runnable" seed="158480197" result="Passed" start-time="2026-11-17 22:16:52Z" end-time="2026-11-17 22:16:53Z" duration="0.424437" asserts="0">
+          <properties>
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1009" name="ClearingPropsHaveSupportedHomesAndDynamicAttachedVisuals" fullname="WarehouseContractTests.ClearingPropsHaveSupportedHomesAndDynamicAttachedVisuals" methodname="ClearingPropsHaveSupportedHomesAndDynamicAttachedVisuals" classname="WarehouseContractTests" runstate="Runnable" seed="715882217" result="Passed" start-time="2026-11-17 22:16:53Z" end-time="2026-11-17 22:16:53Z" duration="0.426270" asserts="0">
+          <properties>
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1012" name="FrameNameplatesDoNotCoverIllustrations" fullname="WarehouseContractTests.FrameNameplatesDoNotCoverIllustrations" methodname="FrameNameplatesDoNotCoverIllustrations" classname="WarehouseContractTests" runstate="Runnable" seed="1718489943" result="Passed" start-time="2026-11-17 22:16:53Z" end-time="2026-11-17 22:16:54Z" duration="0.372210" asserts="0">
+          <properties>
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1011" name="GeneratedStoriesShareWorldAndInspectionTextures" fullname="WarehouseContractTests.GeneratedStoriesShareWorldAndInspectionTextures" methodname="GeneratedStoriesShareWorldAndInspectionTextures" classname="WarehouseContractTests" runstate="Runnable" seed="1968529271" result="Passed" start-time="2026-11-17 22:16:54Z" end-time="2026-11-17 22:16:54Z" duration="0.387124" asserts="0">
+          <properties>
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1005" name="InstalledVersionsAreTheUnity63ReleasedPackages" fullname="WarehouseContractTests.InstalledVersionsAreTheUnity63ReleasedPackages" methodname="InstalledVersionsAreTheUnity63ReleasedPackages" classname="WarehouseContractTests" runstate="Runnable" seed="2096874985" result="Passed" start-time="2026-11-17 22:16:54Z" end-time="2026-11-17 22:16:54Z" duration="0.000763" asserts="0">
+          <properties>
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1007" name="PictureAssembliesAreSupportedAndLabelsAndLightsStayAttached" fullname="WarehouseContractTests.PictureAssembliesAreSupportedAndLabelsAndLightsStayAttached" methodname="PictureAssembliesAreSupportedAndLabelsAndLightsStayAttached" classname="WarehouseContractTests" runstate="Runnable" seed="767206157" result="Passed" start-time="2026-11-17 22:16:54Z" end-time="2026-11-17 22:16:54Z" duration="0.358530" asserts="0">
+          <properties>
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1004" name="ProgressionStillRequiresAllThreePuzzles" fullname="WarehouseContractTests.ProgressionStillRequiresAllThreePuzzles" methodname="ProgressionStillRequiresAllThreePuzzles" classname="WarehouseContractTests" runstate="Runnable" seed="1395728020" result="Passed" start-time="2026-11-17 22:16:54Z" end-time="2026-11-17 22:16:54Z" duration="0.000704" asserts="0">
+          <properties>
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1003" name="ProposalDoesNotChangeAnswersOrIds" fullname="WarehouseContractTests.ProposalDoesNotChangeAnswersOrIds" methodname="ProposalDoesNotChangeAnswersOrIds" classname="WarehouseContractTests" runstate="Runnable" seed="1176152286" result="Passed" start-time="2026-11-17 22:16:54Z" end-time="2026-11-17 22:16:54Z" duration="0.001120" asserts="0">
+          <properties>
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1014" name="ScaleWorkbenchAndDressingHaveSupportedNoninteractiveHomes" fullname="WarehouseContractTests.ScaleWorkbenchAndDressingHaveSupportedNoninteractiveHomes" methodname="ScaleWorkbenchAndDressingHaveSupportedNoninteractiveHomes" classname="WarehouseContractTests" runstate="Runnable" seed="1278030208" result="Passed" start-time="2026-11-17 22:16:54Z" end-time="2026-11-17 22:16:55Z" duration="0.388832" asserts="0">
+          <properties>
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1002" name="Stage10CoversAreSharedSupportedAndOutsidePuzzleCirculation" fullname="WarehouseContractTests.Stage10CoversAreSharedSupportedAndOutsidePuzzleCirculation" methodname="Stage10CoversAreSharedSupportedAndOutsidePuzzleCirculation" classname="WarehouseContractTests" runstate="Runnable" seed="947247048" result="Passed" start-time="2026-11-17 22:16:55Z" end-time="2026-11-17 22:16:55Z" duration="0.389298" asserts="0">
+          <properties>
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1008" name="StorageCratesHavePhysicalSupportAndAttachedDetail" fullname="WarehouseContractTests.StorageCratesHavePhysicalSupportAndAttachedDetail" methodname="StorageCratesHavePhysicalSupportAndAttachedDetail" classname="WarehouseContractTests" runstate="Runnable" seed="258616728" result="Passed" start-time="2026-11-17 22:16:55Z" end-time="2026-11-17 22:16:55Z" duration="0.376348" asserts="0">
+          <properties>
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1006" name="WarehouseIsStartupAndClassroomIsRegressionFixture" fullname="WarehouseContractTests.WarehouseIsStartupAndClassroomIsRegressionFixture" methodname="WarehouseIsStartupAndClassroomIsRegressionFixture" classname="WarehouseContractTests" runstate="Runnable" seed="852110709" result="Passed" start-time="2026-11-17 22:16:55Z" end-time="2026-11-17 22:16:55Z" duration="0.000641" asserts="0">
+          <properties>
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1013" name="WarehouseUsesPictogramsWithoutAlchemicalResourcesOrFrameNumerals" fullname="WarehouseContractTests.WarehouseUsesPictogramsWithoutAlchemicalResourcesOrFrameNumerals" methodname="WarehouseUsesPictogramsWithoutAlchemicalResourcesOrFrameNumerals" classname="WarehouseContractTests" runstate="Runnable" seed="248372025" result="Passed" start-time="2026-11-17 22:16:55Z" end-time="2026-11-17 22:16:57Z" duration="1.403268" asserts="0">
+          <properties>
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+      </test-suite>
+      <test-suite type="TestFixture" id="1016" name="WarehouseStage11Tests" fullname="WarehouseStage11Tests" classname="WarehouseStage11Tests" runstate="Runnable" testcasecount="2" result="Passed" start-time="2026-11-17 22:16:57Z" end-time="2026-11-17 22:16:58Z" duration="1.658736" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <test-case id="1018" name="BarrelHasAnOpenInteriorAndBooksHaveCoversSpinesAndPages" fullname="WarehouseStage11Tests.BarrelHasAnOpenInteriorAndBooksHaveCoversSpinesAndPages" methodname="BarrelHasAnOpenInteriorAndBooksHaveCoversSpinesAndPages" classname="WarehouseStage11Tests" runstate="Runnable" seed="221746724" result="Passed" start-time="2026-11-17 22:16:57Z" end-time="2026-11-17 22:16:58Z" duration="0.638144" asserts="0">
+          <properties>
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1017" name="EveryAuthoredAndDynamicKoreanUiCharacterIsBakedWithoutFallback" fullname="WarehouseStage11Tests.EveryAuthoredAndDynamicKoreanUiCharacterIsBakedWithoutFallback" methodname="EveryAuthoredAndDynamicKoreanUiCharacterIsBakedWithoutFallback" classname="WarehouseStage11Tests" runstate="Runnable" seed="166899863" result="Passed" start-time="2026-11-17 22:16:58Z" end-time="2026-11-17 22:16:58Z" duration="0.609746" asserts="0">
+          <properties>
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+      </test-suite>
+      <test-suite type="TestFixture" id="1019" name="WarehouseStage12Tests" fullname="WarehouseStage12Tests" classname="WarehouseStage12Tests" runstate="Runnable" testcasecount="2" result="Passed" start-time="2026-11-17 22:16:58Z" end-time="2026-11-17 22:16:59Z" duration="0.549879" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <test-case id="1020" name="CarvedSurfacesHaveNoBlackPanelsAndBevelFacesPointOutward" fullname="WarehouseStage12Tests.CarvedSurfacesHaveNoBlackPanelsAndBevelFacesPointOutward" methodname="CarvedSurfacesHaveNoBlackPanelsAndBevelFacesPointOutward" classname="WarehouseStage12Tests" runstate="Runnable" seed="643456959" result="Passed" start-time="2026-11-17 22:16:58Z" end-time="2026-11-17 22:16:59Z" duration="0.531114" asserts="0">
+          <properties>
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1021" name="SuccessNarrationIsNotEmittedAndPromptUsesCoreIngredientMembership" fullname="WarehouseStage12Tests.SuccessNarrationIsNotEmittedAndPromptUsesCoreIngredientMembership" methodname="SuccessNarrationIsNotEmittedAndPromptUsesCoreIngredientMembership" classname="WarehouseStage12Tests" runstate="Runnable" seed="1507981579" result="Passed" start-time="2026-11-17 22:16:59Z" end-time="2026-11-17 22:16:59Z" duration="0.010024" asserts="0">
+          <properties>
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+          <output><![CDATA[Saving results to: C:/Users/nonam/AppData/LocalLow/DefaultCompany/UnityProject\TestResults.xml
+]]></output>
+        </test-case>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>
