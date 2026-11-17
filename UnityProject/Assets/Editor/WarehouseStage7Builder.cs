@@ -39,9 +39,9 @@ namespace MagicEscape.EditorTools
             for(int n=0;n<2;n++)
             {
                 float z=-.16f+n*.38f;
-                WorldVisual("WorkbenchDecorJar",root,new Vector3(4.08f,1.265f,z),new Vector3(.10f,.065f,.10f),glass,PrimitiveType.Cylinder);
-                WorldVisual("WorkbenchDecorJarNeck",root,new Vector3(4.08f,1.345f,z),new Vector3(.055f,.025f,.055f),glass,PrimitiveType.Cylinder);
-                WorldVisual("WorkbenchDecorCork",root,new Vector3(4.08f,1.375f,z),new Vector3(.06f,.008f,.06f),wood,PrimitiveType.Cylinder);
+                WorldVisual("WorkbenchDecorJar",root,new Vector3(4.20f,1.265f,z),new Vector3(.10f,.065f,.10f),glass,PrimitiveType.Cylinder);
+                WorldVisual("WorkbenchDecorJarNeck",root,new Vector3(4.20f,1.345f,z),new Vector3(.055f,.025f,.055f),glass,PrimitiveType.Cylinder);
+                WorldVisual("WorkbenchDecorCork",root,new Vector3(4.20f,1.375f,z),new Vector3(.06f,.008f,.06f),wood,PrimitiveType.Cylinder);
             }
             // Low mortar with a recessed dark bowl, below the hero bottle silhouette.
             WorldVisual("WorkbenchMortar",root,new Vector3(3.71f,1.235f,.26f),new Vector3(.13f,.035f,.13f),clay,PrimitiveType.Cylinder);

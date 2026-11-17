@@ -5,6 +5,8 @@ namespace MagicEscape
     // Presentation only: both rigs share XRI hover/selection, never an alternate input path.
     public sealed class ClearingFeedback : MonoBehaviour, IInteractable
     {
+        [Range(0,1)] public float highlightMix=.38f;
+        [Range(0,1)] public float highlightEmission=.12f;
         XRBaseInteractable interactable;
         XriClearable clearable;
         Renderer[] surfaces;
@@ -50,8 +52,8 @@ namespace MagicEscape
                     if(!focus) { surfaces[i].SetPropertyBlock(original[i]); continue; }
                     var block=new MaterialPropertyBlock(); surfaces[i].GetPropertyBlock(block);
                     var mat=surfaces[i].sharedMaterial;
-                    if(mat!=null && mat.HasProperty("_BaseColor")) block.SetColor("_BaseColor",Color.Lerp(mat.GetColor("_BaseColor"),new Color(.85f,.73f,.45f),.38f));
-                    block.SetColor("_EmissionColor",new Color(.12f,.09f,.04f)); surfaces[i].SetPropertyBlock(block);
+                    if(mat!=null && mat.HasProperty("_BaseColor")) block.SetColor("_BaseColor",Color.Lerp(mat.GetColor("_BaseColor"),new Color(.85f,.73f,.45f),highlightMix));
+                    block.SetColor("_EmissionColor",new Color(1,.75f,.333f)*highlightEmission); surfaces[i].SetPropertyBlock(block);
                 }
             }
             bool displaced=Vector3.Distance(previous,transform.position)>.001f;

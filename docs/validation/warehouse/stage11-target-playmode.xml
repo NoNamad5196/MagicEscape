@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="1" result="Passed" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-11-17 17:14:10Z" end-time="2026-11-17 17:14:17Z" duration="6.1738733">
+  <test-suite type="TestSuite" id="1065" name="UnityProject" fullname="UnityProject" runstate="Runnable" testcasecount="42" result="Passed" start-time="2026-11-17 17:14:10Z" end-time="2026-11-17 17:14:17Z" duration="6.173873" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+    <properties>
+      <property name="platform" value="PlayMode" />
+    </properties>
+    <test-suite type="SetUpFixture" id="1013" name="MagicEscape.PlayMode.dll" fullname="ConsoleAudit" classname="ConsoleAudit" runstate="Runnable" testcasecount="42" result="Passed" start-time="2026-11-17 17:14:10Z" end-time="2026-11-17 17:14:17Z" duration="6.163144" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="49288" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="PlayMode" />
+        <property name="EditorOnly" value="False" />
+      </properties>
+      <test-suite type="TestFixture" id="1045" name="WarehouseXriTests" fullname="WarehouseXriTests" classname="WarehouseXriTests" runstate="Runnable" testcasecount="15" result="Passed" start-time="2026-11-17 17:14:10Z" end-time="2026-11-17 17:14:17Z" duration="6.153736" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <test-case id="1056" name="WrongPhysicalIngredientRespawnsEntireAttempt" fullname="WarehouseXriTests.WrongPhysicalIngredientRespawnsEntireAttempt" methodname="WrongPhysicalIngredientRespawnsEntireAttempt" classname="WarehouseXriTests" runstate="Runnable" seed="1025710846" result="Passed" start-time="2026-11-17 17:14:10Z" end-time="2026-11-17 17:14:17Z" duration="6.142730" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+          <output><![CDATA[[GameManager] Flow → Title
+[GameManager] Flow → Playing
+Your project uses a scriptable render pipeline. You can use Camera.stereoTargetEye only with the built-in renderer.
+Your project uses a scriptable render pipeline. You can use Camera.stereoTargetEye only with the built-in renderer.
+[RunePuzzle] Earth → Progress (진행 1, 실패 0)
+[RunePuzzle] Water → Progress (진행 2, 실패 0)
+[RunePuzzle] Fire → Progress (진행 3, 실패 0)
+[RunePuzzle] Light → Solved (진행 4, 실패 0)
+[Toast] 제단의 봉인이 풀렸다! 제단 안에서 푸른 수정이 떠오른다.
+[GameManager] Rune → Solved
+[GameManager] Potion → Active
+[PotionPuzzle] ing_moonpetal → Accepted (진행 1, 실패 0)
+[Toast] 월광초 꽃잎을 넣었다. (1/3)
+[PotionPuzzle] ing_toadstool → Wrong (진행 0, 실패 1)
+[Toast] 가마솥에서 검은 연기가 피어올랐다! 재료들이 제자리로 돌아갔다.
+Saving results to: C:/Users/nonam/AppData/LocalLow/DefaultCompany/UnityProject\TestResults.xml
+]]></output>
+        </test-case>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>

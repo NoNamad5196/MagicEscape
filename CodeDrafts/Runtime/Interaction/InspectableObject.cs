@@ -10,6 +10,7 @@ namespace MagicEscape
     [DisallowMultipleComponent]
     public class InspectableObject : MonoBehaviour, IInteractable
     {
+        [SerializeField] private bool orderedPicture;
         [SerializeField] private string promptVerb = "조사하기";
         [SerializeField] private string title = "단서";
         [TextArea(3, 8)] [SerializeField] private string body;
@@ -51,7 +52,7 @@ namespace MagicEscape
             }
             if (UIManager.Instance != null)
             {
-                if(picture!=null)UIManager.Instance.ShowPicture(picture);
+                if(picture!=null)UIManager.Instance.ShowPicture(picture,orderedPicture);
                 // S10e clue objects never automatically print the answer-bearing prose.
                 else if(body!=GameText.Chalkboard && body!=GameText.Recipe) UIManager.Instance.ShowRead(title, body);
             }

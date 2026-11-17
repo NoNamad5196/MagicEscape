@@ -153,7 +153,7 @@ public class WarehouseContractTests
         var texture=AssetDatabase.LoadAssetAtPath<Texture2D>(allowed);
         Assert.NotNull(texture);
         using(var sha=System.Security.Cryptography.SHA256.Create())
-            Assert.AreEqual("712E07B4650A84435B402B69BFD1EDAC0A3BA9CCBE845C3ABF0ACDF6BF35E2F2",
+            Assert.AreEqual("9A847B4AB61DC93B7B4230722FED3185FD2FFF0205279163EA7283268236436E",
                 System.BitConverter.ToString(sha.ComputeHash(System.IO.File.ReadAllBytes(allowed))).Replace("-",""),"Reviewed scene-only chalk pixels must not gain element names or pictograms");
         var board=GameObject.Find("Chalkboard");
         Assert.AreSame(texture,new SerializedObject(board.GetComponent<InspectableObject>()).FindProperty("picture").objectReferenceValue);
@@ -200,7 +200,7 @@ public class WarehouseContractTests
             Assert.AreSame(picture,new SerializedObject(GameObject.Find("Painting_"+romans[i]).GetComponent<InspectableObject>()).FindProperty("picture").objectReferenceValue);
             var caption=GameObject.Find("WarehouseSceneOrder_"+i).GetComponent<TMPro.TMP_Text>();
             Assert.AreEqual(-.375f+i*.25f,caption.rectTransform.anchoredPosition.x,.001f);
-            Assert.AreEqual(.27f,caption.rectTransform.anchoredPosition.y,.001f);
+            Assert.AreEqual(.34f,caption.rectTransform.anchoredPosition.y,.001f);
         }
     }
     [Test] public void FrameNameplatesDoNotCoverIllustrations()

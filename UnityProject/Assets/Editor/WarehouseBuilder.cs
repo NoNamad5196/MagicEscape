@@ -144,7 +144,7 @@ namespace MagicEscape.EditorTools
             foreach (var t in geometry.GetComponentsInChildren<Transform>(true))
                 if (t.GetComponent<Collider>() != null && t.GetComponent<HandlingProfile>() == null) t.gameObject.AddComponent<HandlingProfile>();
             ConfigureWarehouseDarkening();
-            ConfigureXri(); ConfigureClearing(); ConfigureWarehouseStage7(); ConfigureWarehouseStage10(); ConfigureOpenXR();
+            ConfigureXri(); ConfigureClearing(); ConfigureWarehouseStage7(); ConfigureWarehouseStage10(); ConfigureWarehouseTypography(); ConfigureOpenXR();
             // The resized corridor can expose the scene background above its dark doorway.
             // Both rigs must see black, never the default blue skybox / a false dawn.
             foreach(var camera in Object.FindObjectsByType<Camera>(FindObjectsInactive.Include,FindObjectsSortMode.None))
@@ -169,6 +169,7 @@ namespace MagicEscape.EditorTools
             Find("ChalkSequence").GetComponent<Renderer>().sharedMaterial=material;
             Set(Find("Chalkboard").GetComponent<InspectableObject>(),"picture",texture);
             Set(Find("Chalkboard").GetComponent<InspectableObject>(),"body", "I   II   III   IV");
+            Set(Find("Chalkboard").GetComponent<InspectableObject>(),"orderedPicture",true);
             var old=Object.FindObjectsByType<TMPro.TMP_Text>(FindObjectsInactive.Include,FindObjectsSortMode.None).Single(t=>t.name=="ChalkboardLabel");
             old.text="I   II   III   IV";old.gameObject.SetActive(false);
             // The historical wooden rails were separate roots: attach them before moving the assembly.
@@ -185,9 +186,9 @@ namespace MagicEscape.EditorTools
             string[] captions={"I","II","III","IV"};
             for(int i=0;i<4;i++)
             {
-                var caption=WorldText("WarehouseSceneOrder_"+i,plate,captions[i],new Vector3(-.375f+i*.25f,.27f,-.01f),new Vector2(.2f,.12f),1.2f);
+                var caption=WorldText("WarehouseSceneOrder_"+i,plate,captions[i],new Vector3(-.375f+i*.25f,.34f,-.01f),new Vector2(.2f,.12f),1.2f);
                 caption.transform.rotation=plate.rotation;
-                caption.rectTransform.anchoredPosition=new Vector2(-.375f+i*.25f,.27f);
+                caption.rectTransform.anchoredPosition=new Vector2(-.375f+i*.25f,.34f);
                 caption.textWrappingMode=TMPro.TextWrappingModes.NoWrap;
                 caption.overflowMode=TMPro.TextOverflowModes.Overflow;
                 caption.color=new Color(.85f,.87f,.82f);

@@ -37,8 +37,8 @@ for n in ['Earth','Water','Fire','Light','Wind','Shadow']:motif(n).save(out/('Pi
 im=Image.new('RGB',(1536,768),(20,20,20))
 for n in range(4):
  picture=Image.open(out/'Textures'/f'Chalk_{n+1}.png').convert('RGB')
- picture=picture.resize((360,240),Image.Resampling.LANCZOS)
- im.paste(picture,(12+n*384,270))
+ picture=picture.resize((360,510),Image.Resampling.LANCZOS)
+ im.paste(picture,(12+n*384,160))
 im.save(out/'ChalkScenes.png')
 # Warehouse recipe uses narrative ingredient drawings only (no old Fire triangle).
 recipe=Image.new('RGB',(1024,640),(205,183,139));rd=ImageDraw.Draw(recipe);ink=(57,43,29)

@@ -46,7 +46,7 @@ namespace MagicEscape
         public bool IsReading => readPanel != null && readPanel.activeSelf;
         RawImage _picture;
 
-        public void ShowPicture(Texture2D picture)
+        public void ShowPicture(Texture2D picture, bool orderedScenes=false)
         {
             if(readPanel==null || picture==null)return;
             if(_picture==null)
@@ -58,6 +58,27 @@ namespace MagicEscape
             }
             float width=Mathf.Min(1120,500f*picture.width/picture.height);
             _picture.rectTransform.sizeDelta=new Vector2(width,width*picture.height/picture.width);
+            // Separate authored order labels, never baked into the generated scene art.
+            string[] order={"I","II","III","IV"};
+            for(int i=0;i<order.Length;i++)
+            {
+                string name="PictureOrder_"+i;
+                var existing=_picture.transform.Find(name);
+                TMP_Text label=existing!=null?existing.GetComponent<TMP_Text>():null;
+                if(orderedScenes && label==null)
+                {
+                    label=new GameObject(name,typeof(RectTransform),typeof(TextMeshProUGUI)).GetComponent<TMP_Text>();
+                    label.transform.SetParent(_picture.transform,false);
+                    label.font=readBodyText!=null?readBodyText.font:promptText.font;
+                    label.fontSize=28;label.alignment=TextAlignmentOptions.Center;
+                    label.color=new Color(.85f,.87f,.82f);label.raycastTarget=false;
+                    label.rectTransform.sizeDelta=new Vector2(100,44);
+                }
+                if(label==null)continue;
+                label.gameObject.SetActive(orderedScenes);
+                label.text=order[i];
+                label.rectTransform.anchoredPosition=new Vector2(width*(-.375f+i*.25f),_picture.rectTransform.sizeDelta.y*.39f);
+            }
             var help=readPanel.transform.Find("CloseHelp") as RectTransform;
             if(help!=null){help.anchoredPosition=new Vector2(0,-290);help.SetAsLastSibling();}
             _picture.texture=picture;_picture.gameObject.SetActive(true);
