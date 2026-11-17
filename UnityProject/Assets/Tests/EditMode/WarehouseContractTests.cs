@@ -153,7 +153,7 @@ public class WarehouseContractTests
         var texture=AssetDatabase.LoadAssetAtPath<Texture2D>(allowed);
         Assert.NotNull(texture);
         using(var sha=System.Security.Cryptography.SHA256.Create())
-            Assert.AreEqual("9A847B4AB61DC93B7B4230722FED3185FD2FFF0205279163EA7283268236436E",
+            Assert.AreEqual("685387D8997F950289F0D53E14B37E1652565E25199A09707CDFF6178FE2875D",
                 System.BitConverter.ToString(sha.ComputeHash(System.IO.File.ReadAllBytes(allowed))).Replace("-",""),"Reviewed scene-only chalk pixels must not gain element names or pictograms");
         var board=GameObject.Find("Chalkboard");
         Assert.AreSame(texture,new SerializedObject(board.GetComponent<InspectableObject>()).FindProperty("picture").objectReferenceValue);
@@ -221,7 +221,7 @@ public class WarehouseContractTests
             {
                 Assert.Less(t.localPosition.y+t.localScale.y/2,-.41f,"Must remain below the .82m illustration");
                 Assert.That(t.localPosition.y,Is.EqualTo(-.51f).Within(.001f));
-                Assert.AreEqual("MagicEscape/AlchemyEngraving",t.GetComponent<Renderer>().sharedMaterial.shader.name);
+                Assert.AreEqual("MagicEscape/WarehouseIncision",t.GetComponent<Renderer>().sharedMaterial.shader.name);
             }
         }
     }

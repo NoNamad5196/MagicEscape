@@ -13,7 +13,7 @@ namespace MagicEscape.Core
         public const string Chalkboard = "생명은 정해진 순서로 깨어난다. 액자의 숫자를 따르라.";
         public const string HintRune = "벽에 걸린 액자의 숫자 순서를 따라가 보자.";
         public const string RuneWrong = "문양의 빛이 꺼졌다. 순서가 틀린 것 같다.";
-        public const string RuneSolved = "제단의 봉인이 풀렸다! 제단 안에서 푸른 수정이 떠오른다.";
+        public const string RuneSolved = ""; // Success is communicated by world feedback, not narration.
 
         // P2 — 마법약
         public const string Recipe =
@@ -23,7 +23,7 @@ namespace MagicEscape.Core
         public const string CannotInsert = "이건 넣을 수 없다.";
         public const string PotionWrong = "가마솥에서 검은 연기가 피어올랐다! 재료들이 제자리로 돌아갔다.";
         public const string HintPotion = "마법서의 순서를 다시 읽어 보자. 독버섯은 함정이다.";
-        public const string PotionSolved = "계시의 물약이 완성되었다! 가마솥 바닥에서 붉은 수정도 얻었다.";
+        public const string PotionSolved = ""; // Success is communicated by world feedback, not narration.
 
         // P3 — 최종 봉인
         public const string SealRemaining = "아직 봉인이 두 개 남아 있다.";
@@ -34,7 +34,7 @@ namespace MagicEscape.Core
         public const string SocketFilled = "이미 수정이 끼워져 있다.";
         public const string HintSeal = "물은 흐르고 불은 타오른다. 수정의 색을 보자.";
         public const string CoreNotReady = "봉인핵이 아직 잠잠하다. 두 수정을 모두 끼워야 한다.";
-        public const string SealReleased = "마지막 봉인이 풀렸다! 출구가 열린다.";
+        public const string SealReleased = ""; // Success is communicated by world feedback, not narration.
 
         // 목표(Tab 패널)
         public const string ObjectiveRune = "중앙 제단의 마법 문양을 올바른 순서로 활성화하자.";

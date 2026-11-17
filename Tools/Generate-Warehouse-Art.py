@@ -1,4 +1,4 @@
-﻿from pathlib import Path
+from pathlib import Path
 from PIL import Image, ImageDraw
 import math, random
 out=Path('UnityProject/Assets/Art/Warehouse');out.mkdir(exist_ok=True)
@@ -34,40 +34,24 @@ def motif(name):
 for n in ['Earth','Water','Fire','Light','Wind','Shadow']:motif(n).save(out/('Pictogram_'+n+'.png'))
 # Stage 9: compose reviewed image-generated textures; never procedurally redraw P1 art.
 # Numbering is separate Unity text, not baked into any generated picture.
-im=Image.new('RGB',(1536,768),(20,20,20))
+im=Image.new('RGB',(1536,768),(0,0,0))
 for n in range(4):
  picture=Image.open(out/'Textures'/f'Chalk_{n+1}.png').convert('RGB')
  picture=picture.resize((360,510),Image.Resampling.LANCZOS)
  im.paste(picture,(12+n*384,160))
 im.save(out/'ChalkScenes.png')
-# Warehouse recipe uses narrative ingredient drawings only (no old Fire triangle).
-recipe=Image.new('RGB',(1024,640),(205,183,139));rd=ImageDraw.Draw(recipe);ink=(57,43,29)
-def rline(p,w=5):rd.line(p,fill=ink,width=w,joint='curve')
-for n in range(3):
- x=171+n*341
- # Arabic recipe steps are independent of P1 scene order.
- for j in range(n+1):rline([(x-12*n+j*24,35),(x-12*n+j*24,76)])
- rd.line((x-150,105,x+150,105),fill=ink,width=3)
- if n==0:
-  # Moon-grown petals, not the P1 light pictogram.
-  rd.arc((x-47,135,x+47,229),60,300,fill=ink,width=5)
-  rd.arc((x-12,135,x+58,229),70,290,fill=ink,width=4)
-  for j in range(6):
-   a=j*math.tau/6;xx=x+math.cos(a)*46;yy=356+math.sin(a)*46
-   rd.ellipse((xx-22,yy-33,xx+22,yy+33),outline=ink,width=5)
-  rd.ellipse((x-13,343,x+13,369),outline=ink,width=4)
- elif n==1:
-  # Overlapping shed scales; flame-shaped heat streaks, never alchemical triangle.
-  for yy in range(260,401,45):
-   for dx in (-55,0,55):rd.arc((x+dx-31,yy,x+dx+31,yy+73),0,180,fill=ink,width=5)
-  for dx in (-65,0,65):rline([(x+dx,221),(x+dx-11,192),(x+dx+4,162),(x+dx,138)],4)
- else:
-  rline([(x-55,409),(x-62,285),(x-30,255),(x-30,223),(x+30,223),(x+30,255),(x+62,285),(x+55,409),(x-55,409)])
-  for dx,yy in [(-26,305),(22,324),(-12,365),(29,382)]:
-   rline([(x+dx-10,yy),(x+dx+10,yy)],3);rline([(x+dx,yy-10),(x+dx,yy+10)],3)
- # Direction under ingredient, no element captions.
- if n<2:rline([(x+135,350),(x+186,350)]);rline([(x+173,338),(x+186,350),(x+173,362)])
-# Crossed-out mushroom: unmistakable excluded ingredient.
-rd.arc((416,470,608,564),180,360,fill=ink,width=5);rline([(416,517),(608,517)]);rline([(491,520),(491,586),(534,586),(534,520)])
-rline([(433,464),(589,600)],7);rline([(589,464),(433,600)],7)
+# Reviewed manuscript ingredient study; numbering is deterministic authored ink, not generated text.
+from PIL import ImageFont
+recipe=Image.open(out/'Textures'/'RecipeStudy.png').convert('RGB').resize((1024,640),Image.Resampling.LANCZOS)
+rd=ImageDraw.Draw(recipe)
+font=ImageFont.truetype('UnityProject/Assets/Fonts/GowunBatang-Regular.ttf',42)
+for x,caption in [(171,'I'),(512,'II'),(853,'III')]:
+ rd.text((x,40),caption,font=font,fill=(65,58,44),anchor='mm')
 recipe.save(out/'PictureRecipe.png')
+# Warehouse-only name masks keep historical Classroom textures byte-identical.
+from PIL import ImageFont
+font=ImageFont.truetype('UnityProject/Assets/Fonts/GowunBatang-Regular.ttf',112)
+for rune,name in [('Earth','대지'),('Water','물'),('Fire','불'),('Wind','바람'),('Light','빛'),('Shadow','달')]:
+ im=Image.new('RGB',(384,128),(2,2,2));d=ImageDraw.Draw(im)
+ d.text((192,64),name,font=font,fill='white',anchor='mm',stroke_width=2)
+ im.save(out/('RuneName_'+rune+'.png'))
