@@ -8,6 +8,7 @@ namespace MagicEscape
     public sealed class XriLooseProp : MonoBehaviour
     {
         public Vector3 home, parking;
+        public Vector3 parkingEuler;
         public bool IsCleared => Vector3.Distance(transform.position, home) > .27f;
         XRGrabInteractable grab;
         void Awake()
@@ -24,6 +25,11 @@ namespace MagicEscape
             grab.selectEntered.RemoveListener(Carry);
         }
         void Carry(SelectEnterEventArgs args) { gameObject.layer=10; }
-        void Park(SelectExitEventArgs args) { gameObject.layer=9; transform.SetPositionAndRotation(parking, Quaternion.identity); }
+        void Park(SelectExitEventArgs args) { gameObject.layer=9; transform.SetPositionAndRotation(parking, Quaternion.Euler(parkingEuler)); }
+        public void ResetProp()
+        {
+            if(grab != null && grab.isSelected) grab.interactionManager.CancelInteractableSelection((IXRSelectInteractable)grab);
+            gameObject.layer=9;transform.SetPositionAndRotation(home,Quaternion.identity);
+        }
     }
 }

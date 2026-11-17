@@ -64,6 +64,7 @@ public class WarehouseXriTests
     }
     IEnumerator Grab(string id, Vector3 stand)
     {
+        yield return Stage10Actions.ClearNew();
         var pickup = Scenario.Pickup(id); yield return ClickAt(pickup, stand);
         Assert.NotNull(Driver.Held, id + " selected through camera XRRayInteractor"); Assert.AreEqual(id, Driver.Held.ItemId);
         yield return new WaitForSeconds(.25f);
@@ -101,6 +102,7 @@ public class WarehouseXriTests
 
     IEnumerator Chest()
     {
+        yield return Stage10Actions.ClearNew();
         var lid = GameObject.Find("ChestLidHinge").GetComponent<XriClearable>();
         if (!lid.IsCleared)
         {

@@ -108,7 +108,7 @@ namespace MagicEscape
             if (promptText == null) return;
             bool show = !string.IsNullOrEmpty(verb);
             promptText.gameObject.SetActive(show);
-            if (show) promptText.text = "<size=82%><color=#C6A465>[E]</color></size> " + verb;
+            if (show) promptText.text = verb.StartsWith("[") ? verb : "<size=82%><color=#C6A465>[E]</color></size> " + verb;
         }
 
         public void ShowToast(string message)

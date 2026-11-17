@@ -10,6 +10,28 @@ using UnityEngine.XR.Interaction.Toolkit.Interactables;
 using UnityEngine.XR.OpenXR;
 public class WarehouseContractTests
 {
+    [Test] public void Stage10CoversAreSharedSupportedAndOutsidePuzzleCirculation()
+    {
+        EditorSceneManager.OpenScene("Assets/Scenes/Warehouse.unity");
+        Assert.AreEqual(8,Object.FindObjectsByType<ClearingFeedback>(FindObjectsSortMode.None).Length);
+        Assert.AreEqual(6,Object.FindObjectsByType<ClearingGate>(FindObjectsSortMode.None).Length);
+        foreach(var feedback in Object.FindObjectsByType<ClearingFeedback>(FindObjectsSortMode.None))
+        {
+            Assert.AreEqual(1,feedback.GetComponents<XRBaseInteractable>().Length);
+            Assert.NotNull(feedback.GetComponent<HandlingProfile>());
+        }
+        var books=GameObject.Find("ScaleBookStack").GetComponent<XriLooseProp>();
+        Assert.AreEqual(1.20f,books.GetComponent<Collider>().bounds.min.y,.002f);
+        Assert.That(books.parking.x,Is.InRange(3.38f,4.28f));
+        var roll=GameObject.Find("DustPackingRoll").GetComponent<XriLooseProp>();
+        var shelf=GameObject.Find("DustPackingSideShelf").GetComponent<Collider>().bounds;
+        Assert.AreEqual(shelf.max.y,roll.parking.y-.08f,.002f);
+        var dust=Object.FindObjectsByType<ItemPickup>(FindObjectsSortMode.None).Single(i=>i.ItemId==ItemIds.CrystalDust).GetComponent<ClearingGate>();
+        Assert.AreSame(roll,dust.books);Assert.NotNull(dust.blocker);
+        foreach(var reveal in Object.FindObjectsByType<ClearingReveal>(FindObjectsSortMode.None))
+        {Assert.NotNull(reveal.gate);Assert.NotNull(reveal.source);Assert.Greater(reveal.source.intensity,0);}
+        Assert.Less(Vector3.Distance(new Vector3(3.75f,.78f,-2.94f),Object.FindObjectsByType<ItemPickup>(FindObjectsSortMode.None).Single(i=>i.ItemId==ItemIds.Moonpetal).transform.position),.001f);
+    }
     [Test] public void ProposalDoesNotChangeAnswersOrIds()
     {
         CollectionAssert.AreEqual(new[] { RuneId.Earth, RuneId.Water, RuneId.Fire, RuneId.Light }, RunePuzzleLogic.DefaultAnswer);
@@ -131,7 +153,7 @@ public class WarehouseContractTests
         var texture=AssetDatabase.LoadAssetAtPath<Texture2D>(allowed);
         Assert.NotNull(texture);
         using(var sha=System.Security.Cryptography.SHA256.Create())
-            Assert.AreEqual("221C98C6A463DEE061E5A6A8DD630E7E7C4CF5A0216D895D5E513BE8F18554EA",
+            Assert.AreEqual("712E07B4650A84435B402B69BFD1EDAC0A3BA9CCBE845C3ABF0ACDF6BF35E2F2",
                 System.BitConverter.ToString(sha.ComputeHash(System.IO.File.ReadAllBytes(allowed))).Replace("-",""),"Reviewed scene-only chalk pixels must not gain element names or pictograms");
         var board=GameObject.Find("Chalkboard");
         Assert.AreSame(texture,new SerializedObject(board.GetComponent<InspectableObject>()).FindProperty("picture").objectReferenceValue);

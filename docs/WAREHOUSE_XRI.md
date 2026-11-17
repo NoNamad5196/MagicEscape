@@ -12,9 +12,9 @@ Classroom.unity remains a separate historical regression fixture, not the startu
 | Item / ID | Position (x, y, z) | Height | Reason / support |
 |---|---|---|---|
 | Moonflower / `ing_moonpetal` | (3.75, .78, -2.94) | .78m | Existing southeast window planter, explicitly unchanged; sole exception to .8–1.6m rule. |
-| Scale / `ing_salamander_scale` | (3.65, 1.30, .05) | 1.30m | Glass ingredient bottle on the east work shelf, aisle-facing rather than behind the cauldron. |
-| Dust / `ing_crystal_dust` | (-3.25, .96, -2.3) | .96m | Southwest chest raised on a .60m timber plinth. Lid/hinge gate retained; close enough to see when opened. |
-| Toadstool / `ing_toadstool` | (3.50, 1.10, -1.25) | 1.10m | Damp east barrel, exposed to the main work aisle, not a dark floor corner. |
+| Scale / `ing_salamander_scale` | (3.65, 1.30, .05) | 1.30m | Glass bottle behind a liftable book stack on the east workbench; neck and dim light peek above the books. |
+| Dust / `ing_crystal_dust` | (-3.25, .96, -2.3) | .96m | Southwest chest raised on a .60m timber plinth. Open its existing lid, then lift the packing-linen bundle off the jar; both gate conditions must clear. |
+| Toadstool / `ing_toadstool` | (3.50, 1.10, -1.25) | 1.10m | Damp east barrel beneath a hinged lid; cap and light show through the aisle-facing gap. |
 | Sapphire / `crystal_sapphire` | (-.80, 1.12, -.30) | 1.12m | P1 reward directly above the altar centre after its lid opens. |
 | Ruby / `crystal_ruby` | (2.50, 1.05, 1.65) | 1.05m | Cauldron-side reward stand, immediately beside the solved P2 work area. |
 | Revelation potion / `potion_revelation` | (2.90, 1.05, 1.65) | 1.05m | Same cauldron-side reward stand, separated from ruby so both are visible. |
@@ -50,10 +50,10 @@ Run only one Unity process. Preserve existing untracked XML in docs/validation. 
 AGENTS.md and README.md are synchronized with this warehouse/XRI specification. Historical classroom-only locations and PC-only restrictions do not apply to Warehouse.
 
 ## P1 scene-to-frame clues (stage 7 supersedes stages 5–6)
-- World chalkboard and E enlargement share `Assets/Art/Warehouse/ChalkScenes.png`: I seed below soil, II rain and young plant, III hot sun / wilt / cracked ground, IV blooming flower in light shafts. Only scene drawings and I–IV occur; no element names or standalone element pictograms. Large clean chalk strokes on the same raised board (centre y=1.87m). `Tools/Generate-Warehouse-Art.py` reproduces the vector-authored raster masks and chalk plate.
+- World chalkboard and E enlargement share `Assets/Art/Warehouse/ChalkScenes.png`: I soil mound with a tiny buried seed, II heavy rain on that same mound, III large flames in the adjacent brazier, IV descending light shafts and a small sprout. Camera, mound, brazier and horizon remain fixed. Only scene drawings and I–IV occur; no element names or standalone element pictograms. Large clean chalk strokes on the same raised board (centre y=1.87m). `Tools/Generate-Warehouse-Art.py` reproduces pictogram masks and composites the generated chalk pictures; it never draws P1 scenes.
 - No Roman numerals remain visible on any frame. Each lower plaque contains only a matching pictogram and enlarged Gowun Batang name. Internal `Painting_I` etc. identifiers are authoring keys, not visible labels. Frame order is deliberately shuffled.
 - Solve path: numbered board scene → matching frame scene → plaque element name/pictogram → matching altar stone. Answer remains Earth → Water → Fire → Light; RuneId, item IDs and P1 → P2 → P3 unchanged.
-- Pictograms are a mountain ridge (earth), single water drop, flame, twelve-ray sun (light), three curled wind strokes, crescent (shadow). One monochrome 11px stroke system, shared brass incision material and no toy/emoji colour differentiation. III still depicts drought with a hot sun, but its plaque is explicitly a flame / 불; IV plaque is sun / 빛.
+- Pictograms are a mountain ridge (earth), single water drop, flame, twelve-ray sun (light), three curled wind strokes, crescent (shadow). One monochrome 11px stroke system, shared brass incision material and no toy/emoji colour differentiation. III depicts actual brazier fire (no sun), with flame / 불 plaque; IV depicts light shafts (no flower), with sun / 빛 plaque.
 - Six stone slabs grow to .41×.49m; name surfaces .38×.15m (previously .33×.11m), with unchanged Gowun Batang source masks and shared press fill/glow feedback. Frame names .48×.16 local, pictograms .19m local. Hit colliders and answer logic are unchanged.
 - Warehouse substitutes all six historical alchemical mask materials, including inscription and seal lamps, with Warehouse-only pictograms. Classroom keeps its historical resources and scene byte-for-byte. Previous `ChalkBlanks` asset/material and generator are retired.
 - I/IV sliding crates and III cloth clearing remain. The raised southwest chest retains the same fully-open gate and 100-degree open hinge (steep enough not to screen frame III). All shared PC/VR clearing and direct-adapter safeguards remain.
@@ -78,8 +78,29 @@ AGENTS.md and README.md are synchronized with this warehouse/XRI specification. 
 - `Tools/Run-Unity.ps1` preserves all historical captures (including stage7); current visual evidence uses `stage8-*`. Results and capture hashes: [Stage 8](validation/warehouse/STAGE8_RESULTS.md).
 
 ## Stage 9 image-generated P1 pictures
-- Eight reviewed built-in image-generation outputs live in `Assets/Art/Warehouse/Textures/`: `Chalk_1.png` through `Chalk_4.png` and `Story_1.png` through `Story_4.png`, all 1024 square. No writing, numbers or alchemical glyphs occur inside those pictures.
-- Subjects remain ordered sprouting seed, rain, hot sun, open flower. The large two-leaf sprout replaces the ambiguous almond silhouette. The oil paintings fill their frames and match their chalk protagonists/compositions.
+- Eight reviewed built-in image-generation outputs live in `Assets/Art/Warehouse/Textures/`: `Chalk_1.png` through `Chalk_4.png` and `Story_1.png` through `Story_4.png`, all imported at 1024 square. No writing, numbers or alchemical glyphs occur inside those pictures.
+- Stage 10 supersedes the original stage-9 subjects: soil mound, heavy rain, burning brazier, light shafts; the small seed/sprout stays subordinate. The oil paintings fill their frames and match their chalk protagonists/compositions.
 - `Generate-Warehouse-Art.py` only composites the four generated chalk pictures into `ChalkScenes.png`; it no longer draws P1 scenes or frame I procedurally. Roman ordering is separate authored world text above the pictures, not painted into them. Inspection uses the same composite in left-to-right order.
 - Warehouse builder assigns all four generated oil textures to both world illustrations and inspection. Brass names/pictograms, rune stones, frame positions, lighting and III cloth remain unchanged. Historical Classroom assets are not replaced.
 - Current evidence: [Stage 9](validation/warehouse/STAGE9_RESULTS.md).
+
+## Stage 10 - direct element scenes and tactile clearing
+
+Eight new built-in image-generation illustrations replace Chalk_1-4 and Story_1-4 in `UnityProject/Assets/Art/Warehouse/Textures/`. Chalk is bold white on black; oil paintings are dark candlelit umber/ochre. All eight use the same fixed scene/camera: soil mound in the foreground and brazier on the right. I earth, II heavy rain, III large fire tongues, IV broad descending light beams. No writing, numbering, standalone glyphs, sun disc, moon, wind swirl or flowers inside the pictures. Small buried seed/sprout is secondary. Roman board text, brass Korean plaques, rune pictograms, RuneId, answer and frame positions are unchanged. Failure-only Tab hint already refers to board/frame/plaque matching and needed no text change.
+
+### Clearing inventory (8 props, 6 gated targets)
+| Prop | Shared handling / PC prompt | Revealed target | Home / supported parking (metres) |
+|---|---|---|---|
+| ClearingCrate_I / IV | PushPull / hold left click + WASD | Frames I / IV | Existing west-wall floor rails, unchanged |
+| PaintingIIICloth | Fixed / left click to uncover | Frame III | Existing wall frame III, unchanged |
+| ChestLidHinge | Fixed / left click to open | Crystal dust | Southwest raised chest (-3.25, .96, -2.3), unchanged |
+| MovableBookStack | Lift / left click to lift | Dressing board (not a clue) | Existing south storage crates, unchanged |
+| ScaleBookStack (new) | Lift / left click to lift | Salamander scale bottle | (3.40, 1.335, .04) -> (3.95, 1.335, .04), both on the 1.20m east workbench |
+| ToadstoolBarrelLid (new) | Fixed / left click to open | Toadstool | Hinge (3.86, 1.24, -1.25), 105-degree outward opening on east barrel |
+| DustPackingRoll (new) | Lift / left click to lift | Crystal dust, after opening existing chest lid | (-3.25, 1.10, -2.3) -> (-2.62, 1.04, -2.3), on a supported .96m side shelf |
+
+Ingredient pickup homes and moonpetal are unchanged. Bottle-neck area, mushroom-cap gap and dust-jar edge plus low neutral leak lights make covered locations visible without searching. The dust has a combined gate: existing chest lid AND new linen bundle. Covers remain in storage bays, not in front of the exit, altar, cauldron or seal device; no new obstruction is placed in front of an existing frame. Lift props park on authored supported surfaces; ResetProp restores their homes and gates.
+
+`ClearingFeedback` applies a reversible warm material highlight on XRI hover/selection or within 1.3m (PC and VR). PlayerInteraction uses its IInteractable prompt through the existing HUD; UIManager accepts an explicit control prefix without adding [E]. No puzzle-hint prose. E still aliases the same XRI transaction. All eight moving props use procedural spatial wood-friction/landing clips synthesized inside Unity (no external audio/license dependency), plus short dust emission. `ClearingReveal` lives separately at each target: .12 dim leak -> .85 local light in .65s, short shimmer and existing pickup sound on each covered-to-accessible transition. It neither changes progress nor bypasses ClearingGate, and remains independent of WarehouseDarkening. Collider/XRI/direct-adapter blocking and reset/re-covering are retained.
+
+Evidence and image prompt specification: [STAGE10_RESULTS.md](validation/warehouse/STAGE10_RESULTS.md). Actual HMD and player build remain unverified/out of scope.

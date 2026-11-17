@@ -144,7 +144,7 @@ namespace MagicEscape.EditorTools
             foreach (var t in geometry.GetComponentsInChildren<Transform>(true))
                 if (t.GetComponent<Collider>() != null && t.GetComponent<HandlingProfile>() == null) t.gameObject.AddComponent<HandlingProfile>();
             ConfigureWarehouseDarkening();
-            ConfigureXri(); ConfigureClearing(); ConfigureWarehouseStage7(); ConfigureOpenXR();
+            ConfigureXri(); ConfigureClearing(); ConfigureWarehouseStage7(); ConfigureWarehouseStage10(); ConfigureOpenXR();
             // The resized corridor can expose the scene background above its dark doorway.
             // Both rigs must see black, never the default blue skybox / a false dawn.
             foreach(var camera in Object.FindObjectsByType<Camera>(FindObjectsInactive.Include,FindObjectsSortMode.None))

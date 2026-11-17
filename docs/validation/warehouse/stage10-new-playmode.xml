@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="2" result="Passed" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-11-17 15:59:58Z" end-time="2026-11-17 16:00:12Z" duration="14.5356449">
+  <test-suite type="TestSuite" id="1062" name="UnityProject" fullname="UnityProject" runstate="Runnable" testcasecount="40" result="Passed" start-time="2026-11-17 15:59:58Z" end-time="2026-11-17 16:00:12Z" duration="14.535645" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0">
+    <properties>
+      <property name="platform" value="PlayMode" />
+    </properties>
+    <test-suite type="SetUpFixture" id="1013" name="MagicEscape.PlayMode.dll" fullname="ConsoleAudit" classname="ConsoleAudit" runstate="Runnable" testcasecount="40" result="Passed" start-time="2026-11-17 15:59:58Z" end-time="2026-11-17 16:00:12Z" duration="14.521269" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="50980" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="PlayMode" />
+        <property name="EditorOnly" value="False" />
+      </properties>
+      <test-suite type="TestFixture" id="1037" name="WarehouseStage10Tests" fullname="WarehouseStage10Tests" classname="WarehouseStage10Tests" runstate="Runnable" testcasecount="2" result="Passed" start-time="2026-11-17 15:59:58Z" end-time="2026-11-17 16:00:12Z" duration="14.510485" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <test-case id="1039" name="NewArtAndSharedRevealRemainVisibleInDarkness" fullname="WarehouseStage10Tests.NewArtAndSharedRevealRemainVisibleInDarkness" methodname="NewArtAndSharedRevealRemainVisibleInDarkness" classname="WarehouseStage10Tests" runstate="Runnable" seed="1755630864" result="Passed" start-time="2026-11-17 15:59:58Z" end-time="2026-11-17 16:00:05Z" duration="7.566441" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+          <output><![CDATA[[GameManager] Flow → Title
+Loading OpenXR loader library at path: C:\Users\nonam\Documents\MagicEscape\UnityProject\Library\PackageCache\com.unity.xr.openxr@ef0033a586bf\RuntimeLoaders\windows\x64\openxr_loader.dll
+Your project uses a scriptable render pipeline. You can use Camera.stereoTargetEye only with the built-in renderer.
+Your project uses a scriptable render pipeline. You can use Camera.stereoTargetEye only with the built-in renderer.
+[GameManager] Flow → Playing
+Your project uses a scriptable render pipeline. You can use Camera.stereoTargetEye only with the built-in renderer.
+Your project uses a scriptable render pipeline. You can use Camera.stereoTargetEye only with the built-in renderer.
+]]></output>
+        </test-case>
+        <test-case id="1038" name="NewCoversBlockThenRevealAndResetAllThreeTargets" fullname="WarehouseStage10Tests.NewCoversBlockThenRevealAndResetAllThreeTargets" methodname="NewCoversBlockThenRevealAndResetAllThreeTargets" classname="WarehouseStage10Tests" runstate="Runnable" seed="2060252102" result="Passed" start-time="2026-11-17 16:00:05Z" end-time="2026-11-17 16:00:12Z" duration="6.931684" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+          <output><![CDATA[[GameManager] Flow → Title
+Loading OpenXR loader library at path: C:\Users\nonam\Documents\MagicEscape\UnityProject\Library\PackageCache\com.unity.xr.openxr@ef0033a586bf\RuntimeLoaders\windows\x64\openxr_loader.dll
+Your project uses a scriptable render pipeline. You can use Camera.stereoTargetEye only with the built-in renderer.
+Your project uses a scriptable render pipeline. You can use Camera.stereoTargetEye only with the built-in renderer.
+[GameManager] Flow → Playing
+Your project uses a scriptable render pipeline. You can use Camera.stereoTargetEye only with the built-in renderer.
+Your project uses a scriptable render pipeline. You can use Camera.stereoTargetEye only with the built-in renderer.
+The character with Unicode value \uB9AD was not found in the [GowunBatang-Regular-SDF] font asset or any potential fallbacks. It was replaced by Unicode character \u25A1 in text object [PromptText].
+The character with Unicode value \uB9AD was not found in the [GowunBatang-Regular-SDF] font asset or any potential fallbacks. It was replaced by Unicode character \u25A1 in text object [PromptText].
+The character with Unicode value \uB9AD was not found in the [GowunBatang-Regular-SDF] font asset or any potential fallbacks. It was replaced by Unicode character \u25A1 in text object [PromptText].
+The character with Unicode value \uB9AD was not found in the [GowunBatang-Regular-SDF] font asset or any potential fallbacks. It was replaced by Unicode character \u25A1 in text object [PromptText].
+The character with Unicode value \uB9AD was not found in the [GowunBatang-Regular-SDF] font asset or any potential fallbacks. It was replaced by Unicode character \u25A1 in text object [PromptText].
+The character with Unicode value \uB9AD was not found in the [GowunBatang-Regular-SDF] font asset or any potential fallbacks. It was replaced by Unicode character \u25A1 in text object [PromptText].
+The character with Unicode value \uB9AD was not found in the [GowunBatang-Regular-SDF] font asset or any potential fallbacks. It was replaced by Unicode character \u25A1 in text object [PromptText].
+The character with Unicode value \uB9AD was not found in the [GowunBatang-Regular-SDF] font asset or any potential fallbacks. It was replaced by Unicode character \u25A1 in text object [PromptText].
+The character with Unicode value \uB9AD was not found in the [GowunBatang-Regular-SDF] font asset or any potential fallbacks. It was replaced by Unicode character \u25A1 in text object [PromptText].
+The character with Unicode value \uB9AD was not found in the [GowunBatang-Regular-SDF] font asset or any potential fallbacks. It was replaced by Unicode character \u25A1 in text object [PromptText].
+The character with Unicode value \uB9AD was not found in the [GowunBatang-Regular-SDF] font asset or any potential fallbacks. It was replaced by Unicode character \u25A1 in text object [PromptText].
+The character with Unicode value \uB9AD was not found in the [GowunBatang-Regular-SDF] font asset or any potential fallbacks. It was replaced by Unicode character \u25A1 in text object [PromptText].
+The character with Unicode value \uB9AD was not found in the [GowunBatang-Regular-SDF] font asset or any potential fallbacks. It was replaced by Unicode character \u25A1 in text object [PromptText].
+The character with Unicode value \uB9AD was not found in the [GowunBatang-Regular-SDF] font asset or any potential fallbacks. It was replaced by Unicode character \u25A1 in text object [PromptText].
+The character with Unicode value \uB9AD was not found in the [GowunBatang-Regular-SDF] font asset or any potential fallbacks. It was replaced by Unicode character \u25A1 in text object [PromptText].
+Saving results to: C:/Users/nonam/AppData/LocalLow/DefaultCompany/UnityProject\TestResults.xml
+]]></output>
+        </test-case>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>

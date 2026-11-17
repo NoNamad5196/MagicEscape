@@ -70,7 +70,7 @@ public class WarehouseDarkeningTests
             {
                 ArtTests.View(new Vector3(-2.1f,0,-2),new Vector3(-3.25f,1.21f,-2.3f));yield return null;yield return null;
                 Object.FindFirstObjectByType<DesktopXriDriver>().Click();yield return new WaitForSeconds(.7f);
-                yield return Scenario.Potion();yield return new WaitForSeconds(1.1f);
+                yield return Stage10Actions.ClearNew();yield return Scenario.Potion();yield return new WaitForSeconds(1.1f);
             }
             if(stage==3)
             {
@@ -116,6 +116,7 @@ public class WarehouseDarkeningTests
         Scenario.Collect(ItemIds.Moonpetal);Scenario.Select(ItemIds.Moonpetal);
         Object.FindFirstObjectByType<PotionPuzzle>().Interact(Scenario.Player);
         Assert.False(InventoryManager.Instance.Contains(ItemIds.Moonpetal),"Ingredient consumed during transition");
+        yield return Stage10Actions.ClearNew();
         foreach(var id in PotionPuzzleLogic.DefaultRecipe.Skip(1))
         {Scenario.Collect(id);Scenario.Select(id);Object.FindFirstObjectByType<PotionPuzzle>().Interact(Scenario.Player);}
         yield return new WaitForSeconds(2);Assert.AreEqual(2,p.BrightnessStage);

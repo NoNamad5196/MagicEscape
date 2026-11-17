@@ -14,6 +14,7 @@ public class WarehouseStage7Tests
         yield return SceneManager.LoadSceneAsync("Warehouse");yield return null;
         Object.FindFirstObjectByType<RigSelector>().Apply(false);
         GameManager.Instance.StartGame();GameManager.Instance.SkipPresentation();yield return null;
+        yield return Stage10Actions.ClearNew();
         foreach(var gate in Object.FindObjectsByType<XriClearable>(FindObjectsSortMode.None))
         {
             if(gate.kind==ClearingKind.Slide)gate.MoveWithinRails(gate.name.EndsWith("IV")?gate.minPosition:gate.maxPosition);
